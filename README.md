@@ -2,10 +2,12 @@
 
 - Designated Communication Channels -
   *teams chat
-  *
+  *Discord: https://discord.gg/Gq4Arkq6
+  
+h
 
 - Process for resolving merge conflicts -
-  *
+  * post an issue on here(github) and
 
 - Code checking/WIP code before commit/push workflow -
   *
