@@ -23,6 +23,7 @@
   *Don't muck with other people's code without asking
   *
 
+watch out for caps when adding files
 
 
 Studio Rules:
