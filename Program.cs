@@ -29,15 +29,15 @@ namespace SnailMate
                 "4. Exit"
             };
 
-            // Variables I am using to centre the text and menu options
+            // Variables I am using to centre the text and menu options - Kavarn 11:32am
             int screenWidth = Console.WindowWidth;
             int screenHeight = Console.WindowHeight;
             int verticalStart = (screenHeight / 2) - (asciiArt.Length + menuOptions.Length) / 2;
 
-            // Clearing console to start the method
+            // Clearing console to start the method - Kavarn 11:37am
             Console.Clear();
 
-            // Running through each lines of the ascii art array
+            // Running through each lines of the ascii art array to centre them - Kavarn 11:40am
             for (int i = 0; i < asciiArt.Length; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -48,7 +48,7 @@ namespace SnailMate
 
             Console.ResetColor();
 
-            // Print menu options below
+            // Display and centre menu options - Kavarn 11:46am
             int menuStartVertical = verticalStart + asciiArt.Length + 2;
             for (int i = 0; i < menuOptions.Length; i++)
             {
