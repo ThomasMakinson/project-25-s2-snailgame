@@ -64,9 +64,22 @@ namespace SnailMate
         public static void HowToPlay()
         {
             // Insert game instruction menu
+            Console.WriteLine(@"
+Welcome to Snailmate adventurer!
+you will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
+
+in order to interact with the world describe what you want to do in simple terms,
+such as:
+'go left' 
+'look at door'
+'grab key.
+if a command is not accepted you may have to try other ways of describing your action");
+
+
+
         }
 
-        public static void NewGame()
+        public static void NewGame()// Game code
         {
             int roomID = 1, runGame = 1;
             string direction;
