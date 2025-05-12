@@ -59,7 +59,7 @@ namespace SnailMate
             }
         }
 
-        public static void HowToPlay() 
+        public static void HowToPlay()
         {
             // Insert game instruction menu
         }
@@ -135,5 +135,6 @@ namespace SnailMate
             } while (exitGame == false);
 
 
+        }
     }
 }
