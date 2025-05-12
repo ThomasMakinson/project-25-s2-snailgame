@@ -1,4 +1,5 @@
 ﻿using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SnailMate
 {
@@ -56,18 +57,18 @@ namespace SnailMate
                 Console.SetCursorPosition(centredx, menuStartVertical + i);
                 Console.WriteLine(menuOptions[i]);
             }
-
-            Console.ReadLine();
         }
 
-        static void Main(string[] args)
+        public static void HowToPlay() 
         {
-            string direction;
-            DisplayTitleScreen();
+            // Insert game instruction menu
+        }
 
+        public static void PlayGame()
+        {
             Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
             Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
-            direction = Console.ReadLine().ToLower().Trim();
+            string direction = Console.ReadLine().ToLower().Trim();
             switch (direction)
             {
                 case "right":
@@ -87,7 +88,41 @@ namespace SnailMate
                     break;
             }
             Console.ReadLine();
+
         }
+
+        static void Main(string[] args)
+        {
+            string direction;
+            int userMenuSelection;
+            bool exitGame = false;
+
+            do
+            {
+                DisplayTitleScreen();
+                Console.Write("Select Option (Enter Number): ");
+                userMenuSelection = Convert.ToInt32(Console.ReadLine());
+
+                switch (userMenuSelection)
+                {
+                    case 1:
+                        NewGame();
+                        break;
+
+                    case 2:
+                        LoadGame();
+                        break;
+
+                    case 3:
+                        HowToPlay();
+                        break;
+
+                    case 4:
+                        ExitGame();
+                        break;
+
+                }
+            } while (exitGame = false);
 
 
     }
