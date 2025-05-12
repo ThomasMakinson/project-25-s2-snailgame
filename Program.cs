@@ -64,7 +64,7 @@ namespace SnailMate
             // Insert game instruction menu
         }
 
-        public static void PlayGame()
+        public static void NewGame()
         {
             Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
             Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
@@ -91,14 +91,24 @@ namespace SnailMate
 
         }
 
+        public static void LoadGame()
+        {
+            // Load game menu
+        }
+
+        public static void ExitGame()
+        {
+            // exit game process
+        }
+
         static void Main(string[] args)
         {
-            string direction;
             int userMenuSelection;
             bool exitGame = false;
 
             do
             {
+                // Displays title screen method then asks for a menu option
                 DisplayTitleScreen();
                 Console.Write("Select Option (Enter Number): ");
                 userMenuSelection = Convert.ToInt32(Console.ReadLine());
@@ -122,7 +132,7 @@ namespace SnailMate
                         break;
 
                 }
-            } while (exitGame = false);
+            } while (exitGame == false);
 
 
     }
