@@ -66,6 +66,7 @@ namespace SnailMate
 
         public static void NewGame()
         {
+            Console.Clear();
             Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
             Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
             string direction = Console.ReadLine().ToLower().Trim();
