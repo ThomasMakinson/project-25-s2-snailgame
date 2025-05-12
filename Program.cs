@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SnailMate
 {
@@ -57,71 +58,86 @@ namespace SnailMate
                 Console.SetCursorPosition(centredx, menuStartVertical + i);
                 Console.WriteLine(menuOptions[i]);
             }
+        }
 
+        public static void HowToPlay()
+        {
+            // Insert game instruction menu
+        }
+
+        public static void NewGame()
+        {
+            string direction;
+            DisplayTitleScreen();
+
+            Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
+            Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
+            direction = Console.ReadLine().ToLower().Trim();
+            switch (direction)
+            {
+                case "right":
+                    Console.WriteLine("Wooo you turned right and fell over");
+                    break;
+                case "left":
+                    Console.WriteLine("Awesome you found the exit!");
+                    break;
+                case "up":
+                    Console.WriteLine("You can't fly you twit");
+                    break;
+                case "down":
+                    Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
+                    break;
+                default:
+                    Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
+                    break;
+            }
             Console.ReadLine();
+        }
+
+        public static void LoadGame()
+        {
+            // Load game menu
+        }
+
+        public static void ExitGame()
+        {
+            // exit game process
         }
 
         static void Main(string[] args)
         {
-            int roomID = 1, runGame =1;
-            string direction;
-            DisplayTitleScreen();
-            while(runGame == 1)
+            int userMenuSelection;
+            bool exitGame = false;
+
+            do
             {
-               switch (roomID)
+                // Displays title screen method then asks for a menu option
+                DisplayTitleScreen();
+                Console.Write("Select Option (Enter Number): ");
+                userMenuSelection = Convert.ToInt32(Console.ReadLine());
+
+                switch (userMenuSelection)
                 {
                     case 1:
-                        
-                        
-
-                        Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
-                        Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
-                        direction = Console.ReadLine().ToLower().Trim();
-                        switch (direction)
-                        {
-                            case "right":
-                                Console.WriteLine("Wooo you turned right and fell over");
-                                break;
-                            case "left":
-                                Console.WriteLine("Awesome you found the exit!");
-                                roomID = 2;
-                                break;
-                            case "up":
-                                Console.WriteLine("You can't fly you twit");
-                                break;
-                            case "down":
-                                Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
-                                break;
-                            default:
-                                Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
-                                break;
-                        }
+                        NewGame();
                         break;
 
                     case 2:
-                        Console.WriteLine("you see a door with a big sign marked exit in front of you, behind you waits the door you came through");
-                        Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
-                        direction = Console.ReadLine().ToLower().Trim();
-                        switch (direction)
-                        {
-                            case "back":
-                                roomID = 1;
-                                break;
-                            case "forward":
-                                Console.WriteLine("you win!");
-                                Thread.Sleep(1000);
-                                break;
-                        }
+                        LoadGame();
                         break;
+
+                    case 3:
+                        HowToPlay();
+                        break;
+
+                    case 4:
+                        ExitGame();
+                        break;
+
                 }
-            }
-            
-            
-            Console.ReadLine();
+            } while (exitGame == false);
 
 
         }
-
-
     }
 }
