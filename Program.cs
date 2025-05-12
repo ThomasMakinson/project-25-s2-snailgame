@@ -1,4 +1,5 @@
-﻿using System.Security.AccessControl;
+﻿using System;
+using System.Security.AccessControl;
 
 namespace SnailMate
 {
@@ -62,31 +63,63 @@ namespace SnailMate
 
         static void Main(string[] args)
         {
+            int roomID = 1, runGame =1;
             string direction;
             DisplayTitleScreen();
-
-            Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
-            Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
-            direction = Console.ReadLine().ToLower().Trim();
-            switch (direction)
+            while(runGame == 1)
             {
-                case "right":
-                    Console.WriteLine("Wooo you turned right and fell over");
-                    break;
-                case "left":
-                    Console.WriteLine("Awesome you found the exit!");
-                    break;
-                case "up":
-                    Console.WriteLine("You can't fly you twit");
-                    break;
-                case "down":
-                    Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
-                    break;
-                default:
-                    Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
-                    break;
+               switch (roomID)
+                {
+                    case 1:
+                        
+                        
+
+                        Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
+                        Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "right":
+                                Console.WriteLine("Wooo you turned right and fell over");
+                                break;
+                            case "left":
+                                Console.WriteLine("Awesome you found the exit!");
+                                roomID = 2;
+                                break;
+                            case "up":
+                                Console.WriteLine("You can't fly you twit");
+                                break;
+                            case "down":
+                                Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
+                                break;
+                            default:
+                                Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
+                                break;
+                        }
+                        break;
+
+                    case 2:
+                        Console.WriteLine("you see a door with a big sign marked exit in front of you, behind you waits the door you came through");
+                        Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "back":
+                                roomID = 1;
+                                break;
+                            case "forward":
+                                Console.WriteLine("you win!");
+                                Thread.Sleep(1000);
+                                break;
+                        }
+                        break;
+                }
             }
+            
+            
             Console.ReadLine();
+
+
         }
 
 
