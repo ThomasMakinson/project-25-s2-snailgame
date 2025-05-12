@@ -71,9 +71,9 @@ namespace SnailMate
             int roomID = 1, runGame = 1;
             string direction;
             DisplayTitleScreen();
-            while (runGame == 1)
+            while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                switch (roomID)
+                switch (roomID) 
                 {
                     case 1:
 
@@ -89,7 +89,7 @@ namespace SnailMate
                                 break;
                             case "left":
                                 Console.WriteLine("Awesome you found the exit!");
-                                roomID = 2;
+                                roomID = 2;//changes room to room 2 and starts it
                                 break;
                             case "up":
                                 Console.WriteLine("You can't fly you twit");
@@ -105,15 +105,16 @@ namespace SnailMate
 
                     case 2:
                         Console.WriteLine("you see a door with a big sign marked exit in front of you, behind you waits the door you came through");
-                        Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
+                        Console.Write("which direction do you want to go?\nback or forward?: ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                roomID = 1;
+                                roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
                                 Console.WriteLine("you win!");
+                                runGame = 0; //return to menu
                                 Thread.Sleep(1000);
                                 break;
                         }
