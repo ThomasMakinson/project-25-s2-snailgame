@@ -81,7 +81,8 @@ if a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
-            int roomID = 1, runGame = 1;
+            
+            int roomID = 1, runGame = 1, door2lock = 1;
             string direction;
             DisplayTitleScreen();
             while (runGame == 1)// while game is running will loop through whatever room is selected
@@ -89,20 +90,35 @@ if a command is not accepted you may have to try other ways of describing your a
                 switch (roomID) 
                 {
                     case 1:
+                        //room1
 
 
-
-                        Console.WriteLine("Hello, You are in a room, a snail wants to kill you, good luck :3");
-                        Console.Write("which direction do you want to go?\nLeft, Right, Up, or Down: ");
+                        Console.WriteLine(@"Hello, You are in a room, a snail wants to kill you, good luck :3
+there is a door on the far side of the room and a set of stairs to the right");
+                        Console.Write("What would you like to do?: ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
-                                Console.WriteLine("Wooo you turned right and fell over");
+                                Console.WriteLine("you climb the stairs on the right of the room to the door");
+                                if (door2lock == 0)
+                                {
+                                    Console.WriteLine("the door is unlocked");
+                                    roomID = 2;//changes room to room 2 and starts it
+                                }
+                                else
+                                {
+                                    Console.WriteLine("the door is locked");
+                                }
+                                
+                                break;
+                            case "forward":
+                                Console.WriteLine("the door ahead of you opens");
+                                Console.WriteLine("going to room3");
+                                roomID = 3;
                                 break;
                             case "left":
-                                Console.WriteLine("Awesome you found the exit!");
-                                roomID = 2;//changes room to room 2 and starts it
+                                Console.WriteLine("that is a wall");
                                 break;
                             case "up":
                                 Console.WriteLine("You can't fly you twit");
@@ -116,19 +132,172 @@ if a command is not accepted you may have to try other ways of describing your a
                         }
                         break;
 
-                    case 2:
-                        Console.WriteLine("you see a door with a big sign marked exit in front of you, behind you waits the door you came through");
-                        Console.Write("which direction do you want to go?\nback or forward?: ");
+                        //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
+                    case 2:                      
+                        //room2
+                        Console.WriteLine("room 2 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "left":
+                                Console.WriteLine("going to room1");
+                                roomID = 1; //goes back to room 1;
+                                break;
+                            case "back":
+                                Console.WriteLine("going to room 3");
+                                roomID = 3; //teleport to room 3 as per map
+                                break;
+                        }
+                        break;
+                    case 3:
+                        //room 3
+                        Console.WriteLine("room 3 descript");
+                        Console.Write("What would you like to do?: ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
+                                Console.WriteLine("going to room1");
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
+                                Console.WriteLine("going to room2");
+                                roomID = 2; //teleport to room 2 as per map
+                                break;
+                            case "left":
+                                Console.WriteLine("going to room4");
+                                roomID = 4; //goes to room 4
+                                break;
+                        }
+                        break;
+                    case 4:
+                        //room4
+                        Console.WriteLine("room 4 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "right":
+                                Console.WriteLine("going to room3");
+                                roomID = 3; //goes back to room 3;
+                                break;
+                            case "down":
+                                Console.WriteLine("going to room5");
+                                roomID = 5; //goes to room 5
+                                break;
+                        }
+                        break;
+                    case 5:
+                        //room5
+                        Console.WriteLine("room 5 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "up":
+                                Console.WriteLine("going to room4");
+                                roomID = 4; //goes back to room 4;
+                                break;
+                            case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
+                                Console.WriteLine("going to room6");
+                                roomID = 6; //goes to room 6
+                                break;
+                            case "right":
+                                Console.WriteLine("going to room7");
+                                roomID = 7; //goes to room 7
+                                break;
+                        }
+                        break;
+                    case 6:
+                        //room6
+                        Console.WriteLine("room 6 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "back":
+                                Console.WriteLine("going to room5");
+                                roomID = 5; //goes back to room 5;
+                                break;
+                            case "forward":
+                                
+                                Console.WriteLine("dead end");
+                                
+                                break;
+                        }
+                        break;
+                    case 7:
+                        //room7
+                        Console.WriteLine("room 7 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "back":
+                                Console.WriteLine("going to room5");
+                                roomID = 5; //goes back to room 5;
+                                break;
+                            case "forward":
+                                Console.WriteLine("going to room8");
+                                roomID = 8; //goes to room 8
+                                break;
+                        }
+                        break;
+                    case 8:
+                        //room8
+                        Console.WriteLine("room 8 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "back":
+                                Console.WriteLine("going to room7");
+                                roomID = 7; //goes back to room 7;
+                                break;
+                            case "up":
+                                Console.WriteLine("climbing ladder to room9");
+                                roomID = 9; //goes to room 9
+                                break;
+                        }
+                        break;
+                    case 9:
+                        //room 9
+                        Console.WriteLine("room 9 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "down":
+                                Console.WriteLine("going to room9");
+                                roomID = 8; //goes back to room 9;
+                                break;
+                            case "forward":
+                                
                                 Console.WriteLine("you win!");
                                 runGame = 0; //return to menu
-                                Thread.Sleep(1000);
+                                break;
+                            case "right":
+                                Console.WriteLine("going to room10");
+                                roomID = 10; //goes to room 10
+                                break;
+                        }
+                        break;
+                    case 10:
+                        //room10
+                        Console.WriteLine("room 10 descript");
+                        Console.Write("What would you like to do?: ");
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "back":
+                                Console.WriteLine("going to room9");
+                                roomID = 9; //goes back to room 9;
+                                break;
+                            case "forward":
+                                
+                                Console.WriteLine("you fall off the ledge");
+                                runGame = 0; //return to menu
                                 break;
                         }
                         break;
