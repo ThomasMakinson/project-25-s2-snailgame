@@ -40,7 +40,7 @@ namespace SnailMate
             // Running through each lines of the ascii art array to centre them - Kavarn 11:40am
             for (int i = 0; i < asciiArt.Length; i++)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 int centredx = (screenWidth - asciiArt[i].Length) / 2;
                 Console.SetCursorPosition(centredx, verticalStart + i);
                 Console.WriteLine(asciiArt[i]);
