@@ -10,13 +10,13 @@ namespace SnailMate
     internal class Program
     {
 
+        public static int snailDistance = 15, blood = 5;
 
         public static string[] inventory = new string[10];
         public static int inventoryCount = 0;
         int userMenuSelection;
-        public static int snailDistance;
 
-        
+
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -95,8 +95,9 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
-
-            if (snailDistance > 10)
+            //for now will count down each time is called
+            snailDistance -= 1;
+            if (snailDistance >= 10)
             {
                 Console.WriteLine("The threat is distant");
             }
@@ -113,7 +114,7 @@ If a command is not accepted you may have to try other ways of describing your a
                 Console.WriteLine("It's right behind you");
             }
         }
-
+>>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
 
         public static void NewGame()// Game code
         {
@@ -358,54 +359,54 @@ there is a door on the far side of the room and a set of stairs to the right");
                 inventory[inventoryCount] = item;
                 inventoryCount++;
             }
-        }
 
-        
-        static void Main(string[] args)
-        {
-            string[] inventory = new string[10];
-            int inventoryCount = 0, userMenuSelection;
-            bool exitGame = false;
 
-            do
+            static void Main(string[] args)
             {
-                // Displays title screen method then asks for a menu option
-                DisplayTitleScreen();
-                Console.Write("Select Option (Enter Number): ");
-                userMenuSelection = Convert.ToInt32(Console.ReadLine());
+                string[] inventory = new string[10];
+                int inventoryCount = 0, userMenuSelection;
+                bool exitGame = false;
 
-                switch (userMenuSelection)
+                do
                 {
-                    case 1:
-                        NewGame();
-                        break;
+                    // Displays title screen method then asks for a menu option
+                    DisplayTitleScreen();
+                    Console.Write("Select Option (Enter Number): ");
+                    userMenuSelection = Convert.ToInt32(Console.ReadLine());
 
-                    case 2:
-                        LoadGame();
-                        break;
+                    switch (userMenuSelection)
+                    {
+                        case 1:
+                            NewGame();
+                            break;
 
-                    case 3:
-                        HowToPlay();
-                        break;
+                        case 2:
+                            LoadGame();
+                            break;
 
-                    case 4:
-                        ExitGame();
-                        break;
+                        case 3:
+                            HowToPlay();
+                            break;
 
-                }
-            } while (exitGame == false);
+                        case 4:
+                            ExitGame();
+                            break;
+
+                    }
+                } while (exitGame == false);
 
 
-        }
-            
-            
-            static void SoundPlayer() //Cat - Adding soundplayer, does not error but trying to get file to play now - 2:38PM
-            {
-                SoundPlayer player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "\\Slime.wav");
             }
-            
+
+            /*
+            static void SoundPlayer() //Cat - Adding soundplayer, does not error but doesn't play sound - 2:40PM
+            {
+                SoundPlayer player = new SoundPlayer();
+            }
+            */
         }
 
-    } 
 
+    }
 }
+
