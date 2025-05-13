@@ -7,6 +7,7 @@ namespace SnailMate
 {
     internal class Program
     {
+        public static int snailDistance;
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -80,6 +81,25 @@ If a command is not accepted you may have to try other ways of describing your a
             Console.ReadLine();
 
 
+        }
+        public static void Snailcheck()
+        {
+            if( snailDistance >10)
+            {
+                Console.WriteLine("The threat is distant");
+            }
+            else if (snailDistance >= 5 && snailDistance < 10)
+            {
+                Console.WriteLine("The threat draws nearer");
+            }
+            else if(snailDistance <5)
+            {
+                Console.WriteLine("Breathe softly, it's very close now");
+            }
+            else if(snailDistance <=1)
+            {
+                Console.WriteLine("It's right behind you");
+            }
         }
 
         public static void NewGame()// Game code
