@@ -91,9 +91,7 @@ If a command is not accepted you may have to try other ways of describing your a
 
 
         }
-<<<<<<< HEAD
-=======
-        public static void Snailcheck()// call this to check distance of snail - Rhys
+        public static void SnailCheck()// call this to check distance of snail - Rhys
         {
             //for now will count down each time is called
             snailDistance -= 1;
@@ -147,7 +145,6 @@ If a command is not accepted you may have to try other ways of describing your a
             }
             
         }
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
 
         public static void NewGame()// Game code
         {
@@ -392,13 +389,6 @@ there is a door on the far side of the room and a set of stairs to the right");
                 inventory[inventoryCount] = item;
                 inventoryCount++;
             }
-        }
-
-        public static void DropFromInventory(string item)
-        {
-            inventory[inventoryCount] = null;
-            inventoryCount--;
-        }
 
         static void Main(string[] args)
         {
@@ -444,9 +434,7 @@ there is a door on the far side of the room and a set of stairs to the right");
         }
         */
     }
-=======
-    } 
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+    }
 }
 /*
 static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
@@ -460,4 +448,4 @@ static void SoundPlayer() //Cat - Adding soundplayer, not currently working
 }
 }
 }
-/*
+*/
