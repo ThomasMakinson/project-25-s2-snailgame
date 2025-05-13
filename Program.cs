@@ -9,8 +9,9 @@ namespace SnailMate
 {
     internal class Program
     {
-        private static string[] inventory = new string[10];
-        private static int inventoryCount = 0, userMenuSelection;
+        public static string[] inventory = new string[10];
+        public static int inventoryCount = 0; 
+        int userMenuSelection;
 
         public static void DisplayTitleScreen()
         {
