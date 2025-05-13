@@ -10,7 +10,7 @@ namespace SnailMate
     internal class Program
     {
         public static string[] inventory = new string[10];
-        public static int inventoryCount = 0; 
+        public static int inventoryCount = 0;
         int userMenuSelection;
         public static int snailDistance;
         public static void DisplayTitleScreen()
@@ -90,7 +90,7 @@ If a command is not accepted you may have to try other ways of describing your a
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
 
-            if( snailDistance >10)
+            if (snailDistance > 10)
             {
                 Console.WriteLine("The threat is distant");
             }
@@ -98,11 +98,11 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 Console.WriteLine("The threat draws nearer");
             }
-            else if(snailDistance <5)
+            else if (snailDistance < 5)
             {
                 Console.WriteLine("Breathe softly, it's very close now");
             }
-            else if(snailDistance <=1)
+            else if (snailDistance <= 1)
             {
                 Console.WriteLine("It's right behind you");
             }
@@ -110,13 +110,13 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
-            
+
             int roomID = 1, runGame = 1, door2lock = 1;
             string direction;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                switch (roomID) 
+                switch (roomID)
                 {
                     case 1:
                         //room1
@@ -140,7 +140,7 @@ There is a door on the far side of the room and a set of stairs to the right.");
                                 {
                                     Console.WriteLine("The door is locked.");
                                 }
-                                
+
                                 break;
                             case "forward":
                                 Console.WriteLine("The door ahead of you opens.");
@@ -163,8 +163,8 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         }
                         break;
 
-                        //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
-                    case 2:                      
+                    //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
+                    case 2:
                         //room2
                         Console.WriteLine("room 2 descript");
                         Console.Write("What would you like to do?: ");
@@ -262,9 +262,9 @@ There is a door on the far side of the room and a set of stairs to the right.");
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
-                                
+
                                 Console.WriteLine("dead end");
-                                
+
                                 break;
                         }
                         break;
@@ -319,7 +319,7 @@ There is a door on the far side of the room and a set of stairs to the right.");
                                 roomID = 8; //goes back to room 9;
                                 break;
                             case "forward":
-                                
+
                                 Console.WriteLine("you win!");
                                 runGame = 0; //return to menu
                                 break;
@@ -343,7 +343,7 @@ There is a door on the far side of the room and a set of stairs to the right.");
                                 roomID = 9; //goes back to room 9;
                                 break;
                             case "forward":
-                                
+
                                 Console.WriteLine("you fall off the ledge");
                                 runGame = 0; //return to menu
                                 break;
@@ -399,16 +399,17 @@ There is a door on the far side of the room and a set of stairs to the right.");
 
 
         }
-<<<<<<< HEAD
+    } 
+}
         /*
         static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
-=======
+
 /*
         static void SoundPlayer() //Cat - Adding soundplayer, not currently working
->>>>>>> 0137daef3b593666683db70a7974e6079b99a1e2
+
         {
             SoundPlayer player = new SoundPlayer();
-<<<<<<< HEAD
+
         }
     }
 }
