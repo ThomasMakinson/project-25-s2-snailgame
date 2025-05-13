@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
+using System.Media;
 
 namespace SnailMate
 {
@@ -349,6 +350,12 @@ there is a door on the far side of the room and a set of stairs to the right");
             } while (exitGame == false);
 
 
+        }
+
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+        {
+
+            SoundPlayer player = new SoundPlayer();
         }
     }
 }
