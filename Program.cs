@@ -145,6 +145,10 @@ If a command is not accepted you may have to try other ways of describing your a
             }
             
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4d528f66bf281db27d9be46f649cf39fe909f5e6
 
         public static void NewGame()// Game code
         {
