@@ -8,7 +8,7 @@ namespace SnailMate
 {
     internal class Program
     {
-        public static int snailDistance = 15;
+        public static int snailDistance = 15, blood = 5;
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -103,6 +103,39 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 Console.WriteLine("It's right behind you");
             }
+        }
+        
+        public static void Appease()// makes the snail go further away - rhys
+        {
+            string temp;
+            if (blood >2)
+            {
+                snailDistance += 5;
+                blood -= 1;
+                Console.WriteLine("The sacrifice is accepted");
+            }
+            else if(blood == 2)
+            {
+                Console.WriteLine(@"Are you sure? this will be your last: y/n");
+                temp = Console.ReadLine();
+                temp = temp.ToLower().Trim();
+
+                if( temp == "y"|| temp == "yes")
+                {
+                    snailDistance += 5;
+                    blood -= 1;
+                    Console.WriteLine("The sacrifice is accepted");
+                }
+                else
+                {
+                    Console.WriteLine("Very well");
+                }
+            }
+            else if(blood == 1)
+            {
+                Console.WriteLine("That would kill you, no");
+            }
+            
         }
 
         public static void NewGame()// Game code
@@ -396,10 +429,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
 
         }
 
-       /* static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
         {
 
             SoundPlayer player = new SoundPlayer();
-        }*/
+        }
     }
 }
