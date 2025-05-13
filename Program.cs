@@ -3,12 +3,17 @@ using System.Globalization;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Media;
+using System.Runtime.CompilerServices;
 
 namespace SnailMate
 {
     internal class Program
     {
-        public static int snailDistance = 15, blood = 5;
+        public static string[] inventory = new string[10];
+        public static int inventoryCount = 0; 
+        int userMenuSelection;
+        
+
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -395,7 +400,8 @@ There is a door on the far side of the room and a set of stairs to the right.");
 
         static void Main(string[] args)
         {
-            int userMenuSelection;
+            string[] inventory = new string[10];
+            int inventoryCount = 0, userMenuSelection;
             bool exitGame = false;
 
             do
@@ -429,10 +435,15 @@ There is a door on the far side of the room and a set of stairs to the right.");
 
         }
 
+        /*
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
+=======
+*/
         static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+>>>>>>> 0137daef3b593666683db70a7974e6079b99a1e2
         {
-
             SoundPlayer player = new SoundPlayer();
+<<<<<<< HEAD
         }
     }
 }
