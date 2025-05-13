@@ -363,6 +363,14 @@ There is a door on the far side of the room and a set of stairs to the right.");
             // exit game process
         }
 
+        public static void AddToInventory(string item)
+        {
+            for (int i = 0; inventoryCount < inventory.Length; i++)
+            {
+                inventory[inventoryCount] = item;
+                inventoryCount++
+            }
+
         static void Main(string[] args)
         {
             string[] inventory = new string[10];
@@ -401,15 +409,16 @@ There is a door on the far side of the room and a set of stairs to the right.");
         }
     } 
 }
-        /*
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
-
 /*
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
 
-        {
-            SoundPlayer player = new SoundPlayer();
 
-        }
-    }
+static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+
+{
+    SoundPlayer player = new SoundPlayer();
+
 }
+}
+}
+/*
