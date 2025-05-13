@@ -15,7 +15,7 @@ namespace SnailMate
         public static string[] inventory = new string[10];
         public static int inventoryCount = 0;
         int userMenuSelection;
-        
+
 
         public static void DisplayTitleScreen()
         {
@@ -95,7 +95,7 @@ If a command is not accepted you may have to try other ways of describing your a
         {
             //for now will count down each time is called
             snailDistance -= 1;
-            if( snailDistance >=10)
+            if (snailDistance >= 10)
             {
                 Console.WriteLine("The threat is distant");
             }
@@ -112,6 +112,9 @@ If a command is not accepted you may have to try other ways of describing your a
                 Console.WriteLine("It's right behind you");
             }
         }
+<<<<<<< HEAD
+>>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+=======
         
         public static void Appease()// makes the snail go further away - rhys
         {
@@ -394,42 +397,48 @@ there is a door on the far side of the room and a set of stairs to the right");
                 inventoryCount++;
             }
 
+        public static void DropFromInventory(string item)
+        {
+            inventory[inventoryCount] = null;
+            inventoryCount--;
+        }
+
         static void Main(string[] args)
         {
             string[] inventory = new string[10];
             int inventoryCount = 0, userMenuSelection;
             bool exitGame = false;
 
-            do
-            {
-                // Displays title screen method then asks for a menu option
-                DisplayTitleScreen();
-                Console.Write("Select Option (Enter Number): ");
-                userMenuSelection = Convert.ToInt32(Console.ReadLine());
-
-                switch (userMenuSelection)
+                do
                 {
-                    case 1:
-                        NewGame();
-                        break;
+                    // Displays title screen method then asks for a menu option
+                    DisplayTitleScreen();
+                    Console.Write("Select Option (Enter Number): ");
+                    userMenuSelection = Convert.ToInt32(Console.ReadLine());
 
-                    case 2:
-                        LoadGame();
-                        break;
+                    switch (userMenuSelection)
+                    {
+                        case 1:
+                            NewGame();
+                            break;
 
-                    case 3:
-                        HowToPlay();
-                        break;
+                        case 2:
+                            LoadGame();
+                            break;
 
-                    case 4:
-                        ExitGame();
-                        break;
+                        case 3:
+                            HowToPlay();
+                            break;
 
-                }
-            } while (exitGame == false);
+                        case 4:
+                            ExitGame();
+                            break;
+
+                    }
+                } while (exitGame == false);
 
 
-        }
+            }
 
         /*
         static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
@@ -438,7 +447,9 @@ there is a door on the far side of the room and a set of stairs to the right");
         }
         */
     }
-    }
+=======
+    } 
+>>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
 }
 /*
 static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
@@ -446,10 +457,8 @@ static void SoundPlayer() //Cat - Adding soundplayer, not currently working and 
 
 static void SoundPlayer() //Cat - Adding soundplayer, not currently working
 
-{
-    SoundPlayer player = new SoundPlayer();
 
+    }
 }
 }
-}
-*/
+/*
