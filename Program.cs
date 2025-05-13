@@ -68,7 +68,7 @@ namespace SnailMate
 Welcome to Snailmate adventurer!
 you will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 
-in order to interact with the world describe what you want to do in simple terms,
+In order to interact with the world describe what you want to do in simple terms,
 such as:
 'go left' 
 'look at door'
