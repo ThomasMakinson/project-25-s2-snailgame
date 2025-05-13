@@ -354,11 +354,11 @@ there is a door on the far side of the room and a set of stairs to the right");
 
 
         }
-
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+        /*
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
         {
-
             SoundPlayer player = new SoundPlayer();
         }
+        */
     }
 }
