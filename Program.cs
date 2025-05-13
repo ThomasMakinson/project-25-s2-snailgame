@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
+using System.Media;
 
 namespace SnailMate
 {
@@ -70,7 +71,7 @@ Welcome to Snailmate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 If you're capable of that.
 
-In order to interact with the world, describe what you want to do in simple terms,
+In order to interact with the world describe what you want to do in simple terms,
 such as:
 'go left' 
 'look at door'
@@ -352,6 +353,12 @@ There is a door on the far side of the room and a set of stairs to the right.");
             } while (exitGame == false);
 
 
+        }
+
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+        {
+
+            SoundPlayer player = new SoundPlayer();
         }
     }
 }
