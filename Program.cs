@@ -368,7 +368,7 @@ There is a door on the far side of the room and a set of stairs to the right.");
             for (int i = 0; inventoryCount < inventory.Length; i++)
             {
                 inventory[inventoryCount] = item;
-                inventoryCount++
+                inventoryCount++;
             }
 
         static void Main(string[] args)
