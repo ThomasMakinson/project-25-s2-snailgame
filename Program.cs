@@ -91,8 +91,7 @@ If a command is not accepted you may have to try other ways of describing your a
 
 
         }
-<<<<<<< HEAD
-=======
+
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
             //for now will count down each time is called
@@ -147,7 +146,7 @@ If a command is not accepted you may have to try other ways of describing your a
             }
             
         }
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+
 
         public static void NewGame()// Game code
         {
