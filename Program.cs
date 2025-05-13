@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
+using System.Media;
 
 namespace SnailMate
 {
@@ -71,7 +72,7 @@ Welcome to Snailmate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 If you're capable of that.
 
-In order to interact with the world, describe what you want to do in simple terms,
+In order to interact with the world describe what you want to do in simple terms,
 such as:
 'go left' 
 'look at door'
@@ -116,41 +117,41 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
 
 
-                        Console.WriteLine(@"Hello, You are in a room, a snail wants to kill you, good luck :3
-there is a door on the far side of the room and a set of stairs to the right");
-                        Console.Write("What would you like to do?: ");
+                        Console.WriteLine(@"Hello, you are in a room, a snail wants to kill you, good luck :3
+There is a door on the far side of the room and a set of stairs to the right.");
+                        Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
-                                Console.WriteLine("you climb the stairs on the right of the room to the door");
+                                Console.WriteLine("You climb the stairs on the right of the room to the door.");
                                 if (door2lock == 0)
                                 {
-                                    Console.WriteLine("the door is unlocked");
+                                    Console.WriteLine("The door is unlocked.");
                                     roomID = 2;//changes room to room 2 and starts it
                                 }
                                 else
                                 {
-                                    Console.WriteLine("the door is locked");
+                                    Console.WriteLine("The door is locked.");
                                 }
                                 
                                 break;
                             case "forward":
-                                Console.WriteLine("the door ahead of you opens");
-                                Console.WriteLine("going to room3");
+                                Console.WriteLine("The door ahead of you opens.");
+                                Console.WriteLine("Going to Room 3.");
                                 roomID = 3;
                                 break;
                             case "left":
-                                Console.WriteLine("that is a wall");
+                                Console.WriteLine("That is a wall.");
                                 break;
                             case "up":
-                                Console.WriteLine("You can't fly you twit");
+                                Console.WriteLine("You can't fly, you twit.");
                                 break;
                             case "down":
-                                Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
+                                Console.WriteLine("You sit on the floor and meditate... the snail catches and kills you.");
                                 break;
                             default:
-                                Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
+                                Console.WriteLine("You thought you were smart, huh? What other direction did you think you could go in?");
                                 break;
                         }
                         break;
@@ -372,6 +373,12 @@ there is a door on the far side of the room and a set of stairs to the right");
             } while (exitGame == false);
 
 
+        }
+
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+        {
+
+            SoundPlayer player = new SoundPlayer();
         }
     }
 }
