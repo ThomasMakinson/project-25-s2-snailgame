@@ -92,10 +92,6 @@ If a command is not accepted you may have to try other ways of describing your a
 
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d528f66bf281db27d9be46f649cf39fe909f5e6
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
             //for now will count down each time is called
@@ -116,11 +112,7 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 Console.WriteLine("It's right behind you");
             }
-        }
-<<<<<<< HEAD
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
-=======
-        
+        } 
         public static void Appease()// makes the snail go further away - rhys
         {
             string temp;
@@ -153,8 +145,6 @@ If a command is not accepted you may have to try other ways of describing your a
             }
             
         }
-
->>>>>>> 4d528f66bf281db27d9be46f649cf39fe909f5e6
 
         public static void NewGame()// Game code
         {
