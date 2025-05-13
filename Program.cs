@@ -9,10 +9,14 @@ namespace SnailMate
 {
     internal class Program
     {
+
+        public static int snailDistance = 15, blood = 5;
+
         public static string[] inventory = new string[10];
         public static int inventoryCount = 0;
         int userMenuSelection;
-        public static int snailDistance;
+        
+
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -87,10 +91,13 @@ If a command is not accepted you may have to try other ways of describing your a
 
 
         }
+<<<<<<< HEAD
+=======
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
-
-            if (snailDistance > 10)
+            //for now will count down each time is called
+            snailDistance -= 1;
+            if( snailDistance >=10)
             {
                 Console.WriteLine("The threat is distant");
             }
@@ -107,6 +114,40 @@ If a command is not accepted you may have to try other ways of describing your a
                 Console.WriteLine("It's right behind you");
             }
         }
+        
+        public static void Appease()// makes the snail go further away - rhys
+        {
+            string temp;
+            if (blood >2)
+            {
+                snailDistance += 5;
+                blood -= 1;
+                Console.WriteLine("The sacrifice is accepted");
+            }
+            else if(blood == 2)
+            {
+                Console.WriteLine(@"Are you sure? this will be your last: y/n");
+                temp = Console.ReadLine();
+                temp = temp.ToLower().Trim();
+
+                if( temp == "y"|| temp == "yes")
+                {
+                    snailDistance += 5;
+                    blood -= 1;
+                    Console.WriteLine("The sacrifice is accepted");
+                }
+                else
+                {
+                    Console.WriteLine("Very well");
+                }
+            }
+            else if(blood == 1)
+            {
+                Console.WriteLine("That would kill you, no");
+            }
+            
+        }
+>>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
 
         public static void NewGame()// Game code
         {
@@ -122,43 +163,41 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
 
 
-                        Console.WriteLine(@"Hello, you are in a room, a snail wants to kill you, good luck :3
-There is a door on the far side of the room and a set of stairs to the right.");
-                        Console.Write("What would you like to do? ");
+                        Console.WriteLine(@"Hello, You are in a room, a snail wants to kill you, good luck :3
+there is a door on the far side of the room and a set of stairs to the right");
+                        Console.Write("What would you like to do?: ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
-                                Console.WriteLine("You climb the stairs on the right of the room to the door.");
+                                Console.WriteLine("you climb the stairs on the right of the room to the door");
                                 if (door2lock == 0)
                                 {
-                                    Console.WriteLine("The door is unlocked.");
-                                    Snailcheck();
+                                    Console.WriteLine("the door is unlocked");
                                     roomID = 2;//changes room to room 2 and starts it
                                 }
                                 else
                                 {
-                                    Console.WriteLine("The door is locked.");
+                                    Console.WriteLine("the door is locked");
                                 }
 
                                 break;
                             case "forward":
-                                Console.WriteLine("The door ahead of you opens.");
-                                Console.WriteLine("Going to Room 3.");
-                                Snailcheck();
+                                Console.WriteLine("the door ahead of you opens");
+                                Console.WriteLine("going to room3");
                                 roomID = 3;
                                 break;
                             case "left":
-                                Console.WriteLine("That is a wall.");
+                                Console.WriteLine("that is a wall");
                                 break;
                             case "up":
-                                Console.WriteLine("You can't fly, you twit.");
+                                Console.WriteLine("You can't fly you twit");
                                 break;
                             case "down":
-                                Console.WriteLine("You sit on the floor and meditate... the snail catches and kills you.");
+                                Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
                                 break;
                             default:
-                                Console.WriteLine("You thought you were smart, huh? What other direction did you think you could go in?");
+                                Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
                                 break;
                         }
                         break;
@@ -173,12 +212,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "left":
                                 Console.WriteLine("going to room1");
-                                Snailcheck();
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
                                 Console.WriteLine("going to room 3");
-                                Snailcheck();
                                 roomID = 3; //teleport to room 3 as per map
                                 break;
                         }
@@ -192,12 +229,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "back":
                                 Console.WriteLine("going to room1");
-                                Snailcheck();
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
                                 Console.WriteLine("going to room2");
-                                Snailcheck();
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
@@ -215,12 +250,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "right":
                                 Console.WriteLine("going to room3");
-                                Snailcheck();
                                 roomID = 3; //goes back to room 3;
                                 break;
                             case "down":
                                 Console.WriteLine("going to room5");
-                                Snailcheck();
                                 roomID = 5; //goes to room 5
                                 break;
                         }
@@ -234,17 +267,14 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "up":
                                 Console.WriteLine("going to room4");
-                                Snailcheck();
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
                                 Console.WriteLine("going to room6");
-                                Snailcheck();
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
                                 Console.WriteLine("going to room7");
-                                Snailcheck();
                                 roomID = 7; //goes to room 7
                                 break;
                         }
@@ -258,7 +288,6 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "back":
                                 Console.WriteLine("going to room5");
-                                Snailcheck();
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
@@ -277,12 +306,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "back":
                                 Console.WriteLine("going to room5");
-                                Snailcheck();
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
                                 Console.WriteLine("going to room8");
-                                Snailcheck();
                                 roomID = 8; //goes to room 8
                                 break;
                         }
@@ -296,12 +323,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "back":
                                 Console.WriteLine("going to room7");
-                                Snailcheck();
                                 roomID = 7; //goes back to room 7;
                                 break;
                             case "up":
                                 Console.WriteLine("climbing ladder to room9");
-                                Snailcheck();
                                 roomID = 9; //goes to room 9
                                 break;
                         }
@@ -315,7 +340,6 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "down":
                                 Console.WriteLine("going to room9");
-                                Snailcheck();
                                 roomID = 8; //goes back to room 9;
                                 break;
                             case "forward":
@@ -325,7 +349,6 @@ There is a door on the far side of the room and a set of stairs to the right.");
                                 break;
                             case "right":
                                 Console.WriteLine("going to room10");
-                                Snailcheck();
                                 roomID = 10; //goes to room 10
                                 break;
                         }
@@ -339,7 +362,6 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         {
                             case "back":
                                 Console.WriteLine("going to room9");
-                                Snailcheck();
                                 roomID = 9; //goes back to room 9;
                                 break;
                             case "forward":
@@ -414,7 +436,17 @@ There is a door on the far side of the room and a set of stairs to the right.");
 
 
         }
+
+        /*
+        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
+        {
+            SoundPlayer player = new SoundPlayer();
+        }
+        */
+    }
+=======
     } 
+>>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
 }
 /*
 static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
