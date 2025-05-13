@@ -8,7 +8,7 @@ namespace SnailMate
 {
     internal class Program
     {
-        public static int snailDistance;
+        public static int snailDistance = 15;
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -85,8 +85,9 @@ If a command is not accepted you may have to try other ways of describing your a
         }
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
-
-            if( snailDistance >10)
+            //for now will count down each time is called
+            snailDistance -= 1;
+            if( snailDistance >=10)
             {
                 Console.WriteLine("The threat is distant");
             }
@@ -394,8 +395,8 @@ There is a door on the far side of the room and a set of stairs to the right.");
 
 
         }
-/*
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working
+
+       /* static void SoundPlayer() //Cat - Adding soundplayer, not currently working
         {
 
             SoundPlayer player = new SoundPlayer();
