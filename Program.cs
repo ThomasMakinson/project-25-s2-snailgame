@@ -9,13 +9,14 @@ namespace SnailMate
 {
     internal class Program
     {
-<<<<<<< HEAD
-=======
+
+
         public static string[] inventory = new string[10];
         public static int inventoryCount = 0;
         int userMenuSelection;
         public static int snailDistance;
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+
+        
         public static void DisplayTitleScreen()
         {
             // SnailMate art I generated online and turned into a string array - Kavarn 12/05/25 11:18am
@@ -90,8 +91,8 @@ If a command is not accepted you may have to try other ways of describing your a
 
 
         }
-<<<<<<< HEAD
-=======
+
+
         public static void Snailcheck()// call this to check distance of snail - Rhys
         {
 
@@ -112,7 +113,7 @@ If a command is not accepted you may have to try other ways of describing your a
                 Console.WriteLine("It's right behind you");
             }
         }
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+
 
         public static void NewGame()// Game code
         {
@@ -357,7 +358,9 @@ there is a door on the far side of the room and a set of stairs to the right");
                 inventory[inventoryCount] = item;
                 inventoryCount++;
             }
+        }
 
+        
         static void Main(string[] args)
         {
             string[] inventory = new string[10];
@@ -394,28 +397,15 @@ there is a door on the far side of the room and a set of stairs to the right");
 
 
         }
-<<<<<<< HEAD
-        /*
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
-        {
-            SoundPlayer player = new SoundPlayer();
+            
+            
+            static void SoundPlayer() //Cat - Adding soundplayer, does not error but trying to get file to play now - 2:38PM
+            {
+                SoundPlayer player = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "\\Slime.wav");
+            }
+            
         }
-        */
-    }
-=======
+
     } 
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
-}
-/*
-static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
-
-
-static void SoundPlayer() //Cat - Adding soundplayer, not currently working
-
-{
-    SoundPlayer player = new SoundPlayer();
 
 }
-}
-}
-/*
