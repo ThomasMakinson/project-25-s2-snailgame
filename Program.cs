@@ -370,6 +370,13 @@ There is a door on the far side of the room and a set of stairs to the right.");
                 inventory[inventoryCount] = item;
                 inventoryCount++;
             }
+        }
+
+        public static void DropFromInventory(string item)
+        {
+            inventory[inventoryCount] = null;
+            inventoryCount--;
+        }
 
         static void Main(string[] args)
         {
