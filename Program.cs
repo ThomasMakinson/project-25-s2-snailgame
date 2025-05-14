@@ -112,26 +112,23 @@ If a command is not accepted you may have to try other ways of describing your a
                 Console.WriteLine("It's right behind you");
             }
         }
-<<<<<<< HEAD
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
-=======
         
         public static void Appease()// makes the snail go further away - rhys
         {
             string temp;
-            if (blood >2)
+            if (blood > 2)
             {
                 snailDistance += 5;
                 blood -= 1;
                 Console.WriteLine("The sacrifice is accepted");
             }
-            else if(blood == 2)
+            else if (blood == 2)
             {
                 Console.WriteLine(@"Are you sure? this will be your last: y/n");
                 temp = Console.ReadLine();
                 temp = temp.ToLower().Trim();
 
-                if( temp == "y"|| temp == "yes")
+                if (temp == "y" || temp == "yes")
                 {
                     snailDistance += 5;
                     blood -= 1;
@@ -142,16 +139,13 @@ If a command is not accepted you may have to try other ways of describing your a
                     Console.WriteLine("Very well");
                 }
             }
-            else if(blood == 1)
+            else if (blood == 1)
             {
                 Console.WriteLine("That would kill you, no");
             }
-            
-        }
-<<<<<<< HEAD
-=======
 
->>>>>>> 4d528f66bf281db27d9be46f649cf39fe909f5e6
+        }
+
 
         public static void NewGame()// Game code
         {
@@ -391,74 +385,77 @@ there is a door on the far side of the room and a set of stairs to the right");
 
         public static void AddToInventory(string item)
         {
-            for (int i = 0; inventoryCount < inventory.Length; i++)
+            for (int i = 0; i < inventory.Length; i++)
             {
-                inventory[inventoryCount] = item;
-                inventoryCount++;
+                if (inventory[i] == null)
+                {
+                    Console.WriteLine($"You added {item} from your inventory.");
+                    inventory[i] = item;
+                    inventoryCount++;
+                    return;
+                }
             }
+        }
 
         public static void DropFromInventory(string item)
         {
-            inventory[inventoryCount] = null;
-            inventoryCount--;
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                if (inventory[i] != null && inventory[i] == item)
+                {
+                    Console.WriteLine($"You dropped {item} from your inventory.");
+                    inventory[i] = null;
+                    inventoryCount--;
+                    return;
+                }
+            }
         }
 
         static void Main(string[] args)
         {
-            string[] inventory = new string[10];
-            int inventoryCount = 0, userMenuSelection;
+            
+            int userMenuSelection;
             bool exitGame = false;
 
-                do
+            do
+            {
+                // Displays title screen method then asks for a menu option
+                DisplayTitleScreen();
+                Console.Write("Select Option (Enter Number): ");
+                userMenuSelection = Convert.ToInt32(Console.ReadLine());
+
+                switch (userMenuSelection)
                 {
-                    // Displays title screen method then asks for a menu option
-                    DisplayTitleScreen();
-                    Console.Write("Select Option (Enter Number): ");
-                    userMenuSelection = Convert.ToInt32(Console.ReadLine());
+                    case 1:
+                        NewGame();
+                        break;
 
-                    switch (userMenuSelection)
-                    {
-                        case 1:
-                            NewGame();
-                            break;
+                    case 2:
+                        LoadGame();
+                        break;
 
-                        case 2:
-                            LoadGame();
-                            break;
+                    case 3:
+                        HowToPlay();
+                        break;
 
-                        case 3:
-                            HowToPlay();
-                            break;
+                    case 4:
+                        ExitGame();
+                        break;
 
-                        case 4:
-                            ExitGame();
-                            break;
-
-                    }
-                } while (exitGame == false);
+                }
+            } while (exitGame == false);
 
 
-            }
+        }
+    }
+}
 
         /*
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
+        static void SoundPlayer() //Cat - Adding soundplayer, doesn't error now.
         {
             SoundPlayer player = new SoundPlayer();
         }
         */
     }
-=======
-    } 
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+
 }
-/*
-static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
-
-
-static void SoundPlayer() //Cat - Adding soundplayer, not currently working
-
-
-    }
-}
-}
-/*
