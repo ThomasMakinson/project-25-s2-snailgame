@@ -1,0 +1,19 @@
+Room 1: It's actually a bit eerie how non-descript this room is
+
+Player goes up the stairs: The door locked. You don't have a key.
+
+Room 3 coming from Room 1: You're in a new room. There is a door at the other end, and a corner halfway between you and door on the left.
+What would you like to do?
+
+Player goes through teleport door in Room 3: Another room! And not the room that you might've thought it would be.
+
+Room 2: You're suddenly in a another room. There's a corner in front of you to the left. You can't see what's beyond it. It could be interesting if you were feeling courageous. But we all that that's a stretch.
+
+Player picks up key: It's a key! Well done, you, I'm so proud of you. Did your Dad ever tell you that? No, I didn't think so. You actually picked it up, congratulations! But will you use it?
+
+Player uses key on the door: Oh look, it worked! And now you're back where you started. Progress?
+What would you like to do?
+
+Room 4: It is a square (ish), completely blank room. There are stairs going down to your left.
+What would you like to do?
+
