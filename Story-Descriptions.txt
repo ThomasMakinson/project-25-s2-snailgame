@@ -17,3 +17,6 @@ What would you like to do?
 Room 4: It is a square (ish), completely blank room. There are stairs going down to your left.
 What would you like to do?
 
+Player goes reaches the t-junction of Room 5: You are a crossroads. You can see a room with no door to your left, and the same to your right. One could lead to your salvations, the other could lead to your doom. I trust you know which is which?
+
+Room 6: 
