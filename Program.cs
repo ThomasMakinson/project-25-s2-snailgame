@@ -383,17 +383,30 @@ there is a door on the far side of the room and a set of stairs to the right");
 
         public static void AddToInventory(string item)
         {
-            for (int i = 0; inventoryCount < inventory.Length; i++)
+            for (int i = 0; i < inventory.Length; i++)
             {
-                inventory[inventoryCount] = item;
-                inventoryCount++;
+                if (inventory[i] == null)
+                {
+                    Console.WriteLine($"You added {item} from your inventory.");
+                    inventory[i] = item;
+                    inventoryCount++;
+                    return;
+                }
             }
         }
 
         public static void DropFromInventory(string item)
         {
-            inventory[inventoryCount] = null;
-            inventoryCount--;
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                if (inventory[i] != null && inventory[i] == item)
+                {
+                    Console.WriteLine($"You dropped {item} from your inventory.");
+                    inventory[i] = null;
+                    inventoryCount--;
+                    return;
+                }
+            }
         }
 
         static void Main(string[] args)
