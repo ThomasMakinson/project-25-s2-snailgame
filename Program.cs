@@ -112,9 +112,6 @@ If a command is not accepted you may have to try other ways of describing your a
                 Console.WriteLine("It's right behind you");
             }
         }
-<<<<<<< HEAD
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
-=======
         
         public static void Appease()// makes the snail go further away - rhys
         {
@@ -148,10 +145,7 @@ If a command is not accepted you may have to try other ways of describing your a
             }
             
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 4d528f66bf281db27d9be46f649cf39fe909f5e6
 
         public static void NewGame()// Game code
         {
@@ -396,6 +390,7 @@ there is a door on the far side of the room and a set of stairs to the right");
                 inventory[inventoryCount] = item;
                 inventoryCount++;
             }
+        }
 
         public static void DropFromInventory(string item)
         {
@@ -441,24 +436,11 @@ there is a door on the far side of the room and a set of stairs to the right");
             }
 
         /*
-        static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
+        static void SoundPlayer() //Cat - Adding soundplayer, doesn't error now.
         {
             SoundPlayer player = new SoundPlayer();
         }
         */
     }
-=======
-    } 
->>>>>>> 85f53c4d35db0e47c57f6ad82600d089ebf7a679
+
 }
-/*
-static void SoundPlayer() //Cat - Adding soundplayer, not currently working and I don't know why
-
-
-static void SoundPlayer() //Cat - Adding soundplayer, not currently working
-
-
-    }
-}
-}
-/*
