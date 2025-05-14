@@ -411,8 +411,8 @@ there is a door on the far side of the room and a set of stairs to the right");
 
         static void Main(string[] args)
         {
-            string[] inventory = new string[10];
-            int inventoryCount = 0, userMenuSelection;
+            
+            int userMenuSelection;
             bool exitGame = false;
 
             do
