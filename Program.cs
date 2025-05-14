@@ -11,7 +11,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5;
+        public static int snailDistance = 15, blood = 5, soundID = 0;
 
         public static string[] inventory = new string[10];
         public static int inventoryCount = 0;
@@ -161,7 +161,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     case 1:
                         //room1
 
-
+                        SoundPlayer(soundID);
                         Console.WriteLine(@"Hello, You are in a room, a snail wants to kill you, good luck :3
 there is a door on the far side of the room and a set of stairs to the right");
                         Console.Write("What would you like to do?: ");
@@ -449,11 +449,16 @@ there is a door on the far side of the room and a set of stairs to the right");
 
         }
 
-        
-        static void SoundPlayer() //Cat - Adding soundplayer, doesn't error now.
+
+        static void SoundPlayer(int SoundID) //Cat - Adding soundplayer, doesn't error now.
         {
             SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = Environment.CurrentDirectory + @"\Slime.wav";
+            switch (soundID)
+            {
+                case 0:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\Slime.wav";
+                    break;
+            }
             player.Play();
         }
         
