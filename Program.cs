@@ -4,12 +4,13 @@ using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Media;
 using System.Runtime.CompilerServices;
+using System.Drawing;
 
 namespace SnailMate
 {
     internal class Program
     {
-
+        
         public static int snailDistance = 15, blood = 5;
 
         public static string[] inventory = new string[10];
@@ -410,7 +411,7 @@ there is a door on the far side of the room and a set of stairs to the right");
                 }
             }
         }
-
+        
         static void Main(string[] args)
         {
             
@@ -447,15 +448,16 @@ there is a door on the far side of the room and a set of stairs to the right");
 
 
         }
-    }
-}
 
-        /*
+        
         static void SoundPlayer() //Cat - Adding soundplayer, doesn't error now.
         {
             SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = Environment.CurrentDirectory + @"\Slime.wav";
+            player.Play();
         }
-        */
+        
     }
-
 }
+
+        
