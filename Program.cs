@@ -98,19 +98,19 @@ If a command is not accepted you may have to try other ways of describing your a
             snailDistance -= 1;
             if (snailDistance >= 10)
             {
-                Console.WriteLine("The threat is distant");
+                Console.WriteLine("The threat is distant.");
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
-                Console.WriteLine("The threat draws nearer");
+                Console.WriteLine("The threat draws nearer.");
             }
             else if (snailDistance < 5)
             {
-                Console.WriteLine("Breathe softly, it's very close now");
+                Console.WriteLine("Breathe softly, it's very close now.");
             }
             else if (snailDistance <= 1)
             {
-                Console.WriteLine("It's right behind you");
+                Console.WriteLine("It's right behind you.");
             }
         }
         
@@ -121,11 +121,11 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 snailDistance += 5;
                 blood -= 1;
-                Console.WriteLine("The sacrifice is accepted");
+                Console.WriteLine("The sacrifice is accepted.");
             }
             else if (blood == 2)
             {
-                Console.WriteLine(@"Are you sure? this will be your last: y/n");
+                Console.WriteLine(@"Are you sure? This will be your last: y/n");
                 temp = Console.ReadLine();
                 temp = temp.ToLower().Trim();
 
@@ -133,16 +133,16 @@ If a command is not accepted you may have to try other ways of describing your a
                 {
                     snailDistance += 5;
                     blood -= 1;
-                    Console.WriteLine("The sacrifice is accepted");
+                    Console.WriteLine("The sacrifice is accepted.");
                 }
                 else
                 {
-                    Console.WriteLine("Very well");
+                    Console.WriteLine("Very well.");
                 }
             }
             else if (blood == 1)
             {
-                Console.WriteLine("That would kill you, no");
+                Console.WriteLine("That would kill you. No.");
             }
 
         }
@@ -162,41 +162,41 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
 
                         SoundPlayer(soundID);
-                        Console.WriteLine(@"Hello, You are in a room, a snail wants to kill you, good luck :3
-there is a door on the far side of the room and a set of stairs to the right");
-                        Console.Write("What would you like to do?: ");
+                        Console.WriteLine(@"Hello, you are in a room, a snail wants to kill you, good luck :3
+There is a door on the far side of the room and a set of stairs to the right.");
+                        Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
-                                Console.WriteLine("you climb the stairs on the right of the room to the door");
+                                Console.WriteLine("You climb the stairs on the right of the room to the door.");
                                 if (door2lock == 0)
                                 {
-                                    Console.WriteLine("the door is unlocked");
+                                    Console.WriteLine("The door is unlocked.");
                                     roomID = 2;//changes room to room 2 and starts it
                                 }
                                 else
                                 {
-                                    Console.WriteLine("the door is locked");
+                                    Console.WriteLine("The door is locked.");
                                 }
 
                                 break;
                             case "forward":
-                                Console.WriteLine("the door ahead of you opens");
-                                Console.WriteLine("going to room3");
+                                Console.WriteLine("The door ahead of you opens.");
+                                Console.WriteLine("Going to Room 3.");
                                 roomID = 3;
                                 break;
                             case "left":
-                                Console.WriteLine("that is a wall");
+                                Console.WriteLine("That is a wall.");
                                 break;
                             case "up":
-                                Console.WriteLine("You can't fly you twit");
+                                Console.WriteLine("You can't fly, you twit.");
                                 break;
                             case "down":
-                                Console.WriteLine("You sit on the floor and meditate....the snail catches and kills you");
+                                Console.WriteLine("You sit on the floor and meditate... the snail catches and kills you");
                                 break;
                             default:
-                                Console.WriteLine("You thought you were smart huh? What other direction did you think you could go?");
+                                Console.WriteLine("You thought you were smart, huh? What other direction did you think you could go in?");
                                 break;
                         }
                         break;
