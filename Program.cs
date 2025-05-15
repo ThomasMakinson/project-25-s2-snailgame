@@ -221,8 +221,8 @@ There is a door on the far side of the room and a set of stairs to the right.");
                         break;
                     case 3:
                         //room 3
-                        Console.WriteLine("room 3 descript");
-                        Console.Write("What would you like to do?: ");
+                        Console.WriteLine("You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.");
+                        Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
