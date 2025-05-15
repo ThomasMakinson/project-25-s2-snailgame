@@ -2,7 +2,7 @@ Room 1: It's actually a bit eerie how non-descript this room is
 
 Player goes up the stairs: The door locked. You don't have a key.
 
-Room 3 coming from Room 1: You're in a new room. There is a door at the other end, and a corner halfway between you and door on the left.
+Room 3 coming from Room 1: You're in what appears to be a new room. There is a door at the other end, and a corner halfway between you and door on the left.
 What would you like to do?
 
 Player goes through teleport door in Room 3: Another room! And not the room that you might've thought it would be.
