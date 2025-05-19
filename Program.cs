@@ -229,15 +229,15 @@ But we all that know that that's a stretch.");
                         switch (direction)
                         {
                             case "back":
-                                Console.WriteLine("going to room1");
+                                Console.WriteLine("Back to where you just came from? You do realise the goal is to win the game, right?");
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
-                                Console.WriteLine("going to room2");
+                                Console.WriteLine("Could be a useful choice, or maybe not. Are you clever enough to figure out which?");
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
-                                Console.WriteLine("going to room4");
+                                Console.WriteLine("Further into the maze, eh? Ain't no snail gonna catch you, clearly.");
                                 roomID = 4; //goes to room 4
                                 break;
                         }
