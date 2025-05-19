@@ -204,8 +204,10 @@ There is a door on the far side of the room and a set of stairs to the right.");
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
                         //room2
-                        Console.WriteLine("room 2 descript");
-                        Console.Write("What would you like to do?: ");
+                        Console.WriteLine(@"You're suddenly in a another room. There's a corner in front of you to the left. 
+You can't see what's beyond it. It could be interesting if you were feeling courageous. 
+But we all that know that that's a stretch.");
+                        Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -214,7 +216,7 @@ There is a door on the far side of the room and a set of stairs to the right.");
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
-                                Console.WriteLine("going to room 3");
+                                Console.WriteLine("Back the way you came? Alright then, have it your way.");
                                 roomID = 3; //teleport to room 3 as per map
                                 break;
                         }
