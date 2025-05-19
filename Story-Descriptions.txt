@@ -7,18 +7,18 @@ What would you like to do?
 
 Player goes through teleport door in Room 3: Another room! And not the room that you might've thought it would be.
 
-Room 2: You're suddenly in a another room. There's a corner in front of you to the left. You can't see what's beyond it. It could be interesting if you were feeling courageous. But we all that that's a stretch.
+Room 2: You're suddenly in a another room. There's a corner in front of you to the left. You can't see what's beyond it. It could be interesting if you were feeling courageous. But we all that know that that's a stretch.
 
 Player picks up key: It's a key! Well done, you, I'm so proud of you. Did your Dad ever tell you that? No, I didn't think so. You actually picked it up, congratulations! But will you use it?
 
 Player uses key on the door: Oh look, it worked! And now you're back where you started. Progress?
 What would you like to do?
 
-Room 4: It is a square (ish), completely blank room. There are stairs going down to your left.
+Room 4: It is a square (ish), completely blank room. There are stairs going down to your left through a hole in the wall.
 What would you like to do?
 
-Player goes reaches the t-junction of Room 5: You are a crossroads. You can see a room with no door to your left, and the same to your right. One could lead to your salvations, the other could lead to your doom. I trust you know which is which?
+Player goes reaches the t-junction of Room 5: You are at a crossroads (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?). You can see a room with no door to your left, and the same to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither. I trust you know which is which?
 
-Room 6: There is nothing. There is only pitch black. You have entered a room that is so blank, it appears to be a black void. The void seemingly draws you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you- just kidding! The snail finds you and eats you.
+Room 6: There is nothing. There is only pitch black. You have entered a room that is so blank, it appears to be a black void. The void seemingly draws you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! You got lost in a trance. The snail finds you and eats you.
 
 Room 7: 
