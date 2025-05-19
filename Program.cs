@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Media;
 using System.Runtime.CompilerServices;
 using System.Drawing;
+using System.Reflection.PortableExecutable;
 
 namespace SnailMate
 {
@@ -162,7 +163,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
 
                         SoundPlayer(soundID);
-                        Console.WriteLine(@"Hello, you are in a room, a snail wants to kill you, good luck :3
+                        Typewriter(@"Hello, you are in a room, a snail wants to kill you, good luck :3
 There is a door on the far side of the room and a set of stairs to the right.");
                         Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
@@ -462,6 +463,15 @@ But we all that know that that's a stretch.");
                     break;
             }
             player.Play();
+        }
+
+        public static void Typewriter(string text, int delay = 37)
+        {
+            foreach (char c in text )
+            {
+                Console.Write(c);
+                Thread.Sleep(delay);
+            }
         }
         
     }
