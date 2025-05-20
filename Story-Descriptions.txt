@@ -17,8 +17,10 @@ What would you like to do?
 Room 4: It is a square (ish), completely blank room. There are stairs going down to your left through a hole in the wall.
 What would you like to do?
 
-Player goes reaches the t-junction of Room 5: You are at a crossroads (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?). You can see a room with no door to your left, and the same to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither. I trust you know which is which?
+Player reaches the t-junction of Room 5: You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?) You can see a room with no door to your left, and the same to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither. I trust you know which is which?
 
-Room 6: There is nothing. There is only pitch black. You have entered a room that is so blank, it appears to be a black void. The void seemingly draws you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! You got lost in a trance. The snail finds you and eats you.
+Room 6: There is nothing. There is only pitch black. You have entered a room that is so blank, it appears to be a black void. The void seems to draw you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! You got lost in a trance. The snail finds you and eats you.
 
-Room 7: 
+Room 7: This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right, will you take it?
+
+Rooom 8: 
