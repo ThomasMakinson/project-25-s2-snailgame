@@ -77,7 +77,8 @@ namespace SnailMate
         {
             // Inserted game instruction menu basic version -Rhys 12/05/25 3:06pm
             Console.Clear();
-            Console.WriteLine(@"
+            soundID = 10;
+            text = @"
 Welcome to Snailmate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 If you're capable of that.
@@ -88,7 +89,8 @@ such as:
 'look at door'
 'grab key'.
 
-If a command is not accepted you may have to try other ways of describing your action");
+If a command is not accepted you may have to try other ways of describing your action";
+            Typewriter(text);
             Console.ReadLine();
 
 
@@ -163,10 +165,11 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
                         soundID = 0;
                         SoundPlayer(soundID);
-                        text = @"Hello, you are in a room, a snail wants to kill you, good luck :3
-There is a door on the far side of the room and a set of stairs to the right.";
+                        text = "Hello, you are in a room, a snail wants to kill you, good luck :3";
                         Typewriter(text);
-                        text = "\nWhat would you like to do? ";
+                        soundID = 1;
+                        SoundPlayer(soundID);
+                        text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
                         Typewriter(text);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -477,8 +480,8 @@ But we all that know that that's a stretch.");
                 case 1:
                     player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
                     break;
-                case 2:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
+                case 10:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
                     break;
             }
             player.Play();
