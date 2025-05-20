@@ -6,6 +6,8 @@ using System.Media;
 using System.Runtime.CompilerServices;
 using System.Drawing;
 using System.Reflection.PortableExecutable;
+using System.ComponentModel;
+using System.Numerics;
 
 namespace SnailMate
 {
@@ -156,6 +158,8 @@ If a command is not accepted you may have to try other ways of describing your a
 
             int roomID = 0, door2lock = 1, runGame = 1;
             string direction;
+            Keys doorTwoKey = new Keys();
+            doorTwoKey.Type = "Big Rusty Key"; doorTwoKey.Description = ""; ; doorTwoKey.DoorUnlock = 2;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
