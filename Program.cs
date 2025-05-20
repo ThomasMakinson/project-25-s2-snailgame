@@ -17,6 +17,7 @@ namespace SnailMate
         public static string[] inventory = new string[10];
         public static int inventoryCount = 0;
         int userMenuSelection;
+        public static bool exitGame = false;
 
 
         public static void DisplayTitleScreen()
@@ -152,7 +153,7 @@ If a command is not accepted you may have to try other ways of describing your a
         public static void NewGame()// Game code
         {
 
-            int roomID = 1, runGame = 1, door2lock = 1;
+            int roomID = 1, door2lock = 1, runGame = 1;
             string direction;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
@@ -384,7 +385,19 @@ But we all that know that that's a stretch.");
 
         public static void ExitGame()
         {
-            // exit game process
+            string exitText = "EXITING GAME IN: ";
+            int x = (Console.WindowWidth - exitText.Length) / 2;
+            int y = Console.WindowHeight / 2;
+            Console.Clear();
+            Console.SetCursorPosition(x, y);
+            Console.Write(exitText);
+            for (int i = 5; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+            }
+            exitGame = true;
+
         }
 
         public static void AddToInventory(string item)
@@ -419,7 +432,6 @@ But we all that know that that's a stretch.");
         {
             
             int userMenuSelection;
-            bool exitGame = false;
 
             do
             {
