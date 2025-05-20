@@ -12,10 +12,9 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, soundID = 0;
-
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0;
+        public static string text;
         public static string[] inventory = new string[10];
-        public static int inventoryCount = 0;
         int userMenuSelection;
 
 
