@@ -77,7 +77,7 @@ namespace SnailMate
         {
             // Inserted game instruction menu basic version -Rhys 12/05/25 3:06pm
             Console.Clear();
-            soundID = 10;
+            soundID = 11;
             text = @"
 Welcome to Snailmate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
@@ -181,6 +181,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             text = "gdrg"; //Thomas need type
                         }
+                        soundID = 11;
                         Typewriter(text);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -501,7 +502,10 @@ But we all that know that that's a stretch.");
                 case 1:
                     player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
                     break;
-                case 10:
+                case 11:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
+                    break;
+                case 12: //Play what would you like to do
                     player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
                     break;
             }
