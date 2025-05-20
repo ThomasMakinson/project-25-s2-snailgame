@@ -6,6 +6,7 @@ using System.Media;
 using System.Runtime.CompilerServices;
 using System.Drawing;
 using System.Reflection.PortableExecutable;
+using System.IO;
 
 namespace SnailMate
 {
@@ -17,6 +18,7 @@ namespace SnailMate
         public static string[] inventory = new string[10];
         int userMenuSelection;
         public static bool exitGame = false;
+        public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
 
 
         public static void DisplayTitleScreen()
@@ -95,6 +97,303 @@ If a command is not accepted you may have to try other ways of describing your a
 
 
         }
+        public static void Animations(ref int animationID)// room transition animations - Rhys
+        {
+            string aline;
+            switch (animationID)
+            {
+                case 12:
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 13:
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 32:
+                    for (int i = 1; i <= 23; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 34:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 45:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 56:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 57:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 78:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 89:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 910:
+                    for (int i = 1; i <= 27; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                    // reverse animations start here
+                case 21:
+                    for (int i = 24; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 31:
+                    for (int i = 24; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 23:
+                    for (int i = 23; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 43:
+                    for (int i = 26; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 54:
+                    for (int i = 1; i <= 26; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 65:
+                    for (int i = 26; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 75:
+                    for (int i = 26; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 87:
+                    for (int i = 26; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 98:
+                    for (int i = 26; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+                case 109:
+                    for (int i = 27; i <= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                    }
+                    break;
+
+
+                default:
+                    Console.WriteLine("animation not found");
+                    break;
+
+            }
+        }
+
+
+
         public static void SnailCheck()// call this to check distance of snail - Rhys
         {
             //for now will count down each time is called
