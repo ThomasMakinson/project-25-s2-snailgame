@@ -105,7 +105,7 @@ If a command is not accepted you may have to try other ways of describing your a
             string aline;
             switch (animationID)
             {
-                case 12:
+                case 12://1>2
                     for (int i = 1; i <= 24; i++)
                     {
                         Console.Clear();
@@ -120,7 +120,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 13:
+                case 13://1>3
                     for (int i = 1; i <= 24; i++)
                     {
                         Console.Clear();
@@ -136,7 +136,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 32:
+                case 32://3>2
                     for (int i = 1; i <= 23; i++)
                     {
                         Console.Clear();
@@ -151,7 +151,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 34:
+                case 34://3>4
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -166,7 +166,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 45:
+                case 45://4>5
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -181,7 +181,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 56:
+                case 56://5>6
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -196,7 +196,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 57:
+                case 57://5>7
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -211,7 +211,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 78:
+                case 78://7>8
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -226,7 +226,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 89:
+                case 89://8>9
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -241,7 +241,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 910:
+                case 910://9>10
                     for (int i = 1; i <= 27; i++)
                     {
                         Console.Clear();
@@ -257,7 +257,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                     // reverse animations start here
-                case 21:
+                case 21://2>1
                     for (int i = 24; i >= 1; i--)
                     {
                         Console.Clear();
@@ -272,7 +272,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 31:
+                case 31://3>1
                     for (int i = 24; i >= 1; i--)
                     {
                         Console.Clear();
@@ -287,7 +287,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 23:
+                case 23://2>3
                     for (int i = 23; i >= 1; i--)
                     {
                         Console.Clear();
@@ -302,7 +302,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 43:
+                case 43://4>3
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -317,7 +317,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 54:
+                case 54://5>4
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -332,7 +332,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 65:
+                case 65://6>5
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -347,7 +347,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 75:
+                case 75://7>5
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -362,7 +362,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 87:
+                case 87://8>7
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -377,7 +377,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 98:
+                case 98://9>8
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -392,7 +392,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 109:
+                case 109://10>9
                     for (int i = 27; i >= 1; i--)
                     {
                         Console.Clear();
@@ -407,7 +407,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-
+                    //need win and death animations
 
                 default:
                     Console.WriteLine("animation not found");
