@@ -101,6 +101,7 @@ If a command is not accepted you may have to try other ways of describing your a
         }
         public static void Animations(ref int animationID)// room transition animations - Rhys
         {
+            //the case numbers are direction, so 12 is room1  room2, and 21 is room2 to room1
             string aline;
             switch (animationID)
             {
@@ -116,27 +117,30 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 13:
                     for (int i = 1; i <= 24; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\1-3\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
                             Console.WriteLine(aline);
+                            
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 32:
                     for (int i = 1; i <= 23; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\3-2\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -144,13 +148,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 34:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\3-4\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -158,13 +163,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 45:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\4-5\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -172,13 +178,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 56:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\5-6\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -186,13 +193,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 57:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\5-7\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -200,13 +208,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 78:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\7-8\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -214,13 +223,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 89:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\8-9\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -228,13 +238,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 910:
                     for (int i = 1; i <= 27; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\9-10\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -242,6 +253,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                     // reverse animations start here
@@ -257,13 +269,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 31:
                     for (int i = 24; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\1-3\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -271,13 +284,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 23:
                     for (int i = 23; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\2-3\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -285,13 +299,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 43:
                     for (int i = 26; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\3-4\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -299,13 +314,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 54:
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\4-5\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -313,13 +329,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 65:
                     for (int i = 26; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\5-6\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -327,13 +344,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 75:
                     for (int i = 26; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\5-7\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -341,13 +359,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 87:
                     for (int i = 26; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\7-8\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -355,13 +374,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 98:
                     for (int i = 26; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\8-9\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -369,13 +389,14 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
                 case 109:
                     for (int i = 27; i <= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\9-10\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -383,6 +404,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         sr.Close();
                         Thread.Sleep(83);
+                        Console.Clear();
                     }
                     break;
 
@@ -454,7 +476,7 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
-
+            int animationID = 0;
             int roomID = 0, door2lock = 1, runGame = 1;
             string direction;
             Keys doorTwoKey = new Keys();
@@ -495,6 +517,8 @@ If a command is not accepted you may have to try other ways of describing your a
                                 if (door2lock == 0)
                                 {
                                     Console.WriteLine("The door is unlocked.");
+                                    animationID = 12;
+                                    Animations(ref animationID);
                                     roomID = 2;//changes room to room 2 and starts it
                                 }
                                 else
@@ -507,6 +531,8 @@ If a command is not accepted you may have to try other ways of describing your a
                             case "forward":
                                 Console.WriteLine("The door ahead of you opens.");
                                 Console.WriteLine("Going to Room 3.");
+                                animationID = 13;
+                                Animations(ref animationID);
                                 roomID = 3;
                                 break;
                             case "left":
@@ -539,10 +565,14 @@ But we all that know that that's a stretch.";
                         {
                             case "left":
                                 Console.WriteLine("going to room1");
+                                animationID = 21;
+                                Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
                                 Console.WriteLine("Back the way you came? Alright then, have it your way.");
+                                animationID = 23;
+                                Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
                                 break;
                         }
@@ -556,14 +586,20 @@ But we all that know that that's a stretch.";
                         {
                             case "back":
                                 Console.WriteLine("Back to where you just came from? You do realise the goal is to win the game, right?");
+                                animationID = 31;
+                                Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
                                 Console.WriteLine("Could be a useful choice, or maybe not. Are you clever enough to figure out which?");
+                                animationID = 32;
+                                Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
                                 Console.WriteLine("Further into the maze, eh? Ain't no snail gonna catch you, clearly.");
+                                animationID = 34;
+                                Animations(ref animationID);
                                 roomID = 4; //goes to room 4
                                 break;
                         }
@@ -577,10 +613,14 @@ But we all that know that that's a stretch.";
                         {
                             case "right":
                                 Console.WriteLine("going to room3");
+                                animationID = 43;
+                                Animations(ref animationID);
                                 roomID = 3; //goes back to room 3;
                                 break;
                             case "down":
                                 Console.WriteLine("going to room5");
+                                animationID = 54;
+                                Animations(ref animationID);
                                 roomID = 5; //goes to room 5
                                 break;
                         }
@@ -594,14 +634,20 @@ But we all that know that that's a stretch.";
                         {
                             case "up":
                                 Console.WriteLine("going to room4");
+                                animationID = 54;
+                                Animations(ref animationID);
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
                                 Console.WriteLine("going to room6");
+                                animationID = 56;
+                                Animations(ref animationID);
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
                                 Console.WriteLine("going to room7");
+                                animationID = 57;
+                                Animations(ref animationID);
                                 roomID = 7; //goes to room 7
                                 break;
                         }
@@ -615,6 +661,8 @@ But we all that know that that's a stretch.";
                         {
                             case "back":
                                 Console.WriteLine("going to room5");
+                                animationID = 65;
+                                Animations(ref animationID);
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
@@ -633,10 +681,14 @@ But we all that know that that's a stretch.";
                         {
                             case "back":
                                 Console.WriteLine("going to room5");
+                                animationID = 75;
+                                Animations(ref animationID);
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
                                 Console.WriteLine("going to room8");
+                                animationID = 78;
+                                Animations(ref animationID);
                                 roomID = 8; //goes to room 8
                                 break;
                         }
@@ -650,10 +702,14 @@ But we all that know that that's a stretch.";
                         {
                             case "back":
                                 Console.WriteLine("going to room7");
+                                animationID = 87;
+                                Animations(ref animationID);
                                 roomID = 7; //goes back to room 7;
                                 break;
                             case "up":
                                 Console.WriteLine("climbing ladder to room9");
+                                animationID = 89;
+                                Animations(ref animationID);
                                 roomID = 9; //goes to room 9
                                 break;
                         }
@@ -667,15 +723,21 @@ But we all that know that that's a stretch.";
                         {
                             case "down":
                                 Console.WriteLine("going to room9");
+                                animationID = 98;
+                                Animations(ref animationID);
                                 roomID = 8; //goes back to room 9;
                                 break;
                             case "forward":
 
                                 Console.WriteLine("you win!");
+                                animationID = 0; //need to add a win animation
+                                Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                             case "right":
                                 Console.WriteLine("going to room10");
+                                animationID = 910;
+                                Animations(ref animationID);
                                 roomID = 10; //goes to room 10
                                 break;
                         }
@@ -689,11 +751,15 @@ But we all that know that that's a stretch.";
                         {
                             case "back":
                                 Console.WriteLine("going to room9");
+                                animationID = 109;
+                                Animations(ref animationID);
                                 roomID = 9; //goes back to room 9;
                                 break;
                             case "forward":
 
                                 Console.WriteLine("you fall off the ledge");
+                                animationID = 0; //need death
+                                Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                         }
