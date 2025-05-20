@@ -154,19 +154,23 @@ If a command is not accepted you may have to try other ways of describing your a
         public static void NewGame()// Game code
         {
 
-            int roomID = 1, door2lock = 1, runGame = 1;
+            int roomID = 0, door2lock = 1, runGame = 1;
             string direction;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
                 switch (roomID)
                 {
-                    case 1:
-                        //room1
+                    case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
                         SoundPlayer(soundID);
                         text = "Hello, you are in a room, a snail wants to kill you, good luck :3";
                         Typewriter(text);
+                        roomID = 1;
+                        break;
+
+                    case 1:
+                        //room1
                         soundID = 1;
                         SoundPlayer(soundID);
                         text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
@@ -490,8 +494,9 @@ But we all that know that that's a stretch.");
             player.Play();
         }
 
-        public static void Typewriter(string text, int delay = 37)
+        public static void Typewriter(string text)
         {
+            int delay = 37;
             foreach (char c in text )
             {
                 Console.Write(c);
