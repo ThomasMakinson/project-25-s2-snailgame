@@ -393,12 +393,15 @@ But we all that know that that's a stretch.");
             int x = (Console.WindowWidth - exitText.Length) / 2;
             int y = Console.WindowHeight / 2;
             Console.Clear();
-            Console.SetCursorPosition(x, y);
-            Console.Write(exitText);
             for (int i = 5; i > 0; i--)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(x, y);
+                Console.CursorVisible = false;
+                Console.Write(exitText);
                 Console.Write(i);
                 Thread.Sleep(1000);
+                Console.Clear();
             }
             exitGame = true;
 
