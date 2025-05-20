@@ -8,10 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="HowToPlay.wav" />
+    <None Remove="Intro.wav" />
+    <None Remove="Room1.wav" />
     <None Remove="Slime.wav" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="HowToPlay.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Intro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Room1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Slime.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
