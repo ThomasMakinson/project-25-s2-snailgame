@@ -258,7 +258,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     break;
                     // reverse animations start here
                 case 21:
-                    for (int i = 24; i <= 1; i--)
+                    for (int i = 24; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\1-2\frame ({i}).txt");
@@ -273,7 +273,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 31:
-                    for (int i = 24; i <= 1; i--)
+                    for (int i = 24; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\1-3\frame ({i}).txt");
@@ -288,7 +288,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 23:
-                    for (int i = 23; i <= 1; i--)
+                    for (int i = 23; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\2-3\frame ({i}).txt");
@@ -303,7 +303,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 43:
-                    for (int i = 26; i <= 1; i--)
+                    for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\3-4\frame ({i}).txt");
@@ -318,7 +318,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 54:
-                    for (int i = 1; i <= 26; i++)
+                    for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\4-5\frame ({i}).txt");
@@ -333,7 +333,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 65:
-                    for (int i = 26; i <= 1; i--)
+                    for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\5-6\frame ({i}).txt");
@@ -348,7 +348,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 75:
-                    for (int i = 26; i <= 1; i--)
+                    for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\5-7\frame ({i}).txt");
@@ -363,7 +363,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 87:
-                    for (int i = 26; i <= 1; i--)
+                    for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\7-8\frame ({i}).txt");
@@ -378,7 +378,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 98:
-                    for (int i = 26; i <= 1; i--)
+                    for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\8-9\frame ({i}).txt");
@@ -393,7 +393,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                 case 109:
-                    for (int i = 27; i <= 1; i--)
+                    for (int i = 27; i >= 1; i--)
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\9-10\frame ({i}).txt");
