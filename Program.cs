@@ -224,9 +224,12 @@ If a command is not accepted you may have to try other ways of describing your a
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
                         //room2
-                        Console.WriteLine(@"You're suddenly in a another room. There's a corner in front of you to the left. 
+                        soundID = 2;
+                        SoundPlayer(soundID);
+                        text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
-But we all that know that that's a stretch.");
+But we all that know that that's a stretch.";
+                        Typewriter(text);
                         Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
