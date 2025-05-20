@@ -14,8 +14,39 @@ Player picks up key: It's a key! Well done, you, I'm so proud of you. Did your D
 Player uses key on the door: Oh look, it worked! And now you're back where you started. Progress?
 What would you like to do?
 
-Room 4: It is a square (ish), completely blank room. There are stairs going down to your left through a hole in the wall.
+Room 4: It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
 What would you like to do?
+
+Player goes towards the fog: As you go towards the fog, you feel slight breeze brush against your face. Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. You reach the edge of the room, there is a ledge.
+What would you like to do?
+
+1: Jump into the fog from where you are. Hope you know the laws physics reaaally well.
+
+2: Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour.
+
+3: You don't want to die, take the stairs.
+
+4: Do nothing. Contemplate your life choices.
+
+Player picks 1:  
+                1: You try to get across from a standing jump without knowing where you're going. Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall and die.
+                2: (Other description of Room 10) Apparently a standing jump was enough! You look around as you breathe heavily. The room as as large as the last one. It angles into a door-less opening directly opposite you.
+What would you like to do?
+
+Player picks 2: You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.
+              1: Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall and die.
+              2: The run up was a success! You look around as you breathe heavily. The room as as large as the last one. It angles into a door-less opening directly opposite you.
+What would you like to do?
+                1: Jump back across, you know how far it is now. Have fun?
+                  1: Another standing jump.
+                    Only option: A bigger snail reaches up through the fog and eats you. That'll teach you.
+                  2: Another running jump.
+                    1: A bigger snail reaches up through the fog and eats you. That'll teach you.
+                    2: There was snail goop on the ground that you didn't notice before. You slip on it as you run, fall into the ravene and die. The snail eats your corpse.
+                2: Go through the opening on the other side of the room.
+              3: There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse.
+
+ADD TEXT FOR IF THE PLAYER GOES BACK IN REVERSE.
 
 Player reaches the t-junction of Room 5: You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?) You can see a room with no door to your left, and the same to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither. I trust you know which is which?
 
@@ -27,4 +58,8 @@ Rooom 8: You are in a hallway. There is a ladder ahead of you. More darkness cre
 
 Room 9: Another hallway. Smaller though, than the one at the bottom of the ladder. To your left, a door, no different than any other that you've encountered. To your right, an opening, leading to a large room. Both look inviting. What would you like to do?
 
-Room 10: At least you haven't been eaten, yet. This was, however, clearly the wrong way if you want to escape. You do want that, don't you? The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors.
+Room 9 having come from a successful jump 
+
+Room 10: At least you haven't been eaten, yet. You feel a slight breeze caress your legs. Are you near, or are you even further away? This was, however, clearly the wrong way if you want to escape. You do want that, don't you? The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors.
+
+
