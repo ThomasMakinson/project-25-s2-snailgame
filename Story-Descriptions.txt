@@ -23,4 +23,8 @@ Room 6: There is nothing. There is only pitch black. You have entered a room tha
 
 Room 7: This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right, will you take it?
 
-Rooom 8: 
+Rooom 8: You are in a hallway. There is a ladder ahead of you. More darkness creeps down over the ladder, preventing you from seeing where it goes. Could the snail be at the top waiting for you? There's only one way to find out.
+
+Room 9: Another hallway. Smaller though, than the one at the bottom of the ladder. To your left, a door, no different than any other that you've encountered. To your right, an opening, leading to a large room. Both look inviting. What would you like to do?
+
+Room 10: At least you haven't been eaten, yet. This was, however, clearly the wrong way if you want to escape. You do want that, don't you? The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors.
