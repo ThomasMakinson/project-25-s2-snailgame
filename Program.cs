@@ -173,7 +173,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
                         soundID = 1;
                         SoundPlayer(soundID);
-                        if (count == 0)
+                        if (count == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
                             text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
                         }
