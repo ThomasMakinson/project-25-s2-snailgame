@@ -12,7 +12,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0;
         public static string text = "\0";
         public static string[] inventory = new string[10];
         int userMenuSelection;
@@ -173,13 +173,21 @@ If a command is not accepted you may have to try other ways of describing your a
                         //room1
                         soundID = 1;
                         SoundPlayer(soundID);
-                        text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
+                        if (count == 0)
+                        {
+                            text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
+                        }
+                        else
+                        {
+                            text = "gdrg"; //Thomas need type
+                        }
                         Typewriter(text);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
-                                Console.WriteLine("You climb the stairs on the right of the room to the door.");
+                                text = "You climb the stairs on the right of the room to the door. ";
+                                Typewriter(text);
                                 if (door2lock == 0)
                                 {
                                     Console.WriteLine("The door is unlocked.");
@@ -187,7 +195,8 @@ If a command is not accepted you may have to try other ways of describing your a
                                 }
                                 else
                                 {
-                                    Console.WriteLine("The door is locked.");
+                                    text = "The door is locked so you move back to where you started.";
+                                    Typewriter(text);
                                 }
 
                                 break;
