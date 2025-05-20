@@ -431,6 +431,11 @@ But we all that know that that's a stretch.");
                 }
             }
         }
+
+        public static void InspectItem(string item)
+        {
+         // Need to add inspect feature once we implement items
+        }
         
         static void Main(string[] args)
         {
