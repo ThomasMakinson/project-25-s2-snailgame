@@ -14,7 +14,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0;
         public static string text = "\0";
         public static string[] inventory = new string[10];
         int userMenuSelection;
@@ -79,7 +79,7 @@ namespace SnailMate
         {
             // Inserted game instruction menu basic version -Rhys 12/05/25 3:06pm
             Console.Clear();
-            soundID = 10;
+            soundID = 11;
             text = @"
 Welcome to Snailmate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
@@ -185,6 +185,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             text = "gdrg"; //Thomas need type
                         }
+                        soundID = 11;
                         Typewriter(text);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -227,9 +228,12 @@ If a command is not accepted you may have to try other ways of describing your a
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
                         //room2
-                        Console.WriteLine(@"You're suddenly in a another room. There's a corner in front of you to the left. 
+                        soundID = 2;
+                        SoundPlayer(soundID);
+                        text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
-But we all that know that that's a stretch.");
+But we all that know that that's a stretch.";
+                        Typewriter(text);
                         Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -505,7 +509,10 @@ But we all that know that that's a stretch.");
                 case 1:
                     player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
                     break;
-                case 10:
+                case 11:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
+                    break;
+                case 12: //Play what would you like to do
                     player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
                     break;
             }
