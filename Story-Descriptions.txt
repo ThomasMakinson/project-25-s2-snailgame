@@ -67,17 +67,21 @@ Room 8 (in reverse): At the bottom of the
 Room 9: Another hallway. Smaller though, than the one at the bottom of the ladder. To your left, a door, no different than any other that you've encountered. To your right, an opening, leading to a large room. Both look inviting. What would you like to do?
             1: "right" -> Room 10
             2: "forward" -> Player wins
-Room 9 (in reverse): It is a hallway. There is a ledge to your right, and a corner to your left. What's around the corner, what's over the ledge?
+Room 9 (in reverse1): It is a hallway. There is a ledge to your right, and a corner to your left. What's around the corner, what's over the ledge?
               1: Look over the ledge.
                 There is a ladder. The bottom is shrouded in darkness. Do you dare?
                   1. Go down the ladder. -> Room 8 (in reverse)
                   2. Back to the big room. -> Room 10
                   3. Nope, nope. Try the door. -> Player wins 
               2: Back to the big room. -> Room 10
-              3: Try the door? -> Player wins
+Room 9 (in reverse2): Well, you know what you're looking at. There's a ledge directly ahead of you, and a room to the left. What would you like to do?
+           1: Look over the ledge. -> There is a ladder. The bottom is shrouded in darkness. Do you dare?
+                                        1. Go down the ladder. -> Room 8 (in reverse)
+                                        2. To the big room. -> Room 10
+           2: Try the door again? -> Player wins
 
 Room 10: At least you haven't been eaten, yet. You feel a slight breeze caress your legs, and there's fog ahead. Are you near, or are you even further away? The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors.
-            1: "back" -> Room 9 (in reverse)
+            1: "back" -> Room 9 (in reverse1)
             2: "forward" -> The fog... is fog. It's very... foggy? If there is anything there, you can't see it. What would you like to do?
                               1: Jump into the fog from where you are. Hope you know the laws physics reaaally well.
                                 1: You try to get across from a standing jump without knowing where you're going. Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall and die.
@@ -95,8 +99,14 @@ Room 10: At least you haven't been eaten, yet. You feel a slight breeze caress y
                                     1: "right" -> Room 5
                                     2: "forward" -> Room 3 (in reverse)
                               3: Naaah, let's go back. -> Room 9 (in reverse)
-                              4: Do nothing. Contemplate your life choices. -> The snail finds you and eats you.
+                              4: Do nothing. Contemplate your life choices. -> The snail finds you and sucks you.
 
-Player wins! 
+Player wins: There is a super bright light, it appears that the map hasn't loaded yet. You can't see anything. What would you like to do?
+            1: Anything except "back": Random number generator:
+                                        1: 
+                                        2:
+                                        3:
+                                        4:
+            2: "back" -> Room 9 (in reverse2) 
 
 
