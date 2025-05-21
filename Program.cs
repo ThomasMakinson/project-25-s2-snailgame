@@ -15,7 +15,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37, roomID = 0;
         public static string text = "\0";
         public static string[] inventory = new string[10];
         int userMenuSelection;
@@ -605,7 +605,7 @@ oh no");
             Typewriter(text, delay);
         }
 
-        public static void SnailCheckStealth()
+        public static void SnailCheckStealth() //Rhys 22/05/2025
         {
             if(snailDistance <=0)
             {
@@ -661,9 +661,19 @@ oh no");
             }
         }
 
+        public static void SaveGame()//Rhys saves the game
+        {
+            //this should write to a savefile
+            StreamWriter sw = new StreamWriter(@"save.txt");
+            sw.WriteLine(roomID);
+            sw.WriteLine(blood);
+            sw.WriteLine(snailDistance);
+            sw.Close();
+        }
+
         public static void NewGame()// Game code
         {
-            int runGame = 1, animationID = 0, roomID = 0, door2lock = 1;
+            int runGame = 1, animationID = 0, door2lock = 1;
             string direction;
             char skip;
             bool sound = true;
@@ -786,6 +796,9 @@ oh no");
                             default:
                                 Console.WriteLine("You thought you were smart, huh? What other direction did you think you could go in?");
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
 
@@ -833,6 +846,9 @@ But we all that know that that's a stretch.";
                             case "am I going to die?":
                                 SnailCheck();
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
                     case 3:
@@ -876,6 +892,9 @@ But we all that know that that's a stretch.";
                             case "am I going to die?":
                                 SnailCheck();
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
                     case 4:
@@ -912,6 +931,9 @@ But we all that know that that's a stretch.";
                             case "how far?":
                             case "am I going to die?":
                                 SnailCheck();
+                                break;
+                            case "save":
+                                SaveGame();
                                 break;
                         }
                         break;
@@ -956,6 +978,9 @@ But we all that know that that's a stretch.";
                             case "am I going to die?":
                                 SnailCheck();
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
                     case 6:
@@ -991,6 +1016,9 @@ But we all that know that that's a stretch.";
                             case "how far?":
                             case "am I going to die?":
                                 SnailCheck();
+                                break;
+                            case "save":
+                                SaveGame();
                                 break;
                         }
                         break;
@@ -1029,6 +1057,9 @@ But we all that know that that's a stretch.";
                             case "am I going to die?":
                                 SnailCheck();
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
                     case 8:
@@ -1065,6 +1096,9 @@ But we all that know that that's a stretch.";
                             case "how far?":
                             case "am I going to die?":
                                 SnailCheck();
+                                break;
+                            case "save":
+                                SaveGame();
                                 break;
                         }
                         break;
@@ -1110,6 +1144,9 @@ But we all that know that that's a stretch.";
                             case "am I going to die?":
                                 SnailCheck();
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
                     case 10:
@@ -1148,6 +1185,9 @@ But we all that know that that's a stretch.";
                             case "am I going to die?":
                                 SnailCheck();
                                 break;
+                            case "save":
+                                SaveGame();
+                                break;
                         }
                         break;
                 }
@@ -1156,7 +1196,12 @@ But we all that know that that's a stretch.";
 
         public static void LoadGame()
         {
-            // Load game menu
+            //string aline;
+            StreamReader sr = new StreamReader(@"save.txt");
+            roomID = Convert.ToInt32(sr.ReadLine());
+            blood = Convert.ToInt32(sr.ReadLine());
+            snailDistance = Convert.ToInt32(sr.ReadLine());
+            NewGame();
         }
 
         public static void ExitGame()
@@ -1227,6 +1272,9 @@ But we all that know that that's a stretch.";
                 switch (userMenuSelection)
                 {
                     case 1:
+                        roomID = 0;
+                        blood = 5;
+                        snailDistance = 15;
                         NewGame();
                         break;
 
