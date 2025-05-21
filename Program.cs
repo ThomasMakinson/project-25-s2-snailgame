@@ -696,21 +696,20 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Typewriter(text, delay);
                                 if (door2lock == 1)
                                 {
-                                    {
-                                        bool hasKey = inventory.Contains("Rusty Key");
+                                    bool hasKey = inventory.Contains("Rusty Key");
 
-                                        if (hasKey)
-                                        {
-                                            text = "You use the Rusty Key to unlock the door.";
-                                            door2lock = 0; // unlocks door
-                                            DropFromInventory("Rusty Key"); //remove key after use
-                                        }
-                                        else
-                                        {
-                                            text = "The door is locked. You need a key.";
-                                            break;
-                                        }
+                                    if (hasKey)
+                                    {
+                                        text = "You use the Rusty Key to unlock the door.";
+                                        door2lock = 0; // unlocks door
+                                        DropFromInventory("Rusty Key"); //remove key after use
                                     }
+                                    else
+                                    {
+                                        text = "The door is locked. You need a key.";
+                                        break;
+                                    }
+                                    Typewriter(text, delay);
                                     text = "The door is unlocked.";
                                     animationID = 12;
                                     Animations(ref animationID);
@@ -720,7 +719,6 @@ If a command is not accepted you may have to try other ways of describing your a
                                 {
                                     text = "The door is locked so you move back to where you started.";
                                 }
-                                Typewriter(text, delay);
                                 break;
                             case "forward":
                                 text = "The door ahead of you opens.\nGoing to Room 3.";
@@ -741,6 +739,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 text = "You thought you were smart, huh? What other direction did you think you could go in?";
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
 
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
@@ -753,9 +752,9 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
-But we all that know that that's a stretch.";
+But we all that know that that's a stretch.
+What would you like to do? ";
                         Typewriter(text, delay);
-                        Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -772,11 +771,13 @@ But we all that know that that's a stretch.";
                                 roomID = 3; //teleport to room 3 as per map
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 3:
                         //room 3
                         text = @"You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.
 What would you like to do? ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -799,11 +800,13 @@ What would you like to do? ";
                                 roomID = 4; //goes to room 4
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 4:
                         //room4
                         text = @"room 4 descript
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -820,11 +823,13 @@ What would you like to do?: ";
                                 roomID = 5; //goes to room 5
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 5:
                         //room5
                         text = @"room 5 descript
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -847,11 +852,13 @@ What would you like to do?: ";
                                 roomID = 7; //goes to room 7
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 6:
                         //room6
                         text = @"room 6 descript 
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -867,11 +874,13 @@ What would you like to do?: ";
 
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 7:
                         //room7
                         text = @"room 7 descript 
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -888,11 +897,13 @@ What would you like to do?: ";
                                 roomID = 8; //goes to room 8
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 8:
                         //room8
                         text = @"room 8 descript 
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -909,11 +920,13 @@ What would you like to do?: ";
                                 roomID = 9; //goes to room 9
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 9:
                         //room 9
                         text = @"room 9 descript 
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -937,11 +950,13 @@ What would you like to do?: ";
                                 roomID = 10; //goes to room 10
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                     case 10:
                         //room10
                         text = @"room 10 descript 
 What would you like to do?: ";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -959,6 +974,7 @@ What would you like to do?: ";
                                 runGame = 0; //return to menu
                                 break;
                         }
+                        Typewriter(text, delay);
                         break;
                 }
             }
@@ -1082,6 +1098,7 @@ What would you like to do?: ";
 
         public static void Typewriter(string text , int delay)
         {
+            Console.Clear();
             foreach (char c in text)
             {
                 Console.Write(c);
