@@ -693,7 +693,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                             break;
                                         }
                                     }
-                                    Console.WriteLine("The door is unlocked.");
+                                    text = "The door is unlocked.";
                                     animationID = 12;
                                     Animations(ref animationID);
                                     roomID = 2;//changes room to room 2 and starts it
@@ -701,9 +701,8 @@ If a command is not accepted you may have to try other ways of describing your a
                                 else
                                 {
                                     text = "The door is locked so you move back to where you started.";
-                                    Typewriter(text);
                                 }
-
+                                Typewriter(text);
                                 break;
                             case "forward":
                                 Console.WriteLine("The door ahead of you opens.");
@@ -1063,12 +1062,37 @@ But we all that know that that's a stretch.";
 
         public static void Typewriter(string text)
         {
-            int delay = 12;//reduced delay from 37 to 12 so it types faster
-            foreach (char c in text )
+            bool skip = true;
+            char ans;
+            while (skip == true)
             {
-                Console.Write(c);
-                Thread.Sleep(delay);
+                if (Console.ReadKey().Key != ConsoleKey.Y)
+                {
+                    int delay = 12;//reduced delay from 37 to 12 so it types faster
+                    foreach (char c in text)
+                    {
+                        Console.Write(c);
+                        Thread.Sleep(delay);
+                    }
+                    skip = false;
+                }
+                else
+                {
+                    Console.WriteLine(text);
+                }
             }
+            /*
+            Console.Write("Skip? Y/N: ");                       //Trying to get a skip function working. - Cat
+            ans = Convert.ToChar(Console.ReadLine().ToLower());
+            if (ans == 'y')
+            {
+                skip = true;
+            }
+            else 
+            {
+                skip = false;
+            }
+            */
         }
         
     }
