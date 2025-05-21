@@ -649,7 +649,7 @@ If a command is not accepted you may have to try other ways of describing your a
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
-                        text = "Do you wish to skip the typing animation? Y/N: ";
+                        text = "Do you wish to skip the typing animation? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
                         Typewriter(text, delay);
                         skip = Convert.ToChar(Console.ReadLine().ToLower());
                         if (skip == 'y')
