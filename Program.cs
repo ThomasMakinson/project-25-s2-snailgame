@@ -427,6 +427,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
                         case 56:
                             sr = new StreamReader($@"death-screen-stuff\normal\bloodless.txt");
@@ -439,6 +440,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
                         case 57:
                             sr = new StreamReader($@"death-screen-stuff\normal\missionCritical.txt");
@@ -451,6 +453,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
                         case 58:
                             sr = new StreamReader($@"death-screen-stuff\normal\motherF.txt");
@@ -463,6 +466,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
                         case 59:
                             sr = new StreamReader($@"death-screen-stuff\normal\slimey.txt");
@@ -475,6 +479,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
                         case 60:
                             sr = new StreamReader($@"death-screen-stuff\normal\snailTime.txt");
@@ -487,6 +492,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
                         default:
                             sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
@@ -499,6 +505,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Thread.Sleep(2500);
                             Console.Clear();
                             //runGame = 0;
+                            ded = 1;//makes you die
                             break;
 
                     }
@@ -535,11 +542,13 @@ If a command is not accepted you may have to try other ways of describing your a
                     Thread.Sleep(2000);
                     Console.Clear();
                     //runGame = 0;
+                    ded = 1;//makes you die
                     break;
-
+                    ded = 1;
                 default:
                     Console.WriteLine("animation not found");
                     break;
+                    
 
             }
         }
