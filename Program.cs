@@ -105,7 +105,7 @@ If a command is not accepted you may have to try other ways of describing your a
             string aline;
             switch (animationID)
             {
-                case 12://1>2
+                case 12://1 to 2
                     for (int i = 1; i <= 24; i++)
                     {
                         Console.Clear();
@@ -120,7 +120,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 13://1>3
+                case 13://1 to 3
                     for (int i = 1; i <= 24; i++)
                     {
                         Console.Clear();
@@ -136,7 +136,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 32://3>2
+                case 32://3 to 2
                     for (int i = 1; i <= 23; i++)
                     {
                         Console.Clear();
@@ -151,7 +151,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 34://3>4
+                case 34://3 to 4
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -166,7 +166,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 45://4>5
+                case 45://4 to 5
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -181,7 +181,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 56://5>6
+                case 56://5 to 6
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -196,7 +196,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 57://5>7
+                case 57://5 to 7
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -211,7 +211,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 78://7>8
+                case 78://7 to 8
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -226,7 +226,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 89://8>9
+                case 89://8 to 9
                     for (int i = 1; i <= 26; i++)
                     {
                         Console.Clear();
@@ -241,7 +241,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 910://9>10
+                case 910://9 to 10
                     for (int i = 1; i <= 27; i++)
                     {
                         Console.Clear();
@@ -257,7 +257,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     }
                     break;
                     // reverse animations start here
-                case 21://2>1
+                case 21://2 to 1
                     for (int i = 24; i >= 1; i--)
                     {
                         Console.Clear();
@@ -272,7 +272,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 31://3>1
+                case 31://3 to 1
                     for (int i = 24; i >= 1; i--)
                     {
                         Console.Clear();
@@ -287,7 +287,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 23://2>3
+                case 23://2 to 3
                     for (int i = 23; i >= 1; i--)
                     {
                         Console.Clear();
@@ -302,7 +302,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 43://4>3
+                case 43://4 to 3
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -317,7 +317,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 54://5>4
+                case 54://5 to 4
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -332,7 +332,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 65://6>5
+                case 65://6 to 5
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -347,7 +347,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 75://7>5
+                case 75://7 to 5
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -362,7 +362,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 87://8>7
+                case 87://8 to 7
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -377,7 +377,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 98://9>8
+                case 98://9 to 8
                     for (int i = 26; i >= 1; i--)
                     {
                         Console.Clear();
@@ -392,7 +392,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                case 109://10>9
+                case 109://10 to 9
                     for (int i = 27; i >= 1; i--)
                     {
                         Console.Clear();
@@ -407,7 +407,127 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
-                    //need win and death animations
+                //need win and death animations
+                //death normal
+                case 1:
+                    Random random = new Random();
+                    int deathSelect;
+                    deathSelect = random.Next(61);
+                    switch(deathSelect)
+                    {
+                        case <=55:
+                            sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        case 56:
+                            sr = new StreamReader($@"death-screen-stuff\normal\bloodless.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        case 57:
+                            sr = new StreamReader($@"death-screen-stuff\normal\missionCritical.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        case 58:
+                            sr = new StreamReader($@"death-screen-stuff\normal\motherF.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        case 59:
+                            sr = new StreamReader($@"death-screen-stuff\normal\slimey.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        case 60:
+                            sr = new StreamReader($@"death-screen-stuff\normal\snailTime.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+                        default:
+                            sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(2000);
+                            Console.Clear();
+                            break;
+
+                    }
+                    break;
+                 //eldritch snail monster death
+                case 2:
+                    sr = new StreamReader($@"death-screen-stuff\monster\pt1.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Thread.Sleep(1500);
+                    Console.Clear();
+
+                    sr = new StreamReader($@"death-screen-stuff\monster\pt2.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Thread.Sleep(1500);
+                    Console.Clear();
+
+                    sr = new StreamReader($@"death-screen-stuff\monster\pt3.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Thread.Sleep(1500);
+                    Console.Clear();
+
+                    break;
 
                 default:
                     Console.WriteLine("animation not found");
