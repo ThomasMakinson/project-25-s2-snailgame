@@ -644,9 +644,25 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
+                                AddToInventory("Rusty Key");
                                 Typewriter(text);
-                                if (door2lock == 0)
+                                if (door2lock == 1)
                                 {
+                                    {
+                                        bool hasKey = inventory.Contains("Rusty Key");
+
+                                        if (hasKey)
+                                        {
+                                            Console.WriteLine("You use the Rusty Key to unlock the door.");
+                                            door2lock = 0; // unlocks door
+                                            DropFromInventory("Rusty Key"); //remove key after use
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("The door is locked. You need a key.");
+                                            break;
+                                        }
+                                    }
                                     Console.WriteLine("The door is unlocked.");
                                     animationID = 12;
                                     Animations(ref animationID);
