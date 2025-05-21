@@ -15,7 +15,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, runGame = 1;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0;
         public static string text = "\0";
         public static string[] inventory = new string[10];
         int userMenuSelection;
@@ -426,6 +426,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
                         case 56:
                             sr = new StreamReader($@"death-screen-stuff\normal\bloodless.txt");
@@ -437,6 +438,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
                         case 57:
                             sr = new StreamReader($@"death-screen-stuff\normal\missionCritical.txt");
@@ -448,6 +450,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
                         case 58:
                             sr = new StreamReader($@"death-screen-stuff\normal\motherF.txt");
@@ -459,6 +462,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
                         case 59:
                             sr = new StreamReader($@"death-screen-stuff\normal\slimey.txt");
@@ -470,6 +474,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
                         case 60:
                             sr = new StreamReader($@"death-screen-stuff\normal\snailTime.txt");
@@ -481,6 +486,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
                         default:
                             sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
@@ -492,6 +498,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             sr.Close();
                             Thread.Sleep(2500);
                             Console.Clear();
+                            //runGame = 0;
                             break;
 
                     }
@@ -527,7 +534,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     sr.Close();
                     Thread.Sleep(2000);
                     Console.Clear();
-
+                    //runGame = 0;
                     break;
 
                 default:
@@ -565,7 +572,8 @@ If a command is not accepted you may have to try other ways of describing your a
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
-                runGame = 0;
+                ded = 1;
+                
             }
         }
         
@@ -602,10 +610,21 @@ If a command is not accepted you may have to try other ways of describing your a
 
         }
 
+        public static void DeathCheck(out int runGame)// rhys method to check if ded
+        {
+            if (ded != 0)
+            {
+                runGame = 0;
+            }
+            else
+            {
+                runGame = 1;
+            }
+        }
 
         public static void NewGame()// Game code
         {
-            runGame = 1;
+            int runGame = 1;
             int animationID = 0;
             int roomID = 0, door2lock = 1;
             string direction;
@@ -615,6 +634,7 @@ If a command is not accepted you may have to try other ways of describing your a
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
                 SnailCheck();
+                DeathCheck(out runGame);
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
@@ -1033,7 +1053,7 @@ But we all that know that that's a stretch.";
 
         public static void Typewriter(string text)
         {
-            int delay = 37;
+            int delay = 12;//reduced delay from 37 to 12 so it types faster
             foreach (char c in text )
             {
                 Console.Write(c);
