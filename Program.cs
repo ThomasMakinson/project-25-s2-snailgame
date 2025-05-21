@@ -562,29 +562,30 @@ If a command is not accepted you may have to try other ways of describing your a
             snailDistance -= 1;
             if (snailDistance >= 10)
             {
-                Console.WriteLine("The threat is distant.");
+                text = "The threat is distant.";
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
-                Console.WriteLine("The threat draws nearer.");
+                text = "The threat draws nearer.";
             }
             else if (snailDistance < 5 && snailDistance >1)
             {
-                Console.WriteLine("Breathe softly, it's very close now.");
+                text = "Breathe softly, it's very close now.";
             }
             else if (snailDistance == 1)
             {
-                Console.WriteLine("It's right behind you.");
+                text = "It's right behind you.";
             }
             else
             {
-                Console.WriteLine("oh no");
+                text = "oh no";
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
                 ded = 1;
                 
             }
+            Typewriter(text);
         }
         
         public static void Appease()// makes the snail go further away - rhys
@@ -594,11 +595,11 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 snailDistance += 5;
                 blood -= 1;
-                Console.WriteLine("The sacrifice is accepted.");
+                text = "The sacrifice is accepted.";
             }
             else if (blood == 2)
             {
-                Console.WriteLine(@"Are you sure? This will be your last: y/n");
+                text = "Are you sure? This will be your last: y/n";
                 temp = Console.ReadLine();
                 temp = temp.ToLower().Trim();
 
@@ -606,18 +607,18 @@ If a command is not accepted you may have to try other ways of describing your a
                 {
                     snailDistance += 5;
                     blood -= 1;
-                    Console.WriteLine("The sacrifice is accepted.");
+                    text = "The sacrifice is accepted.";
                 }
                 else
                 {
-                    Console.WriteLine("Very well.");
+                    text = "Very well.";
                 }
             }
             else if (blood == 1)
             {
-                Console.WriteLine("That would kill you. No.");
+                text = "That would kill you. No.";
             }
-
+            Typewriter(text);
         }
 
         public static void DeathCheck(out int runGame)// rhys method to check if ded
@@ -683,13 +684,13 @@ If a command is not accepted you may have to try other ways of describing your a
 
                                         if (hasKey)
                                         {
-                                            Console.WriteLine("You use the Rusty Key to unlock the door.");
+                                            text = "You use the Rusty Key to unlock the door.";
                                             door2lock = 0; // unlocks door
                                             DropFromInventory("Rusty Key"); //remove key after use
                                         }
                                         else
                                         {
-                                            Console.WriteLine("The door is locked. You need a key.");
+                                            text = "The door is locked. You need a key.";
                                             break;
                                         }
                                     }
