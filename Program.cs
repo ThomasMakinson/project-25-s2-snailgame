@@ -15,12 +15,13 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, runGame = 1;
         public static string text = "\0";
         public static string[] inventory = new string[10];
         int userMenuSelection;
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
+       
 
 
         public static void DisplayTitleScreen()
@@ -423,7 +424,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
                         case 56:
@@ -434,7 +435,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
                         case 57:
@@ -445,7 +446,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
                         case 58:
@@ -456,7 +457,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
                         case 59:
@@ -467,7 +468,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
                         case 60:
@@ -478,7 +479,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
                         default:
@@ -489,7 +490,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Console.WriteLine(aline);
                             }
                             sr.Close();
-                            Thread.Sleep(2000);
+                            Thread.Sleep(2500);
                             Console.Clear();
                             break;
 
@@ -504,7 +505,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.WriteLine(aline);
                     }
                     sr.Close();
-                    Thread.Sleep(1500);
+                    Thread.Sleep(2000);
                     Console.Clear();
 
                     sr = new StreamReader($@"death-screen-stuff\monster\pt2.txt");
@@ -514,7 +515,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.WriteLine(aline);
                     }
                     sr.Close();
-                    Thread.Sleep(1500);
+                    Thread.Sleep(2000);
                     Console.Clear();
 
                     sr = new StreamReader($@"death-screen-stuff\monster\pt3.txt");
@@ -524,7 +525,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.WriteLine(aline);
                     }
                     sr.Close();
-                    Thread.Sleep(1500);
+                    Thread.Sleep(2000);
                     Console.Clear();
 
                     break;
@@ -550,13 +551,21 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 Console.WriteLine("The threat draws nearer.");
             }
-            else if (snailDistance < 5)
+            else if (snailDistance < 5 && snailDistance >1)
             {
                 Console.WriteLine("Breathe softly, it's very close now.");
             }
-            else if (snailDistance <= 1)
+            else if (snailDistance == 1)
             {
                 Console.WriteLine("It's right behind you.");
+            }
+            else
+            {
+                Console.WriteLine("oh no");
+                Thread.Sleep(500);
+                int animationID = 1;
+                Animations(ref animationID);
+                runGame = 0;
             }
         }
         
@@ -596,14 +605,16 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
+            runGame = 1;
             int animationID = 0;
-            int roomID = 0, door2lock = 1, runGame = 1;
+            int roomID = 0, door2lock = 1;
             string direction;
             Keys doorTwoKey = new Keys();
             doorTwoKey.Type = "Big Rusty Key"; doorTwoKey.Description = ""; ; doorTwoKey.DoorUnlock = 2;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
+                SnailCheck();
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
@@ -739,7 +750,7 @@ But we all that know that that's a stretch.";
                                 break;
                             case "down":
                                 Console.WriteLine("going to room5");
-                                animationID = 54;
+                                animationID = 45;
                                 Animations(ref animationID);
                                 roomID = 5; //goes to room 5
                                 break;
@@ -878,7 +889,7 @@ But we all that know that that's a stretch.";
                             case "forward":
 
                                 Console.WriteLine("you fall off the ledge");
-                                animationID = 0; //need death
+                                animationID = 2; //added death
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
