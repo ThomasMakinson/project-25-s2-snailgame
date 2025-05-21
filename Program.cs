@@ -723,23 +723,22 @@ If a command is not accepted you may have to try other ways of describing your a
                                 Typewriter(text, delay);
                                 break;
                             case "forward":
-                                Console.WriteLine("The door ahead of you opens.");
-                                Console.WriteLine("Going to Room 3.");
+                                text = "The door ahead of you opens.\nGoing to Room 3.";
                                 animationID = 13;
                                 Animations(ref animationID);
                                 roomID = 3;
                                 break;
                             case "left":
-                                Console.WriteLine("That is a wall.");
+                                text = "That is a wall.";
                                 break;
                             case "up":
-                                Console.WriteLine("You can't fly, you twit.");
+                                text = "You can't fly, you twit.";
                                 break;
                             case "down":
-                                Console.WriteLine("You sit on the floor and meditate... the snail catches and kills you");
+                                text = "You sit on the floor and meditate... the snail catches and kills you";
                                 break;
                             default:
-                                Console.WriteLine("You thought you were smart, huh? What other direction did you think you could go in?");
+                                text = "You thought you were smart, huh? What other direction did you think you could go in?";
                                 break;
                         }
                         break;
@@ -761,13 +760,13 @@ But we all that know that that's a stretch.";
                         switch (direction)
                         {
                             case "left":
-                                Console.WriteLine("going to room1");
+                                text = "going to room1";
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
-                                Console.WriteLine("Back the way you came? Alright then, have it your way.");
+                                text = "Back the way you came? Alright then, have it your way.";
                                 animationID = 23;
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
@@ -776,25 +775,25 @@ But we all that know that that's a stretch.";
                         break;
                     case 3:
                         //room 3
-                        Console.WriteLine("You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.");
-                        Console.Write("What would you like to do? ");
+                        text = @"You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.
+What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                Console.WriteLine("Back to where you just came from? You do realise the goal is to win the game, right?");
+                                text = "Back to where you just came from? You do realise the goal is to win the game, right?";
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
-                                Console.WriteLine("Could be a useful choice, or maybe not. Are you clever enough to figure out which?");
+                                text = "Could be a useful choice, or maybe not. Are you clever enough to figure out which?";
                                 animationID = 32;
                                 Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
-                                Console.WriteLine("Further into the maze, eh? Ain't no snail gonna catch you, clearly.");
+                                text = "Further into the maze, eh? Ain't no snail gonna catch you, clearly.";
                                 animationID = 34;
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
@@ -803,19 +802,19 @@ But we all that know that that's a stretch.";
                         break;
                     case 4:
                         //room4
-                        Console.WriteLine("room 4 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 4 descript
+What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
-                                Console.WriteLine("going to room3");
+                                text = "going to room 3";
                                 animationID = 43;
                                 Animations(ref animationID);
                                 roomID = 3; //goes back to room 3;
                                 break;
                             case "down":
-                                Console.WriteLine("going to room5");
+                                text = "going to room 5";
                                 animationID = 45;
                                 Animations(ref animationID);
                                 roomID = 5; //goes to room 5
@@ -824,25 +823,25 @@ But we all that know that that's a stretch.";
                         break;
                     case 5:
                         //room5
-                        Console.WriteLine("room 5 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 5 descript
+What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "up":
-                                Console.WriteLine("going to room4");
+                                text = "going to room 4";
                                 animationID = 54;
                                 Animations(ref animationID);
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
-                                Console.WriteLine("going to room6");
+                                text = "going to room 6";
                                 animationID = 56;
                                 Animations(ref animationID);
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
-                                Console.WriteLine("going to room7");
+                                text = "going to room 7";
                                 animationID = 57;
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
@@ -851,39 +850,39 @@ But we all that know that that's a stretch.";
                         break;
                     case 6:
                         //room6
-                        Console.WriteLine("room 6 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 6 descript 
+What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                Console.WriteLine("going to room5");
+                                text = "going to room 5" ;
                                 animationID = 65;
                                 Animations(ref animationID);
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
 
-                                Console.WriteLine("dead end");
+                                text = "dead end";
 
                                 break;
                         }
                         break;
                     case 7:
                         //room7
-                        Console.WriteLine("room 7 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 7 descript 
+What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                Console.WriteLine("going to room5");
+                                text = "going to room 5";
                                 animationID = 75;
                                 Animations(ref animationID);
                                 roomID = 5; //goes back to room 5;
                                 break;
                             case "forward":
-                                Console.WriteLine("going to room8");
+                                text = "going to room 8";
                                 animationID = 78;
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
@@ -892,19 +891,19 @@ But we all that know that that's a stretch.";
                         break;
                     case 8:
                         //room8
-                        Console.WriteLine("room 8 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 8 descript 
+What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                Console.WriteLine("going to room7");
+                                text = "going to room 7";
                                 animationID = 87;
                                 Animations(ref animationID);
                                 roomID = 7; //goes back to room 7;
                                 break;
                             case "up":
-                                Console.WriteLine("climbing ladder to room9");
+                                text = "climbing ladder to room 9";
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
@@ -913,26 +912,26 @@ But we all that know that that's a stretch.";
                         break;
                     case 9:
                         //room 9
-                        Console.WriteLine("room 9 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 9 descript 
+What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "down":
-                                Console.WriteLine("going to room9");
+                                text = "going to room 9";
                                 animationID = 98;
                                 Animations(ref animationID);
                                 roomID = 8; //goes back to room 9;
                                 break;
                             case "forward":
 
-                                Console.WriteLine("you win!");
+                                text = "you win!";
                                 animationID = 0; //need to add a win animation
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                             case "right":
-                                Console.WriteLine("going to room10");
+                                text = "going to room10";
                                 animationID = 910;
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
@@ -941,20 +940,20 @@ But we all that know that that's a stretch.";
                         break;
                     case 10:
                         //room10
-                        Console.WriteLine("room 10 descript");
-                        Console.Write("What would you like to do?: ");
+                        text = @"room 10 descript 
+What would you like to do?: ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                Console.WriteLine("going to room9");
+                                text = "going to room 9";
                                 animationID = 109;
                                 Animations(ref animationID);
                                 roomID = 9; //goes back to room 9;
                                 break;
                             case "forward":
 
-                                Console.WriteLine("you fall off the ledge");
+                                text = "you fall off the ledge";
                                 animationID = 2; //added death
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
@@ -996,7 +995,7 @@ But we all that know that that's a stretch.";
             {
                 if (inventory[i] == null)
                 {
-                    Console.WriteLine($"You added {item} from your inventory.");
+                    text = $"You added {item} from your inventory.";
                     inventory[i] = item;
                     inventoryCount++;
                     return;
@@ -1010,7 +1009,7 @@ But we all that know that that's a stretch.";
             {
                 if (inventory[i] != null && inventory[i] == item)
                 {
-                    Console.WriteLine($"You dropped {item} from your inventory.");
+                    text = $"You dropped {item} from your inventory.";
                     inventory[i] = null;
                     inventoryCount--;
                     return;
@@ -1032,7 +1031,7 @@ But we all that know that that's a stretch.";
             {
                 // Displays title screen method then asks for a menu option
                 DisplayTitleScreen();
-                Console.Write("Select Option (Enter Number): ");
+                text = "Select Option (Enter Number): ";
                 userMenuSelection = Convert.ToInt32(Console.ReadLine());
 
                 switch (userMenuSelection)
