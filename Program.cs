@@ -65,7 +65,7 @@ namespace SnailMate
                 Console.SetCursorPosition(centredx, verticalStart + i);
                 Console.WriteLine(asciiArt[i]);
             }
-
+            
             Console.ResetColor();
 
             // Display and centre menu options - Kavarn 11:46am
@@ -102,6 +102,7 @@ If a command is not accepted you may have to try other ways of describing your a
         }
         public static void Animations(ref int animationID)// room transition animations - Rhys
         {
+            Console.Clear();
             //the case numbers are direction, so 12 is room1  room2, and 21 is room2 to room1
             string aline;
             switch (animationID)
@@ -292,7 +293,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     for (int i = 23; i >= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\2-3\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\3-2\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -411,6 +412,8 @@ If a command is not accepted you may have to try other ways of describing your a
                 //need win and death animations
                 //death normal
                 case 1:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    
                     Random random = new Random();
                     int deathSelect;
                     deathSelect = random.Next(61);
@@ -428,6 +431,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
                         case 56:
                             sr = new StreamReader($@"death-screen-stuff\normal\bloodless.txt");
@@ -441,6 +445,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
                         case 57:
                             sr = new StreamReader($@"death-screen-stuff\normal\missionCritical.txt");
@@ -454,6 +459,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
                         case 58:
                             sr = new StreamReader($@"death-screen-stuff\normal\motherF.txt");
@@ -467,6 +473,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
                         case 59:
                             sr = new StreamReader($@"death-screen-stuff\normal\slimey.txt");
@@ -480,6 +487,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
                         case 60:
                             sr = new StreamReader($@"death-screen-stuff\normal\snailTime.txt");
@@ -493,6 +501,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
                         default:
                             sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
@@ -506,12 +515,14 @@ If a command is not accepted you may have to try other ways of describing your a
                             Console.Clear();
                             //runGame = 0;
                             ded = 1;//makes you die
+                            Console.ResetColor();
                             break;
 
                     }
                     break;
                  //eldritch snail monster death
                 case 2:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     sr = new StreamReader($@"death-screen-stuff\monster\pt1.txt");
                     while (!sr.EndOfStream)
                     {
@@ -543,8 +554,9 @@ If a command is not accepted you may have to try other ways of describing your a
                     Console.Clear();
                     //runGame = 0;
                     ded = 1;//makes you die
+                    Console.ResetColor();
                     break;
-                    ded = 1;
+                    
                 default:
                     Console.WriteLine("animation not found");
                     break;
@@ -561,23 +573,29 @@ If a command is not accepted you may have to try other ways of describing your a
             snailDistance -= 1;
             if (snailDistance >= 10)
             {
-                text = "The threat is distant.";
+                Console.WriteLine(@"
+The threat is distant.");
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
-                text = "The threat draws nearer.";
+                Console.WriteLine(@"
+The threat draws nearer.");
             }
             else if (snailDistance < 5 && snailDistance >1)
             {
-                text = "Breathe softly, it's very close now.";
+                Console.WriteLine(@"
+Breathe softly, it's very close now.");
             }
             else if (snailDistance == 1)
             {
-                text = "It's right behind you.";
+                Console.WriteLine(@"
+It's right behind you.");
             }
             else
             {
-                text = "oh no";
+                Console.WriteLine(@"
+
+oh no");
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
@@ -585,6 +603,17 @@ If a command is not accepted you may have to try other ways of describing your a
                 
             }
             Typewriter(text, delay);
+        }
+
+        public static void SnailCheckStealth()
+        {
+            if(snailDistance <=0)
+            {
+                int animationID = 1;
+                Animations(ref animationID);
+                ded = 1;
+            }
+                
         }
         
         public static void Appease()// makes the snail go further away - rhys
@@ -594,11 +623,11 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 snailDistance += 5;
                 blood -= 1;
-                text = "The sacrifice is accepted.";
+                Console.WriteLine("The sacrifice is accepted.");
             }
             else if (blood == 2)
             {
-                text = "Are you sure? This will be your last: y/n";
+                Console.WriteLine(@"Are you sure? This will be your last: y/n");
                 temp = Console.ReadLine();
                 temp = temp.ToLower().Trim();
 
@@ -606,16 +635,16 @@ If a command is not accepted you may have to try other ways of describing your a
                 {
                     snailDistance += 5;
                     blood -= 1;
-                    text = "The sacrifice is accepted.";
+                    Console.WriteLine("The sacrifice is accepted.");
                 }
                 else
                 {
-                    text = "Very well.";
+                    Console.WriteLine("Very well.");
                 }
             }
             else if (blood == 1)
             {
-                text = "That would kill you. No.";
+                Console.WriteLine("That would kill you. No.");
             }
             Typewriter(text, delay);
         }
@@ -643,7 +672,7 @@ If a command is not accepted you may have to try other ways of describing your a
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                SnailCheck();
+                SnailCheckStealth();
                 DeathCheck(out runGame);
                 switch (roomID)
                 {
@@ -701,13 +730,13 @@ If a command is not accepted you may have to try other ways of describing your a
 
                                         if (hasKey)
                                         {
-                                            text = "You use the Rusty Key to unlock the door.";
+                                            Console.WriteLine("You use the Rusty Key to unlock the door.");
                                             door2lock = 0; // unlocks door
                                             DropFromInventory("Rusty Key"); //remove key after use
                                         }
                                         else
                                         {
-                                            text = "The door is locked. You need a key.";
+                                            Console.WriteLine("The door is locked. You need a key.");
                                             break;
                                         }
                                     }
@@ -736,6 +765,22 @@ If a command is not accepted you may have to try other ways of describing your a
                                 break;
                             case "down":
                                 text = "You sit on the floor and meditate... the snail catches and kills you";
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                             default:
                                 text = "You thought you were smart, huh? What other direction did you think you could go in?";
@@ -771,6 +816,22 @@ But we all that know that that's a stretch.";
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
+                                break;
                         }
                         break;
                     case 3:
@@ -798,6 +859,22 @@ What would you like to do? ";
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
+                                break;
                         }
                         break;
                     case 4:
@@ -818,6 +895,22 @@ What would you like to do?: ";
                                 animationID = 45;
                                 Animations(ref animationID);
                                 roomID = 5; //goes to room 5
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                         }
                         break;
@@ -846,6 +939,22 @@ What would you like to do?: ";
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
+                                break;
                         }
                         break;
                     case 6:
@@ -865,6 +974,22 @@ What would you like to do?: ";
 
                                 text = "dead end";
 
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                         }
                         break;
@@ -887,6 +1012,22 @@ What would you like to do?: ";
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
+                                break;
                         }
                         break;
                     case 8:
@@ -907,6 +1048,22 @@ What would you like to do?: ";
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                         }
                         break;
@@ -936,6 +1093,22 @@ What would you like to do?: ";
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
+                                break;
                         }
                         break;
                     case 10:
@@ -957,6 +1130,22 @@ What would you like to do?: ");
                                 animationID = 2; //added death
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                         }
                         break;
@@ -1026,7 +1215,7 @@ What would you like to do?: ");
         {
             
             int userMenuSelection;
-
+            
             do
             {
                 // Displays title screen method then asks for a menu option
