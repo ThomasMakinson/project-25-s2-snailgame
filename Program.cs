@@ -15,7 +15,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37;
         public static string text = "\0";
         public static string[] inventory = new string[10];
         int userMenuSelection;
@@ -95,7 +95,7 @@ such as:
 'grab key'.
 
 If a command is not accepted you may have to try other ways of describing your action";
-            Typewriter(text);
+            Typewriter(text, delay);
             Console.ReadLine();
 
 
@@ -584,7 +584,7 @@ If a command is not accepted you may have to try other ways of describing your a
                 ded = 1;
                 
             }
-            Typewriter(text);
+            Typewriter(text, delay);
         }
         
         public static void Appease()// makes the snail go further away - rhys
@@ -617,7 +617,7 @@ If a command is not accepted you may have to try other ways of describing your a
             {
                 text = "That would kill you. No.";
             }
-            Typewriter(text);
+            Typewriter(text, delay);
         }
 
         public static void DeathCheck(out int runGame)// rhys method to check if ded
@@ -634,10 +634,10 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
-            int runGame = 1;
-            int animationID = 0;
-            int roomID = 0, door2lock = 1;
+            int runGame = 1, animationID = 0, roomID = 0, door2lock = 1;
             string direction;
+            char skip;
+            bool sound = true;
             Keys doorTwoKey = new Keys();
             doorTwoKey.Type = "Big Rusty Key"; doorTwoKey.Description = ""; ; doorTwoKey.DoorUnlock = 2;
             Console.Clear();
@@ -649,16 +649,30 @@ If a command is not accepted you may have to try other ways of describing your a
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
-                        SoundPlayer(soundID);
+                        text = "Do you wish to skip the typing animation? Y/N: ";
+                        Typewriter(text, delay);
+                        skip = Convert.ToChar(Console.ReadLine().ToLower());
+                        if (skip == 'y')
+                        {
+                            delay = 0;
+                            sound = false;
+                        }
+                        if (sound == true)
+                        {
+                            SoundPlayer(soundID);
+                        }
                         text = "Hello, you are in a room, a snail wants to kill you, good luck :3";
-                        Typewriter(text);
+                        Typewriter(text, delay);
                         roomID = 1;
                         break;
 
                     case 1:
                         //room1
                         soundID = 1;
-                        SoundPlayer(soundID);
+                        if (sound == true)
+                        {
+                            SoundPlayer(soundID);
+                        }
                         if (count == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
                             text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
@@ -668,14 +682,18 @@ If a command is not accepted you may have to try other ways of describing your a
                             text = "gdrg"; //Thomas need type
                         }
                         soundID = 11;
-                        Typewriter(text);
+                        if (sound == true)
+                        {
+                            SoundPlayer(soundID);
+                        }
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
                                 AddToInventory("Rusty Key");
-                                Typewriter(text);
+                                Typewriter(text, delay);
                                 if (door2lock == 1)
                                 {
                                     {
@@ -702,7 +720,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 {
                                     text = "The door is locked so you move back to where you started.";
                                 }
-                                Typewriter(text);
+                                Typewriter(text, delay);
                                 break;
                             case "forward":
                                 Console.WriteLine("The door ahead of you opens.");
@@ -730,11 +748,14 @@ If a command is not accepted you may have to try other ways of describing your a
                     case 2:
                         //room2
                         soundID = 2;
-                        SoundPlayer(soundID);
+                        if (sound == true)
+                        {
+                            SoundPlayer(soundID);
+                        }
                         text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all that know that that's a stretch.";
-                        Typewriter(text);
+                        Typewriter(text, delay);
                         Console.Write("What would you like to do? ");
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -1060,41 +1081,14 @@ But we all that know that that's a stretch.";
             player.Play();
         }
 
-        public static void Typewriter(string text)
+        public static void Typewriter(string text , int delay)
         {
-            bool skip = true;
-            char ans;
-            while (skip == true)
+            foreach (char c in text)
             {
-                if (Console.ReadKey().Key != ConsoleKey.Y)
-                {
-                    int delay = 12;//reduced delay from 37 to 12 so it types faster
-                    foreach (char c in text)
-                    {
-                        Console.Write(c);
-                        Thread.Sleep(delay);
-                    }
-                    skip = false;
-                }
-                else
-                {
-                    Console.WriteLine(text);
-                }
+                Console.Write(c);
+                Thread.Sleep(delay);
             }
-            /*
-            Console.Write("Skip? Y/N: ");                       //Trying to get a skip function working. - Cat
-            ans = Convert.ToChar(Console.ReadLine().ToLower());
-            if (ans == 'y')
-            {
-                skip = true;
-            }
-            else 
-            {
-                skip = false;
-            }
-            */
         }
-        
     }
 }
 
