@@ -102,6 +102,7 @@ If a command is not accepted you may have to try other ways of describing your a
         }
         public static void Animations(ref int animationID)// room transition animations - Rhys
         {
+            Console.Clear();
             //the case numbers are direction, so 12 is room1  room2, and 21 is room2 to room1
             string aline;
             switch (animationID)
@@ -720,6 +721,13 @@ If a command is not accepted you may have to try other ways of describing your a
                             case "down":
                                 Console.WriteLine("You sit on the floor and meditate... the snail catches and kills you");
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
                             default:
                                 Console.WriteLine("You thought you were smart, huh? What other direction did you think you could go in?");
                                 break;
@@ -751,6 +759,13 @@ But we all that know that that's a stretch.";
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
                         }
                         break;
                     case 3:
@@ -778,6 +793,13 @@ But we all that know that that's a stretch.";
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
                         }
                         break;
                     case 4:
@@ -798,6 +820,13 @@ But we all that know that that's a stretch.";
                                 animationID = 45;
                                 Animations(ref animationID);
                                 roomID = 5; //goes to room 5
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
                                 break;
                         }
                         break;
@@ -826,6 +855,13 @@ But we all that know that that's a stretch.";
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
                         }
                         break;
                     case 6:
@@ -845,6 +881,13 @@ But we all that know that that's a stretch.";
 
                                 Console.WriteLine("dead end");
 
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
                                 break;
                         }
                         break;
@@ -867,6 +910,13 @@ But we all that know that that's a stretch.";
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
                         }
                         break;
                     case 8:
@@ -887,6 +937,13 @@ But we all that know that that's a stretch.";
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
                                 break;
                         }
                         break;
@@ -916,6 +973,13 @@ But we all that know that that's a stretch.";
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
                                 break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
+                                break;
                         }
                         break;
                     case 10:
@@ -937,6 +1001,13 @@ But we all that know that that's a stretch.";
                                 animationID = 2; //added death
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
+                                break;
+                            case "blood":
+                            case "give blood":
+                            case "leave blood":
+                            case "bleed":
+                            case "appease":
+                                Appease();
                                 break;
                         }
                         break;
