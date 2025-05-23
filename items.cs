@@ -19,12 +19,13 @@ namespace SnailMate
         public void Inspect()
         {
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            Program.Typewriter($"Hmm let's take a look at this {Name}.", 30);
+            Program.Typewriter($"It appears to be a {Type} of some sort.", 30);
+            Program.Typewriter($"{Description}", 30);
+            Program.Typewriter($"It seems to be made of {Material}.", 30);
+            Program.Typewriter($"It looks to be in {Condition} condition.",30);
+            Console.ReadKey(true);
+            Console.Clear();
         }
 
 
