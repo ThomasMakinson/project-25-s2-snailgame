@@ -1281,7 +1281,7 @@ What would you like to do?: ";
         static void SoundPlayer(int SoundID) //Cat - Adding soundplayer, doesn't error now.
         {
             SoundPlayer player = new SoundPlayer();
-            switch (soundID)
+            switch (soundID)                                                        // Adding seperate files for each piece of dialogue - Cat
             {
                 case 0:
                     player.SoundLocation = Environment.CurrentDirectory + @"\Intro.wav";
