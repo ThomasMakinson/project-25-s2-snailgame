@@ -17,7 +17,7 @@ namespace SnailMate
         
         public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37, roomID = 0;
         public static string text = "\0";
-        public static List<string> inventory = new List<string>();
+        public static items[] inventory = new items[10];
         int userMenuSelection;
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
@@ -659,8 +659,11 @@ If a command is not accepted you may have to try other ways of describing your a
             string direction;
             char skip;
             bool sound = true;
-            Keys doorTwoKey = new Keys();
-            doorTwoKey.Type = "Big Rusty Key"; doorTwoKey.Description = ""; ; doorTwoKey.DoorUnlock = 2;
+            items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered" };
+            items crumbledNote = new items { Name = "Crumbled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile" };
+            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "\"You unfold the torn page and read the scribbled text:\\n\\n\\\"Why don't skeletons fight each other?\\\"\\n\\nBecause they don't have the guts.\\n\\nYou feel a little worse for reading that.\"", Material = "Paper", Condition = "Torn" };
+            items tornPage = new items { Name = "Torn Page", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass & Wood", Condition = "Dusty" };
+
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
@@ -713,17 +716,18 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
-                                AddToInventory("Rusty Key");
+                                AddToInventory(rustyKey);
+                                rustyKey.Inspect();
                                 Typewriter(text, delay);
                                 if (door2lock == 1)
                                 {
-                                    bool hasKey = inventory.Contains("Rusty Key");
+                                    bool hasKey = inventory.Contains(rustyKey);
 
                                     if (hasKey)
                                     {
                                         text = "You use the Rusty Key to unlock the door.";
                                         door2lock = 0; // unlocks door
-                                        DropFromInventory("Rusty Key"); //remove key after use
+                                        DropFromInventory(rustyKey); //remove key after use
                                     }
                                     else
                                     {
@@ -1205,21 +1209,21 @@ What would you like to do?: ";
 
         }
 
-        public static void AddToInventory(string item)
+        public static void AddToInventory(items item)
         {
             for (int i = 0; i < inventory.Length; i++)
             {
                 if (inventory[i] == null)
                 {
-                    text = $"You added {item} from your inventory.";
                     inventory[i] = item;
+                    text = $"You added {item} from your inventory."; 
                     inventoryCount++;
                     return;
                 }
             }
         }
 
-        public static void DropFromInventory(string item)
+        public static void DropFromInventory(items item)
         {
             for (int i = 0; i < inventory.Length; i++)
             {
@@ -1231,11 +1235,6 @@ What would you like to do?: ";
                     return;
                 }
             }
-        }
-
-        public static void InspectItem(string item)
-        {
-         // Need to add inspect feature once we implement items
         }
         
         static void Main(string[] args)
@@ -1301,7 +1300,6 @@ What would you like to do?: ";
 
         public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue. - Cat
         {
-            Console.Clear();
             foreach (char c in text)
             {
                 Console.Write(c);
