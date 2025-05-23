@@ -46,7 +46,7 @@ namespace SnailMate
                 "1. Start Game",
                 "2. Load Game",
                 "3. How to Play",
-                "4. Exit"
+                "4. Exit \"\uE11D\""
             };
 
             // Variables I am using to centre the text and menu options - Kavarn 11:32am
@@ -1299,7 +1299,7 @@ What would you like to do?: ";
             player.Play();
         }
 
-        public static void Typewriter(string text , int delay)
+        public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue. - Cat
         {
             Console.Clear();
             foreach (char c in text)
@@ -1310,5 +1310,3 @@ What would you like to do?: ";
         }
     }
 }
-
-        
