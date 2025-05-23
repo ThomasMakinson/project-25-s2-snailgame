@@ -17,7 +17,7 @@ namespace SnailMate
         
         public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37, roomID = 0;
         public static string text = "\0";
-        public static string[] inventory = new string[10];
+        public static List<string> inventory = new List<string>();
         int userMenuSelection;
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
