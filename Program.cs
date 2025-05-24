@@ -1050,20 +1050,22 @@ You got lost in a trance. The snail finds you and eats you.";
                         break;
                     case 7:
                         //room7
-                        text = @"room 7 descript 
+                        text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.
 What would you like to do?: ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                text = "going to room 5";
+                                text = "Backwards it is then.";
                                 animationID = 75;
                                 Animations(ref animationID);
-                                roomID = 5; //goes back to room 5;
+                                roomID = 5; //goes back to room 5, in reverse
                                 break;
                             case "forward":
-                                text = "going to room 8";
+                                text = "A whole new wooorld!";
+                                Thread.Sleep(1000);
+                                text = "Oh wait, that's copyright. Forget that!";
                                 animationID = 78;
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
@@ -1092,20 +1094,23 @@ What would you like to do?: ";
                         break;
                     case 8:
                         //room8
-                        text = @"room 8 descript 
-What would you like to do?: ";
+                        text = @"You are in a hallway. There is a ladder ahead of you. 
+More darkness creeps down over the ladder, preventing you from seeing where it goes. 
+Could the snail be at the top waiting for you? There's only one way to find out. 
+What would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                text = "going to room 7";
+                                text = "Backwards it is then.";
                                 animationID = 87;
                                 Animations(ref animationID);
-                                roomID = 7; //goes back to room 7;
+                                roomID = 7; //goes back to room 7 in reverse
                                 break;
                             case "up":
-                                text = "climbing ladder to room 9";
+                            case "climb":
+                                text = "Insert climbing animation here.";
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
@@ -1134,27 +1139,29 @@ What would you like to do?: ";
                         break;
                     case 9:
                         //room 9
-                        text = @"room 9 descript 
-What would you like to do?: ";
+                        text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
+To your left, a door, no different than any other that you've encountered. 
+To your right, an opening, leading to a large room. Both could be inviting. 
+What would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "down":
-                                text = "going to room 9";
+                                text = "Backwards it is, then.";
                                 animationID = 98;
                                 Animations(ref animationID);
-                                roomID = 8; //goes back to room 9;
+                                roomID = 8; //goes back to room 8 in reverse
                                 break;
                             case "forward":
 
                                 text = "you win!";
-                                animationID = 0; //need to add a win animation
+                                animationID = 0; //need to change this to the win "room"
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                             case "right":
-                                text = "going to room10";
+                                text = "Let's see what's this way.";
                                 animationID = 910;
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
@@ -1183,21 +1190,25 @@ What would you like to do?: ";
                         break;
                     case 10:
                         //room10
-                        text = @"room 10 descript 
-What would you like to do?: ";
+                        text = @"At least you haven't been eaten, yet. 
+You feel a slight breeze caress your legs, and there's fog ahead. 
+Are you near, or are you even further away? 
+The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors. 
+What would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                text = "going to room 9";
+                                text = "Backwards it is, then.";
                                 animationID = 109;
                                 Animations(ref animationID);
                                 roomID = 9; //goes back to room 9;
                                 break;
                             case "forward":
-
-                                text = "you fall off the ledge";
+                            case "fog":
+                                text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
+What would you like to do?";
                                 animationID = 2; //added death
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
