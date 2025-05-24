@@ -1039,44 +1039,14 @@ What would you like to do?: ";
                         break;
                     case 6:
                         //room6
-                        text = @"room 6 descript 
-What would you like to do?: ";
+                        text = @"There is nothing. There is only pitch black. 
+You have entered a room that is so blank, it appears to be a black void. 
+The void seems to draw you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! 
+You got lost in a trance. The snail finds you and eats you.";
                         Typewriter(text, delay);
-                        direction = Console.ReadLine().ToLower().Trim();
-                        switch (direction)
-                        {
-                            case "back":
-                                text = "going to room 5" ;
-                                animationID = 65;
-                                Animations(ref animationID);
-                                roomID = 5; //goes back to room 5;
-                                break;
-                            case "forward":
-
-                                text = "dead end";
-
-                                break;
-                            case "blood":
-                            case "give blood":
-                            case "leave blood":
-                            case "bleed":
-                            case "appease":
-                                Appease();
-                                break;
-                            case "check danger":
-                            case "danger":
-                            case "snail":
-                            case "snailcheck":
-                            case "snail check":
-                            case "how far?":
-                            case "am I going to die?":
-                                SnailCheck();
-                                break;
-                            case "save":
-                                SaveGame();
-                                break;
-                        }
-                        Typewriter(text, delay);
+                        animationID = 1; //death animation
+                        Animations(ref animationID);
+                        ded = 1; //makes you die
                         break;
                     case 7:
                         //room7
