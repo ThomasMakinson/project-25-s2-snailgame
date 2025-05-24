@@ -655,7 +655,9 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
-            int runGame = 1, animationID = 0, door2lock = 1;
+            Random runJump = new Random(10);
+            Random jump = new Random(10);
+            int runGame = 1, animationID = 0, door2lock = 1, jumpSuccess = 0;
             string direction;
             char skip;
             bool sound = true;
@@ -892,15 +894,51 @@ What would you like to do?";
                                 {
                                     case "jump":
                                         text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
-                                        animationID = 1; //added death
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
+                                        jumpSuccess = jump.Next(10); //randomly decides if the jump is successful or not
+                                        if (jumpSuccess == 0-2)
+                                        {
+                                            text = "Apparently a standing jump was enough!.";
+                                            //animationID = 44;
+                                            //Animations(ref animationID);
+                                            roomID = 10; //goes to room 10 in reverse, need to add the reverse part
+                                        }
+                                        else
+                                        {
+                                            text = @"You try to get across from a standing jump without knowing where you're going. 
+Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
+As you fall, an even larger snail eats you.";
+                                            animationID = 1; //death animation
+                                            Animations(ref animationID);
+                                            ded = 1; //makes you die
+                                        }
                                         break;
                                     case "running jump":
-                                        text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour..";
-                                        animationID = 45;
-                                        Animations(ref animationID);
-                                        roomID = 5; //goes to room 5
+                                        text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...";
+                                        Thread.Sleep(1000);
+                                        text = "You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
+                                        jumpSuccess = runJump.Next(10); //randomly decides if the jump is successful or not
+                                        Thread.Sleep(1000);
+                                        if (jumpSuccess == 0 - 4)
+                                        {
+                                            text = "The run up was a success!";
+                                            //animationID = 44;
+                                            //Animations(ref animationID);
+                                            roomID = 10; //goes to room 10 in reverse, need to add the reverse part
+                                        }
+                                        else if (jumpSuccess == 5 - 7)
+                                        {
+                                            text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall. An even larger snail eats you.";
+                                            animationID = 1; //death animation
+                                            Animations(ref animationID);
+                                            ded = 1; //makes you die
+                                        }
+                                        else if (jumpSuccess == 8 - 9)
+                                        {
+                                            text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
+                                            animationID = 1; //death animation
+                                            Animations(ref animationID);
+                                            ded = 1; //makes you die
+                                        }
                                         break;
                                     case "back":
                                         text = "going to room 3";
