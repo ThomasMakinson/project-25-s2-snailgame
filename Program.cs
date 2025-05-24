@@ -577,7 +577,7 @@ If a command is not accepted you may have to try other ways of describing your a
             }
             else
             {
-                text = "oh no";
+                text = "Oh no.";
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
@@ -787,7 +787,7 @@ What would you like to do? ";
                         switch (direction)
                         {
                             case "left":
-                                text = "going to room1";
+                                text = "going to room1"; //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
@@ -829,7 +829,7 @@ What would you like to do? ";
                         switch (direction)
                         {
                             case "back":
-                                text = "Back to where you just came from? You do realise the goal is to win the game, right?";
+                                text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
@@ -870,7 +870,7 @@ What would you like to do? ";
                         break;
                     case 4:
                         //room4
-                        text = @"room 4 descript
+                        text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
 What would you like to do?: ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -882,6 +882,44 @@ What would you like to do?: ";
                                 Animations(ref animationID);
                                 roomID = 3; //goes back to room 3;
                                 break;
+                            case "forward":
+                            case "fog":
+                                text = @"As you go towards the fog, you feel slight breeze brush against your face. 
+Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. 
+You reach the edge of the room, there is a ledge.
+What would you like to do?";
+                                switch (direction)
+                                {
+                                    case "jump":
+                                        text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                        animationID = 1; //added death
+                                        Animations(ref animationID);
+                                        runGame = 0; //return to menu
+                                        break;
+                                    case "running jump":
+                                        text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour..";
+                                        animationID = 45;
+                                        Animations(ref animationID);
+                                        roomID = 5; //goes to room 5
+                                        break;
+                                    case "back":
+                                        text = "going to room 3";
+                                        animationID = 43;
+                                        Animations(ref animationID);
+                                        roomID = 3; //goes back to room 3;
+                                        break;
+                                    case "climb":
+                                    case "down":
+                                        text = "As you climb down, an even larger snail is there, and eats you.";
+                                        //animationID = 45;
+                                        //Animations(ref animationID);
+                                        break;
+                                    default:
+                                        text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                        break;
+                                }
+                                break;
+                            case "left":
                             case "down":
                                 text = "going to room 5";
                                 animationID = 45;
