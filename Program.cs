@@ -988,26 +988,29 @@ As you fall, an even larger snail eats you.";
                         break;
                     case 5:
                         //room5
-                        text = @"room 5 descript
+                        text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
+You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
+I trust you know which is which.
 What would you like to do?: ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "up":
-                                text = "going to room 4";
+                            case "back":
+                                text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 animationID = 54;
                                 Animations(ref animationID);
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
-                                text = "going to room 6";
+                                text = "The dark room. It matches your soul.";
                                 animationID = 56;
                                 Animations(ref animationID);
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
-                                text = "going to room 7";
+                                text = "The bright room. Feeling happy are you? We'll fix that.";
                                 animationID = 57;
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
