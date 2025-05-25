@@ -18,7 +18,6 @@ namespace SnailMate
         public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37, roomID = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
-        int userMenuSelection;
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
        
@@ -704,17 +703,19 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         if (count == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
-                            text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
+                            text = "\nThere is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
                         }
                         else
                         {
-                            text = "gdrg"; //Thomas need type
+                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
                         }
+                        Typewriter(text, delay);
                         soundID = 11;
                         if (sound == true)
                         {
                             SoundPlayer(soundID);
                         }
+                        text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
