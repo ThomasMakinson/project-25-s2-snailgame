@@ -668,12 +668,9 @@ If a command is not accepted you may have to try other ways of describing your a
             char skip;
             bool sound = true;
             items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered" };
-            items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile" };
-            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet" };
-            items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey" };
-            items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched" };
-            items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine" };
-            items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old" };
+            items crumbledNote = new items { Name = "Crumbled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile" };
+            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "\"You unfold the torn page and read the scribbled text:\\n\\n\\\"Why don't skeletons fight each other?\\\"\\n\\nBecause they don't have the guts.\\n\\nYou feel a little worse for reading that.\"", Material = "Paper", Condition = "Torn" };
+            items tornPage = new items { Name = "Torn Page", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass & Wood", Condition = "Dusty" };
 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
@@ -710,20 +707,13 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
-                            text = $"{first[0]}\nThere is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
+                            text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
                             first[0] = 1;
                         }
                         else
                         {
-                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
+                            text = "Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
                         }
-                        Typewriter(text, delay);
-                        soundID = 11;
-                        if (sound == true)
-                        {
-                            SoundPlayer(soundID);
-                        }
-                        text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -794,22 +784,32 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             SoundPlayer(soundID);
                         }
-                        text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
+                        if (first[1] == 0)
+                        {
+                            text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all that know that that's a stretch.
 What would you like to do? ";
+                            first[1] = 1;
+                        }
+                        else // Second description - Cat
+                        {
+
+                        }
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "left":
                                 text = "going to room1"; //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
+                                Typewriter(text, delay);
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
                                 text = "Back the way you came? Alright then, have it your way.";
+                                Typewriter(text, delay);
                                 animationID = 23;
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
@@ -834,30 +834,39 @@ What would you like to do? ";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 3:
                         //room 3
-                        text = @"You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.
+                        if (first[2] == 0)
+                        {
+                            text = @"You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.
 What would you like to do? ";
+                        }
+                        else // Second Description - Cat
+                        {
+
+                        }
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
                                 text = "Back from whence you came? You do realise the goal is to win the game, right?";
+                                Typewriter(text, delay);
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
                                 text = "Could be a useful choice, or maybe not. Are you clever enough to figure out which?";
+                                Typewriter(text, delay);
                                 animationID = 32;
                                 Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
                                 text = "Further into the maze, eh? Ain't no snail gonna catch you, clearly.";
+                                Typewriter(text, delay);
                                 animationID = 34;
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
@@ -882,18 +891,26 @@ What would you like to do? ";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 4:
                         //room4
-                        text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
+                        if (first[3] == 0)
+                        {
+                            text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
 What would you like to do?: ";
-                        Typewriter(text, delay);
+                            first[3] = 1;
+                        }
+                        else // Second Description - Cat
+                        {
+
+                        }
+                            Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "right":
                                 text = "going to room 3";
+                                Typewriter(text, delay);
                                 animationID = 43;
                                 Animations(ref animationID);
                                 roomID = 3; //goes back to room 3;
@@ -904,14 +921,17 @@ What would you like to do?: ";
 Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. 
 You reach the edge of the room, there is a ledge.
 What would you like to do?";
+                                Typewriter(text, delay);
                                 switch (direction)
                                 {
                                     case "jump":
                                         text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                        Typewriter(text, delay);
                                         jumpSuccess = jump.Next(10); //randomly decides if the jump is successful or not
                                         if (jumpSuccess == 0-2)
                                         {
                                             text = "Apparently a standing jump was enough!.";
+                                            Typewriter(text, delay);
                                             //animationID = 44;
                                             //Animations(ref animationID);
                                             roomID = 10; //goes to room 10 in reverse, need to add the reverse part
@@ -921,6 +941,7 @@ What would you like to do?";
                                             text = @"You try to get across from a standing jump without knowing where you're going. 
 Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
 As you fall, an even larger snail eats you.";
+                                            Typewriter(text, delay);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -928,13 +949,16 @@ As you fall, an even larger snail eats you.";
                                         break;
                                     case "running jump":
                                         text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...";
+                                        Typewriter(text, delay);
                                         Thread.Sleep(1000);
                                         text = "You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
+                                        Typewriter(text, delay);
                                         jumpSuccess = runJump.Next(10); //randomly decides if the jump is successful or not
                                         Thread.Sleep(1000);
                                         if (jumpSuccess == 0 - 4)
                                         {
                                             text = "The run up was a success!";
+                                            Typewriter(text, delay);
                                             //animationID = 44;
                                             //Animations(ref animationID);
                                             roomID = 10; //goes to room 10 in reverse, need to add the reverse part
@@ -942,6 +966,7 @@ As you fall, an even larger snail eats you.";
                                         else if (jumpSuccess == 5 - 7)
                                         {
                                             text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall. An even larger snail eats you.";
+                                            Typewriter(text, delay);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -949,6 +974,7 @@ As you fall, an even larger snail eats you.";
                                         else if (jumpSuccess == 8 - 9)
                                         {
                                             text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
+                                            Typewriter(text, delay);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -956,6 +982,7 @@ As you fall, an even larger snail eats you.";
                                         break;
                                     case "back":
                                         text = "going to room 3";
+                                        Typewriter(text, delay);
                                         animationID = 43;
                                         Animations(ref animationID);
                                         roomID = 3; //goes back to room 3;
@@ -963,17 +990,20 @@ As you fall, an even larger snail eats you.";
                                     case "climb":
                                     case "down":
                                         text = "As you climb down, an even larger snail is there, and eats you.";
+                                        Typewriter(text, delay);
                                         //animationID = 45;
                                         //Animations(ref animationID);
                                         break;
                                     default:
                                         text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                        Typewriter(text, delay);
                                         break;
                                 }
                                 break;
                             case "left":
                             case "down":
                                 text = "going to room 5";
+                                Typewriter(text, delay);
                                 animationID = 45;
                                 Animations(ref animationID);
                                 roomID = 5; //goes to room 5
@@ -998,7 +1028,6 @@ As you fall, an even larger snail eats you.";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 5:
                         //room5
