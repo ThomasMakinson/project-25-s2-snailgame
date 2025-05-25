@@ -675,7 +675,7 @@ If a command is not accepted you may have to try other ways of describing your a
             items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID =3 };
             items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 3 };
             items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 3 };
-
+            items[] itemsList = new items[7]; itemsList[0] = rustyKey; itemsList[1] = crumpledNote; itemsList[2] = harmonica; itemsList[3] = slimeyKey; itemsList[4] = fidgetSpinner; itemsList[5] = vaughnsGin; itemsList[6] = unknownPills; 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
@@ -724,7 +724,6 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
-                                cx
                                 Typewriter(text, delay);
                                 if (door2lock == 1)
                                 {
