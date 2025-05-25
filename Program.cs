@@ -9,6 +9,7 @@ using System.Reflection.PortableExecutable;
 using System.ComponentModel;
 using System.Numerics;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SnailMate
 {
@@ -681,7 +682,7 @@ If a command is not accepted you may have to try other ways of describing your a
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
-                        text = "Do you wish to skip the typing animation? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
+                        text = "Please full screen the console for the room animations.\nDo you wish to skip the typing animation? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
                         Typewriter(text, delay);
                         skip = Convert.ToChar(Console.ReadLine().ToLower());
                         if (skip == 'y')
@@ -904,7 +905,7 @@ What would you like to do?: ";
                         {
 
                         }
-                            Typewriter(text, delay);
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1031,10 +1032,19 @@ As you fall, an even larger snail eats you.";
                         break;
                     case 5:
                         //room5
-                        text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
+                        if (first[4] == 0)
+                        {
+                            text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
 You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
 I trust you know which is which.
 What would you like to do?: ";
+                            first[4] = 1;
+                        }
+                        else // Second description - Cat
+                        {
+
+                        }
+
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
@@ -1042,18 +1052,21 @@ What would you like to do?: ";
                             case "up":
                             case "back":
                                 text = "Back from whence you came? You do realise the goal is to win the game, right?";
+                                Typewriter(text, delay);
                                 animationID = 54;
                                 Animations(ref animationID);
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
                                 text = "The dark room. It matches your soul.";
+                                Typewriter(text, delay);
                                 animationID = 56;
                                 Animations(ref animationID);
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
                                 text = "The bright room. Feeling happy are you? We'll fix that.";
+                                Typewriter(text, delay);
                                 animationID = 57;
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
@@ -1078,7 +1091,6 @@ What would you like to do?: ";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 6:
                         //room6
@@ -1093,22 +1105,33 @@ You got lost in a trance. The snail finds you and eats you.";
                         break;
                     case 7:
                         //room7
-                        text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.
+                        if (first[6] == 0)
+                        {
+                            text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.
 What would you like to do?: ";
+                            first[6] = 1;
+                        }
+                        else // Second Description - Cat
+                        {
+
+                        }
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
                                 text = "Backwards it is then.";
+                                Typewriter(text, delay);
                                 animationID = 75;
                                 Animations(ref animationID);
                                 roomID = 5; //goes back to room 5, in reverse
                                 break;
                             case "forward":
                                 text = "A whole new wooorld!";
+                                Typewriter(text, delay);
                                 Thread.Sleep(1000);
                                 text = "Oh wait, that's copyright. Forget that!";
+                                Typewriter(text, delay);
                                 animationID = 78;
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
@@ -1133,20 +1156,29 @@ What would you like to do?: ";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 8:
                         //room8
-                        text = @"You are in a hallway. There is a ladder ahead of you. 
+                        if (first[7] == 0)
+                        {
+                            text = @"You are in a hallway. There is a ladder ahead of you. 
 More darkness creeps down over the ladder, preventing you from seeing where it goes. 
 Could the snail be at the top waiting for you? There's only one way to find out. 
 What would you like to do? ";
+                            first[7] = 1;
+                        }
+                        else // Second Description - Cat
+                        { 
+
+                        }
+
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
                                 text = "Backwards it is then.";
+                                Typewriter(text, delay);
                                 animationID = 87;
                                 Animations(ref animationID);
                                 roomID = 7; //goes back to room 7 in reverse
@@ -1154,6 +1186,7 @@ What would you like to do? ";
                             case "up":
                             case "climb":
                                 text = "Insert climbing animation here.";
+                                Typewriter(text, delay);
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
@@ -1178,20 +1211,28 @@ What would you like to do? ";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 9:
                         //room 9
-                        text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
+                        if (first[8] == 0)
+                        {
+                            text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
 To your left, a door, no different than any other that you've encountered. 
 To your right, an opening, leading to a large room. Both could be inviting. 
 What would you like to do? ";
+                            first[8] = 1;
+                        }
+                        else // Second Decription - Cat
+                        {
+
+                        }
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "down":
                                 text = "Backwards it is, then.";
+                                Typewriter(text, delay);
                                 animationID = 98;
                                 Animations(ref animationID);
                                 roomID = 8; //goes back to room 8 in reverse
@@ -1199,12 +1240,14 @@ What would you like to do? ";
                             case "forward":
 
                                 text = "you win!";
+                                Typewriter(text, delay);
                                 animationID = 0; //need to change this to the win "room"
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                             case "right":
                                 text = "Let's see what's this way.";
+                                Typewriter(text, delay);
                                 animationID = 910;
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
@@ -1229,21 +1272,28 @@ What would you like to do? ";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                     case 10:
                         //room10
-                        text = @"At least you haven't been eaten, yet. 
+                        if (first[9] == 0)
+                        {
+                            text = @"At least you haven't been eaten, yet. 
 You feel a slight breeze caress your legs, and there's fog ahead. 
 Are you near, or are you even further away? 
 The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors. 
 What would you like to do? ";
+                        }
+                        else // Second Description - Cat
+                        {
+
+                        }
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
                                 text = "Backwards it is, then.";
+                                Typewriter(text, delay);
                                 animationID = 109;
                                 Animations(ref animationID);
                                 roomID = 9; //goes back to room 9;
@@ -1252,6 +1302,7 @@ What would you like to do? ";
                             case "fog":
                                 text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
 What would you like to do?";
+                                Typewriter(text, delay);
                                 animationID = 2; //added death
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
@@ -1276,7 +1327,6 @@ What would you like to do?";
                                 SaveGame();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                 }
             }
@@ -1319,7 +1369,8 @@ What would you like to do?";
                 if (inventory[i] == null)
                 {
                     inventory[i] = item;
-                    text = $"You added {item} from your inventory."; 
+                    text = $"You added {item} from your inventory.";
+                    Typewriter(text, delay);
                     inventoryCount++;
                     return;
                 }
@@ -1333,6 +1384,7 @@ What would you like to do?";
                 if (inventory[i] != null && inventory[i] == item)
                 {
                     text = $"You dropped {item} from your inventory.";
+                    Typewriter(text, delay);
                     inventory[i] = null;
                     inventoryCount--;
                     return;
