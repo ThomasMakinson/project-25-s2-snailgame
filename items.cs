@@ -28,6 +28,12 @@ namespace SnailMate
             Console.Clear();
         }
 
+        public static void DisplayInventory(items[] inventory)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow
+        }
+
 
     }
 }
