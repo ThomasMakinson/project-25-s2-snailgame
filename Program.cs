@@ -654,9 +654,8 @@ If a command is not accepted you may have to try other ways of describing your a
 
         public static void NewGame()// Game code
         {
-            Random runJump = new Random(10);
             Random jump = new Random(10);
-            int runGame = 1, animationID = 0, door2lock = 1, jumpSuccess = 0;
+            int runGame = 1, animationID = 0, door2lock = 1, jumpCount = 0;
             string direction;
             char skip;
             bool sound = true;
@@ -707,7 +706,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         else
                         {
-                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
+                            text = "Oh look, you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
                         }
                         Typewriter(text, delay);
                         soundID = 11;
@@ -752,7 +751,6 @@ If a command is not accepted you may have to try other ways of describing your a
                                 }
                                 break;
                             case "forward":
-                                text = "The door ahead of you opens.\nGoing to Room 3.";
                                 animationID = 13;
                                 Animations(ref animationID);
                                 roomID = 3;
@@ -792,14 +790,12 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
-                            case "left":
-                                text = "going to room1"; //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
+                            case "left": //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
-                                text = "Back the way you came? Alright then, have it your way.";
                                 animationID = 23;
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
@@ -835,19 +831,16 @@ What would you like to do? ";
                         switch (direction)
                         {
                             case "back":
-                                text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
-                                text = "Could be a useful choice, or maybe not. Are you clever enough to figure out which?";
                                 animationID = 32;
                                 Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
-                                text = "Further into the maze, eh? Ain't no snail gonna catch you, clearly.";
                                 animationID = 34;
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
@@ -877,118 +870,207 @@ What would you like to do? ";
                     case 4:
                         //room4
                         text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
-What would you like to do?: ";
+What would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
-                        switch (direction)
+                        if (jumpCount == 0) //Makes it so a different dialogue shows if they have or have not jumped before. - Thomas
                         {
-                            case "right":
-                                text = "going to room 3";
-                                animationID = 43;
-                                Animations(ref animationID);
-                                roomID = 3; //goes back to room 3;
-                                break;
-                            case "forward":
-                            case "fog":
-                                text = @"As you go towards the fog, you feel slight breeze brush against your face. 
+                            switch (direction)
+                            {
+                                case "right":
+                                    animationID = 43;
+                                    Animations(ref animationID);
+                                    roomID = 3; //goes back to room 3;
+                                    break;
+                                case "forward":
+                                case "fog":
+                                    text = @"As you go towards the fog, you feel slight breeze brush against your face. 
 Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. 
 You reach the edge of the room, there is a ledge.
 What would you like to do?";
-                                switch (direction)
-                                {
-                                    case "jump":
-                                        text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
-                                        jumpSuccess = jump.Next(10); //randomly decides if the jump is successful or not
-                                        if (jumpSuccess == 0-2)
-                                        {
-                                            text = "Apparently a standing jump was enough!.";
-                                            //animationID = 44;
-                                            //Animations(ref animationID);
-                                            roomID = 10; //goes to room 10 in reverse, need to add the reverse part
-                                        }
-                                        else
-                                        {
-                                            text = @"You try to get across from a standing jump without knowing where you're going. 
+                                    switch (direction)
+                                    {
+                                        case "jump":
+                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                            if (jump.Next(10) >= 2)
+                                            {
+                                                text = "Apparently a standing jump was enough!.";
+                                                jumpCount = 1;
+                                                //animationID = 44;
+                                                //Animations(ref animationID);
+                                                roomID = 10; //goes to room 10
+                                            }
+                                            else
+                                            {
+                                                text = @"You try to get across from a standing jump without knowing where you're going. 
 Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
+As you fall, an even larger snail eats you.";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            break;
+                                        case "running jump":
+                                            text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...";
+                                            Thread.Sleep(1000);
+                                            text = "You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
+                                            Thread.Sleep(1000);
+                                            if (jump.Next(10) >= 4)
+                                            {
+                                                text = "The run up was a success!";
+                                                jumpCount = 1;
+                                                //animationID = 44;
+                                                //Animations(ref animationID);
+                                                roomID = 10; //goes to room 10
+                                            }
+                                            else if (jump.Next(10) == 5 - 7)
+                                            {
+                                                text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall. An even larger snail eats you.";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            else if (jump.Next(10) == 8 - 9)
+                                            {
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            break;
+                                        case "back":
+                                            text = "going to room 3";
+                                            animationID = 43;
+                                            Animations(ref animationID);
+                                            roomID = 3; //goes back to room 3;
+                                            break;
+                                        case "climb":
+                                        case "down":
+                                            text = "As you climb down, an even larger snail is there, and eats you.";
+                                            //animationID = 45;
+                                            //Animations(ref animationID);
+                                            break;
+                                        default:
+                                            text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                            break;
+                                    }
+                                    break;
+                                case "left":
+                                case "down":
+                                    animationID = 45;
+                                    Animations(ref animationID);
+                                    roomID = 5; //goes to room 5
+                                    break;
+                                case "blood":
+                                case "give blood":
+                                case "leave blood":
+                                case "bleed":
+                                case "appease":
+                                    Appease();
+                                    break;
+                                case "check danger":
+                                case "danger":
+                                case "snail":
+                                case "snailcheck":
+                                case "snail check":
+                                case "how far?":
+                                case "am I going to die?":
+                                    SnailCheck();
+                                    break;
+                                case "save":
+                                    SaveGame();
+                                    break;
+                            }
+                        
+                        }
+                        else if (jumpCount == 1) //Makes it so a different dialogue shows if they have or have not jumped before. - Thomas
+                        {
+                            switch (direction)
+                            {
+                                case "right":
+                                    animationID = 43;
+                                    Animations(ref animationID);
+                                    roomID = 3; //goes back to room 3;
+                                    break;
+                                case "forward":
+                                case "fog":
+                                    text = @"Jump back across, you know how far it is now. Have fun?
+What would you like to do?";
+                                    switch (direction)
+                                    {
+                                        case "jump":
+                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                            Thread.Sleep(1000);
+                                            text = @"You try to get across from a standing jump without knowing where you're going. 
+Bad life choice? Yes. You don't jump anywhere near far enough. You scream as you fall.
 As you fall, an even larger snail eats you.";
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
-                                        }
-                                        break;
-                                    case "running jump":
-                                        text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...";
-                                        Thread.Sleep(1000);
-                                        text = "You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
-                                        jumpSuccess = runJump.Next(10); //randomly decides if the jump is successful or not
-                                        Thread.Sleep(1000);
-                                        if (jumpSuccess == 0 - 4)
-                                        {
-                                            text = "The run up was a success!";
-                                            //animationID = 44;
-                                            //Animations(ref animationID);
-                                            roomID = 10; //goes to room 10 in reverse, need to add the reverse part
-                                        }
-                                        else if (jumpSuccess == 5 - 7)
-                                        {
-                                            text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall. An even larger snail eats you.";
+                                            break;
+                                        case "running jump":
+                                            text = "You walk back into the hallway. You are the furthest you can be from the fog, it's now or never. You start running.";
+                                            Thread.Sleep(1000);
+                                            if (jump.Next(10) < 5) //randomly decides which outcome the player gets
+                                            {
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            else if (jump.Next(10) > 5)
+                                            {
+                                                text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            break;
+                                        case "back":
+                                            animationID = 43;
+                                            Animations(ref animationID);
+                                            roomID = 3; //goes back to room 3;
+                                            break;
+                                        case "climb":
+                                        case "down":
+                                            text = "As you climb down, an even larger snail is there, and eats you.";
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
-                                        }
-                                        else if (jumpSuccess == 8 - 9)
-                                        {
-                                            text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
-                                            animationID = 1; //death animation
-                                            Animations(ref animationID);
-                                            ded = 1; //makes you die
-                                        }
-                                        break;
-                                    case "back":
-                                        text = "going to room 3";
-                                        animationID = 43;
-                                        Animations(ref animationID);
-                                        roomID = 3; //goes back to room 3;
-                                        break;
-                                    case "climb":
-                                    case "down":
-                                        text = "As you climb down, an even larger snail is there, and eats you.";
-                                        //animationID = 45;
-                                        //Animations(ref animationID);
-                                        break;
-                                    default:
-                                        text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
-                                        break;
-                                }
-                                break;
-                            case "left":
-                            case "down":
-                                text = "going to room 5";
-                                animationID = 45;
-                                Animations(ref animationID);
-                                roomID = 5; //goes to room 5
-                                break;
-                            case "blood":
-                            case "give blood":
-                            case "leave blood":
-                            case "bleed":
-                            case "appease":
-                                Appease();
-                                break;
-                            case "check danger":
-                            case "danger":
-                            case "snail":
-                            case "snailcheck":
-                            case "snail check":
-                            case "how far?":
-                            case "am I going to die?":
-                                SnailCheck();
-                                break;
-                            case "save":
-                                SaveGame();
-                                break;
+                                            break;
+                                        default:
+                                            text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                            break;
+                                    }
+                                    break;
+                                case "left":
+                                case "down":
+                                    animationID = 45;
+                                    Animations(ref animationID);
+                                    roomID = 5; //goes to room 5
+                                    break;
+                                case "blood":
+                                case "give blood":
+                                case "leave blood":
+                                case "bleed":
+                                case "appease":
+                                    Appease();
+                                    break;
+                                case "check danger":
+                                case "danger":
+                                case "snail":
+                                case "snailcheck":
+                                case "snail check":
+                                case "how far?":
+                                case "am I going to die?":
+                                    SnailCheck();
+                                    break;
+                                case "save":
+                                    SaveGame();
+                                    break;
+                            }
                         }
-                        Typewriter(text, delay);
+                            Typewriter(text, delay);
                         break;
                     case 5:
                         //room5
@@ -1002,19 +1084,16 @@ What would you like to do?: ";
                         {
                             case "up":
                             case "back":
-                                text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 animationID = 54;
                                 Animations(ref animationID);
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
-                                text = "The dark room. It matches your soul.";
                                 animationID = 56;
                                 Animations(ref animationID);
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
-                                text = "The bright room. Feeling happy are you? We'll fix that.";
                                 animationID = 57;
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
@@ -1054,22 +1133,20 @@ You got lost in a trance. The snail finds you and eats you.";
                         break;
                     case 7:
                         //room7
-                        text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.
+                        text = @"This is a very large room. It is well lit. 
+It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. 
+There is only an opening to your right.
 What would you like to do?: ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
                             case "back":
-                                text = "Backwards it is then.";
                                 animationID = 75;
                                 Animations(ref animationID);
                                 roomID = 5; //goes back to room 5, in reverse
                                 break;
                             case "forward":
-                                text = "A whole new wooorld!";
-                                Thread.Sleep(1000);
-                                text = "Oh wait, that's copyright. Forget that!";
                                 animationID = 78;
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
@@ -1107,14 +1184,12 @@ What would you like to do? ";
                         switch (direction)
                         {
                             case "back":
-                                text = "Backwards it is then.";
                                 animationID = 87;
                                 Animations(ref animationID);
-                                roomID = 7; //goes back to room 7 in reverse
+                                roomID = 7; //goes back to room 7
                                 break;
                             case "up":
                             case "climb":
-                                text = "Insert climbing animation here.";
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
@@ -1152,20 +1227,16 @@ What would you like to do? ";
                         switch (direction)
                         {
                             case "down":
-                                text = "Backwards it is, then.";
                                 animationID = 98;
                                 Animations(ref animationID);
                                 roomID = 8; //goes back to room 8 in reverse
                                 break;
                             case "forward":
-
-                                text = "you win!";
                                 animationID = 0; //need to change this to the win "room"
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                             case "right":
-                                text = "Let's see what's this way.";
                                 animationID = 910;
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
@@ -1201,43 +1272,122 @@ The room has an interesting shape, there are angles leading back to the opening 
 What would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
+                        if (jumpCount == 0)
+                        {
+                            switch (direction)
+                            {
+                                case "back":
+                                    animationID = 109;
+                                    Animations(ref animationID);
+                                    roomID = 9; //goes back to room 9;
+                                    break;
+                                case "forward":
+                                case "fog":
+                                    text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
+What would you like to do?";
+                                    switch (direction)
+                                    {
+                                        case "jump":
+                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
+                                            if (jump.Next(10) >= 2)
+                                            {
+                                                text = "Apparently a standing jump was enough!.";
+                                                jumpCount = 1;
+                                                //animationID = 44;
+                                                //Animations(ref animationID);
+                                                roomID = 4; //goes to room 4
+                                            }
+                                            else if (jump.Next(10) < 2)
+                                            {
+                                                text = @"You try to get across from a standing jump without knowing where you're going.
+Bad life choice? Yes. You don't jump anywhere near far enough. 
+If there was anything there, you haven't reached it. You scream as you fall and the snail eats you.";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            break;
+                                        case "running jump":
+                                            text = "Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...";
+                                            Thread.Sleep(1000);
+                                            text = "You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
+                                            Thread.Sleep(1000);
+                                            if (jump.Next(10) >= 4)
+                                            {
+                                                text = "The run up was a success!";
+                                                jumpCount = 1;
+                                                //animationID = 44;
+                                                //Animations(ref animationID);
+                                                roomID = 4; //goes to room 4
+                                            }
+                                            else if (jump.Next(10) == 5 - 7)
+                                            {
+                                                text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough.";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            if (jump.Next(10) == 8 - 9)
+                                            {
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            break;
+                                        case "back":
+                                            animationID = 109; //goes back to room 9;
+                                            break; 
+                                        default:
+                                            text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                            animationID = 1; //death animation
+                                            Animations(ref animationID);
+                                            ded = 1; //makes you die
+                                            break;
+                                    }
+                                    animationID = 2; //added death
+                                    Animations(ref animationID);
+                                    runGame = 0; //return to menu
+                                    break;
+                                case "blood":
+                                case "give blood":
+                                case "leave blood":
+                                case "bleed":
+                                case "appease":
+                                    Appease();
+                                    break;
+                                case "check danger":
+                                case "danger":
+                                case "snail":
+                                case "snailcheck":
+                                case "snail check":
+                                case "how far?":
+                                case "am I going to die?":
+                                    SnailCheck();
+                                    break;
+                                case "save":
+                                    SaveGame();
+                                    break;
+                            }
+                        }
+                        Typewriter(text, delay);
+                        break;
+                    case 11: //"win room"
+                        Typewriter(text, delay);
+                        direction = Console.ReadLine().ToLower().Trim();
+                        text = @"There is a super bright light, it appears that the map hasn't loaded yet. You can't see anything. 
+What would you like to do?";
                         switch (direction)
                         {
                             case "back":
-                                text = "Backwards it is, then.";
-                                animationID = 109;
+                                animationID = 110;
                                 Animations(ref animationID);
                                 roomID = 9; //goes back to room 9;
                                 break;
-                            case "forward":
-                            case "fog":
-                                text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
-What would you like to do?";
-                                animationID = 2; //added death
-                                Animations(ref animationID);
-                                runGame = 0; //return to menu
-                                break;
-                            case "blood":
-                            case "give blood":
-                            case "leave blood":
-                            case "bleed":
-                            case "appease":
-                                Appease();
-                                break;
-                            case "check danger":
-                            case "danger":
-                            case "snail":
-                            case "snailcheck":
-                            case "snail check":
-                            case "how far?":
-                            case "am I going to die?":
-                                SnailCheck();
-                                break;
-                            case "save":
-                                SaveGame();
+                            default:
+                                text = @"You walk forward, and the light is blinding.";
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
                 }
             }
