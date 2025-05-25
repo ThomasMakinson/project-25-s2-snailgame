@@ -82,7 +82,7 @@ namespace SnailMate
                 case "gin":
                     Console.WriteLine("You sip Vaughn’s Gin. Suddenly, you understand every lecture ever given.");
                     Thread.Sleep(1000);
-                    Console.WriteLine("You *are* the rubric. You *are* the feedback.");
+                    Console.WriteLine("You are the rubric. You are the feedback.");
                     Thread.Sleep(800);
                     Console.WriteLine("But also... you’re drunk. And the snail is still coming.");
                     break;

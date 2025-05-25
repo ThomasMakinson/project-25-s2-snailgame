@@ -21,6 +21,14 @@ namespace SnailMate
         public static items[] inventory = new items[10];
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
+        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 3 };
+        public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile", RoomID = 3 };
+        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID = 3 };
+        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 3 };
+        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 3 };
+        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 3 };
+        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 3 };
+        public static items[] itemsList = new items[7]; itemsList[0] = rustyKey; itemsList[1] = crumpledNote; itemsList[2] = harmonica; itemsList[3] = slimeyKey; itemsList[4] = fidgetSpinner; itemsList[5] = vaughnsGin; itemsList[6] = unknownPills;
        
 
 
@@ -667,15 +675,7 @@ If a command is not accepted you may have to try other ways of describing your a
             int[] first = new int [10];
             string direction;
             char skip;
-            bool sound = true;
-            items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 3};
-            items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile", RoomID =3 };
-            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID =3 };
-            items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 3};
-            items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID =3 };
-            items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 3 };
-            items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 3 };
-            items[] itemsList = new items[7]; itemsList[0] = rustyKey; itemsList[1] = crumpledNote; itemsList[2] = harmonica; itemsList[3] = slimeyKey; itemsList[4] = fidgetSpinner; itemsList[5] = vaughnsGin; itemsList[6] = unknownPills; 
+            bool sound = true; 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
@@ -1460,6 +1460,135 @@ What would you like to do?";
             {
                 Console.Write(c);
                 Thread.Sleep(delay);
+            }
+        }
+
+        public static void checkRoomItems(int roomID)
+        {
+            if (rustyKey.RoomID == roomID)
+            {
+                Console.WriteLine("A rusty key lies on the ground.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(rustyKey);
+                    rustyKey.RoomID = -1;
+                    Console.WriteLine("You picked up the Rusty Key.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Rusty Key where it is.");
+                }
+            }
+
+            if (slimeyKey.RoomID == roomID)
+            {
+                Console.WriteLine("A slime-drenched key rests on the floor. You really hope it didn’t come from the snail.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(slimeyKey);
+                    slimeyKey.RoomID = -1;
+                    Console.WriteLine("You picked up the Slimey Key.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Slimey Key where it is.");
+                }
+            }
+
+            if (harmonica.RoomID == roomID)
+            {
+                Console.WriteLine("A slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(harmonica);
+                    harmonica.RoomID = -1;
+                    Console.WriteLine("You picked up the Harmonica.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Harmonica where it is.");
+                }
+            }
+
+            if (vaughnsGin.RoomID == roomID)
+            {
+                Console.WriteLine("A full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(vaughnsGin);
+                    vaughnsGin.RoomID = -1;
+                    Console.WriteLine("You picked up the Bottle of Gin.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Bottle of Gin where it is.");
+                }
+            }
+
+            if (crumpledNote.RoomID == roomID)
+            {
+                Console.WriteLine("A crumbled piece of paper sticks out from under a cracked tile.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(crumpledNote);
+                    crumpledNote.RoomID = -1;
+                    Console.WriteLine("You picked up the Crumpled Note.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Crumpled Note where it is.");
+                }
+            }
+
+            if (fidgetSpinner.RoomID == roomID)
+            {
+                Console.WriteLine("A brightly colored fidget spinner gleams unnaturally in the corner.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(fidgetSpinner);
+                    fidgetSpinner.RoomID = -1;
+                    Console.WriteLine("You picked up the Fidget Spinner.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Fidget Spinner where it is.");
+                }
+            }
+
+            if (unknownPills.RoomID == roomID)
+            {
+                Console.WriteLine("A small bottle of unlabelled pills sits ominously on a desk.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(unknownPills);
+                    unknownPills.RoomID = -1;
+                    Console.WriteLine("You picked up the Unknown Pills.");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Unknown Pills where they are.");
+                }
             }
         }
     }
