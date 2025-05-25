@@ -21,15 +21,13 @@ namespace SnailMate
         public static items[] inventory = new items[10];
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
-        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 3 };
+        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 2 };
         public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile", RoomID = 3 };
-        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID = 3 };
-        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 3 };
-        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 3 };
-        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 3 };
-        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 3 };
-        public static items[] itemsList = new items[7]; itemsList[0] = rustyKey; itemsList[1] = crumpledNote; itemsList[2] = harmonica; itemsList[3] = slimeyKey; itemsList[4] = fidgetSpinner; itemsList[5] = vaughnsGin; itemsList[6] = unknownPills;
-       
+        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID = 7 };
+        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 10 };
+        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
+        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 6 };
+        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
 
 
         public static void DisplayTitleScreen()
@@ -719,6 +717,7 @@ If a command is not accepted you may have to try other ways of describing your a
                             text = "Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -799,6 +798,7 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -849,6 +849,7 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -907,6 +908,7 @@ What would you like to do?: ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1047,6 +1049,7 @@ What would you like to do?: ";
                         }
 
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1100,6 +1103,7 @@ You have entered a room that is so blank, it appears to be a black void.
 The void seems to draw you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! 
 You got lost in a trance. The snail finds you and eats you.";
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         animationID = 1; //death animation
                         Animations(ref animationID);
                         ded = 1; //makes you die
@@ -1174,6 +1178,7 @@ What would you like to do? ";
                         }
 
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1228,6 +1233,7 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1289,6 +1295,7 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1369,9 +1376,6 @@ What would you like to do?";
             {
                 if (inventory[i] == null)
                 {
-                    inventory[i] = item;
-                    text = $"You added {item} from your inventory.";
-                    Typewriter(text, delay);
                     inventoryCount++;
                     return;
                 }
@@ -1384,8 +1388,6 @@ What would you like to do?";
             {
                 if (inventory[i] != null && inventory[i] == item)
                 {
-                    text = $"You dropped {item} from your inventory.";
-                    Typewriter(text, delay);
                     inventory[i] = null;
                     inventoryCount--;
                     return;
@@ -1467,7 +1469,7 @@ What would you like to do?";
         {
             if (rustyKey.RoomID == roomID)
             {
-                Console.WriteLine("A rusty key lies on the ground.");
+                Console.WriteLine("\nA rusty key lies on the ground.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1476,16 +1478,18 @@ What would you like to do?";
                     AddToInventory(rustyKey);
                     rustyKey.RoomID = -1;
                     Console.WriteLine("You picked up the Rusty Key.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Rusty Key where it is.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
 
             if (slimeyKey.RoomID == roomID)
             {
-                Console.WriteLine("A slime-drenched key rests on the floor. You really hope it didn’t come from the snail.");
+                Console.WriteLine("\nA slime-drenched key rests on the floor. You really hope it didn’t come from the snail.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1494,16 +1498,18 @@ What would you like to do?";
                     AddToInventory(slimeyKey);
                     slimeyKey.RoomID = -1;
                     Console.WriteLine("You picked up the Slimey Key.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Slimey Key where it is.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
 
             if (harmonica.RoomID == roomID)
             {
-                Console.WriteLine("A slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.");
+                Console.WriteLine("\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1512,16 +1518,18 @@ What would you like to do?";
                     AddToInventory(harmonica);
                     harmonica.RoomID = -1;
                     Console.WriteLine("You picked up the Harmonica.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Harmonica where it is.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
 
             if (vaughnsGin.RoomID == roomID)
             {
-                Console.WriteLine("A full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.");
+                Console.WriteLine("\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1530,16 +1538,18 @@ What would you like to do?";
                     AddToInventory(vaughnsGin);
                     vaughnsGin.RoomID = -1;
                     Console.WriteLine("You picked up the Bottle of Gin.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Bottle of Gin where it is.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
 
             if (crumpledNote.RoomID == roomID)
             {
-                Console.WriteLine("A crumbled piece of paper sticks out from under a cracked tile.");
+                Console.WriteLine("\nA crumbled piece of paper sticks out from under a cracked tile.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1548,16 +1558,18 @@ What would you like to do?";
                     AddToInventory(crumpledNote);
                     crumpledNote.RoomID = -1;
                     Console.WriteLine("You picked up the Crumpled Note.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Crumpled Note where it is.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
 
             if (fidgetSpinner.RoomID == roomID)
             {
-                Console.WriteLine("A brightly colored fidget spinner gleams unnaturally in the corner.");
+                Console.WriteLine("\nA brightly colored fidget spinner gleams unnaturally in the corner.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1566,16 +1578,18 @@ What would you like to do?";
                     AddToInventory(fidgetSpinner);
                     fidgetSpinner.RoomID = -1;
                     Console.WriteLine("You picked up the Fidget Spinner.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Fidget Spinner where it is.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
 
             if (unknownPills.RoomID == roomID)
             {
-                Console.WriteLine("A small bottle of unlabelled pills sits ominously on a desk.");
+                Console.WriteLine("\nA small bottle of unlabelled pills sits ominously on a desk.");
                 Console.Write("Would you like to pick it up? (yes/no): ");
                 string input = Console.ReadLine().ToLower().Trim();
 
@@ -1584,10 +1598,12 @@ What would you like to do?";
                     AddToInventory(unknownPills);
                     unknownPills.RoomID = -1;
                     Console.WriteLine("You picked up the Unknown Pills.");
+                    Console.WriteLine("What would you like to do?");
                 }
                 else
                 {
                     Console.WriteLine("You leave the Unknown Pills where they are.");
+                    Console.WriteLine("What would you like to do?");
                 }
             }
         }
