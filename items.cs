@@ -8,6 +8,7 @@ namespace SnailMate
 {
     internal class items
     {
+        // Declaring variables for items and getting them to read and write their values
         public string Name { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
@@ -18,6 +19,7 @@ namespace SnailMate
 
         public void Inspect()
         {
+            // Displaying the items characteristics variables in a easy method
             Console.Clear();
             Program.Typewriter($"Hmm let's take a look at this {Name}.\n", 30);
             Program.Typewriter($"It appears to be a {Type} of some sort.\n", 30);
@@ -30,6 +32,7 @@ namespace SnailMate
 
         public static void DisplayInventory(items[] inventory)
         {
+            // Displays entire inventory including empty slots with a for loop and some checking to see the contents of inventory slots
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("========= INVENTORY =========");
@@ -54,6 +57,7 @@ namespace SnailMate
 
         public void Use()
         {
+            // Added a use method for items, these are only writelines for humour
             switch (Name.ToLower())
             {
                 case "crumpled note":
