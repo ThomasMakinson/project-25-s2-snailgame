@@ -11,9 +11,9 @@ namespace SnailMate
         public string Name { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
-        
         public string Material { get; set; }
         public string Condition { get; set; }
+        public int RoomID { get; set; }
         
 
         public void Inspect()

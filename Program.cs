@@ -660,13 +660,13 @@ If a command is not accepted you may have to try other ways of describing your a
             string direction;
             char skip;
             bool sound = true;
-            items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered" };
-            items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile" };
-            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet" };
-            items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey" };
-            items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched" };
-            items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine" };
-            items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old" };
+            items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 3};
+            items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile", RoomID =3 };
+            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID =3 };
+            items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 3};
+            items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID =3 };
+            items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 3 };
+            items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 3 };
 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
@@ -722,8 +722,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
-                                AddToInventory(rustyKey);
-                                rustyKey.Inspect();
+                                cx
                                 Typewriter(text, delay);
                                 if (door2lock == 1)
                                 {
