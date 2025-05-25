@@ -1144,7 +1144,7 @@ What would you like to do?: ";
                             case "back":
                                 animationID = 75;
                                 Animations(ref animationID);
-                                roomID = 5; //goes back to room 5, in reverse
+                                roomID = 5; //goes back to room 5
                                 break;
                             case "forward":
                                 animationID = 78;
@@ -1229,12 +1229,12 @@ What would you like to do? ";
                             case "down":
                                 animationID = 98;
                                 Animations(ref animationID);
-                                roomID = 8; //goes back to room 8 in reverse
+                                roomID = 8; //goes back to room 8
                                 break;
                             case "forward":
-                                animationID = 0; //need to change this to the win "room"
-                                Animations(ref animationID);
-                                runGame = 0; //return to menu
+                                //animationID = 0; //"win animation"?
+                                //Animations(ref animationID);
+                                roomID = 11; //"win room"
                                 break;
                             case "right":
                                 animationID = 910;
@@ -1348,6 +1348,77 @@ If there was anything there, you haven't reached it. You scream as you fall and 
                                     animationID = 2; //added death
                                     Animations(ref animationID);
                                     runGame = 0; //return to menu
+                                    break;
+                                case "blood":
+                                case "give blood":
+                                case "leave blood":
+                                case "bleed":
+                                case "appease":
+                                    Appease();
+                                    break;
+                                case "check danger":
+                                case "danger":
+                                case "snail":
+                                case "snailcheck":
+                                case "snail check":
+                                case "how far?":
+                                case "am I going to die?":
+                                    SnailCheck();
+                                    break;
+                                case "save":
+                                    SaveGame();
+                                    break;
+                            }
+                        }
+                        else if (jumpCount == 1)
+                        {
+                            switch (direction)
+                            {
+                                case "back":
+                                    animationID = 109;
+                                    Animations(ref animationID);
+                                    roomID = 9; //goes back to room 9;
+                                    break;
+                                case "forward":
+                                case "fog":
+                                    text = @"Jump back across, you know how far it is now. Have fun? 
+What would you like to do?";
+                                    switch (direction)
+                                    {
+                                        case "jump":
+                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
+                                            Thread.Sleep(1000);
+                                            text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
+                                            animationID = 1; //death animation
+                                            Animations(ref animationID);
+                                            ded = 1; //makes you die
+                                            break;
+                                        case "running jump":
+                                            if (jump.Next(10) < 5) //randomly decides which outcome the player gets
+                                            {
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            else if (jump.Next(10) > 5)
+                                            {
+                                                text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
+                                                animationID = 1; //death animation
+                                                Animations(ref animationID);
+                                                ded = 1; //makes you die
+                                            }
+                                            break;
+                                        case "back":
+                                            animationID = 109; //goes back to room 9;
+                                            break;
+                                        default:
+                                            text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                            animationID = 1; //death animation
+                                            Animations(ref animationID);
+                                            ded = 1; //makes you die
+                                            break;
+                                    }
                                     break;
                                 case "blood":
                                 case "give blood":
