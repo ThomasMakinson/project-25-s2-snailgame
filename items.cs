@@ -45,6 +45,11 @@ namespace SnailMate
                     Console.WriteLine($"[{i + 1}] (Empty Slot)");
                 }
             }
+            Console.ResetColor();
+            Console.WriteLine("\nPress any key to return to game...");
+            Console.ReadKey(true);
+            Console.Clear();
+
         }
 
 
