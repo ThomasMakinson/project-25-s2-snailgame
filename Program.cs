@@ -15,7 +15,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, count = 0, death = 0, ded = 0, delay = 37, roomID = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
         public static bool exitGame = false;
@@ -560,22 +560,27 @@ If a command is not accepted you may have to try other ways of describing your a
             snailDistance -= 1;
             if (snailDistance >= 10)
             {
+                soundID = 50;
                 text = "The threat is distant.";
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
+                soundID = 51;
                 text = "The threat draws nearer.";
             }
             else if (snailDistance < 5 && snailDistance >1)
             {
+                soundID = 52;
                 text = "Breathe softly, it's very close now.";
             }
             else if (snailDistance == 1)
             {
+                soundID = 53;
                 text = "It's right behind you.";
             }
             else
             {
+                soundID = 54;
                 text = "Oh no.";
                 Thread.Sleep(500);
                 int animationID = 1;
@@ -583,6 +588,7 @@ If a command is not accepted you may have to try other ways of describing your a
                 ded = 1;
                 
             }
+            SoundPlayer(soundID);
             Typewriter(text, delay);
         }
 
@@ -609,9 +615,9 @@ If a command is not accepted you may have to try other ways of describing your a
             else if (blood == 2)
             {
                 text = "Are you sure? This will be your last: y/n";
+                Typewriter(text, delay);
                 temp = Console.ReadLine();
                 temp = temp.ToLower().Trim();
-
                 if (temp == "y" || temp == "yes")
                 {
                     snailDistance += 5;
@@ -657,6 +663,7 @@ If a command is not accepted you may have to try other ways of describing your a
             Random runJump = new Random(10);
             Random jump = new Random(10);
             int runGame = 1, animationID = 0, door2lock = 1, jumpSuccess = 0;
+            int[] first = new int [10];
             string direction;
             char skip;
             bool sound = true;
@@ -698,9 +705,10 @@ If a command is not accepted you may have to try other ways of describing your a
                         {
                             SoundPlayer(soundID);
                         }
-                        if (count == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
+                        if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
-                            text = "\nThere is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
+                            text = $"{first[0]}\nThere is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
+                            first[0] = 1;
                         }
                         else
                         {
@@ -739,6 +747,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                     }
                                     Typewriter(text, delay);
                                     text = "The door is unlocked.";
+                                    Typewriter(text, delay);
                                     animationID = 12;
                                     Animations(ref animationID);
                                     roomID = 2;//changes room to room 2 and starts it
@@ -750,6 +759,7 @@ If a command is not accepted you may have to try other ways of describing your a
                                 break;
                             case "forward":
                                 text = "The door ahead of you opens.\nGoing to Room 3.";
+                                Typewriter(text, delay);
                                 animationID = 13;
                                 Animations(ref animationID);
                                 roomID = 3;
