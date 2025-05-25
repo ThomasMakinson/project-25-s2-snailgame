@@ -31,7 +31,20 @@ namespace SnailMate
         public static void DisplayInventory(items[] inventory)
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Yellow
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("========= INVENTORY =========");
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                if (inventory[i] != null)
+                {
+                    Console.WriteLine($"[{i + 1}] {inventory[i].Name} - {inventory[i].Type} - {inventory[i].Condition}");
+                }
+
+                else
+                {
+                    Console.WriteLine($"[{i + 1}] (Empty Slot)");
+                }
+            }
         }
 
 
