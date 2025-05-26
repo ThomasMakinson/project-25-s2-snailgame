@@ -1481,22 +1481,21 @@ What would you like to do?";
         {
             if (rustyKey.RoomID == roomID)
             {
-                Console.WriteLine("\nA rusty key lies on the ground.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
+                text = "\nA rusty key lies on the ground.\nWould you like to pick it up? (yes/no): ";
+                Typewriter(text, delay);
                 string input = Console.ReadLine().ToLower().Trim();
 
                 if (input == "yes")
                 {
                     AddToInventory(rustyKey);
                     rustyKey.RoomID = -1;
-                    Console.WriteLine("You picked up the Rusty Key.");
-                    Console.WriteLine("What would you like to do?");
+                    text = "You picked up the Rusty Key.\nWhat would you like to do?";
                 }
                 else
                 {
-                    Console.WriteLine("You leave the Rusty Key where it is.");
-                    Console.WriteLine("What would you like to do?");
+                    text = "You leave the Rusty Key where it is.\nWhat would you like to do?");
                 }
+                Typewriter(text, delay);
             }
 
             if (slimeyKey.RoomID == roomID)
