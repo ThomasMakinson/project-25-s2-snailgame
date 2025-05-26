@@ -1882,141 +1882,44 @@ The snail finds you, sucks your blood, and eats your corpse.";
         {
             if (rustyKey.RoomID == roomID)
             {
-                text = "\nA rusty key lies on the ground.\nWould you like to pick it up? (yes/no): ";
-                Typewriter(text, delay);
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(rustyKey);
-                    rustyKey.RoomID = -1;
-                    text = "You picked up the Rusty Key.\nWhat would you like to do?";
-                }
-                else
-                {
-                    text = ("You leave the Rusty Key where it is.\nWhat would you like to do?");
-                }
+                text = "\nA rusty key lies on the ground.";
                 Typewriter(text, delay);
             }
 
             if (slimeyKey.RoomID == roomID)
             {
-                Console.WriteLine("\nA slime-drenched key rests on the floor. You really hope it didn’t come from the snail.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(slimeyKey);
-                    slimeyKey.RoomID = -1;
-                    Console.WriteLine("You picked up the Slimey Key.");
-                    Console.WriteLine("What would you like to do?");
-                }
-                else
-                {
-                    Console.WriteLine("You leave the Slimey Key where it is.");
-                    Console.WriteLine("What would you like to do?");
-                }
+                text = "\nA slimey key rests on the floor. You really hope it didn’t come from the snail.";
+                Typewriter(text, delay);
             }
 
             if (harmonica.RoomID == roomID)
             {
-                Console.WriteLine("\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(harmonica);
-                    harmonica.RoomID = -1;
-                    Console.WriteLine("You picked up the Harmonica.");
-                    Console.WriteLine("What would you like to do?");
-                }
-                else
-                {
-                    Console.WriteLine("You leave the Harmonica where it is.");
-                    Console.WriteLine("What would you like to do?");
-                }
+                text = "\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.";
+                Typewriter(text, delay);
             }
 
             if (vaughnsGin.RoomID == roomID)
             {
-                Console.WriteLine("\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(vaughnsGin);
-                    vaughnsGin.RoomID = -1;
-                    Console.WriteLine("You picked up the Bottle of Gin.");
-                    Console.WriteLine("What would you like to do?");
-                }
-                else
-                {
-                    Console.WriteLine("You leave the Bottle of Gin where it is.");
-                    Console.WriteLine("What would you like to do?");
-                }
+                text = "\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.";
+                Typewriter(text, delay);
             }
 
             if (crumpledNote.RoomID == roomID)
             {
-                Console.WriteLine("\nA crumbled piece of paper sticks out from under a cracked tile.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(crumpledNote);
-                    crumpledNote.RoomID = -1;
-                    Console.WriteLine("You picked up the Crumpled Note.");
-                    Console.WriteLine("What would you like to do?");
-                }
-                else
-                {
-                    Console.WriteLine("You leave the Crumpled Note where it is.");
-                    Console.WriteLine("What would you like to do?");
-                }
+                text = "\nA crumbled piece of paper sticks out from under a cracked tile.";
+                Typewriter(text, delay);
             }
 
             if (fidgetSpinner.RoomID == roomID)
             {
-                Console.WriteLine("\nA brightly colored fidget spinner gleams unnaturally in the corner.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(fidgetSpinner);
-                    fidgetSpinner.RoomID = -1;
-                    Console.WriteLine("You picked up the Fidget Spinner.");
-                    Console.WriteLine("What would you like to do?");
-                }
-                else
-                {
-                    Console.WriteLine("You leave the Fidget Spinner where it is.");
-                    Console.WriteLine("What would you like to do?");
-                }
+                text = "\nA brightly colored fidget spinner gleams unnaturally in the corner.";
+                Typewriter(text, delay);
             }
 
             if (unknownPills.RoomID == roomID)
             {
-                Console.WriteLine("\nA small bottle of unlabelled pills sits ominously on a desk.");
-                Console.Write("Would you like to pick it up? (yes/no): ");
-                string input = Console.ReadLine().ToLower().Trim();
-
-                if (input == "yes")
-                {
-                    AddToInventory(unknownPills);
-                    unknownPills.RoomID = -1;
-                    Console.WriteLine("You picked up the Unknown Pills.");
-                    Console.WriteLine("What would you like to do?");
-                }
-                else
-                {
-                    Console.WriteLine("You leave the Unknown Pills where they are.");
-                    Console.WriteLine("What would you like to do?");
-                }
+                text = "\nA small bottle of unknown pills sits ominously on a desk.";
+                Typewriter(text, delay);
             }
         }
     }
