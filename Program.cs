@@ -22,13 +22,13 @@ namespace SnailMate
         public static items[] inventory = new items[10];
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
-        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 2 };
-        public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile", RoomID = 3 };
-        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID = 7 };
-        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 10 };
-        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
-        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 6 };
-        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
+        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "It definitely opens something. Probably. Maybe.", Material = "Metal", Condition = "Weathered", RoomID = 2 };
+        public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "- Day 12. The walls are closing in. I've named the snail Dale. I don't think he likes it.", Material = "Paper", Condition = "Fragile", RoomID = 3 };
+        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "It's damp. It drips. It smells faintly of jazz and failure.", Material = "Brass", Condition = "Wet", RoomID = 7 };
+        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "It's dripping. You're 80% sure the snail did this. You're 100% not okay with it.", Material = "Metal", Condition = "Slimey", RoomID = 10 };
+        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "It's warm. It vibrates slightly. You probably shouldn't touch it. You're going to touch it.", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
+        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "The label reads: 'Vaughn's Gin' You freeze. That name... why does it feel familiar? ", Material = "Glass", Condition = "Pristine", RoomID = 6 };
+        public static items unknownPills = new items { Name = "Unknown Pills", Type = "Medicine?", Description = "The label is scratched off. They look like painkillers, but they feel like a dare.", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
 
 
         public static void DisplayTitleScreen()
@@ -101,7 +101,7 @@ such as:
 'look at door'
 'grab key'.
 
-If a command is not accepted you may have to try other ways of describing your action";
+If a command is not accepted, you may have to try other ways of describing your action.";
             Typewriter(text, delay);
             Console.ReadLine();
 
@@ -892,14 +892,12 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "left":
-                                text = "going to room1"; //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
                                 Typewriter(text, delay);
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
-                                text = "Back the way you came? Alright then, have it your way.";
                                 Typewriter(text, delay);
                                 animationID = 23;
                                 Animations(ref animationID);
@@ -953,21 +951,18 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "back":
-                                text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 Typewriter(text, delay);
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
-                                text = "Could be a useful choice, or maybe not. Are you clever enough to figure out which?";
                                 Typewriter(text, delay);
                                 animationID = 32;
                                 Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
-                                text = "Further into the maze, eh? Ain't no snail gonna catch you, clearly.";
                                 Typewriter(text, delay);
                                 animationID = 34;
                                 Animations(ref animationID);
@@ -1022,7 +1017,6 @@ What would you like to do?: ";
                                     { item.Use(); break; }
                                 break;
                             case "right":
-                                text = "going to room 3";
                                 Typewriter(text, delay);
                                 animationID = 43;
                                 Animations(ref animationID);
