@@ -1699,50 +1699,12 @@ What would you like to do?";
                                 break;
                             default:
                                 text = @"The light is blinding.
-In your confusion, you fall on the ledge you're on.
+In your confusion, you fall from the ledge you're on.
 The snail finds you, sucks your blood, and eats your corpse.";
                                 Typewriter(text, delay);
                                 animationID = 3; //win animation
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
-                                /*switch (jump.Next(10))
-                                {
-                                    case 0: //win
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 1:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 2:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 3:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 4:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                }*/
                                 break;
                         }
                         break;
