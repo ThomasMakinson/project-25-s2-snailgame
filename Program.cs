@@ -28,7 +28,7 @@ namespace SnailMate
         public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "It's dripping. You're 80% sure the snail did this. You're 100% not okay with it.", Material = "Metal", Condition = "Slimey", RoomID = 10 };
         public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "It's warm. It vibrates slightly. You probably shouldn't touch it. You're going to touch it.", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
         public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "The label reads: 'Vaughn's Gin' You freeze. That name... why does it feel familiar? ", Material = "Glass", Condition = "Pristine", RoomID = 6 };
-        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "The label is scratched off. They look like painkillers, but they feel like a dare.", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
+        public static items unknownPills = new items { Name = "Unknown Pills", Type = "Medicine?", Description = "The label is scratched off. They look like painkillers, but they feel like a dare.", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
 
 
         public static void DisplayTitleScreen()
