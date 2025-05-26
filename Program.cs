@@ -829,6 +829,16 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "left":
                                 text = "going to room1"; //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
                                 Typewriter(text, delay);
@@ -880,6 +890,16 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 Typewriter(text, delay);
@@ -939,6 +959,16 @@ What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "right":
                                 text = "going to room 3";
                                 Typewriter(text, delay);
@@ -1080,6 +1110,16 @@ What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "up":
                             case "back":
                                 text = "Back from whence you came? You do realise the goal is to win the game, right?";
@@ -1151,6 +1191,16 @@ What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 text = "Backwards it is then.";
                                 Typewriter(text, delay);
@@ -1209,6 +1259,16 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 text = "Backwards it is then.";
                                 Typewriter(text, delay);
@@ -1264,6 +1324,16 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "down":
                                 text = "Backwards it is, then.";
                                 Typewriter(text, delay);
@@ -1326,6 +1396,16 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 text = "Backwards it is, then.";
                                 Typewriter(text, delay);
