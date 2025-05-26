@@ -742,7 +742,7 @@ Oh no.";
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
-                        soundID = -1;
+                        soundID = 0;
                         SoundPlayer(soundID);
                         text = "Please full screen the console for the room animations.\nDo you wish to skip the typing animation and narration? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
                         Typewriter(text, delay);
@@ -755,33 +755,44 @@ Oh no.";
                         if (sound == true)
                         {
                             delay = 48;
-                            soundID = 0;
+                            soundID = 1;
                             SoundPlayer(soundID);
                         }
+                        Console.Clear();
                         text = "Hello, you are in a room, a snail wants to kill you, good luck! :3";
                         Typewriter(text, delay);
                         roomID = 1;
+                        Console.Clear();
                         break;
 
                     case 1:
                         //room1
                         bool door1lock = true;
-                        soundID = 1;
-                        if (sound == true)
-                        {
-                            SoundPlayer(soundID);
-                        }
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
-                            text = "\nThere is a door on the far side of the room and a set of stairs to the right.\nWhat would you like to do? "; //Working on getting sound and text to sync up - Cat
+                            soundID = 11;
+                            text = "\nThere is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
                             first[0] = 1;
                         }
                         else
                         {
-                            text = "Oh look yo're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
+                            soundID = 12;
+                            text = "Oh look yo're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
+                        }
+                        if (sound == true)
+                        {
+                            SoundPlayer(soundID);
+                            soundID = 3;
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
+                        if (sound == true)
+                        {
+                            delay = 37;
+                            SoundPlayer(soundID);
+                        }
+                        text = "\nWhat would you like to do?";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1921,17 +1932,17 @@ The snail finds you, sucks your blood, and eats your corpse.";
             SoundPlayer player = new SoundPlayer();
             switch (soundID)                                                        // Adding seperate files for each piece of dialogue - Cat
             {
-                case -1:
+                case 0:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\UserPref.wav";
                     break;
-                case 0:
+                case 1:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Intro.wav";
                     break;
-                case 1:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.wav";
-                    break;
                 case 11:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\HowToPlay.wav";
+                    //player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.1.wav";
+                    break;
+                case 2:
+                    //player.SoundLocation = Environment.CurrentDirectory + @"\TTS\HowToPlay.wav";
                     break;
                 case 12:
                     //player.SoundLocation = Environment.CurrentDirectory + @"\.wav";
@@ -1940,7 +1951,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             player.Play();
         }
 
-        public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue. - Cat
+        public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue or not. - Cat
         {
             foreach (char c in text)
             {
@@ -1975,6 +1986,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 roomText += "\nA small bottle of unknown pills sits ominously on a desk.\n";
 
             if (!string.IsNullOrWhiteSpace(roomText))
+                delay = 37;
                 Typewriter(roomText, delay); // only prints once
         }
 
