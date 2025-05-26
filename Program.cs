@@ -27,7 +27,7 @@ namespace SnailMate
         public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "It's damp. It drips. It smells faintly of jazz and failure.", Material = "Brass", Condition = "Wet", RoomID = 7 };
         public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "It's dripping. You're 80% sure the snail did this. You're 100% not okay with it.", Material = "Metal", Condition = "Slimey", RoomID = 10 };
         public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "It's warm. It vibrates slightly. You probably shouldn't touch it. You're going to touch it.", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
-        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "The label reads: 'Vaughn's Gin' You freeze. That name... why does it feel familiar? ", Material = "Glass", Condition = "Pristine", RoomID = 6 };
+        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "The label reads: 'Vaughn's Gin' You freeze. That name... why does it feel familiar? ", Material = "Glass", Condition = "Pristine", RoomID = 8 };
         public static items unknownPills = new items { Name = "Unknown Pills", Type = "Medicine?", Description = "The label is scratched off. They look like painkillers, but they feel like a dare.", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
 
 
@@ -762,6 +762,7 @@ Oh no.";
 
                     case 1:
                         //room1
+                        bool door1lock = true;
                         soundID = 1;
                         if (sound == true)
                         {
@@ -781,6 +782,35 @@ Oh no.";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "use rusty key":
+                            case "unlock door":
+                            case "use key":
+                                if (door1lock == true)
+                                {
+                                    bool hasKey = inventory.Contains(rustyKey);
+                                    if (hasKey)
+                                    {
+                                        text = "You use the Rusty Key to unlock the door.";
+                                        door1lock = false; // unlocks door
+                                        DropFromInventory(rustyKey); //remove key after use
+                                    }
+                                    else
+                                    {
+                                        text = "The door is locked. You need a key.";
+                                    }
+                                    Typewriter(text, delay);
+                                    animationID = 13;
+                                    Animations(ref animationID);
+                                    roomID = 3;//changes room to room 3 and starts it
+                                    
+                                }
+                                break;
+                            case "pick up fidget spinner":
+                            case "grab fidget spinner":
+                                AddToInventory(fidgetSpinner);
+                                fidgetSpinner.RoomID = -1;
+                                checkRoomItems(roomID);
+                                break;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -793,39 +823,14 @@ Oh no.";
                                         break;
 
                             case "right":
-                                text = "You climb the stairs on the right of the room to the door. ";
+                                text = "You climb the stairs on the right of the room and head through the door.\n";
                                 Typewriter(text, delay);
-                                if (door2lock == 1)
-                                {
-                                    bool hasKey = inventory.Contains(rustyKey);
-
-                                    if (hasKey)
-                                    {
-                                        text = "You use the Rusty Key to unlock the door.";
-                                        door2lock = 0; // unlocks door
-                                        DropFromInventory(rustyKey); //remove key after use
-                                    }
-                                    else
-                                    {
-                                        text = "The door is locked. You need a key.";
-                                        break;
-                                    }
-                                    Typewriter(text, delay);
-                                    text = "The door is unlocked.";
-                                    Typewriter(text, delay);
-                                    animationID = 12;
-                                    Animations(ref animationID);
-                                    roomID = 2;//changes room to room 2 and starts it
-                                }
-                                else
-                                {
-                                    text = "The door is locked so you move back to where you started.";
-                                }
-                                break;
-                            case "forward":
-                                animationID = 13;
+                                animationID = 12;
                                 Animations(ref animationID);
-                                roomID = 3;
+                                roomID = 2;//changes room to room 2 and starts it
+                                break;    
+                            case "forward":
+                                text = "This door is locked, it looks like you're gonna need a key";
                                 break;
                             case "left":
                                 text = "That is a wall.";
@@ -886,6 +891,11 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "pick up rusty key":
+                            case "grab rusty key":
+                                AddToInventory(rustyKey);
+                                rustyKey.RoomID = -1;
+                                break;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -943,6 +953,13 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "pick up crumpled note":
+                            case "pick up note":
+                            case "grab crumpled note":
+                            case "grab note":
+                                AddToInventory(crumpledNote);
+                                crumpledNote.RoomID = -1;
+                                break;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -1000,6 +1017,13 @@ What would you like to do?: ";
                             Typewriter(text, delay);
                             switch (direction)
                             {
+                                case "pick up unknown pills":
+                                case "pick up pills":
+                                case "grab unknown pills":
+                                case "grab pills":
+                                    AddToInventory(unknownPills);
+                                    unknownPills.RoomID = -1;
+                                    break;
                                 case "inventory":
                                 case "check inventory":
                                     items.DisplayInventory(inventory);
@@ -1313,6 +1337,11 @@ What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "pick up harmonica":
+                            case "grab harmonica":
+                                AddToInventory(harmonica);
+                                harmonica.RoomID = -1;
+                                break;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -1374,6 +1403,13 @@ What would you like to do? ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "pick up bottle of gin":
+                            case "pick up gin":
+                            case "grab bottle of gin":
+                            case "grab gin":
+                                AddToInventory(vaughnsGin);
+                                vaughnsGin.RoomID = -1;
+                                break;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -1433,8 +1469,30 @@ What would you like to do? ";
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
+                        bool door9lock = true;
                         switch (direction)
                         {
+                            case "use slimey key":
+                            case "unlock door":
+                            case "use key":
+                                if (door9lock == true)
+                                {
+                                    bool hasKey = inventory.Contains(slimeyKey);
+                                    if (hasKey)
+                                    {
+                                        text = "You use the Slimey Key to unlock the door.";
+                                        door9lock = false; // unlocks door
+                                        DropFromInventory(slimeyKey); //remove key after use
+                                    }
+                                    else
+                                    {
+                                        text = "The door is locked. You need a key.";
+                                    }
+                                    Typewriter(text, delay);
+                                    roomID = 11;//win room
+
+                                }
+                                return;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -1451,9 +1509,8 @@ What would you like to do? ";
                                 roomID = 8; //goes back to room 8
                                 break;
                             case "forward":
-                                text = "You go through the door... ";
+                                text = "You try the door... This one is gonna need a key as well. ";
                                 Typewriter(text, delay);
-                                roomID = 11; //"win room"
                                 break;
                             case "right":
                                 animationID = 910;
@@ -1495,6 +1552,13 @@ What would you like to do? ";
                             Typewriter(text, delay);
                             switch (direction)
                             {
+                                case "pick up slimey key":
+                                case "pick up key":
+                                case "grab slimey key":
+                                case "grab key":
+                                    AddToInventory(slimeyKey);
+                                    slimeyKey.RoomID = -1;
+                                    break;
                                 case "inventory":
                                 case "check inventory":
                                     items.DisplayInventory(inventory);
@@ -1787,6 +1851,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 if (inventory[i] == null)
                 {
                     inventory[i] = item;
+                    Console.WriteLine($"You added {item.Name} to your inventory!");
                     inventoryCount++;
                     return;
                 }
@@ -1880,47 +1945,33 @@ The snail finds you, sucks your blood, and eats your corpse.";
 
         public static void checkRoomItems(int roomID)
         {
+            string roomText = ""; // local string to avoid touching global text
+
             if (rustyKey.RoomID == roomID)
-            {
-                text = "\nA rusty key lies on the ground.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA rusty key lies on the ground.\n";
 
             if (slimeyKey.RoomID == roomID)
-            {
-                text = "\nA slimey key rests on the floor. You really hope it didn’t come from the snail.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA slimey key rests on the floor. You really hope it didn’t come from the snail.\n";
 
             if (harmonica.RoomID == roomID)
-            {
-                text = "\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.\n";
 
             if (vaughnsGin.RoomID == roomID)
-            {
-                text = "\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA full bottle of expensive-looking bottle of gin rests on a dusty shelf. It’s the only thing in the room without dust.\n";
 
             if (crumpledNote.RoomID == roomID)
-            {
-                text = "\nA crumbled piece of paper sticks out from under a cracked tile.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA crumpled note sticks out from under a cracked tile.\n";
 
             if (fidgetSpinner.RoomID == roomID)
-            {
-                text = "\nA brightly colored fidget spinner gleams unnaturally in the corner.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA brightly colored fidget spinner gleams unnaturally in the corner.\n";
 
             if (unknownPills.RoomID == roomID)
-            {
-                text = "\nA small bottle of unknown pills sits ominously on a desk.";
-                Typewriter(text, delay);
-            }
+                roomText += "\nA small bottle of unknown pills sits ominously on a desk.\n";
+
+            if (!string.IsNullOrWhiteSpace(roomText))
+                Typewriter(roomText, delay); // only prints once
         }
+
+
     }
 }
