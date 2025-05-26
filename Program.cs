@@ -101,7 +101,7 @@ such as:
 'look at door'
 'grab key'.
 
-If a command is not accepted you may have to try other ways of describing your action";
+If a command is not accepted, you may have to try other ways of describing your action.";
             Typewriter(text, delay);
             Console.ReadLine();
 
@@ -871,14 +871,12 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "left":
-                                text = "going to room1"; //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
                                 Typewriter(text, delay);
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "back":
-                                text = "Back the way you came? Alright then, have it your way.";
                                 Typewriter(text, delay);
                                 animationID = 23;
                                 Animations(ref animationID);
@@ -932,21 +930,18 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "back":
-                                text = "Back from whence you came? You do realise the goal is to win the game, right?";
                                 Typewriter(text, delay);
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
-                                text = "Could be a useful choice, or maybe not. Are you clever enough to figure out which?";
                                 Typewriter(text, delay);
                                 animationID = 32;
                                 Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
-                                text = "Further into the maze, eh? Ain't no snail gonna catch you, clearly.";
                                 Typewriter(text, delay);
                                 animationID = 34;
                                 Animations(ref animationID);
@@ -1001,7 +996,6 @@ What would you like to do?: ";
                                     { item.Use(); break; }
                                 break;
                             case "right":
-                                text = "going to room 3";
                                 Typewriter(text, delay);
                                 animationID = 43;
                                 Animations(ref animationID);
