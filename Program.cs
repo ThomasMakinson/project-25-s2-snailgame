@@ -1589,7 +1589,7 @@ What would you like to do?";
                 }
                 else
                 {
-                    text = "You leave the Rusty Key where it is.\nWhat would you like to do?");
+                    text = ("You leave the Rusty Key where it is.\nWhat would you like to do?");
                 }
                 Typewriter(text, delay);
             }
