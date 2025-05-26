@@ -550,7 +550,23 @@ If a command is not accepted you may have to try other ways of describing your a
                     //runGame = 0;
                     ded = 1;//makes you die
                     break;
-                    ded = 1;
+                case 3:
+                    for (int i = 1; i <= 21; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"youWinframe ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                        Console.Clear();
+                    }
+                    break;
+
+
                 default:
                     Console.WriteLine("animation not found");
                     break;
