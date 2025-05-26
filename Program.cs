@@ -91,7 +91,7 @@ namespace SnailMate
             Console.Clear();
             soundID = 11;
             text = @"
-Welcome to Snailmate, adventurer!
+Welcome to SnailMate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 If you're capable of that.
 
