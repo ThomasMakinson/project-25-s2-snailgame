@@ -451,7 +451,8 @@ If a command is not accepted you may have to try other ways of describing your a
                     Random random = new Random();
                     int deathSelect;
                     deathSelect = random.Next(61);
-                    switch(deathSelect)
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    switch (deathSelect)
                     {
                         case <=55:
                             sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
@@ -546,9 +547,11 @@ If a command is not accepted you may have to try other ways of describing your a
                             break;
 
                     }
+                    Console.ResetColor();
                     break;
                  //eldritch snail monster death
                 case 2:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     sr = new StreamReader($@"death-screen-stuff\monster\pt1.txt");
                     while (!sr.EndOfStream)
                     {
@@ -576,6 +579,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.WriteLine(aline);
                     }
                     sr.Close();
+                    Console.ResetColor();
                     Thread.Sleep(2000);
                     Console.Clear();
                     //runGame = 0;
@@ -615,27 +619,33 @@ If a command is not accepted you may have to try other ways of describing your a
             if (snailDistance >= 10)
             {
                 soundID = 50;
-                text = "The threat is distant.";
+                text = @"
+The threat is distant.";
+
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
                 soundID = 51;
-                text = "The threat draws nearer.";
+                text = @"
+The threat draws nearer.";
             }
             else if (snailDistance < 5 && snailDistance >1)
             {
                 soundID = 52;
-                text = "Breathe softly, it's very close now.";
+                text = @"
+Breathe softly, it's very close now.";
             }
             else if (snailDistance == 1)
             {
                 soundID = 53;
-                text = "It's right behind you.";
+                text = @"
+It's right behind you.";
             }
             else
             {
                 soundID = 54;
-                text = "Oh no.";
+                text = @"
+Oh no.";
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
@@ -724,7 +734,7 @@ If a command is not accepted you may have to try other ways of describing your a
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                SnailCheck();
+                SnailCheckStealth(); //has to be the stealth version to unobtrusively count down -Rhys
                 DeathCheck(out runGame);
                 switch (roomID)
                 {
@@ -824,12 +834,23 @@ If a command is not accepted you may have to try other ways of describing your a
                                 break;
                             case "down":
                                 text = "You sit on the floor and meditate... the snail catches and kills you";
+                                animationID = 1;
+                                Animations(ref animationID);
                                 break;
                             default:
                                 text = "You thought you were smart, huh? What other direction did you think you could go in?";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                         }
                         Typewriter(text, delay);
@@ -1376,7 +1397,7 @@ What would you like to do? ";
 
                                 text = "you win!";
                                 Typewriter(text, delay);
-                                animationID = 0; //need to change this to the win "room"
+                                animationID = 3; //need to change this to the win "room"
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
@@ -1552,6 +1573,7 @@ What would you like to do?";
                         roomID = 0;
                         blood = 5;
                         snailDistance = 15;
+                        ded = 0;
                         NewGame();
                         break;
 
