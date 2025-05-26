@@ -20,7 +20,7 @@ namespace SnailMate
         public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
-        public static bool exitGame = false;
+        public static bool exitGame = false, sound = true;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
         public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "It definitely opens something. Probably. Maybe.", Material = "Metal", Condition = "Weathered", RoomID = 2 };
         public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "- Day 12. The walls are closing in. I've named the snail Dale. I don't think he likes it.", Material = "Paper", Condition = "Fragile", RoomID = 3 };
@@ -733,7 +733,6 @@ Oh no.";
             int runGame = 1, animationID = 0, door2lock = 1, jumpCount = 0;
             string direction;
             char skip;
-            bool sound = true; 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
@@ -762,22 +761,24 @@ Oh no.";
                         text = "Hello, you are in a room, a snail wants to kill you, good luck! :3";
                         Typewriter(text, delay);
                         roomID = 1;
-                        Console.Clear();
                         break;
 
                     case 1:
                         //room1
                         bool door1lock = true;
+                        Console.Clear();
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
                             soundID = 11;
-                            text = "\nThere is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
+                            delay = 40;
+                            text = "There is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
                             first[0] = 1;
                         }
                         else
                         {
                             soundID = 12;
-                            text = "Oh look yo're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
+                            delay = 32;
+                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
                         }
                         if (sound == true)
                         {
@@ -883,13 +884,10 @@ Oh no.";
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
                         //room2
-                        soundID = 2;
-                        if (sound == true)
-                        {
-                            SoundPlayer(soundID);
-                        }
+                        Console.Clear();
                         if (first[1] == 0)
                         {
+                            soundID = 21;
                             text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all that know that that's a stretch.
@@ -898,7 +896,12 @@ What would you like to do? ";
                         }
                         else // Second description - Cat
                         {
-
+                            soundID = 22;
+                        }
+                        
+                        if (sound == true)
+                        {
+                            SoundPlayer(soundID);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -953,6 +956,7 @@ What would you like to do? ";
                         break;
                     case 3:
                         //room 3
+                        Console.Clear();
                         if (first[2] == 0)
                         {
                             text = @"You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.
@@ -1022,6 +1026,7 @@ What would you like to do? ";
                         break;
                     case 4:
                         //room4
+                        Console.Clear();
                         checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         if (first[3] == 0)
@@ -1259,6 +1264,7 @@ As you fall, an even larger snail eats you.";
                         break;
                     case 5:
                         //room5
+                        Console.Clear();
                         if (first[4] == 0)
                         {
                             text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
@@ -1325,6 +1331,7 @@ What would you like to do?: ";
                         break;
                     case 6:
                         //room6
+                        Console.Clear();
                         text = @"There is nothing. There is only pitch black. 
 You have entered a room that is so blank, it appears to be a black void. 
 The void seems to draw you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! 
@@ -1337,6 +1344,7 @@ You got lost in a trance. The snail finds you and eats you.";
                         break;
                     case 7:
                         //room7
+                        Console.Clear();
                         if (first[6] == 0)
                         {
                             text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.
@@ -1399,6 +1407,7 @@ What would you like to do?: ";
                         break;
                     case 8:
                         //room8
+                        Console.Clear();
                         if (first[7] == 0)
                         {
                             text = @"You are in a hallway. There is a ladder ahead of you. 
@@ -1468,6 +1477,7 @@ What would you like to do? ";
                         break;
                     case 9:
                         //room 9
+                        Console.Clear();
                         if (first[8] == 0)
                         {
                             text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
@@ -1554,6 +1564,7 @@ What would you like to do? ";
                         break;
                     case 10:
                         //room10
+                        Console.Clear();
                         checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         if (first[9] == 0)
@@ -1938,14 +1949,17 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 case 1:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Intro.wav";
                     break;
-                case 11:
-                    //player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.1.wav";
-                    break;
                 case 2:
                     //player.SoundLocation = Environment.CurrentDirectory + @"\TTS\HowToPlay.wav";
                     break;
+                case 3:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\WWYLTD.wav";
+                    break;
+                case 11:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.1.wav";
+                    break;
                 case 12:
-                    //player.SoundLocation = Environment.CurrentDirectory + @"\.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.2.wav";
                     break;
             }
             player.Play();
@@ -1957,6 +1971,10 @@ The snail finds you, sucks your blood, and eats your corpse.";
             {
                 Console.Write(c);
                 Thread.Sleep(delay);
+            }
+            if (sound == true)
+            {
+                delay = 37;
             }
         }
 
@@ -1986,7 +2004,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 roomText += "\nA small bottle of unknown pills sits ominously on a desk.\n";
 
             if (!string.IsNullOrWhiteSpace(roomText))
-                delay = 37;
                 Typewriter(roomText, delay); // only prints once
         }
 
