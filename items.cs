@@ -58,6 +58,7 @@ namespace SnailMate
         public void Use()
         {
             // Added a use method for items, these are only writelines for humour
+            Console.ForegroundColor = ConsoleColor.Yellow;
             switch (Name.ToLower())
             {
                 case "crumpled note":
@@ -113,6 +114,7 @@ namespace SnailMate
                     Console.WriteLine("You aren't able to do that....");
                     break;
             }
+            Console.ResetColor();
         }
 
 
