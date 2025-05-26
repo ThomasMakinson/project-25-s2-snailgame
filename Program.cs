@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Numerics;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
 
 namespace SnailMate
 {
@@ -178,6 +179,21 @@ If a command is not accepted you may have to try other ways of describing your a
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\4-5\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                        Console.Clear();
+                    }
+                    break;
+                case 410: //4 to 10
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\4-10\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -404,6 +420,21 @@ If a command is not accepted you may have to try other ways of describing your a
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\9-10\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                        Console.Clear();
+                    }
+                    break;
+                case 104:
+                    for (int i = 24; i >= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\4-10\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -993,8 +1024,8 @@ What would you like to do?";
                                         {
                                             text = "Apparently a standing jump was enough!.";
                                             Typewriter(text, delay);
-                                            //animationID = 44;
-                                            //Animations(ref animationID);
+                                            animationID = 410;
+                                            Animations(ref animationID);
                                             roomID = 10; //goes to room 10 in reverse, need to add the reverse part
                                         }
                                         else
@@ -1020,8 +1051,8 @@ As you fall, an even larger snail eats you.";
                                         {
                                             text = "The run up was a success!";
                                             Typewriter(text, delay);
-                                            //animationID = 44;
-                                            //Animations(ref animationID);
+                                            animationID = 410;
+                                            Animations(ref animationID);
                                             roomID = 10; //goes to room 10 in reverse, need to add the reverse part
                                         }
                                         else if (jumpSuccess == 5 - 7)
