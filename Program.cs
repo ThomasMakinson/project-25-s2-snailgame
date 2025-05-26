@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Numerics;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
 
 namespace SnailMate
 {
@@ -21,7 +22,13 @@ namespace SnailMate
         public static items[] inventory = new items[10];
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
-       
+        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "It definitely opens something. Probably. Maybe.", Material = "Metal", Condition = "Weathered", RoomID = 2 };
+        public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "- Day 12. The walls are closing in. I've named the snail Dale. I don't think he likes it.", Material = "Paper", Condition = "Fragile", RoomID = 3 };
+        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "It's damp. It drips. It smells faintly of jazz and failure.", Material = "Brass", Condition = "Wet", RoomID = 7 };
+        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "It's dripping. You're 80% sure the snail did this. You're 100% not okay with it.", Material = "Metal", Condition = "Slimey", RoomID = 10 };
+        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "It's warm. It vibrates slightly. You probably shouldn't touch it. You're going to touch it.", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
+        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "The label reads: 'Vaughn's Gin' You freeze. That name... why does it feel familiar? ", Material = "Glass", Condition = "Pristine", RoomID = 6 };
+        public static items unknownPills = new items { Name = "Unknown Pills", Type = "Medicine?", Description = "The label is scratched off. They look like painkillers, but they feel like a dare.", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
 
 
         public static void DisplayTitleScreen()
@@ -84,7 +91,7 @@ namespace SnailMate
             Console.Clear();
             soundID = 11;
             text = @"
-Welcome to Snailmate, adventurer!
+Welcome to SnailMate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 If you're capable of that.
 
@@ -94,7 +101,7 @@ such as:
 'look at door'
 'grab key'.
 
-If a command is not accepted you may have to try other ways of describing your action";
+If a command is not accepted, you may have to try other ways of describing your action.";
             Typewriter(text, delay);
             Console.ReadLine();
 
@@ -172,6 +179,21 @@ If a command is not accepted you may have to try other ways of describing your a
                     {
                         Console.Clear();
                         sr = new StreamReader($@"Room-by-Room\4-5\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                        Console.Clear();
+                    }
+                    break;
+                case 410: //4 to 10
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\4-10\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -292,7 +314,7 @@ If a command is not accepted you may have to try other ways of describing your a
                     for (int i = 23; i >= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\2-3\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\3-2\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -408,13 +430,29 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.Clear();
                     }
                     break;
+                case 104:
+                    for (int i = 24; i >= 1; i--)
+                    {
+                        Console.Clear();
+                        sr = new StreamReader($@"Room-by-Room\4-10\frame ({i}).txt");
+                        while (!sr.EndOfStream)
+                        {
+                            aline = sr.ReadLine();
+                            Console.WriteLine(aline);
+                        }
+                        sr.Close();
+                        Thread.Sleep(83);
+                        Console.Clear();
+                    }
+                    break;
                 //need win and death animations
                 //death normal
                 case 1:
                     Random random = new Random();
                     int deathSelect;
                     deathSelect = random.Next(61);
-                    switch(deathSelect)
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    switch (deathSelect)
                     {
                         case <=55:
                             sr = new StreamReader($@"death-screen-stuff\normal\youDied.txt");
@@ -509,9 +547,11 @@ If a command is not accepted you may have to try other ways of describing your a
                             break;
 
                     }
+                    Console.ResetColor();
                     break;
                  //eldritch snail monster death
                 case 2:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     sr = new StreamReader($@"death-screen-stuff\monster\pt1.txt");
                     while (!sr.EndOfStream)
                     {
@@ -539,12 +579,33 @@ If a command is not accepted you may have to try other ways of describing your a
                         Console.WriteLine(aline);
                     }
                     sr.Close();
+                    Console.ResetColor();
                     Thread.Sleep(2000);
                     Console.Clear();
                     //runGame = 0;
                     ded = 1;//makes you die
                     break;
-                    ded = 1;
+                case 3://win animation, currently looping 4 times
+                    for (int j = 1; j <= 4; j++)
+                    {
+                        for (int i = 1; i <= 21; i++)
+                        {
+                            Console.Clear();
+                            sr = new StreamReader($@"youWin\frame ({i}).txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(70);
+                            Console.Clear();
+                        }
+                    }
+                    
+                    break;
+
+
                 default:
                     Console.WriteLine("Animation not found.");
                     break;
@@ -562,27 +623,33 @@ If a command is not accepted you may have to try other ways of describing your a
             if (snailDistance >= 10)
             {
                 soundID = 50;
-                text = "The threat is distant.";
+                text = @"
+The threat is distant.";
+
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
                 soundID = 51;
-                text = "The threat draws nearer.";
+                text = @"
+The threat draws nearer.";
             }
             else if (snailDistance < 5 && snailDistance >1)
             {
                 soundID = 52;
-                text = "Breathe softly, it's very close now.";
+                text = @"
+Breathe softly, it's very close now.";
             }
             else if (snailDistance == 1)
             {
                 soundID = 53;
-                text = "It's right behind you.";
+                text = @"
+It's right behind you.";
             }
             else
             {
                 soundID = 54;
-                text = "Oh no.";
+                text = @"
+Oh no.";
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
@@ -666,16 +733,11 @@ If a command is not accepted you may have to try other ways of describing your a
             int runGame = 1, animationID = 0, door2lock = 1, jumpCount = 0;
             string direction;
             char skip;
-            bool sound = true;
-            items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered" };
-            items crumbledNote = new items { Name = "Crumbled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile" };
-            items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "\"You unfold the torn page and read the scribbled text:\\n\\n\\\"Why don't skeletons fight each other?\\\"\\n\\nBecause they don't have the guts.\\n\\nYou feel a little worse for reading that.\"", Material = "Paper", Condition = "Torn" };
-            items tornPage = new items { Name = "Torn Page", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass & Wood", Condition = "Dusty" };
-
+            bool sound = true; 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                SnailCheck();
+                SnailCheckStealth(); //has to be the stealth version to unobtrusively count down -Rhys
                 DeathCheck(out runGame);
                 switch (roomID)
                 {
@@ -712,16 +774,26 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         else
                         {
-                            text = "Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
+                            text = "Oh look yo're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                        break;
+
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
-                                AddToInventory(rustyKey);
-                                rustyKey.Inspect();
                                 Typewriter(text, delay);
                                 if (door2lock == 1)
                                 {
@@ -763,12 +835,23 @@ If a command is not accepted you may have to try other ways of describing your a
                                 break;
                             case "down":
                                 text = "You sit on the floor and meditate... the snail catches and kills you";
+                                animationID = 1;
+                                Animations(ref animationID);
                                 break;
                             default:
                                 text = "You thought you were smart, huh? What other direction did you think you could go in?";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            case "check danger":
+                            case "danger":
+                            case "snail":
+                            case "snailcheck":
+                            case "snail check":
+                            case "how far?":
+                            case "am I going to die?":
+                                SnailCheck();
                                 break;
                         }
                         Typewriter(text, delay);
@@ -795,10 +878,22 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
-                            case "left": //need to add the branch for getting the key, unlocking the door and going to room 1 -Thomas
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
+                            case "left":
+                                Typewriter(text, delay);
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
@@ -841,9 +936,20 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 animationID = 31;
                                 Animations(ref animationID);
@@ -888,39 +994,57 @@ What would you like to do? ";
                         {
                             text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
 What would you like to do?: ";
-                            switch (direction)
-                            {
-                                case "right":
-                                    text = "going to room 3";
-                                    Typewriter(text, delay);
-                                    animationID = 43;
-                                    Animations(ref animationID);
-                                    roomID = 3; //goes back to room 3;
-                                    break;
-                                case "forward":
-                                case "fog":
-                                    text = @"As you go towards the fog, you feel slight breeze brush against your face. 
+                            first[3] = 1;
+                        }
+                        else // Second Description - Cat
+                        {
+
+                        }
+                        Typewriter(text, delay);
+                        checkRoomItems(roomID);
+                        direction = Console.ReadLine().ToLower().Trim();
+                        switch (direction)
+                        {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
+                            case "right":
+                                Typewriter(text, delay);
+                                animationID = 43;
+                                Animations(ref animationID);
+                                roomID = 3; //goes back to room 3;
+                                break;
+                            case "forward":
+                            case "fog":
+                                text = @"As you go towards the fog, you feel slight breeze brush against your face. 
 Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. 
 You reach the edge of the room, there is a ledge.
 What would you like to do?";
-                                    Typewriter(text, delay);
-                                    switch (direction)
-                                    {
-                                        case "jump":
-                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                Typewriter(text, delay);
+                                switch (direction)
+                                {
+                                    case "jump":
+                                        text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                        Typewriter(text, delay);
+                                        jumpSuccess = jump.Next(10); //randomly decides if the jump is successful or not
+                                        if (jumpSuccess == 0-2)
+                                        {
+                                            text = "Apparently a standing jump was enough!.";
                                             Typewriter(text, delay);
-                                            jumpSuccess = jump.Next(10); //randomly decides if the jump is successful or not
-                                            if (jumpSuccess == 0 - 2)
-                                            {
-                                                text = "Apparently a standing jump was enough!.";
-                                                Typewriter(text, delay);
-                                                //animationID = 44;
-                                                //Animations(ref animationID);
-                                                roomID = 10; //goes to room 10 in reverse, need to add the reverse part
-                                            }
-                                            else
-                                            {
-                                                text = @"You try to get across from a standing jump without knowing where you're going. 
+                                            animationID = 410;
+                                            Animations(ref animationID);
+                                            roomID = 10; //goes to room 10 in reverse, need to add the reverse part
+                                        }
+                                        else
+                                        {
+                                            text = @"You try to get across from a standing jump without knowing where you're going. 
 Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
 As you fall, an even larger snail eats you.";
                                                 animationID = 1; //death animation
@@ -1105,9 +1229,20 @@ What would you like to do?: ";
                         }
 
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "up":
                             case "back":
                                 animationID = 54;
@@ -1152,6 +1287,7 @@ You have entered a room that is so blank, it appears to be a black void.
 The void seems to draw you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! 
 You got lost in a trance. The snail finds you and eats you.";
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         animationID = 1; //death animation
                         Animations(ref animationID);
                         ded = 1; //makes you die
@@ -1172,6 +1308,16 @@ What would you like to do?: ";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 animationID = 75;
                                 Animations(ref animationID);
@@ -1219,9 +1365,20 @@ What would you like to do? ";
                         }
 
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
                                 animationID = 87;
                                 Animations(ref animationID);
@@ -1269,9 +1426,20 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "down":
                                 animationID = 98;
                                 Animations(ref animationID);
@@ -1323,11 +1491,21 @@ What would you like to do? ";
 
                         }
                         Typewriter(text, delay);
+                        checkRoomItems(roomID);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                break;
                             case "back":
-                                text = "Backwards it is, then.";
                                 Typewriter(text, delay);
                                 animationID = 109;
                                 Animations(ref animationID);
@@ -1553,8 +1731,6 @@ What would you like to do?";
                 if (inventory[i] == null)
                 {
                     inventory[i] = item;
-                    text = $"You added {item} from your inventory.";
-                    Typewriter(text, delay);
                     inventoryCount++;
                     return;
                 }
@@ -1567,8 +1743,6 @@ What would you like to do?";
             {
                 if (inventory[i] != null && inventory[i] == item)
                 {
-                    text = $"You dropped {item} from your inventory.";
-                    Typewriter(text, delay);
                     inventory[i] = null;
                     inventoryCount--;
                     return;
@@ -1591,9 +1765,11 @@ What would you like to do?";
                 switch (userMenuSelection)
                 {
                     case 1:
+                        //resets global vars to default on selecting new game
                         roomID = 0;
                         blood = 5;
                         snailDistance = 15;
+                        ded = 0;
                         NewGame();
                         break;
 
@@ -1643,6 +1819,148 @@ What would you like to do?";
             {
                 Console.Write(c);
                 Thread.Sleep(delay);
+            }
+        }
+
+        public static void checkRoomItems(int roomID)
+        {
+            if (rustyKey.RoomID == roomID)
+            {
+                text = "\nA rusty key lies on the ground.\nWould you like to pick it up? (yes/no): ";
+                Typewriter(text, delay);
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(rustyKey);
+                    rustyKey.RoomID = -1;
+                    text = "You picked up the Rusty Key.\nWhat would you like to do?";
+                }
+                else
+                {
+                    text = ("You leave the Rusty Key where it is.\nWhat would you like to do?");
+                }
+                Typewriter(text, delay);
+            }
+
+            if (slimeyKey.RoomID == roomID)
+            {
+                Console.WriteLine("\nA slime-drenched key rests on the floor. You really hope it didn’t come from the snail.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(slimeyKey);
+                    slimeyKey.RoomID = -1;
+                    Console.WriteLine("You picked up the Slimey Key.");
+                    Console.WriteLine("What would you like to do?");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Slimey Key where it is.");
+                    Console.WriteLine("What would you like to do?");
+                }
+            }
+
+            if (harmonica.RoomID == roomID)
+            {
+                Console.WriteLine("\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(harmonica);
+                    harmonica.RoomID = -1;
+                    Console.WriteLine("You picked up the Harmonica.");
+                    Console.WriteLine("What would you like to do?");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Harmonica where it is.");
+                    Console.WriteLine("What would you like to do?");
+                }
+            }
+
+            if (vaughnsGin.RoomID == roomID)
+            {
+                Console.WriteLine("\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(vaughnsGin);
+                    vaughnsGin.RoomID = -1;
+                    Console.WriteLine("You picked up the Bottle of Gin.");
+                    Console.WriteLine("What would you like to do?");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Bottle of Gin where it is.");
+                    Console.WriteLine("What would you like to do?");
+                }
+            }
+
+            if (crumpledNote.RoomID == roomID)
+            {
+                Console.WriteLine("\nA crumbled piece of paper sticks out from under a cracked tile.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(crumpledNote);
+                    crumpledNote.RoomID = -1;
+                    Console.WriteLine("You picked up the Crumpled Note.");
+                    Console.WriteLine("What would you like to do?");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Crumpled Note where it is.");
+                    Console.WriteLine("What would you like to do?");
+                }
+            }
+
+            if (fidgetSpinner.RoomID == roomID)
+            {
+                Console.WriteLine("\nA brightly colored fidget spinner gleams unnaturally in the corner.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(fidgetSpinner);
+                    fidgetSpinner.RoomID = -1;
+                    Console.WriteLine("You picked up the Fidget Spinner.");
+                    Console.WriteLine("What would you like to do?");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Fidget Spinner where it is.");
+                    Console.WriteLine("What would you like to do?");
+                }
+            }
+
+            if (unknownPills.RoomID == roomID)
+            {
+                Console.WriteLine("\nA small bottle of unlabelled pills sits ominously on a desk.");
+                Console.Write("Would you like to pick it up? (yes/no): ");
+                string input = Console.ReadLine().ToLower().Trim();
+
+                if (input == "yes")
+                {
+                    AddToInventory(unknownPills);
+                    unknownPills.RoomID = -1;
+                    Console.WriteLine("You picked up the Unknown Pills.");
+                    Console.WriteLine("What would you like to do?");
+                }
+                else
+                {
+                    Console.WriteLine("You leave the Unknown Pills where they are.");
+                    Console.WriteLine("What would you like to do?");
+                }
             }
         }
     }

@@ -8,16 +8,18 @@ namespace SnailMate
 {
     internal class items
     {
+        // Declaring variables for items and getting them to read and write their values
         public string Name { get; set; }
         public string Type { get; set; }
         public string Description { get; set; }
-        
         public string Material { get; set; }
         public string Condition { get; set; }
+        public int RoomID { get; set; }
         
 
         public void Inspect()
         {
+            // Displaying the items characteristics variables in a easy method
             Console.Clear();
             Program.Typewriter($"Hmm let's take a look at this {Name}.\n", 30);
             Program.Typewriter($"It appears to be a {Type} of some sort.\n", 30);
@@ -30,6 +32,7 @@ namespace SnailMate
 
         public static void DisplayInventory(items[] inventory)
         {
+            // Displays entire inventory including empty slots with a for loop and some checking to see the contents of inventory slots
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("========= INVENTORY =========");
@@ -54,6 +57,8 @@ namespace SnailMate
 
         public void Use()
         {
+            // Added a use method for items, these are only writelines for humour
+            Console.ForegroundColor = ConsoleColor.Yellow;
             switch (Name.ToLower())
             {
                 case "crumpled note":
@@ -82,7 +87,7 @@ namespace SnailMate
                 case "gin":
                     Console.WriteLine("You sip Vaughn’s Gin. Suddenly, you understand every lecture ever given.");
                     Thread.Sleep(1000);
-                    Console.WriteLine("You *are* the rubric. You *are* the feedback.");
+                    Console.WriteLine("You are the rubric. You are the feedback.");
                     Thread.Sleep(800);
                     Console.WriteLine("But also... you’re drunk. And the snail is still coming.");
                     break;
@@ -109,6 +114,7 @@ namespace SnailMate
                     Console.WriteLine("You aren't able to do that....");
                     break;
             }
+            Console.ResetColor();
         }
 
 
