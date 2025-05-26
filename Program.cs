@@ -314,7 +314,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                     for (int i = 23; i >= 1; i--)
                     {
                         Console.Clear();
-                        sr = new StreamReader($@"Room-by-Room\2-3\frame ({i}).txt");
+                        sr = new StreamReader($@"Room-by-Room\3-2\frame ({i}).txt");
                         while (!sr.EndOfStream)
                         {
                             aline = sr.ReadLine();
@@ -585,20 +585,24 @@ If a command is not accepted, you may have to try other ways of describing your 
                     //runGame = 0;
                     ded = 1;//makes you die
                     break;
-                case 3:
-                    for (int i = 1; i <= 21; i++)
+                case 3://win animation, currently looping 4 times
+                    for (int j = 1; j <= 4; j++)
                     {
-                        Console.Clear();
-                        sr = new StreamReader($@"youWinframe ({i}).txt");
-                        while (!sr.EndOfStream)
+                        for (int i = 1; i <= 21; i++)
                         {
-                            aline = sr.ReadLine();
-                            Console.WriteLine(aline);
+                            Console.Clear();
+                            sr = new StreamReader($@"youWin\frame ({i}).txt");
+                            while (!sr.EndOfStream)
+                            {
+                                aline = sr.ReadLine();
+                                Console.WriteLine(aline);
+                            }
+                            sr.Close();
+                            Thread.Sleep(70);
+                            Console.Clear();
                         }
-                        sr.Close();
-                        Thread.Sleep(83);
-                        Console.Clear();
                     }
+                    
                     break;
 
 
@@ -1564,6 +1568,7 @@ What would you like to do?";
                 switch (userMenuSelection)
                 {
                     case 1:
+                        //resets global vars to default on selecting new game
                         roomID = 0;
                         blood = 5;
                         snailDistance = 15;
