@@ -714,7 +714,7 @@ If a command is not accepted you may have to try other ways of describing your a
                         }
                         else
                         {
-                            text = "Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
+                            text = "Oh look yo're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.\nWhat would you like to do? ";
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
