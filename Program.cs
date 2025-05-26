@@ -721,6 +721,17 @@ If a command is not accepted you may have to try other ways of describing your a
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "inventory":
+                            case "check inventory":
+                                items.DisplayInventory(inventory);
+                                break;
+
+                            case var command when command.StartsWith("use "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                    { item.Use(); break; }
+                                        break;
+
                             case "right":
                                 text = "You climb the stairs on the right of the room to the door. ";
                                 Typewriter(text, delay);
@@ -1376,6 +1387,7 @@ What would you like to do?";
             {
                 if (inventory[i] == null)
                 {
+                    inventory[i] = item;
                     inventoryCount++;
                     return;
                 }
