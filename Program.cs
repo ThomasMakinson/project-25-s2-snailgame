@@ -21,13 +21,13 @@ namespace SnailMate
         public static items[] inventory = new items[10];
         public static bool exitGame = false;
         public static StreamReader sr = new StreamReader($@"Room-by-Room\1-2\frame (1).txt");
-        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Weathered", RoomID = 2 };
-        public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "Feel free to add description, otherwise i can -KF", Material = "Paper", Condition = "Fragile", RoomID = 3 };
-        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "Feel free to add description, otherwise i can -KF", Material = "Brass", Condition = "Wet", RoomID = 7 };
-        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "Feel free to add description, otherwise i can -KF", Material = "Metal", Condition = "Slimey", RoomID = 10 };
-        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
-        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "Feel free to add description, otherwise i can -KF", Material = "Glass", Condition = "Pristine", RoomID = 6 };
-        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "Feel free to add description, otherwise i can -KF", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
+        public static items rustyKey = new items { Name = "Rusty Key", Type = "Key", Description = "It definitely opens something. Probably. Maybe.", Material = "Metal", Condition = "Weathered", RoomID = 2 };
+        public static items crumpledNote = new items { Name = "Crumpled Note", Type = "Note", Description = "- Day 12. The walls are closing in. I've named the snail Dale. I don't think he likes it.", Material = "Paper", Condition = "Fragile", RoomID = 3 };
+        public static items harmonica = new items { Name = "Harmonica", Type = "Instrument", Description = "It's damp. It drips. It smells faintly of jazz and failure.", Material = "Brass", Condition = "Wet", RoomID = 7 };
+        public static items slimeyKey = new items { Name = "Slimey Key", Type = "Key", Description = "It's dripping. You're 80% sure the snail did this. You're 100% not okay with it.", Material = "Metal", Condition = "Slimey", RoomID = 10 };
+        public static items fidgetSpinner = new items { Name = "Fidget Spinner", Type = "Toy", Description = "It's warm. It vibrates slightly. You probably shouldn't touch it. You're going to touch it.", Material = "Plastic & Stainless Steel", Condition = "Scratched", RoomID = 1 };
+        public static items vaughnsGin = new items { Name = "Bottle of Gin", Type = "Alcohol", Description = "The label reads: 'Vaughn's Gin' You freeze. That name... why does it feel familiar? ", Material = "Glass", Condition = "Pristine", RoomID = 6 };
+        public static items unknownPills = new items { Name = "Container of Pills", Type = "Medicine?", Description = "The label is scratched off. They look like painkillers, but they feel like a dare.", Material = "Plastic & Unknown Substances", Condition = "Old", RoomID = 4 };       
 
 
         public static void DisplayTitleScreen()
