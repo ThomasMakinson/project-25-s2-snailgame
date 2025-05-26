@@ -89,19 +89,20 @@ namespace SnailMate
         {
             // Inserted game instruction menu basic version -Rhys 12/05/25 3:06pm
             Console.Clear();
-            soundID = 11;
-            text = @"
-Welcome to SnailMate, adventurer!
+            soundID = 2;
+            delay = 48;
+            text = @"Welcome to SnailMate, adventurer!
 You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
 If you're capable of that.
 
-In order to interact with the world describe what you want to do in simple terms,
+In order to interact with the world, describe what you want to do in simple terms,
 such as:
 'go left' 
 'look at door'
 'grab key'.
 
 If a command is not accepted, you may have to try other ways of describing your action.";
+            SoundPlayer(soundID);
             Typewriter(text, delay);
             Console.ReadLine();
 
@@ -760,6 +761,7 @@ Oh no.";
                         Console.Clear();
                         text = "Hello, you are in a room, a snail wants to kill you, good luck! :3";
                         Typewriter(text, delay);
+                        Thread.Sleep(1000);
                         roomID = 1;
                         break;
 
@@ -770,20 +772,23 @@ Oh no.";
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
                             soundID = 11;
-                            delay = 40;
+                            if (sound == true)
+                            {
+                                SoundPlayer(soundID);
+                                delay = 40;
+                            }
                             text = "There is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
                             first[0] = 1;
                         }
                         else
                         {
                             soundID = 12;
-                            delay = 32;
+                            if (sound == true)
+                            {
+                                SoundPlayer(soundID);
+                                delay = 32;
+                            }
                             text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
-                        }
-                        if (sound == true)
-                        {
-                            SoundPlayer(soundID);
-                            soundID = 3;
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -846,6 +851,7 @@ Oh no.";
                                 break;    
                             case "forward":
                                 text = "This door is locked, it looks like you're gonna need a key";
+                                Typewriter(text, delay);
                                 break;
                             case "left":
                                 text = "That is a wall.";
@@ -878,33 +884,44 @@ Oh no.";
                                 SnailCheck();
                                 break;
                         }
-                        Typewriter(text, delay);
                         break;
 
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
                         //room2
                         Console.Clear();
+                        sound = true;
                         if (first[1] == 0)
                         {
                             soundID = 21;
+                            if (sound == true)
+                            {
+                                delay = 32;
+                                SoundPlayer(soundID);
+                            }
                             text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
-But we all that know that that's a stretch.
-What would you like to do? ";
+But we all know that that's a stretch.";
                             first[1] = 1;
                         }
                         else // Second description - Cat
                         {
                             soundID = 22;
-                        }
-                        
-                        if (sound == true)
-                        {
-                            SoundPlayer(soundID);
+                            if (sound == true)
+                            {
+                                //delay = ?
+                                SoundPlayer(soundID);
+                            }
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
+                        if (sound == true)
+                        {
+                            delay = 37;
+                            SoundPlayer(soundID);
+                        }
+                        text = "\nWhat would you like to do?";
+                        Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
@@ -1950,16 +1967,22 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Intro.wav";
                     break;
                 case 2:
-                    //player.SoundLocation = Environment.CurrentDirectory + @"\TTS\HowToPlay.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\HowToPlay.wav";
                     break;
                 case 3:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\WWYLTD.wav";
                     break;
                 case 11:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.1.wav";
+                    soundID = 3;
                     break;
                 case 12:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.2.wav";
+                    soundID = 3;
+                    break;
+                case 21:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    soundID = 3;
                     break;
             }
             player.Play();
