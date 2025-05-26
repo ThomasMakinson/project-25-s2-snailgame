@@ -53,7 +53,7 @@ namespace SnailMate
                 "1. Start Game",
                 "2. Load Game",
                 "3. How to Play",
-                "4. Exit \"\uE11D\""
+                "4. Exit"
             };
 
             // Variables I am using to centre the text and menu options - Kavarn 11:32am
@@ -1919,16 +1919,16 @@ The snail finds you, sucks your blood, and eats your corpse.";
             switch (soundID)                                                        // Adding seperate files for each piece of dialogue - Cat
             {
                 case 0:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\Intro.wav";
+                    ///player.SoundLocation = Environment.CurrentDirectory + @"\Intro.wav";
                     break;
                 case 1:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
+                    //player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
                     break;
                 case 11:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
+                    //player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
                     break;
                 case 12: //Play what would you like to do
-                    player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
+                    //player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
                     break;
             }
             player.Play();
