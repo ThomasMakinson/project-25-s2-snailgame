@@ -742,8 +742,9 @@ Oh no.";
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
-                        soundID = 0;
-                        text = "Please full screen the console for the room animations.\nDo you wish to skip the typing animation? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
+                        soundID = -1;
+                        SoundPlayer(soundID);
+                        text = "Please full screen the console for the room animations.\nDo you wish to skip the typing animation and narration? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
                         Typewriter(text, delay);
                         skip = Convert.ToChar(Console.ReadLine().ToLower());
                         if (skip == 'y')
@@ -753,9 +754,11 @@ Oh no.";
                         }
                         if (sound == true)
                         {
+                            delay = 48;
+                            soundID = 0;
                             SoundPlayer(soundID);
                         }
-                        text = "Hello, you are in a room, a snail wants to kill you, good luck :3";
+                        text = "Hello, you are in a room, a snail wants to kill you, good luck! :3";
                         Typewriter(text, delay);
                         roomID = 1;
                         break;
@@ -1918,17 +1921,20 @@ The snail finds you, sucks your blood, and eats your corpse.";
             SoundPlayer player = new SoundPlayer();
             switch (soundID)                                                        // Adding seperate files for each piece of dialogue - Cat
             {
+                case -1:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\UserPref.wav";
+                    break;
                 case 0:
-                    ///player.SoundLocation = Environment.CurrentDirectory + @"\Intro.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Intro.wav";
                     break;
                 case 1:
-                    //player.SoundLocation = Environment.CurrentDirectory + @"\Room1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.wav";
                     break;
                 case 11:
-                    //player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\HowToPlay.wav";
                     break;
-                case 12: //Play what would you like to do
-                    //player.SoundLocation = Environment.CurrentDirectory + @"\HowToPlay.wav";
+                case 12:
+                    //player.SoundLocation = Environment.CurrentDirectory + @"\.wav";
                     break;
             }
             player.Play();

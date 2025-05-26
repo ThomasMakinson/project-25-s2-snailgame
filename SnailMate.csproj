@@ -12,19 +12,18 @@
     <None Remove="Intro.wav" />
     <None Remove="Room1.wav" />
     <None Remove="Slime.wav" />
+    <None Remove="TTS\Intro.wav" />
+    <None Remove="TTS\UserPref.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="HowToPlay.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Intro.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Room1.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Slime.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Intro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\UserPref.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
