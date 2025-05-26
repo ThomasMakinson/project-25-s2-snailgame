@@ -1252,17 +1252,11 @@ What would you like to do?: ";
                                     { item.Use(); break; }
                                 break;
                             case "back":
-                                text = "Backwards it is then.";
-                                Typewriter(text, delay);
                                 animationID = 75;
                                 Animations(ref animationID);
                                 roomID = 5; //goes back to room 5, in reverse
                                 break;
                             case "forward":
-                                text = "A whole new wooorld!";
-                                Typewriter(text, delay);
-                                Thread.Sleep(1000);
-                                text = "Oh wait, that's copyright. Forget that!";
                                 Typewriter(text, delay);
                                 animationID = 78;
                                 Animations(ref animationID);
@@ -1320,7 +1314,6 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "back":
-                                text = "Backwards it is then.";
                                 Typewriter(text, delay);
                                 animationID = 87;
                                 Animations(ref animationID);
@@ -1328,7 +1321,6 @@ What would you like to do? ";
                                 break;
                             case "up":
                             case "climb":
-                                text = "Insert climbing animation here.";
                                 Typewriter(text, delay);
                                 animationID = 89;
                                 Animations(ref animationID);
@@ -1385,22 +1377,18 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "down":
-                                text = "Backwards it is, then.";
                                 Typewriter(text, delay);
                                 animationID = 98;
                                 Animations(ref animationID);
                                 roomID = 8; //goes back to room 8 in reverse
                                 break;
                             case "forward":
-
-                                text = "you win!";
                                 Typewriter(text, delay);
                                 animationID = 3; //need to change this to the win "room"
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
                                 break;
                             case "right":
-                                text = "Let's see what's this way.";
                                 Typewriter(text, delay);
                                 animationID = 910;
                                 Animations(ref animationID);
@@ -1457,7 +1445,6 @@ What would you like to do? ";
                                     { item.Use(); break; }
                                 break;
                             case "back":
-                                text = "Backwards it is, then.";
                                 Typewriter(text, delay);
                                 animationID = 109;
                                 Animations(ref animationID);
