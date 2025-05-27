@@ -1141,7 +1141,7 @@ As you fall, an even larger snail eats you.";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                //ded = 1; //makes you die
                                                 
                                             }
                                             break;
@@ -1647,6 +1647,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                         text = "You use the Slimey Key to unlock the door.";
                                         door9lock = false; // unlocks door
                                         DropFromInventory(slimeyKey); //remove key after use
+                                        roomID = 11;
                                     }
                                     else
                                     {
@@ -1656,7 +1657,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                     roomID = 11;//win room
 
                                 }
-                                return;
+                                break;
                             case "inventory":
                             case "check inventory":
                                 items.DisplayInventory(inventory);
@@ -1783,6 +1784,7 @@ If there was anything there, you haven't reached it. You scream as you fall and 
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
+                                                
                                             }
                                             break;
                                         case "running jump":
@@ -1806,6 +1808,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
+                                                
                                             }
                                             if (jump.Next(10) == 8 - 9)
                                             {
@@ -1814,6 +1817,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
+                                                
                                             }
                                             break;
                                         case "back":
@@ -1942,6 +1946,7 @@ What would you like to do?";
                         }
                         break;
                     case 11: //"win room"
+                        Console.Clear();
                         soundID = 111;
                         delay = 40;
                         SoundPlayer(soundID);
