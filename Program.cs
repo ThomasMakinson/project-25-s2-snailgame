@@ -99,7 +99,8 @@ In order to interact with the world, describe what you want to do in simple term
 such as:
 'go left' 
 'look at door'
-'grab key'.
+'grab/pick up key'
+'check inventory/inventory'
 
 If a command is not accepted, you may have to try other ways of describing your action.";
             SoundPlayer(soundID);
