@@ -17,8 +17,7 @@ namespace SnailMate
 {
     internal class Program
     {
-        
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0, count = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
         public static bool exitGame = false, sound = true;
@@ -747,8 +746,9 @@ Oh no.";
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
                         SoundPlayer(soundID);
-                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
+                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Need to rerecord - cat
                         Typewriter(text, delay);
+                        Thread.Sleep(1000);
                         delay = 48;
                         soundID = 1;
                         SoundPlayer(soundID);
@@ -1123,7 +1123,7 @@ What would you like to do?";
                                     switch (direction)
                                     {
                                         case "jump":
-                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...\n";
                                             Typewriter(text, delay);
                                             if (jump.Next(10) <= 2)
                                             {
@@ -2012,7 +2012,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
         }
 
         public static void AddToInventory(items item)
-        {
+        { 
             for (int i = 0; i < inventory.Length; i++)
             {
                 if (inventory[i] == null)
@@ -2021,8 +2021,9 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     inventoryCount++;
                     return;
                 }
-            }
+            } 
         }
+        
 
         public static void DropFromInventory(items item)
         {
@@ -2046,7 +2047,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             {
                 // Displays title screen method then asks for a menu option
                 DisplayTitleScreen();
-                Console.WriteLine("Select Option (Enter Number): ");
+                Console.Write("Select Option (Enter Number): ");
                 userMenuSelection = Convert.ToInt32(Console.ReadLine());
 
                 switch (userMenuSelection)
@@ -2081,6 +2082,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
 
         static void SoundPlayer(int SoundID) //Cat - Adding soundplayer, doesn't error now.
         {
+            Volume(0.7f);
             SoundPlayer player = new SoundPlayer();
             switch (soundID)                                                        // Adding seperate files for each piece of dialogue - Cat
             {
@@ -2164,13 +2166,15 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
-                case 100:
-                    var enumerator = new MMDeviceEnumerator();
-                    var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-                    device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
-                    break;
             }
-            //player.Play();
+            player.Play();
+        }
+
+        public static void Volume(float volume) // Hopefully fixing volume issue - Cat
+        {
+            var enumerator = new MMDeviceEnumerator();
+            var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = volume;
         }
 
         public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue or not. - Cat
@@ -2184,8 +2188,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     if (key == ConsoleKey.Spacebar)
                     {
                         delay = 0;
-                        soundID = 100;
-                        SoundPlayer(soundID);
+                        Volume(0);
                     }
                 }
                 else
