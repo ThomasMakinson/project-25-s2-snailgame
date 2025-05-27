@@ -925,6 +925,7 @@ But we all know that that's a stretch.";
                         switch (direction)
                         {
                             case "pick up rusty key":
+                            case "pick up key":
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
                                 rustyKey.RoomID = -1;
@@ -1061,8 +1062,6 @@ But we all know that that's a stretch.";
                     case 4:
                         //room4
                         Console.Clear();
-                        checkRoomItems(roomID);
-                        direction = Console.ReadLine().ToLower().Trim();
                         if (first[3] == 0)
                         {
                             sound = true;
@@ -1081,6 +1080,8 @@ But we all know that that's a stretch.";
                             }
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
+                            checkRoomItems(roomID);
+                            direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
                                 case "pick up unknown pills":
@@ -1216,6 +1217,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                         else // Second Description - Cat
                         {
                             // add reverse room 4 description here
+                            checkRoomItems(roomID);
+                            direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
                                 case "right":
@@ -2097,51 +2100,59 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     soundID = 3;
                     break;
                 case 22:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 31:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room3.1.wav";
                     soundID = 3;
                     break;
                 case 32:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
+                    soundID = 3;
+                    break;
+                case 41:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room4.1.wav";
+                    soundID = 3;
+                    break;
+                case 42:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 51:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 52:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 71:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 72:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 81:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 82:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 91:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 92:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
                 case 111:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
             }
