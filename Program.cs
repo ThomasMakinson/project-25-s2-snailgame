@@ -848,6 +848,11 @@ Oh no.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                         break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
 
                             case "right":
                                 text = "You climb the stairs on the right of the room and head through the door.\n";
@@ -951,6 +956,11 @@ But we all know that that's a stretch.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "left":
                                 animationID = 21;
                                 Animations(ref animationID);
@@ -1040,6 +1050,12 @@ But we all know that that's a stretch.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "back":
                                 animationID = 31;
                                 Animations(ref animationID);
@@ -1124,6 +1140,13 @@ But we all know that that's a stretch.";
                                         if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                         { item.Use(); break; }
                                     break;
+
+                                case var command2 when command2.StartsWith("inspect "):
+                                    foreach (items item in inventory)
+                                        if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                        { item.Inspect(); break; }
+                                    break;
+
                                 case "right":
                                     animationID = 43;
                                     Animations(ref animationID);
@@ -1402,6 +1425,11 @@ I trust you know which is which.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "up":
                             case "back":
                                 animationID = 54;
@@ -1508,6 +1536,11 @@ You got lost in a trance. The snail finds you and eats you.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "back":
                                 animationID = 75;
                                 Animations(ref animationID);
@@ -1599,6 +1632,11 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 foreach (items item in inventory)
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
+                                break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
                                 break;
                             case "back":
                                 animationID = 87;
@@ -1705,6 +1743,11 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "down":
                                 animationID = 98;
                                 Animations(ref animationID);
@@ -1777,6 +1820,11 @@ What would you like to do? ";
                                     foreach (items item in inventory)
                                         if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                         { item.Use(); break; }
+                                    break;
+                                case var command2 when command2.StartsWith("inspect "):
+                                    foreach (items item in inventory)
+                                        if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                        { item.Inspect(); break; }
                                     break;
                                 case "back":
                                     animationID = 109;
