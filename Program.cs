@@ -1624,7 +1624,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         {
                             soundID = 92;
                             //delay = ?;
-                            SoundPlayer(soundID)
+                            SoundPlayer(soundID);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -1759,6 +1759,7 @@ What would you like to do? ";
                                 case "fog":
                                     text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
 What would you like to do?";
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1871,6 +1872,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "fog":
                                     text = @"Jump back across, you know how far it is now. Have fun? 
 What would you like to do?";
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
