@@ -805,6 +805,7 @@ Oh no.";
                             case "use rusty key":
                             case "unlock door":
                             case "use key":
+                            case "forward":
                                 if (door1lock == true)
                                 {
                                     bool hasKey = inventory.Contains(rustyKey);
@@ -816,7 +817,7 @@ Oh no.";
                                     }
                                     else
                                     {
-                                        text = "The door is locked. You need a key.";
+                                        text = "This door is locked, it looks like you're gonna need a key";
                                     }
                                     Typewriter(text, delay);
                                     animationID = 13;
@@ -849,10 +850,10 @@ Oh no.";
                                 Animations(ref animationID);
                                 roomID = 2;//changes room to room 2 and starts it
                                 break;    
-                            case "forward":
-                                text = "This door is locked, it looks like you're gonna need a key";
-                                Typewriter(text, delay);
-                                break;
+                            //case "forward":
+                                //text = "This door is locked, it looks like you're gonna need a key";
+                                //Typewriter(text, delay);
+                                //break;
                             case "left":
                                 text = "That is a wall.";
                                 Typewriter(text, delay);
@@ -867,10 +868,7 @@ Oh no.";
                                 animationID = 1;
                                 Animations(ref animationID);
                                 break;
-                            default:
-                                text = "You thought you were smart, huh? What other direction did you think you could go in?";
-                                Typewriter(text, delay);
-                                break;
+                            
                             case "save":
                                 SaveGame();
                                 break;
@@ -882,6 +880,10 @@ Oh no.";
                             case "how far?":
                             case "am I going to die?":
                                 SnailCheck();
+                                break;
+                            default:
+                                text = "You thought you were smart, huh? What other direction did you think you could go in?";
+                                Typewriter(text, delay);
                                 break;
                         }
                         break;
@@ -968,6 +970,10 @@ But we all know that that's a stretch.";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1056,6 +1062,10 @@ But we all know that that's a stretch.";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1211,6 +1221,10 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "save":
                                     SaveGame();
                                     break;
+                                default :
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
+                                    break;
                             }
                             first[3] = 1;
                         }
@@ -1309,8 +1323,13 @@ As you fall, an even larger snail eats you.";
                                 case "save":
                                     SaveGame();
                                     break;
+                                default:
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
+                                    break;
                             }
                         }
+
                         break;
                     case 5:
                         //room5
@@ -1394,6 +1413,10 @@ I trust you know which is which.";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1489,6 +1512,10 @@ You got lost in a trance. The snail finds you and eats you.";
                             case "save":
                                 SaveGame();
                                 break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
+                                break;
                         }
                         break;
                     case 8:
@@ -1575,6 +1602,10 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1679,6 +1710,10 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1813,6 +1848,10 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "save":
                                     SaveGame();
                                     break;
+                                default:
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
+                                    break;
                             }
                         }
                         else // Second Description - Cat
@@ -1889,6 +1928,10 @@ What would you like to do?";
                                     break;
                                 case "save":
                                     SaveGame();
+                                    break;
+                                default:
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
                                     break;
                             }
                         }
@@ -2156,7 +2199,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     soundID = 3;
                     break;
             }
-            player.Play();
+            //player.Play();
         }
 
         public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue or not. - Cat
