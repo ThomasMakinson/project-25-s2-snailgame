@@ -13,6 +13,7 @@
     <None Remove="Room1.wav" />
     <None Remove="Slime.wav" />
     <None Remove="TTS\Intro.wav" />
+    <None Remove="TTS\Room3.1.wav" />
     <None Remove="TTS\UserPref.wav" />
   </ItemGroup>
 
@@ -21,6 +22,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\Intro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room3.1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\UserPref.wav">

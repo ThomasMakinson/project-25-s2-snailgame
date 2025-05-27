@@ -980,10 +980,10 @@ But we all know that that's a stretch.";
                             soundID = 31;
                             if (sound == true)
                             {
-                                delay = 43;
+                                delay = 43;// fix delay
                                 SoundPlayer(soundID);
                             }
-                            text = @"You're in what appears to be a new room. There is a door at the other end, and a corner on the left, halfway between you and door.";
+                            text = "You're in what appears to be a new room. There is a door at the other end, and a corner to the left, halfway between you and the door.";
                         }
                         else // Second Description - Cat
                         {
@@ -1068,8 +1068,21 @@ But we all know that that's a stretch.";
                         direction = Console.ReadLine().ToLower().Trim();
                         if (first[3] == 0)
                         {
-                            text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.
-What would you like to do?: ";
+                            sound = true;
+                            soundID = 41;
+                            if (sound == true)
+                            {
+                                delay = 43;// fix delay
+                                SoundPlayer(soundID);
+                            }
+                            text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
+                            Typewriter(text, delay);
+                            if (sound == true)
+                            {
+                                delay = 37;
+                                SoundPlayer(soundID);
+                            }
+                            text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
                             switch (direction)
                             {
