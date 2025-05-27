@@ -11,6 +11,7 @@ using System.Numerics;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
+using NAudio.CoreAudioApi;
 
 namespace SnailMate
 {
@@ -1067,7 +1068,7 @@ But we all know that that's a stretch.";
                         Console.Clear();
                         if (first[3] == 0)
                         { 
-                            //sound = true; testing - cat
+                            sound = true; //testing - cat
                             soundID = 41;
                             if (sound == true)
                             {
@@ -2161,6 +2162,11 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
+                case 100:
+                    var enumerator = new MMDeviceEnumerator();
+                    var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                    device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
+                    break;
             }
             player.Play();
         }
@@ -2169,12 +2175,26 @@ The snail finds you, sucks your blood, and eats your corpse.";
         {
             foreach (char c in text)
             {
-                Console.Write(c);
-                Thread.Sleep(delay);
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+
+                    if (key == ConsoleKey.Spacebar)
+                    {
+                        delay = 0;
+                        soundID = 100;
+                        SoundPlayer(soundID);
+                    }
+                }
+                else
+                {
+                    Console.Write(c);
+                    Thread.Sleep(delay);
+                }
             }
             if (sound == true)
             {
-                delay = 30;
+                delay = 25;
             }
         }
 
