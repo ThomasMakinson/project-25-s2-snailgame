@@ -17,7 +17,6 @@ namespace SnailMate
 {
     internal class Program
     {
-        
         public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0, count = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
@@ -2078,6 +2077,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
 
         static void SoundPlayer(int SoundID) //Cat - Adding soundplayer, doesn't error now.
         {
+            Volume(0.7f);
             SoundPlayer player = new SoundPlayer();
             switch (soundID)                                                        // Adding seperate files for each piece of dialogue - Cat
             {
@@ -2161,13 +2161,15 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
-                case 100:
-                    var enumerator = new MMDeviceEnumerator();
-                    var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-                    device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
-                    break;
             }
             player.Play();
+        }
+
+        public static void Volume(float volume) // Hopefully fixing volume issue - Cat
+        {
+            var enumerator = new MMDeviceEnumerator();
+            var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = volume;
         }
 
         public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue or not. - Cat
@@ -2181,8 +2183,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     if (key == ConsoleKey.Spacebar)
                     {
                         delay = 0;
-                        soundID = 100;
-                        SoundPlayer(soundID);
+                        Volume(0);
                     }
                 }
                 else
