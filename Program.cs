@@ -749,6 +749,7 @@ Oh no.";
                         SoundPlayer(soundID);
                         text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Need to rerecord - cat
                         Typewriter(text, delay);
+                        Thread.Sleep(1000);
                         delay = 48;
                         soundID = 1;
                         SoundPlayer(soundID);
@@ -761,7 +762,6 @@ Oh no.";
 
                     case 1:
                         //room1
-                        first[0] = 1;
                         bool door1lock = true;
                         Console.Clear();
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
@@ -2042,7 +2042,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             {
                 // Displays title screen method then asks for a menu option
                 DisplayTitleScreen();
-                Console.WriteLine("Select Option (Enter Number): ");
+                Console.Write("Select Option (Enter Number): ");
                 userMenuSelection = Convert.ToInt32(Console.ReadLine());
 
                 switch (userMenuSelection)
@@ -2166,7 +2166,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
                     break;
             }
-            //player.Play();
+            player.Play();
         }
 
         public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue or not. - Cat
