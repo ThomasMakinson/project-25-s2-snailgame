@@ -831,7 +831,7 @@ Oh no.";
                                         break;
                             case var command2 when command2.StartsWith("inspect "):
                                 foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                     { item.Inspect(); break; }
                                 break;
 
@@ -930,7 +930,7 @@ But we all know that that's a stretch.";
                                 break;
                             case var command2 when command2.StartsWith("inspect "):
                                 foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                     { item.Inspect(); break; }
                                 break;
                             case "left":
@@ -1016,7 +1016,7 @@ But we all know that that's a stretch.";
 
                             case var command2 when command2.StartsWith("inspect "):
                                 foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                     { item.Inspect(); break; }
                                 break;
                             case "back":
@@ -1100,7 +1100,7 @@ But we all know that that's a stretch.";
 
                                 case var command2 when command2.StartsWith("inspect "):
                                     foreach (items item in inventory)
-                                        if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                        if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                         { item.Inspect(); break; }
                                     break;
 
@@ -1372,7 +1372,7 @@ I trust you know which is which.";
                                 break;
                             case var command2 when command2.StartsWith("inspect "):
                                 foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                     { item.Inspect(); break; }
                                 break;
                             case "up":
@@ -1474,7 +1474,7 @@ You got lost in a trance. The snail finds you and eats you.";
                                 break;
                             case var command2 when command2.StartsWith("inspect "):
                                 foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                     { item.Inspect(); break; }
                                 break;
                             case "back":
@@ -1562,7 +1562,7 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 break;
                             case var command2 when command2.StartsWith("inspect "):
                                 foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                     { item.Inspect(); break; }
                                 break;
                             case "back":
