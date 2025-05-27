@@ -735,7 +735,6 @@ Oh no.";
             int[] first = new int [10];
             int runGame = 1, animationID = 0, door2lock = 1, jumpCount = 0;
             string direction;
-            char skip;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
@@ -746,20 +745,11 @@ Oh no.";
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
                         SoundPlayer(soundID);
-                        text = "Please full screen the console for the room animations.\nDo you wish to skip the typing animation and narration? Y/N: "; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
+                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
                         Typewriter(text, delay);
-                        skip = Convert.ToChar(Console.ReadLine().ToLower());
-                        if (skip == 'y')
-                        {
-                            delay = 0;
-                            sound = false;
-                        }
-                        if (sound == true)
-                        {
-                            delay = 48;
-                            soundID = 1;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 48;
+                        soundID = 1;
+                        SoundPlayer(soundID);
                         Console.Clear();
                         text = "Hello, you are in a room, a snail wants to kill you, good luck! :3";
                         Typewriter(text, delay);
@@ -774,31 +764,22 @@ Oh no.";
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
                             soundID = 11;
-                            if (sound == true)
-                            {
-                                SoundPlayer(soundID);
-                                delay = 40;
-                            }
+                            SoundPlayer(soundID);
+                            delay = 40;
                             text = "There is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
                             first[0] = 1;
                         }
                         else
                         {
                             soundID = 12;
-                            if (sound == true)
-                            {
-                                SoundPlayer(soundID);
-                                delay = 32;
-                            }
+                            SoundPlayer(soundID);
+                            delay = 32;
                             text = "Oh look you're back where you started. Turning around you see the stairs to your right again and a door in front of you.";
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -906,11 +887,8 @@ Oh no.";
                         if (first[1] == 0)
                         {
                             soundID = 21;
-                            if (sound == true)
-                            {
-                                delay = 32;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 32;
+                            SoundPlayer(soundID);
                             text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all know that that's a stretch.";
@@ -919,19 +897,13 @@ But we all know that that's a stretch.";
                         else // Second description - Cat
                         {
                             soundID = 22;
-                            if (sound == true)
-                            {
-                                //delay = ?
-                                SoundPlayer(soundID);
-                            }
+                            //delay = ?
+                            SoundPlayer(soundID);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -1002,30 +974,21 @@ But we all know that that's a stretch.";
                         if (first[2] == 0)
                         {
                             soundID = 31;
-                            if (sound == true)
-                            {
-                                delay = 43;// fix delay
-                                SoundPlayer(soundID);
-                            }
+                            delay = 43;// fix delay
+                            SoundPlayer(soundID);
                             text = "You're in what appears to be a new room. There is a door at the other end, and a corner to the left, halfway between you and the door.";
                         }
                         else // Second Description - Cat
                         {
                             soundID = 32;
-                            if (sound == true)
-                            {
-                                //delay = ?;
-                                SoundPlayer(soundID);
-                            }
+                            //delay = ?;
+                            SoundPlayer(soundID);
                             Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -1103,19 +1066,13 @@ But we all know that that's a stretch.";
                         { 
                             sound = true; //testing - cat
                             soundID = 41;
-                            if (sound == true)
-                            {
-                                delay = 43;// fix delay
-                                SoundPlayer(soundID);
-                            }
+                            delay = 43;// fix delay
+                            SoundPlayer(soundID);
                             text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
-                            if (sound == true)
-                            {
-                                delay = 37;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 37;
+                            SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
                             direction = Console.ReadLine().ToLower().Trim();
@@ -1269,11 +1226,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                             text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
-                            if (sound == true)
-                            {
-                                delay = 37;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 37;
+                            SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
                             // added reverse room 4 description here↑
@@ -1383,11 +1337,8 @@ As you fall, an even larger snail eats you.";
                         if (first[4] == 0)
                         {
                             soundID = 51;
-                            if (sound == true)
-                            {
-                                delay = 48;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 48;
+                            SoundPlayer(soundID);
                             text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
 You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
 I trust you know which is which.";
@@ -1396,20 +1347,14 @@ I trust you know which is which.";
                         else // Second description - Cat
                         {
                             soundID = 52;
-                            if (sound == true)
-                            {
-                                //delay = ?;
-                                SoundPlayer(soundID);
-                            }
+                            //delay = ?;
+                            SoundPlayer(soundID);
 
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -1490,30 +1435,21 @@ You got lost in a trance. The snail finds you and eats you.";
                         if (first[6] == 0)
                         {
                             soundID = 71;
-                            if (sound == true)
-                            {
-                                delay = 48;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 48;
+                            SoundPlayer(soundID);
                             text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.";
                             first[6] = 1;
                         }
                         else // Second Description - Cat
                         {
                             soundID = 72;
-                            if (sound == true)
-                            {
-                                //delay = ?;
-                                SoundPlayer(soundID);
-                            }
+                            //delay = ?;
+                            SoundPlayer(soundID);
 
                         }
                         Typewriter(text, delay);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -1582,11 +1518,8 @@ You got lost in a trance. The snail finds you and eats you.";
                         if (first[7] == 0)
                         {
                             soundID = 81;
-                            if (sound == true)
-                            {
-                                delay = 48;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 48;
+                            SoundPlayer(soundID);
                             text = @"You are in a hallway. There is a ladder ahead of you. 
 More darkness creeps down over the ladder, preventing you from seeing where it goes. 
 Could the snail be at the top waiting for you? There's only one way to find out.";
@@ -1595,20 +1528,14 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                         else // Second Description - Cat
                         {
                             soundID = 82;
-                            if (sound == true)
-                            {
-                                //delay = ?;
-                                SoundPlayer(soundID);
-                            }
+                            //delay = ?;
+                            SoundPlayer(soundID);
                         }
 
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -1680,11 +1607,8 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                         if (first[8] == 0)
                         {
                             soundID = 91;
-                            if (sound == true)
-                            {
-                                delay = 48;
-                                SoundPlayer(soundID);
-                            }
+                            delay = 48;
+                            SoundPlayer(soundID);
                             text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
 To your left, a door, no different than any other that you've encountered. 
 To your right, an opening, leading to a large room. Both could be inviting.";
@@ -1693,19 +1617,13 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         else // Second Decription - Cat
                         {
                             soundID = 92;
-                            if (sound == true)
-                            {
-                                //delay = ?;
-                                SoundPlayer(soundID);
-                            }
+                            //delay = ?;
+                            SoundPlayer(soundID)
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -2017,19 +1935,13 @@ What would you like to do?";
                         break;
                     case 11: //"win room"
                         soundID = 111;
-                        if (sound == true)
-                        {
-                            delay = 40;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 40;
+                        SoundPlayer(soundID);
                         text = @"There is a super bright light.
 It appears that the map hasn't loaded yet. You can't see anything.";
                         Typewriter(text, delay);
-                        if (sound == true)
-                        {
-                            delay = 37;
-                            SoundPlayer(soundID);
-                        }
+                        delay = 37;
+                        SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
                         direction = Console.ReadLine().ToLower().Trim();
@@ -2268,10 +2180,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     Thread.Sleep(delay);
                 }
             }
-            if (sound == true)
-            {
-                delay = 25;
-            }
+            delay = 25;
         }
 
         public static void checkRoomItems(int roomID)
