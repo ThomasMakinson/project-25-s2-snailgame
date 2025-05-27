@@ -743,7 +743,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                         SoundPlayer(soundID);
                         text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Need to rerecord - cat
                         Typewriter(text, delay);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(1500);
                         delay = 48;
                         soundID = 1;
                         SoundPlayer(soundID);
