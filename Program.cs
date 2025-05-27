@@ -100,8 +100,10 @@ In order to interact with the world, describe what you want to do in simple term
 such as:
 'left, right, forward or back' 
 'look at door'
-'grab/pick up key'
+'grab/pick up x'
 'check inventory/inventory'
+'inspect x'
+'use x'
 
 If a command is not accepted, you may have to try other ways of describing your action.";
             SoundPlayer(soundID);
@@ -1116,7 +1118,9 @@ But we all know that that's a stretch.";
 Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. 
 You reach the edge of the room, there is a ledge.
 What would you like to do?";
+
                                     Typewriter(text, delay);
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1139,6 +1143,7 @@ As you fall, an even larger snail eats you.";
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
+                                                
                                             }
                                             break;
                                         case "running jump":
@@ -1246,6 +1251,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                     text = @"Jump back across, you know how far it is now. Have fun?
 What would you like to do?";
                                     Typewriter(text, delay);
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1256,7 +1262,7 @@ What would you like to do?";
 Bad life choice? Yes. You don't jump anywhere near far enough. You scream as you fall.
 As you fall, an even larger snail eats you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1276,7 +1282,7 @@ As you fall, an even larger snail eats you.";
                                             {
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1290,7 +1296,7 @@ As you fall, an even larger snail eats you.";
                                         case "down":
                                             text = "As you climb down, an even larger snail is there, and eats you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1701,7 +1707,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                 SaveGame();
                                 break;
                             default:
-                                Console.WriteLine("what?");
+                                Console.WriteLine("What?");
                                 Thread.Sleep(1000);
                                 break;
                         }
@@ -1754,6 +1760,7 @@ What would you like to do? ";
                                 case "fog":
                                     text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
 What would you like to do?";
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1774,7 +1781,7 @@ What would you like to do?";
 Bad life choice? Yes. You don't jump anywhere near far enough. 
 If there was anything there, you haven't reached it. You scream as you fall and the snail eats you.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1797,7 +1804,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             {
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1805,7 +1812,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             {
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1816,7 +1823,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                         default:
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1845,14 +1852,14 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                     SaveGame();
                                     break;
                                 default:
-                                    Console.WriteLine("what?");
+                                    Console.WriteLine("What?");
                                     Thread.Sleep(1000);
                                     break;
                             }
                         }
                         else // Second Description - Cat
                         {
-                            //add reverse room 10 description here
+                            text = "You've been here before. Silly billy, are you going around in circles?";
                             checkRoomItems(roomID);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
@@ -1866,6 +1873,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "fog":
                                     text = @"Jump back across, you know how far it is now. Have fun? 
 What would you like to do?";
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1874,7 +1882,7 @@ What would you like to do?";
                                             Thread.Sleep(1000);
                                             text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1891,7 +1899,7 @@ What would you like to do?";
                                             {
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1928,7 +1936,7 @@ What would you like to do?";
                                     SaveGame();
                                     break;
                                 default:
-                                    Console.WriteLine("what?");
+                                    Console.WriteLine("What?");
                                     Thread.Sleep(1000);
                                     break;
                             }
@@ -1960,6 +1968,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                                 Typewriter(text, delay);
                                 animationID = 3; //win animation
                                 Animations(ref animationID);
+                                Thread.Sleep(5000);
                                 runGame = 0; //return to menu
                                 break;
                         }
