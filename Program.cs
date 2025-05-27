@@ -1620,7 +1620,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         {
                             soundID = 92;
                             //delay = ?;
-                            SoundPlayer(soundID)
+                            SoundPlayer(soundID);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
