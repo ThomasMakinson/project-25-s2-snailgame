@@ -911,6 +911,8 @@ But we all know that that's a stretch.";
                                 //delay = ?
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -991,6 +993,7 @@ But we all know that that's a stretch.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
                             Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
@@ -1202,7 +1205,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                         }
                         else // Second Description - Cat
                         {
-                            // add reverse room 4 description here
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
                             switch (direction)
                             {
                                 case "right":
@@ -1307,7 +1311,7 @@ As you fall, an even larger snail eats you.";
                                 delay = 48;
                                 SoundPlayer(soundID);
                             }
-                            text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
+                            text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?)
 You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
 I trust you know which is which.";
                             first[4] = 1;
@@ -1320,6 +1324,8 @@ I trust you know which is which.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
 
                         }
                         Typewriter(text, delay);
@@ -1416,6 +1422,8 @@ You got lost in a trance. The snail finds you and eats you.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
 
                         }
                         Typewriter(text, delay);
@@ -1499,6 +1507,8 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
                         }
 
                         Typewriter(text, delay);
@@ -1586,6 +1596,8 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -1801,7 +1813,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                         }
                         else // Second Description - Cat
                         {
-                            //add reverse room 10 description here
+                            text = "You've been here before. Silly billy, are you going around in circles?"; // second description
+                            Typewriter(text, delay);
                             switch (direction)
                             {
                                 case "back":
@@ -1910,44 +1923,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                                 animationID = 3; //win animation
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
-                                /*switch (jump.Next(10))
-                                {
-                                    case 0: //win
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 1:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 2:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 3:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 4:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                }*/
                                 break;
                         }
                         break;
