@@ -18,7 +18,7 @@ namespace SnailMate
     internal class Program
     {
         
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0, count = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
         public static bool exitGame = false, sound = true;
@@ -747,7 +747,7 @@ Oh no.";
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
                         SoundPlayer(soundID);
-                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Asking if user wants to skip text animation, if so, it skips soundplayer too. - cat
+                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Need to rerecord - cat
                         Typewriter(text, delay);
                         delay = 48;
                         soundID = 1;
@@ -761,6 +761,7 @@ Oh no.";
 
                     case 1:
                         //room1
+                        first[0] = 1;
                         bool door1lock = true;
                         Console.Clear();
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
@@ -1759,6 +1760,7 @@ What would you like to do? ";
                                 case "fog":
                                     text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
 What would you like to do?";
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1871,6 +1873,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "fog":
                                     text = @"Jump back across, you know how far it is now. Have fun? 
 What would you like to do?";
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
