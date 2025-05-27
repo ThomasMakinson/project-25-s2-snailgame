@@ -1742,8 +1742,6 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                     case 10:
                         //room10
                         Console.Clear();
-                        checkRoomItems(roomID);
-                        direction = Console.ReadLine().ToLower().Trim();
                         if (first[9] == 0)
                         {
                             text = @"At least you haven't been eaten, yet. 
@@ -1752,6 +1750,8 @@ Are you near, or are you even further away?
 The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors. 
 What would you like to do? ";
                             Typewriter(text, delay);
+                            checkRoomItems(roomID);
+                            direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
                                 case "pick up slimey key":
@@ -1881,6 +1881,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                         else // Second Description - Cat
                         {
                             //add reverse room 10 description here
+                            checkRoomItems(roomID);
+                            direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
                                 case "back":
@@ -1993,44 +1995,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                                 animationID = 3; //win animation
                                 Animations(ref animationID);
                                 runGame = 0; //return to menu
-                                /*switch (jump.Next(10))
-                                {
-                                    case 0: //win
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 1:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 2:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 3:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 4:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                }*/
                                 break;
                         }
                         break;
