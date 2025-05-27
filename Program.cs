@@ -1073,6 +1073,7 @@ But we all know that that's a stretch.";
                             }
                             text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
                             Typewriter(text, delay);
+                            checkRoomItems(roomID);
                             if (sound == true)
                             {
                                 delay = 37;
@@ -1080,7 +1081,6 @@ But we all know that that's a stretch.";
                             }
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
-                            checkRoomItems(roomID);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
