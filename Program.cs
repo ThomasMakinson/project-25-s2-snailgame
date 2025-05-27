@@ -11,6 +11,7 @@ using System.Numerics;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
+using NAudio.CoreAudioApi;
 
 namespace SnailMate
 {
@@ -97,7 +98,7 @@ If you're capable of that.
 
 In order to interact with the world, describe what you want to do in simple terms,
 such as:
-'go left' 
+'left, right, forward or back' 
 'look at door'
 'grab/pick up key'
 'check inventory/inventory'
@@ -813,18 +814,21 @@ Oh no.";
                                     if (hasKey)
                                     {
                                         text = "You use the Rusty Key to unlock the door.";
+                                        Thread.Sleep(1000);
                                         door1lock = false; // unlocks door
                                         DropFromInventory(rustyKey); //remove key after use
+                                        Typewriter(text, delay);
+                                        animationID = 13;
+                                        Animations(ref animationID);
+                                        roomID = 3;//changes room to room 3 and starts it
                                     }
                                     else
                                     {
-                                        text = "This door is locked, it looks like you're gonna need a key";
+                                        text = "The door is locked. You need a key.";
+                                        Console.WriteLine(text);
+                                        Thread.Sleep(1500);
                                     }
-                                    Typewriter(text, delay);
-                                    animationID = 13;
-                                    Animations(ref animationID);
-                                    roomID = 3;//changes room to room 3 and starts it
-                                    
+                                                                 
                                 }
                                 break;
                             case "pick up fidget spinner":
@@ -844,6 +848,11 @@ Oh no.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                         break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
 
                             case "right":
                                 text = "You climb the stairs on the right of the room and head through the door.\n";
@@ -930,6 +939,7 @@ But we all know that that's a stretch.";
                         {
                             case "pick up rusty key":
                             case "pick up key":
+                            case "grab key":
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
                                 Console.WriteLine($"You added {rustyKey.Name} to your Inventory.");
@@ -945,6 +955,11 @@ But we all know that that's a stretch.";
                                 foreach (items item in inventory)
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
+                                break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
                                 break;
                             case "left":
                                 animationID = 21;
@@ -1035,6 +1050,12 @@ But we all know that that's a stretch.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "back":
                                 animationID = 31;
                                 Animations(ref animationID);
@@ -1080,7 +1101,7 @@ But we all know that that's a stretch.";
                         Console.Clear();
                         if (first[3] == 0)
                         { 
-                            //sound = true; testing - cat
+                            sound = true; //testing - cat
                             soundID = 41;
                             if (sound == true)
                             {
@@ -1119,6 +1140,13 @@ But we all know that that's a stretch.";
                                         if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                         { item.Use(); break; }
                                     break;
+
+                                case var command2 when command2.StartsWith("inspect "):
+                                    foreach (items item in inventory)
+                                        if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                        { item.Inspect(); break; }
+                                    break;
+
                                 case "right":
                                     animationID = 43;
                                     Animations(ref animationID);
@@ -1397,6 +1425,11 @@ I trust you know which is which.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "up":
                             case "back":
                                 animationID = 54;
@@ -1503,6 +1536,11 @@ You got lost in a trance. The snail finds you and eats you.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "back":
                                 animationID = 75;
                                 Animations(ref animationID);
@@ -1594,6 +1632,11 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 foreach (items item in inventory)
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
+                                break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
                                 break;
                             case "back":
                                 animationID = 87;
@@ -1700,6 +1743,11 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                     if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                     { item.Use(); break; }
                                 break;
+                            case var command2 when command2.StartsWith("inspect "):
+                                foreach (items item in inventory)
+                                    if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                    { item.Inspect(); break; }
+                                break;
                             case "down":
                                 animationID = 98;
                                 Animations(ref animationID);
@@ -1742,8 +1790,6 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                     case 10:
                         //room10
                         Console.Clear();
-                        checkRoomItems(roomID);
-                        direction = Console.ReadLine().ToLower().Trim();
                         if (first[9] == 0)
                         {
                             text = @"At least you haven't been eaten, yet. 
@@ -1752,6 +1798,8 @@ Are you near, or are you even further away?
 The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors. 
 What would you like to do? ";
                             Typewriter(text, delay);
+                            checkRoomItems(roomID);
+                            direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
                                 case "pick up slimey key":
@@ -1772,6 +1820,11 @@ What would you like to do? ";
                                     foreach (items item in inventory)
                                         if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
                                         { item.Use(); break; }
+                                    break;
+                                case var command2 when command2.StartsWith("inspect "):
+                                    foreach (items item in inventory)
+                                        if (item != null && item.Name.ToLower() == command2.Substring(4).Trim())
+                                        { item.Inspect(); break; }
                                     break;
                                 case "back":
                                     animationID = 109;
@@ -1881,6 +1934,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                         else // Second Description - Cat
                         {
                             //add reverse room 10 description here
+                            checkRoomItems(roomID);
+                            direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
                                 case "back":
@@ -1994,44 +2049,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                                 Animations(ref animationID);
                                 Thread.Sleep(5000);
                                 runGame = 0; //return to menu
-                                /*switch (jump.Next(10))
-                                {
-                                    case 0: //win
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 1:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 2:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 3:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                    case 4:
-                                        text = "You have escaped the snail! You win!";
-                                        Typewriter(text, delay);
-                                        animationID = 3; //win animation
-                                        Animations(ref animationID);
-                                        runGame = 0; //return to menu
-                                        break;
-                                }*/
                                 break;
                         }
                         break;
@@ -2222,6 +2239,11 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
+                case 100:
+                    var enumerator = new MMDeviceEnumerator();
+                    var device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                    device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
+                    break;
             }
             //player.Play();
         }
@@ -2230,12 +2252,26 @@ The snail finds you, sucks your blood, and eats your corpse.";
         {
             foreach (char c in text)
             {
-                Console.Write(c);
-                Thread.Sleep(delay);
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+
+                    if (key == ConsoleKey.Spacebar)
+                    {
+                        delay = 0;
+                        soundID = 100;
+                        SoundPlayer(soundID);
+                    }
+                }
+                else
+                {
+                    Console.Write(c);
+                    Thread.Sleep(delay);
+                }
             }
             if (sound == true)
             {
-                delay = 30;
+                delay = 25;
             }
         }
 
