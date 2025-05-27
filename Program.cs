@@ -1065,7 +1065,8 @@ But we all know that that's a stretch.";
                             soundID = 41;
                             delay = 43;// fix delay
                             SoundPlayer(soundID);
-                            text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
+                            text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? 
+There are stairs going down to your left through a person-sized hole in the wall.";
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
                             delay = 37;
@@ -1156,7 +1157,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             }
                                             else if (jump.Next(10) == 5 - 7)
                                             {
-                                                text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall. An even larger snail eats you.";
+                                                text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. 
+You scream as you fall. An even larger snail eats you.";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
@@ -1164,7 +1166,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             }
                                             else if (jump.Next(10) == 8 - 9)
                                             {
-                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. 
+The snail eats your corpse..";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
@@ -1438,7 +1441,8 @@ You got lost in a trance. The snail finds you and eats you.";
                             soundID = 71;
                             delay = 48;
                             SoundPlayer(soundID);
-                            text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. There is only an opening to your right.";
+                            text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. 
+There is only an opening to your right.";
                             first[6] = 1;
                         }
                         else // Second Description - Cat
@@ -2221,7 +2225,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 roomText += "\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.\n";
 
             if (vaughnsGin.RoomID == roomID)
-                roomText += "\nA full bottle of expensive-looking bottle of gin rests on a dusty shelf. It’s the only thing in the room without dust.\n";
+                roomText += "\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.\n";
 
             if (crumpledNote.RoomID == roomID)
                 roomText += "\nA crumpled note sticks out from under a cracked tile.\n";
