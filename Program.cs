@@ -1117,7 +1117,9 @@ But we all know that that's a stretch.";
 Is this it, have you found where you can escape? Perhaps, but you can't see through the fog. 
 You reach the edge of the room, there is a ledge.
 What would you like to do?";
+
                                     Typewriter(text, delay);
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1140,6 +1142,7 @@ As you fall, an even larger snail eats you.";
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
+                                                
                                             }
                                             break;
                                         case "running jump":
@@ -1247,6 +1250,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                     text = @"Jump back across, you know how far it is now. Have fun?
 What would you like to do?";
                                     Typewriter(text, delay);
+                                    direction = Console.ReadLine().ToLower().Trim();
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1961,6 +1965,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                                 Typewriter(text, delay);
                                 animationID = 3; //win animation
                                 Animations(ref animationID);
+                                Thread.Sleep(5000);
                                 runGame = 0; //return to menu
                                 break;
                         }
