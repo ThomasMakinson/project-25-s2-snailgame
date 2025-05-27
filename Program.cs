@@ -97,7 +97,7 @@ If you're capable of that.
 
 In order to interact with the world, describe what you want to do in simple terms,
 such as:
-'go left' 
+'left, right, forward or back' 
 'look at door'
 'grab/pick up key'
 'check inventory/inventory'
@@ -812,18 +812,21 @@ Oh no.";
                                     if (hasKey)
                                     {
                                         text = "You use the Rusty Key to unlock the door.";
+                                        Thread.Sleep(1000);
                                         door1lock = false; // unlocks door
                                         DropFromInventory(rustyKey); //remove key after use
+                                        Typewriter(text, delay);
+                                        animationID = 13;
+                                        Animations(ref animationID);
+                                        roomID = 3;//changes room to room 3 and starts it
                                     }
                                     else
                                     {
                                         text = "The door is locked. You need a key.";
+                                        Console.WriteLine(text);
+                                        Thread.Sleep(1500);
                                     }
-                                    Typewriter(text, delay);
-                                    animationID = 13;
-                                    Animations(ref animationID);
-                                    roomID = 3;//changes room to room 3 and starts it
-                                    
+                                                                 
                                 }
                                 break;
                             case "pick up fidget spinner":
@@ -928,6 +931,7 @@ But we all know that that's a stretch.";
                         {
                             case "pick up rusty key":
                             case "pick up key":
+                            case "grab key":
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
                                 Console.WriteLine($"You added {rustyKey.Name} to your Inventory.");
