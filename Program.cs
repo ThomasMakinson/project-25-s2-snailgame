@@ -1123,7 +1123,7 @@ What would you like to do?";
                                     switch (direction)
                                     {
                                         case "jump":
-                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
+                                            text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...\n";
                                             Typewriter(text, delay);
                                             if (jump.Next(10) <= 2)
                                             {
