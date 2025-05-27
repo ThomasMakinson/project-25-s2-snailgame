@@ -1238,7 +1238,17 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                         }
                         else // Second Description - Cat
                         {
-                            // add reverse room 4 description here
+                            text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
+                            Typewriter(text, delay);
+                            checkRoomItems(roomID);
+                            if (sound == true)
+                            {
+                                delay = 37;
+                                SoundPlayer(soundID);
+                            }
+                            text = "\nWhat would you like to do? ";
+                            Typewriter(text, delay);
+                            // added reverse room 4 description here↑
                             checkRoomItems(roomID);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
