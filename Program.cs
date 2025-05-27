@@ -924,6 +924,8 @@ But we all know that that's a stretch.";
                                 //delay = ?
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -1017,6 +1019,7 @@ But we all know that that's a stretch.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?";
                             Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
@@ -1401,6 +1404,8 @@ I trust you know which is which.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            Typewriter(text, delay);
 
                         }
                         Typewriter(text, delay);
@@ -1506,6 +1511,8 @@ You got lost in a trance. The snail finds you and eats you.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            Typewriter(text, delay);
 
                         }
                         Typewriter(text, delay);
@@ -1600,6 +1607,8 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            Typewriter(text, delay);
                         }
 
                         Typewriter(text, delay);
@@ -1698,6 +1707,9 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                 //delay = ?;
                                 SoundPlayer(soundID);
                             }
+                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            Typewriter(text, delay);
+
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -1782,7 +1794,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                 SaveGame();
                                 break;
                             default:
-                                Console.WriteLine("what?");
+                                Console.WriteLine("What?");
                                 Thread.Sleep(1000);
                                 break;
                         }
@@ -1926,14 +1938,14 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                     SaveGame();
                                     break;
                                 default:
-                                    Console.WriteLine("what?");
+                                    Console.WriteLine("What?");
                                     Thread.Sleep(1000);
                                     break;
                             }
                         }
                         else // Second Description - Cat
                         {
-                            //add reverse room 10 description here
+                            text = "You've been here before. Silly billy, are you going around in circles?";
                             checkRoomItems(roomID);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
@@ -2009,7 +2021,7 @@ What would you like to do?";
                                     SaveGame();
                                     break;
                                 default:
-                                    Console.WriteLine("what?");
+                                    Console.WriteLine("What?");
                                     Thread.Sleep(1000);
                                     break;
                             }
