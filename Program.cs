@@ -1992,6 +1992,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                                 Typewriter(text, delay);
                                 animationID = 3; //win animation
                                 Animations(ref animationID);
+                                Thread.Sleep(5000);
                                 runGame = 0; //return to menu
                                 /*switch (jump.Next(10))
                                 {
