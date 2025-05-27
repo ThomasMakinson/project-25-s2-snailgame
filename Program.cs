@@ -626,34 +626,28 @@ If a command is not accepted, you may have to try other ways of describing your 
             snailDistance -= 1;
             if (snailDistance >= 10)
             {
-                soundID = 50;
-                text = @"
-The threat is distant.";
-
+                soundID = 13;
+                text = "\nThe threat is distant.";
             }
             else if (snailDistance >= 5 && snailDistance < 10)
             {
-                soundID = 51;
-                text = @"
-The threat draws nearer.";
+                soundID = 14;
+                text = "\nThe threat draws nearer.";
             }
             else if (snailDistance < 5 && snailDistance >1)
             {
-                soundID = 52;
-                text = @"
-Breathe softly, it's very close now.";
+                soundID = 15;
+                text = "\nBreathe softly, it's very close now.";
             }
             else if (snailDistance == 1)
             {
-                soundID = 53;
-                text = @"
-It's right behind you.";
+                soundID = 16;
+                text = "\nIt's right behind you.";
             }
             else
             {
-                soundID = 54;
-                text = @"
-Oh no.";
+                soundID = 17;
+                text = "\nOh no.";
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
@@ -662,6 +656,7 @@ Oh no.";
             }
             SoundPlayer(soundID);
             Typewriter(text, delay);
+            Thread.Sleep(500);
         }
 
         public static void SnailCheckStealth() //Rhys 22/05/2025
@@ -2098,6 +2093,18 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 case 3:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\WWYLTD.wav";
                     break;
+                case 13:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatDistant.wav";
+                    break;
+                case 14:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatNearer.wav";
+                    break;
+                case 15:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatDistant.wav";
+                    break;
+                case 16:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatDistant.wav";
+                    break;
                 case 11:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.1.wav";
                     soundID = 3;
@@ -2162,7 +2169,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
-                case 93:
+                case 111:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
                     soundID = 3;
                     break;
