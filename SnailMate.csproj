@@ -13,6 +13,8 @@
     <None Remove="Room1.wav" />
     <None Remove="Slime.wav" />
     <None Remove="TTS\Intro.wav" />
+    <None Remove="TTS\Room1.2.wav" />
+    <None Remove="TTS\Room3.1.wav" />
     <None Remove="TTS\UserPref.wav" />
   </ItemGroup>
 
@@ -23,12 +25,19 @@
     <Content Include="TTS\Intro.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TTS\Room1.2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room3.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TTS\UserPref.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="System.Windows.Extensions" Version="9.0.5" />
   </ItemGroup>
 
