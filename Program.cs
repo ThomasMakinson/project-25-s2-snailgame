@@ -813,7 +813,6 @@ Oh no.";
                                     {
                                         text = "You use the Rusty Key to unlock the door.";
                                         door1lock = false; // unlocks door
-                                        Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
                                         DropFromInventory(rustyKey); //remove key after use
                                     }
                                     else
@@ -830,6 +829,7 @@ Oh no.";
                             case "pick up fidget spinner":
                             case "grab fidget spinner":
                                 AddToInventory(fidgetSpinner);
+                                Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
                                 fidgetSpinner.RoomID = -1;
                                 break;
                             case "inventory":
