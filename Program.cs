@@ -1122,7 +1122,7 @@ What would you like to do?";
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) >= 2)
+                                            if (jump.Next(10) <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1146,7 +1146,7 @@ As you fall, an even larger snail eats you.";
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) >= 4)
+                                            if (jump.Next(10) <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
@@ -1735,7 +1735,7 @@ What would you like to do?";
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) >= 2)
+                                            if (jump.Next(10) <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1744,7 +1744,7 @@ What would you like to do?";
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
                                             }
-                                            else if (jump.Next(10) < 2)
+                                            else if (jump.Next(10) > 2)
                                             {
                                                 text = @"You try to get across from a standing jump without knowing where you're going.
 Bad life choice? Yes. You don't jump anywhere near far enough. 
@@ -1760,7 +1760,7 @@ If there was anything there, you haven't reached it. You scream as you fall and 
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) >= 4)
+                                            if (jump.Next(10) <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
