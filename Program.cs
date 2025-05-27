@@ -1304,7 +1304,7 @@ What would you like to do?";
 Bad life choice? Yes. You don't jump anywhere near far enough. You scream as you fall.
 As you fall, an even larger snail eats you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1324,7 +1324,7 @@ As you fall, an even larger snail eats you.";
                                             {
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1338,7 +1338,7 @@ As you fall, an even larger snail eats you.";
                                         case "down":
                                             text = "As you climb down, an even larger snail is there, and eats you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1867,7 +1867,7 @@ What would you like to do?";
 Bad life choice? Yes. You don't jump anywhere near far enough. 
 If there was anything there, you haven't reached it. You scream as you fall and the snail eats you.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1890,7 +1890,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             {
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1898,7 +1898,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             {
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
@@ -1909,7 +1909,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                         default:
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1967,7 +1967,7 @@ What would you like to do?";
                                             Thread.Sleep(1000);
                                             text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                             Typewriter(text, delay);
-                                            animationID = 1; //death animation
+                                            animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
                                             break;
@@ -1984,7 +1984,7 @@ What would you like to do?";
                                             {
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
-                                                animationID = 1; //death animation
+                                                animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
