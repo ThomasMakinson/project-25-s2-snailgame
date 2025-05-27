@@ -98,7 +98,7 @@ If you're capable of that.
 
 In order to interact with the world, describe what you want to do in simple terms,
 such as:
-'go left' 
+'left, right, forward or back' 
 'look at door'
 'grab/pick up key'
 'check inventory/inventory'
@@ -807,30 +807,35 @@ Oh no.";
                             case "use rusty key":
                             case "unlock door":
                             case "use key":
+                            case "forward":
                                 if (door1lock == true)
                                 {
                                     bool hasKey = inventory.Contains(rustyKey);
                                     if (hasKey)
                                     {
                                         text = "You use the Rusty Key to unlock the door.";
+                                        Thread.Sleep(1000);
                                         door1lock = false; // unlocks door
-                                        Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
                                         DropFromInventory(rustyKey); //remove key after use
+                                        Typewriter(text, delay);
+                                        animationID = 13;
+                                        Animations(ref animationID);
+                                        roomID = 3;//changes room to room 3 and starts it
                                     }
                                     else
                                     {
                                         text = "The door is locked. You need a key.";
+                                        Console.WriteLine(text);
+                                        Thread.Sleep(1500);
                                     }
-                                    Typewriter(text, delay);
-                                    animationID = 13;
-                                    Animations(ref animationID);
-                                    roomID = 3;//changes room to room 3 and starts it
-                                    
+                                                                 
                                 }
                                 break;
                             case "pick up fidget spinner":
                             case "grab fidget spinner":
                                 AddToInventory(fidgetSpinner);
+                                Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 fidgetSpinner.RoomID = -1;
                                 break;
                             case "inventory":
@@ -851,10 +856,10 @@ Oh no.";
                                 Animations(ref animationID);
                                 roomID = 2;//changes room to room 2 and starts it
                                 break;    
-                            case "forward":
-                                text = "This door is locked, it looks like you're gonna need a key";
-                                Typewriter(text, delay);
-                                break;
+                            //case "forward":
+                                //text = "This door is locked, it looks like you're gonna need a key";
+                                //Typewriter(text, delay);
+                                //break;
                             case "left":
                                 text = "That is a wall.";
                                 Typewriter(text, delay);
@@ -869,10 +874,7 @@ Oh no.";
                                 animationID = 1;
                                 Animations(ref animationID);
                                 break;
-                            default:
-                                text = "You thought you were smart, huh? What other direction did you think you could go in?";
-                                Typewriter(text, delay);
-                                break;
+                            
                             case "save":
                                 SaveGame();
                                 break;
@@ -884,6 +886,10 @@ Oh no.";
                             case "how far?":
                             case "am I going to die?":
                                 SnailCheck();
+                                break;
+                            default:
+                                text = "You thought you were smart, huh? What other direction did you think you could go in?";
+                                Typewriter(text, delay);
                                 break;
                         }
                         break;
@@ -928,9 +934,11 @@ But we all know that that's a stretch.";
                         {
                             case "pick up rusty key":
                             case "pick up key":
+                            case "grab key":
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
                                 Console.WriteLine($"You added {rustyKey.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 rustyKey.RoomID = -1;
                                 break;
                             case "inventory":
@@ -971,6 +979,10 @@ But we all know that that's a stretch.";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1015,6 +1027,7 @@ But we all know that that's a stretch.";
                             case "grab note":
                                 AddToInventory(crumpledNote);
                                 Console.WriteLine($"You added {crumpledNote.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 crumpledNote.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1061,6 +1074,10 @@ But we all know that that's a stretch.";
                             case "save":
                                 SaveGame();
                                 break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
+                                break;
                         }
                         break;
                     case 4:
@@ -1094,6 +1111,7 @@ But we all know that that's a stretch.";
                                 case "grab pills":
                                     AddToInventory(unknownPills);
                                     Console.WriteLine($"You added {unknownPills.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
                                     unknownPills.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -1216,12 +1234,26 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "save":
                                     SaveGame();
                                     break;
+                                default :
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
+                                    break;
                             }
                             first[3] = 1;
                         }
                         else // Second Description - Cat
                         {
-                            // add reverse room 4 description here
+                            text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
+                            Typewriter(text, delay);
+                            checkRoomItems(roomID);
+                            if (sound == true)
+                            {
+                                delay = 37;
+                                SoundPlayer(soundID);
+                            }
+                            text = "\nWhat would you like to do? ";
+                            Typewriter(text, delay);
+                            // added reverse room 4 description here↑
                             checkRoomItems(roomID);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
@@ -1314,8 +1346,13 @@ As you fall, an even larger snail eats you.";
                                 case "save":
                                     SaveGame();
                                     break;
+                                default:
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
+                                    break;
                             }
                         }
+
                         break;
                     case 5:
                         //room5
@@ -1400,6 +1437,10 @@ I trust you know which is which.";
                             case "save":
                                 SaveGame();
                                 break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
+                                break;
                         }
                         break;
                     case 6:
@@ -1454,6 +1495,7 @@ You got lost in a trance. The snail finds you and eats you.";
                             case "grab harmonica":
                                 AddToInventory(harmonica);
                                 Console.WriteLine($"You added {harmonica.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 harmonica.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1494,6 +1536,10 @@ You got lost in a trance. The snail finds you and eats you.";
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1541,6 +1587,7 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                             case "grab gin":
                                 AddToInventory(vaughnsGin);
                                 Console.WriteLine($"You added {vaughnsGin.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 vaughnsGin.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1582,6 +1629,10 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                 break;
                             case "save":
                                 SaveGame();
+                                break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
                                 break;
                         }
                         break;
@@ -1687,6 +1738,10 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                             case "save":
                                 SaveGame();
                                 break;
+                            default:
+                                Console.WriteLine("what?");
+                                Thread.Sleep(1000);
+                                break;
                         }
                         break;
                     case 10:
@@ -1710,6 +1765,7 @@ What would you like to do? ";
                                 case "grab key":
                                     AddToInventory(slimeyKey);
                                     Console.WriteLine($"You added {slimeyKey.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
                                     slimeyKey.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -1821,6 +1877,10 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                 case "save":
                                     SaveGame();
                                     break;
+                                default:
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
+                                    break;
                             }
                         }
                         else // Second Description - Cat
@@ -1897,6 +1957,10 @@ What would you like to do?";
                                     break;
                                 case "save":
                                     SaveGame();
+                                    break;
+                                default:
+                                    Console.WriteLine("what?");
+                                    Thread.Sleep(1000);
                                     break;
                             }
                         }
@@ -2168,7 +2232,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     device.AudioEndpointVolume.MasterVolumeLevelScalar = 0;
                     break;
             }
-            player.Play();
+            //player.Play();
         }
 
         public static void Typewriter(string text , int delay) //Setting up typewriter and delay based on if they skip dialogue or not. - Cat
