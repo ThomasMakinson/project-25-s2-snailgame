@@ -830,6 +830,7 @@ Oh no.";
                             case "grab fidget spinner":
                                 AddToInventory(fidgetSpinner);
                                 Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 fidgetSpinner.RoomID = -1;
                                 break;
                             case "inventory":
@@ -930,6 +931,7 @@ But we all know that that's a stretch.";
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
                                 Console.WriteLine($"You added {rustyKey.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 rustyKey.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1014,6 +1016,7 @@ But we all know that that's a stretch.";
                             case "grab note":
                                 AddToInventory(crumpledNote);
                                 Console.WriteLine($"You added {crumpledNote.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 crumpledNote.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1093,6 +1096,7 @@ But we all know that that's a stretch.";
                                 case "grab pills":
                                     AddToInventory(unknownPills);
                                     Console.WriteLine($"You added {unknownPills.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
                                     unknownPills.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -1453,6 +1457,7 @@ You got lost in a trance. The snail finds you and eats you.";
                             case "grab harmonica":
                                 AddToInventory(harmonica);
                                 Console.WriteLine($"You added {harmonica.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 harmonica.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1540,6 +1545,7 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                             case "grab gin":
                                 AddToInventory(vaughnsGin);
                                 Console.WriteLine($"You added {vaughnsGin.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 vaughnsGin.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1709,6 +1715,7 @@ What would you like to do? ";
                                 case "grab key":
                                     AddToInventory(slimeyKey);
                                     Console.WriteLine($"You added {slimeyKey.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
                                     slimeyKey.RoomID = -1;
                                     break;
                                 case "inventory":
