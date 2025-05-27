@@ -788,7 +788,7 @@ Oh no.";
                                 SoundPlayer(soundID);
                                 delay = 32;
                             }
-                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
+                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and a door in front of you.";
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -1063,8 +1063,8 @@ But we all know that that's a stretch.";
                         //room4
                         Console.Clear();
                         if (first[3] == 0)
-                        {
-                            sound = true;
+                        { 
+                            //sound = true; testing - cat
                             soundID = 41;
                             if (sound == true)
                             {
