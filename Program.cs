@@ -99,7 +99,8 @@ In order to interact with the world, describe what you want to do in simple term
 such as:
 'go left' 
 'look at door'
-'grab key'.
+'grab/pick up key'
+'check inventory/inventory'
 
 If a command is not accepted, you may have to try other ways of describing your action.";
             SoundPlayer(soundID);
@@ -788,7 +789,7 @@ Oh no.";
                                 SoundPlayer(soundID);
                                 delay = 32;
                             }
-                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and the door you just came from in front of you.";
+                            text = "Oh look you're back where you started. Turning around you see the stairs to your right again and a door in front of you.";
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -829,8 +830,9 @@ Oh no.";
                             case "pick up fidget spinner":
                             case "grab fidget spinner":
                                 AddToInventory(fidgetSpinner);
+                                Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 fidgetSpinner.RoomID = -1;
-                                checkRoomItems(roomID);
                                 break;
                             case "inventory":
                             case "check inventory":
@@ -930,6 +932,8 @@ But we all know that that's a stretch.";
                             case "pick up key":
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
+                                Console.WriteLine($"You added {rustyKey.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 rustyKey.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1017,6 +1021,8 @@ But we all know that that's a stretch.";
                             case "grab crumpled note":
                             case "grab note":
                                 AddToInventory(crumpledNote);
+                                Console.WriteLine($"You added {crumpledNote.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 crumpledNote.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1073,8 +1079,8 @@ But we all know that that's a stretch.";
                         //room4
                         Console.Clear();
                         if (first[3] == 0)
-                        {
-                            sound = true;
+                        { 
+                            //sound = true; testing - cat
                             soundID = 41;
                             if (sound == true)
                             {
@@ -1099,6 +1105,8 @@ But we all know that that's a stretch.";
                                 case "grab unknown pills":
                                 case "grab pills":
                                     AddToInventory(unknownPills);
+                                    Console.WriteLine($"You added {unknownPills.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
                                     unknownPills.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -1128,7 +1136,7 @@ What would you like to do?";
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) >= 2)
+                                            if (jump.Next(10) <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1152,7 +1160,7 @@ As you fall, an even larger snail eats you.";
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) >= 4)
+                                            if (jump.Next(10) <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
@@ -1471,6 +1479,8 @@ You got lost in a trance. The snail finds you and eats you.";
                             case "pick up harmonica":
                             case "grab harmonica":
                                 AddToInventory(harmonica);
+                                Console.WriteLine($"You added {harmonica.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 harmonica.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1561,6 +1571,8 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                             case "grab bottle of gin":
                             case "grab gin":
                                 AddToInventory(vaughnsGin);
+                                Console.WriteLine($"You added {vaughnsGin.Name} to your Inventory.");
+                                Thread.Sleep(1500);
                                 vaughnsGin.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1737,6 +1749,8 @@ What would you like to do? ";
                                 case "grab slimey key":
                                 case "grab key":
                                     AddToInventory(slimeyKey);
+                                    Console.WriteLine($"You added {slimeyKey.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
                                     slimeyKey.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -1763,7 +1777,7 @@ What would you like to do?";
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) >= 2)
+                                            if (jump.Next(10) <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1772,7 +1786,7 @@ What would you like to do?";
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
                                             }
-                                            else if (jump.Next(10) < 2)
+                                            else if (jump.Next(10) > 2)
                                             {
                                                 text = @"You try to get across from a standing jump without knowing where you're going.
 Bad life choice? Yes. You don't jump anywhere near far enough. 
@@ -1788,7 +1802,7 @@ If there was anything there, you haven't reached it. You scream as you fall and 
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) >= 4)
+                                            if (jump.Next(10) <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
@@ -2051,7 +2065,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 if (inventory[i] == null)
                 {
                     inventory[i] = item;
-                    Console.WriteLine($"You added {item.Name} to your inventory!");
                     inventoryCount++;
                     return;
                 }
