@@ -813,6 +813,7 @@ Oh no.";
                                     {
                                         text = "You use the Rusty Key to unlock the door.";
                                         door1lock = false; // unlocks door
+                                        Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
                                         DropFromInventory(rustyKey); //remove key after use
                                     }
                                     else
@@ -830,7 +831,6 @@ Oh no.";
                             case "grab fidget spinner":
                                 AddToInventory(fidgetSpinner);
                                 fidgetSpinner.RoomID = -1;
-                                checkRoomItems(roomID);
                                 break;
                             case "inventory":
                             case "check inventory":
@@ -929,6 +929,7 @@ But we all know that that's a stretch.";
                             case "pick up key":
                             case "grab rusty key":
                                 AddToInventory(rustyKey);
+                                Console.WriteLine($"You added {rustyKey.Name} to your Inventory.");
                                 rustyKey.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1012,6 +1013,7 @@ But we all know that that's a stretch.";
                             case "grab crumpled note":
                             case "grab note":
                                 AddToInventory(crumpledNote);
+                                Console.WriteLine($"You added {crumpledNote.Name} to your Inventory.");
                                 crumpledNote.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1090,6 +1092,7 @@ But we all know that that's a stretch.";
                                 case "grab unknown pills":
                                 case "grab pills":
                                     AddToInventory(unknownPills);
+                                    Console.WriteLine($"You added {unknownPills.Name} to your Inventory.");
                                     unknownPills.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -1449,6 +1452,7 @@ You got lost in a trance. The snail finds you and eats you.";
                             case "pick up harmonica":
                             case "grab harmonica":
                                 AddToInventory(harmonica);
+                                Console.WriteLine($"You added {harmonica.Name} to your Inventory.");
                                 harmonica.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1535,6 +1539,7 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                             case "grab bottle of gin":
                             case "grab gin":
                                 AddToInventory(vaughnsGin);
+                                Console.WriteLine($"You added {vaughnsGin.Name} to your Inventory.");
                                 vaughnsGin.RoomID = -1;
                                 break;
                             case "inventory":
@@ -1703,6 +1708,7 @@ What would you like to do? ";
                                 case "grab slimey key":
                                 case "grab key":
                                     AddToInventory(slimeyKey);
+                                    Console.WriteLine($"You added {slimeyKey.Name} to your Inventory.");
                                     slimeyKey.RoomID = -1;
                                     break;
                                 case "inventory":
@@ -2009,7 +2015,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 if (inventory[i] == null)
                 {
                     inventory[i] = item;
-                    Console.WriteLine($"You added {item.Name} to your inventory!");
                     inventoryCount++;
                     return;
                 }
