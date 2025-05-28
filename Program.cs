@@ -1033,6 +1033,7 @@ But we all know that that's a stretch.";
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
+                            case "corner":
                                 animationID = 34;
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
