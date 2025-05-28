@@ -12,24 +12,60 @@
     <None Remove="Intro.wav" />
     <None Remove="Room1.wav" />
     <None Remove="Slime.wav" />
+    <None Remove="TTS\HowToPlay.wav" />
+    <None Remove="TTS\Intro.wav" />
+    <None Remove="TTS\Room1.1.wav" />
+    <None Remove="TTS\Room1.2.wav" />
+    <None Remove="TTS\Room2.1.wav" />
+    <None Remove="TTS\Room3.1.wav" />
+    <None Remove="TTS\Room4.1.wav" />
+    <None Remove="TTS\ThreatDistant.wav" />
+    <None Remove="TTS\ThreatNearer.wav" />
+    <None Remove="TTS\UserPref.wav" />
+    <None Remove="TTS\WWYLTD.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="HowToPlay.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Intro.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Room1.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Slime.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TTS\HowToPlay.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Intro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room1.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room1.2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room2.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room3.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room4.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\ThreatDistant.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\ThreatNearer.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\UserPref.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\WWYLTD.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="System.Windows.Extensions" Version="9.0.5" />
   </ItemGroup>
 

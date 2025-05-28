@@ -33,7 +33,6 @@ namespace SnailMate
         public static void DisplayInventory(items[] inventory)
         {
             // Displays entire inventory including empty slots with a for loop and some checking to see the contents of inventory slots
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("========= INVENTORY =========");
             for (int i = 0; i < inventory.Length; i++)
@@ -102,13 +101,6 @@ namespace SnailMate
                     Console.WriteLine("The snail senses weakness.");
                     Thread.Sleep(600);
                     Console.WriteLine("Stealth: broken. Dignity: missing. Urgency: extreme.");
-                    break;
-                case "rusty key":
-                    //Console.WriteLine("Need to figure out what we doing with keys before i add use");
-                    break;
-                case "slimey key":
-                case "slimy key":
-                    //Console.WriteLine("Need to figure out what we doing with keys before i add use");
                     break;
                 default:
                     Console.WriteLine("You aren't able to do that....");
