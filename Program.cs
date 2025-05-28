@@ -662,7 +662,7 @@ If a command is not accepted, you may have to try other ways of describing your 
 
         public static void SnailCheckStealth() //Rhys 22/05/2025
         {
-            snailDistance -= 5;
+            snailDistance -= 1;
             if (snailDistance <= 0)
             {
                 int animationID = 1;
@@ -736,7 +736,7 @@ If a command is not accepted, you may have to try other ways of describing your 
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                SnailCheckStealth(); //has to be the stealth version to unobtrusively count down -Rhys
+                //SnailCheckStealth(); //has to be the stealth version to unobtrusively count down -Rhys
                 DeathCheck(out runGame);
                 switch (roomID)
                 {
@@ -2234,7 +2234,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 {
                     case 1:
                         //resets global vars to default on selecting new game
-                        roomID = 0;
+                        roomID = 1;
                         blood = 5;
                         snailDistance = 15;
                         ded = 0;
