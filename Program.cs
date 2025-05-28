@@ -740,12 +740,12 @@ If a command is not accepted, you may have to try other ways of describing your 
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
-                        soundID = 22; //0
-                        delay = 37; // nothing
+                        soundID = 20; //0
+                        delay = 45; // nothing
                         SoundPlayer(soundID);
-                        text = "You've been here before. Silly billy, are you going around in circles?";//Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
+                        text = "Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. \r\nYou scream as you fall. An even larger snail eats you";//Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
                         Typewriter(text, delay);
-                        Thread.Sleep(800); //1500
+                        Thread.Sleep(1500); //1500
                         delay = 48;
                         soundID = 1;
                         SoundPlayer(soundID);
@@ -766,7 +766,6 @@ If a command is not accepted, you may have to try other ways of describing your 
                             SoundPlayer(soundID);
                             delay = 40;
                             text = "There is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
-                            first[0] = 1;
                         }
                         else
                         {
@@ -802,6 +801,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                                         animationID = 13;
                                         Animations(ref animationID);
                                         roomID = 3;//changes room to room 3 and starts it
+                                        first[0] = 1;
                                     }
                                     else
                                     {
@@ -838,6 +838,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                             case "right":
                                 text = "You climb the stairs on the right of the room and head through the door.\n";
                                 Typewriter(text, delay);
+                                first[0] = 1;
                                 animationID = 12;
                                 Animations(ref animationID);
                                 roomID = 2;//changes room to room 2 and starts it
@@ -886,7 +887,6 @@ If a command is not accepted, you may have to try other ways of describing your 
                     case 2:
                         //room2
                         Console.Clear();
-                        //first[1] = 1;
                         if (first[1] == 0)
                         {
                             soundID = 21;
@@ -895,7 +895,6 @@ If a command is not accepted, you may have to try other ways of describing your 
                             text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all know that that's a stretch.";
-                            first[1] = 1;
                         }
                         else // Second description - Cat
                         {
@@ -941,12 +940,14 @@ But we all know that that's a stretch.";
                                 break;
                             case "left":
                             case "back":
+                                first[1] = 1;
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
                             case "right":
+                                first[1] = 1;
                                 animationID = 23;
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
@@ -1030,17 +1031,20 @@ But we all know that that's a stretch.";
                                     { item.Inspect(); break; }
                                 break;
                             case "back":
+                                first[2] = 1;
                                 animationID = 31;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
                             case "forward":
+                                first[2] = 1;
                                 animationID = 32;
                                 Animations(ref animationID);
                                 roomID = 2; //teleport to room 2 as per map
                                 break;
                             case "left":
                             case "corner":
+                                first[2] = 1;
                                 animationID = 34;
                                 Animations(ref animationID);
                                 roomID = 4; //goes to room 4
@@ -1117,6 +1121,7 @@ There are stairs going down to your left through a person-sized hole in the wall
                                     break;
 
                                 case "right":
+                                    first[3] = 1;
                                     animationID = 43;
                                     Animations(ref animationID);
                                     roomID = 3; //goes back to room 3;
@@ -1140,6 +1145,7 @@ What would you like to do?";
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
+                                                first[3] = 1;
                                                 animationID = 104;
                                                 Animations(ref animationID);
                                                 roomID = 10; //goes to room 10
@@ -1167,15 +1173,19 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
                                                 jumpCount = 1;
+                                                first[3] = 1;
                                                 animationID = 410;
                                                 Animations(ref animationID);
                                                 roomID = 10; //goes to room 10
                                             }
                                             else if (jumpSuccess >= 5 && jumpSuccess <= 7)
                                             {
+                                                soundID = 20;
+                                                delay = 45;
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. 
-You scream as you fall. An even larger snail eats you.";
+You scream as you fall. An even larger snail eats you";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(1500);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
@@ -1194,6 +1204,7 @@ You scream as you fall. An even larger snail eats you.";
                                             }
                                             break;
                                         case "back":
+                                            first[3] = 1;
                                             animationID = 43;
                                             Animations(ref animationID);
                                             roomID = 3; //goes back to room 3;
@@ -1218,6 +1229,7 @@ You scream as you fall. An even larger snail eats you.";
                                     break;
                                 case "left":
                                 case "down":
+                                    first[3] = 1;
                                     animationID = 45;
                                     Animations(ref animationID);
                                     roomID = 5; //goes to room 5
@@ -1389,7 +1401,6 @@ As you fall, an even larger snail eats you.";
                             text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
 You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
 I trust you know which is which.";
-                            first[4] = 1;
                         }
                         else // Second description - Cat
                         {
@@ -1426,16 +1437,19 @@ I trust you know which is which.";
                                 break;
                             case "up":
                             case "back":
+                                first[4] = 1;
                                 animationID = 54;
                                 Animations(ref animationID);
                                 roomID = 4; //goes back to room 4;
                                 break;
                             case "left": //doing opposite to map because of the way a player would be facing after having gone this way, we should make this clearer -Rhys
+                                first[4] = 1;
                                 animationID = 56;
                                 Animations(ref animationID);
                                 roomID = 6; //goes to room 6
                                 break;
                             case "right":
+                                first[4] = 1;
                                 animationID = 57;
                                 Animations(ref animationID);
                                 roomID = 7; //goes to room 7
@@ -1488,7 +1502,7 @@ You got lost in a trance. The snail finds you and eats you.";
                             SoundPlayer(soundID);
                             text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. 
 There is only an opening to your right.";
-                            first[6] = 1;
+                            
                         }
                         else // Second Description - Cat
                         {
@@ -1530,11 +1544,13 @@ There is only an opening to your right.";
                                     { item.Inspect(); break; }
                                 break;
                             case "back":
+                                first[6] = 1;
                                 animationID = 75;
                                 Animations(ref animationID);
                                 roomID = 5; //goes back to room 5
                                 break;
                             case "forward":
+                                first[6] = 1;
                                 animationID = 78;
                                 Animations(ref animationID);
                                 roomID = 8; //goes to room 8
@@ -1575,7 +1591,7 @@ There is only an opening to your right.";
                             text = @"You are in a hallway. There is a ladder ahead of you. 
 More darkness creeps down over the ladder, preventing you from seeing where it goes. 
 Could the snail be at the top waiting for you? There's only one way to find out.";
-                            first[7] = 1;
+                            
                         }
                         else // Second Description - Cat
                         {
@@ -1620,12 +1636,14 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                                     { item.Inspect(); break; }
                                 break;
                             case "back":
+                                first[7] = 1;
                                 animationID = 87;
                                 Animations(ref animationID);
                                 roomID = 7; //goes back to room 7
                                 break;
                             case "up":
                             case "climb":
+                                first[7] = 1;
                                 animationID = 89;
                                 Animations(ref animationID);
                                 roomID = 9; //goes to room 9
@@ -1666,7 +1684,7 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                             text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
 To your left, a door, no different than any other that you've encountered. 
 To your right, an opening, leading to a large room. Both could be inviting.";
-                            first[8] = 1;
+                            
                         }
                         else // Second Decription - Cat
                         {
@@ -1706,6 +1724,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                     }
                                     Typewriter(text, delay);
                                     roomID = 11;//win room
+                                    first[8] = 1;
 
                                 }
                                 break;
@@ -1725,6 +1744,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                     { item.Inspect(); break; }
                                 break;
                             case "down":
+                                first[8] = 1;
                                 animationID = 98;
                                 Animations(ref animationID);
                                 roomID = 8; //goes back to room 8
@@ -1734,6 +1754,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                 Typewriter(text, delay);
                                 break;
                             case "right":
+                                first[8] = 1;
                                 animationID = 910;
                                 Animations(ref animationID);
                                 roomID = 10; //goes to room 10
@@ -1776,6 +1797,7 @@ The room has an interesting shape, there are angles leading back to the opening 
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
                             soundID = 3;
+                            delay = 37;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1807,6 +1829,7 @@ The room has an interesting shape, there are angles leading back to the opening 
                                         { item.Inspect(); break; }
                                     break;
                                 case "back":
+                                    first[9] = 1;
                                     animationID = 109;
                                     Animations(ref animationID);
                                     roomID = 9; //goes back to room 9;
@@ -1830,6 +1853,7 @@ What would you like to do?";
                                                 //animationID = 44;
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
+                                                first[9] = 1;
                                             }
                                             else if (jumpSuccess > 2)
                                             {
@@ -1857,11 +1881,16 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 //animationID = 44;
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
+                                                first[9] = 1;
                                             }
                                             else if (jumpSuccess >= 5 && jumpSuccess <= 7)
                                             {
-                                                text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough.";
+                                                soundID = 20;
+                                                delay = 45;
+                                                text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. 
+You scream as you fall. An even larger snail eats you";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(1500);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
@@ -1882,6 +1911,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             }
                                             break;
                                         case "back":
+                                            first[9] = 1;
                                             animationID = 109; //goes back to room 9;
                                             break;
                                         default:
@@ -1934,6 +1964,11 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                             Typewriter(text, delay);
                             Thread.Sleep(800);
                             checkRoomItems(roomID);
+                            soundID = 3;
+                            delay = 37;
+                            SoundPlayer(soundID);
+                            text = "\nWhat would you like to do? ";
+                            Typewriter(text, delay);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
