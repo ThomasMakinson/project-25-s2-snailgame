@@ -12,6 +12,7 @@ using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
 using NAudio.CoreAudioApi;
+using NAudio.Midi;
 
 namespace SnailMate
 {
@@ -906,6 +907,11 @@ But we all know that that's a stretch.";
                         direction = Console.ReadLine().ToLower().Trim();
                         switch (direction)
                         {
+                            case "die":
+                                animationID = 1;
+                                Animations(ref animationID);
+                                runGame = 0;
+                                break;
                             case "pick up rusty key":
                             case "pick up key":
                             case "grab key":
@@ -1116,12 +1122,15 @@ What would you like to do?";
 
                                     Typewriter(text, delay);
                                     direction = Console.ReadLine().ToLower().Trim();
+                                    //Random random = new Random();
+                                    int tempNum = jump.Next(10);
                                     switch (direction)
                                     {
+                                        
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...\n";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) <= 2)
+                                            if (tempNum <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1137,7 +1146,7 @@ As you fall, an even larger snail eats you.";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
-                                                //ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                                 
                                             }
                                             break;
@@ -1146,7 +1155,7 @@ As you fall, an even larger snail eats you.";
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) <= 4)
+                                            if (tempNum <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
@@ -1155,23 +1164,23 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 Animations(ref animationID);
                                                 roomID = 10; //goes to room 10
                                             }
-                                            else if (jump.Next(10) == 5 - 7)
+                                            else if (tempNum >= 5 && tempNum <= 7)
                                             {
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. 
 You scream as you fall. An even larger snail eats you.";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                             }
-                                            else if (jump.Next(10) == 8 - 9)
+                                            else if (tempNum >= 8 && tempNum <= 9)
                                             {
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. 
 The snail eats your corpse..";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                             }
                                             break;
                                         case "back":
@@ -1185,7 +1194,7 @@ The snail eats your corpse..";
                                             Typewriter(text, delay);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
-                                            ded = 1; //makes you die
+                                            runGame = 0; //makes you die
                                             break;
                                         default:
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
@@ -1249,6 +1258,7 @@ The snail eats your corpse..";
 What would you like to do?";
                                     Typewriter(text, delay);
                                     direction = Console.ReadLine().ToLower().Trim();
+                                    int tempNum = jump.Next(10);
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1261,27 +1271,27 @@ As you fall, an even larger snail eats you.";
                                             Typewriter(text, delay);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
-                                            ded = 1; //makes you die
+                                            runGame = 0; //makes you die
                                             break;
                                         case "running jump":
                                             text = "You walk back into the hallway. You are the furthest you can be from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) < 5) //randomly decides which outcome the player gets
+                                            if (tempNum < 5) //randomly decides which outcome the player gets
                                             {
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                             }
-                                            else if (jump.Next(10) > 5)
+                                            else if (tempNum > 5)
                                             {
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                             }
                                             break;
                                         case "back":
@@ -1295,7 +1305,7 @@ As you fall, an even larger snail eats you.";
                                             Typewriter(text, delay);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
-                                            ded = 1; //makes you die
+                                            runGame = 0; //makes you die
                                             break;
                                         default:
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
@@ -1431,7 +1441,7 @@ You got lost in a trance. The snail finds you and eats you.";
                         checkRoomItems(roomID);
                         animationID = 1; //death animation
                         Animations(ref animationID);
-                        ded = 1; //makes you die
+                        runGame = 0; //makes you die
                         break;
                     case 7:
                         //room7
@@ -1760,12 +1770,14 @@ What would you like to do? ";
                                     text = @"The fog... is fog. It's very... foggy? If there is anything there, you can't see it. 
 What would you like to do?";
                                     direction = Console.ReadLine().ToLower().Trim();
+                                    int tempNum;
+                                    tempNum = jump.Next(10);
                                     switch (direction)
                                     {
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) <= 2)
+                                            if (tempNum <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1774,7 +1786,7 @@ What would you like to do?";
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
                                             }
-                                            else if (jump.Next(10) > 2)
+                                            else if (tempNum > 2)
                                             {
                                                 text = @"You try to get across from a standing jump without knowing where you're going.
 Bad life choice? Yes. You don't jump anywhere near far enough. 
@@ -1782,7 +1794,7 @@ If there was anything there, you haven't reached it. You scream as you fall and 
                                                 Typewriter(text, delay);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                                 
                                             }
                                             break;
@@ -1791,7 +1803,7 @@ If there was anything there, you haven't reached it. You scream as you fall and 
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) <= 4)
+                                            if (tempNum <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
@@ -1800,22 +1812,22 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
                                             }
-                                            else if (jump.Next(10) == 5 - 7)
+                                            else if (tempNum >= 5 && tempNum <= 7)
                                             {
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough.";
                                                 Typewriter(text, delay);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                                 
                                             }
-                                            if (jump.Next(10) == 8 - 9)
+                                            if (tempNum >= 8 && tempNum <= 9)
                                             {
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
                                                 Typewriter(text, delay);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                                 
                                             }
                                             break;
@@ -1827,7 +1839,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             Typewriter(text, delay);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
-                                            ded = 1; //makes you die
+                                            runGame = 0; //makes you die
                                             break;
                                     }
                                     animationID = 2; //added death
@@ -1876,6 +1888,8 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                     text = @"Jump back across, you know how far it is now. Have fun? 
 What would you like to do?";
                                     direction = Console.ReadLine().ToLower().Trim();
+                                    int tempNum;
+                                    tempNum = jump.Next(10);
                                     switch (direction)
                                     {
                                         case "jump":
@@ -1886,24 +1900,24 @@ What would you like to do?";
                                             Typewriter(text, delay);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
-                                            ded = 1; //makes you die
+                                            runGame = 0; //makes you die
                                             break;
                                         case "running jump":
-                                            if (jump.Next(10) < 5) //randomly decides which outcome the player gets
+                                            if (tempNum < 5) //randomly decides which outcome the player gets
                                             {
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                             }
-                                            else if (jump.Next(10) > 5)
+                                            else if (tempNum > 5)
                                             {
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
-                                                ded = 1; //makes you die
+                                                runGame = 0; //makes you die
                                             }
                                             break;
                                         case "back":
@@ -1914,7 +1928,7 @@ What would you like to do?";
                                             Typewriter(text, delay);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
-                                            ded = 1; //makes you die
+                                            runGame = 0; //makes you die
                                             break;
                                     }
                                     break;
@@ -1987,6 +2001,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             roomID = Convert.ToInt32(sr.ReadLine());
             blood = Convert.ToInt32(sr.ReadLine());
             snailDistance = Convert.ToInt32(sr.ReadLine());
+            ded = 0;
             NewGame();
         }
 
