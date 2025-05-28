@@ -730,7 +730,7 @@ If a command is not accepted, you may have to try other ways of describing your 
         {
             Random jump = new Random(10);
             int[] first = new int[10];
-            int runGame = 1, animationID = 0, door2lock = 1, jumpCount = 0;
+            int runGame = 1, animationID = 0, door2lock = 1, jumpCount = 0, jumpSuccess = 0;
             string direction;
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
@@ -886,7 +886,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                     case 2:
                         //room2
                         Console.Clear();
-                        first[1] = 1;
+                        //first[1] = 1;
                         if (first[1] == 0)
                         {
                             soundID = 21;
@@ -1135,7 +1135,8 @@ What would you like to do?";
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...\n";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) <= 2)
+                                            jumpSuccess = jump.Next(10);
+                                            if (jumpSuccess <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1159,17 +1160,18 @@ As you fall, an even larger snail eats you.";
                                             text = @"Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
+                                            jumpSuccess = jump.Next(10);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) <= 4)
+                                            if (jumpSuccess <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
                                                 jumpCount = 1;
-                                                animationID = 104;
+                                                animationID = 410;
                                                 Animations(ref animationID);
                                                 roomID = 10; //goes to room 10
                                             }
-                                            else if (jump.Next(10) == 5 - 7)
+                                            else if (jumpSuccess >= 5 && jumpSuccess <= 7)
                                             {
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. 
 You scream as you fall. An even larger snail eats you.";
@@ -1178,7 +1180,7 @@ You scream as you fall. An even larger snail eats you.";
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
-                                            else if (jump.Next(10) == 8 - 9)
+                                            else if (jumpSuccess >= 8 && jumpSuccess <= 9)
                                             {
                                                 soundID = 23;
                                                 SoundPlayer(soundID);
@@ -1293,8 +1295,9 @@ As you fall, an even larger snail eats you.";
                                         case "running jump":
                                             text = "You walk back into the hallway. You are the furthest you can be from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
+                                            jumpSuccess = jump.Next(10);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) < 5) //randomly decides which outcome the player gets
+                                            if (jumpSuccess < 5) //randomly decides which outcome the player gets
                                             {
                                                 soundID = 23;
                                                 SoundPlayer(soundID);
@@ -1306,7 +1309,7 @@ As you fall, an even larger snail eats you.";
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
-                                            else if (jump.Next(10) > 5)
+                                            else if (jumpSuccess > 5)
                                             {
                                                 soundID = 26;
                                                 SoundPlayer(soundID);
@@ -1818,7 +1821,8 @@ What would you like to do?";
                                         case "jump":
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
                                             Typewriter(text, delay);
-                                            if (jump.Next(10) <= 2)
+                                            jumpSuccess = jump.Next(10);
+                                            if (jumpSuccess <= 2)
                                             {
                                                 text = "Apparently a standing jump was enough!.";
                                                 Typewriter(text, delay);
@@ -1827,7 +1831,7 @@ What would you like to do?";
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
                                             }
-                                            else if (jump.Next(10) > 2)
+                                            else if (jumpSuccess > 2)
                                             {
                                                 text = @"You try to get across from a standing jump without knowing where you're going.
 Bad life choice? Yes. You don't jump anywhere near far enough. 
@@ -1843,8 +1847,9 @@ If there was anything there, you haven't reached it. You scream as you fall and 
                                             text = @"Looking behind you, you could back to the hallways before this room, and do a running jump. The laws of physics would certainly be more in your favour...
 You walk back into the hallway. You are the furthest you can from the fog, it's now or never. You start running.";
                                             Typewriter(text, delay);
+                                            jumpSuccess = jump.Next(10);
                                             Thread.Sleep(1000);
-                                            if (jump.Next(10) <= 4)
+                                            if (jumpSuccess <= 4)
                                             {
                                                 text = "The run up was a success!";
                                                 Typewriter(text, delay);
@@ -1853,7 +1858,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 //Animations(ref animationID);
                                                 roomID = 4; //goes to room 4
                                             }
-                                            else if (jump.Next(10) == 5 - 7)
+                                            else if (jumpSuccess >= 5 && jumpSuccess <= 7)
                                             {
                                                 text = @"Oof. The run up still wasn't enough. You don't jump anywhere near far enough.";
                                                 Typewriter(text, delay);
@@ -1862,7 +1867,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 ded = 1; //makes you die
 
                                             }
-                                            if (jump.Next(10) == 8 - 9)
+                                            else if (jumpSuccess >= 8 && jumpSuccess <= 9)
                                             {
                                                 soundID = 23;
                                                 SoundPlayer(soundID);
@@ -1870,7 +1875,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
                                                 Thread.Sleep(1500);
-                                                animationID = 2; //death animation
+                                                animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
 
@@ -1959,7 +1964,8 @@ What would you like to do?";
                                             ded = 1; //makes you die
                                             break;
                                         case "running jump":
-                                            if (jump.Next(10) < 5) //randomly decides which outcome the player gets
+                                            jumpSuccess = jump.Next(10);
+                                            if (jumpSuccess < 5) //randomly decides which outcome the player gets
                                             {
                                                 soundID = 23;
                                                 SoundPlayer(soundID);
@@ -1971,7 +1977,7 @@ What would you like to do?";
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
-                                            else if (jump.Next(10) > 5)
+                                            else if (jumpSuccess > 5)
                                             {
                                                 soundID = 26;
                                                 SoundPlayer(soundID);
