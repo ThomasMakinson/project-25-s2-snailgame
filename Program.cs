@@ -740,11 +740,12 @@ If a command is not accepted, you may have to try other ways of describing your 
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
-                        soundID = 0;
+                        soundID = 22; //0
+                        delay = 37; // nothing
                         SoundPlayer(soundID);
-                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
+                        text = "You've been here before. Silly billy, are you going around in circles?";//Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
                         Typewriter(text, delay);
-                        Thread.Sleep(1500);
+                        Thread.Sleep(800); //1500
                         delay = 48;
                         soundID = 1;
                         SoundPlayer(soundID);
@@ -899,11 +900,12 @@ But we all know that that's a stretch.";
                         else // Second description - Cat
                         {
                             soundID = 22;
-                            //delay = ?
-                            SoundPlayer(soundID);
+                            delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
+                            SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-                        Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
@@ -987,11 +989,12 @@ But we all know that that's a stretch.";
                         else // Second Description - Cat
                         {
                             soundID = 22;
-                            //delay = ?;
-                            SoundPlayer(soundID);
+                            delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
+                            SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-                        Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
@@ -1072,7 +1075,6 @@ But we all know that that's a stretch.";
                         Console.Clear();
                         if (first[3] == 0)
                         {
-                            sound = true; //testing - cat
                             soundID = 41;
                             delay = 43;// fix delay
                             SoundPlayer(soundID);
@@ -1178,9 +1180,12 @@ You scream as you fall. An even larger snail eats you.";
                                             }
                                             else if (jump.Next(10) == 8 - 9)
                                             {
-                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. 
-The snail eats your corpse..";
+                                                soundID = 23;
+                                                SoundPlayer(soundID);
+                                                delay = 43;
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(1500);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
@@ -1200,7 +1205,12 @@ The snail eats your corpse..";
                                             ded = 1; //makes you die
                                             break;
                                         default:
+                                            soundID = 25;
+                                            SoundPlayer(soundID);
+                                            delay = 43;
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                            Typewriter(text, delay);
+                                            Thread.Sleep(1200);
                                             break;
                                     }
                                     break;
@@ -1238,8 +1248,12 @@ The snail eats your corpse..";
                         }
                         else // Second Description - Cat
                         {
-                            text = "It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? There are stairs going down to your left through a person-sized hole in the wall.";
+                            soundID = 22;
+                            delay = 37;
+                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            SoundPlayer(soundID);
                             Typewriter(text, delay);
+                            Thread.Sleep(800);
                             checkRoomItems(roomID);
                             delay = 37;
                             soundID = 3;
@@ -1282,16 +1296,24 @@ As you fall, an even larger snail eats you.";
                                             Thread.Sleep(1000);
                                             if (jump.Next(10) < 5) //randomly decides which outcome the player gets
                                             {
+                                                soundID = 23;
+                                                SoundPlayer(soundID);
+                                                delay = 43;
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(1500);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
                                             else if (jump.Next(10) > 5)
                                             {
+                                                soundID = 26;
+                                                SoundPlayer(soundID);
+                                                delay = 43;
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(800);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
@@ -1311,7 +1333,12 @@ As you fall, an even larger snail eats you.";
                                             ded = 1; //makes you die
                                             break;
                                         default:
+                                            soundID = 25;
+                                            SoundPlayer(soundID);
+                                            delay = 43;
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
+                                            Typewriter(text, delay);
+                                            Thread.Sleep(1200);
                                             break;
                                     }
                                     break;
@@ -1364,12 +1391,12 @@ I trust you know which is which.";
                         else // Second description - Cat
                         {
                             soundID = 22;
-                            //delay = ?;
-                            SoundPlayer(soundID);
+                            delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
-
+                            SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-                        Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
@@ -1463,12 +1490,12 @@ There is only an opening to your right.";
                         else // Second Description - Cat
                         {
                             soundID = 22;
-                            //delay = ?;
-                            SoundPlayer(soundID);
+                            delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
-
+                            SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-                        Typewriter(text, delay);
                         delay = 37;
                         soundID = 3;
                         SoundPlayer(soundID);
@@ -1550,12 +1577,12 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                         else // Second Description - Cat
                         {
                             soundID = 22;
-                            //delay = ?;
-                            SoundPlayer(soundID);
+                            delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
+                            SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-
-                        Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
@@ -1641,11 +1668,12 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         else // Second Decription - Cat
                         {
                             soundID = 22;
-                            //delay = ?;
-                            SoundPlayer(soundID);
+                            delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
+                            SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-                        Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
@@ -1836,8 +1864,12 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             }
                                             if (jump.Next(10) == 8 - 9)
                                             {
-                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse..";
+                                                soundID = 23;
+                                                SoundPlayer(soundID);
+                                                delay = 43;
+                                                text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(1500);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
@@ -1848,8 +1880,12 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                                             animationID = 109; //goes back to room 9;
                                             break;
                                         default:
+                                            soundID = 25;
+                                            SoundPlayer(soundID);
+                                            delay = 43;
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
                                             Typewriter(text, delay);
+                                            Thread.Sleep(1200);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -1891,6 +1927,7 @@ You walk back into the hallway. You are the furthest you can from the fog, it's 
                             text = "You've been here before. Silly billy, are you going around in circles?";
                             SoundPlayer(soundID);
                             Typewriter(text, delay);
+                            Thread.Sleep(800);
                             checkRoomItems(roomID);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
@@ -1911,8 +1948,12 @@ What would you like to do?";
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
+                                            soundID = 26;
+                                            SoundPlayer(soundID);
+                                            delay = 43;
                                             text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                             Typewriter(text, delay);
+                                            Thread.Sleep(800);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -1920,16 +1961,24 @@ What would you like to do?";
                                         case "running jump":
                                             if (jump.Next(10) < 5) //randomly decides which outcome the player gets
                                             {
+                                                soundID = 23;
+                                                SoundPlayer(soundID);
+                                                delay = 43;
                                                 text = @"There was snail goop on the ground that you didn't notice before. You slip on it as you run, and die. The snail eats your corpse...";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(1500);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
                                             }
                                             else if (jump.Next(10) > 5)
                                             {
+                                                soundID = 26;
+                                                SoundPlayer(soundID);
+                                                delay = 43;
                                                 text = "A bigger snail reaches up through the fog and eats you. That'll teach you.";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(800);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
@@ -1939,8 +1988,12 @@ What would you like to do?";
                                             animationID = 109; //goes back to room 9;
                                             break;
                                         default:
+                                            soundID = 25;
+                                            SoundPlayer(soundID);
+                                            delay = 43;
                                             text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
                                             Typewriter(text, delay);
+                                            Thread.Sleep(1200);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -1976,11 +2029,12 @@ What would you like to do?";
                     case 11: //"win room"
                         Console.Clear();
                         soundID = 111;
-                        delay = 40;
+                        delay = 43;
                         SoundPlayer(soundID);
                         text = @"There is a super bright light.
 It appears that the map hasn't loaded yet. You can't see anything.";
                         Typewriter(text, delay);
+                        Thread.Sleep(1000);
                         delay = 37;
                         soundID = 3;
                         SoundPlayer(soundID);
@@ -2153,7 +2207,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     break;
                 case 12:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.2.wav";
-                    soundID = 3;
                     break;
                 case 13:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatDistant.wav";
@@ -2193,6 +2246,9 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     break;
                 case 25:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\StandingDeath.wav";
+                    break;
+                case 26:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\BigSnailDeath.wav";
                     break;
                 case 31:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room3.1.wav";
