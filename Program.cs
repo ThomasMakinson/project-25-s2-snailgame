@@ -740,10 +740,9 @@ If a command is not accepted, you may have to try other ways of describing your 
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
-                        soundID = 20; //0
-                        delay = 45; // nothing
+                        soundID = 0;
                         SoundPlayer(soundID);
-                        text = "Oof. The run up still wasn't enough. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. \r\nYou scream as you fall. An even larger snail eats you";//Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
+                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
                         Typewriter(text, delay);
                         Thread.Sleep(1500); //1500
                         delay = 48;
@@ -764,17 +763,20 @@ If a command is not accepted, you may have to try other ways of describing your 
                         {
                             soundID = 11;
                             SoundPlayer(soundID);
-                            delay = 40;
-                            text = "There is a door on the far side of the room and a set of stairs to the right."; //Working on getting sound and text to sync up - Cat
+                            delay = 37;
+                            text = "There is a door on the far side of the room and a set of stairs to the right.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(250);
                         }
                         else
                         {
                             soundID = 12;
                             SoundPlayer(soundID);
-                            delay = 32;
+                            delay = 30;
                             text = "Oh look you're back where you started. Turning around you see the stairs to your right again and a door in front of you.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
-                        Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
@@ -890,11 +892,13 @@ If a command is not accepted, you may have to try other ways of describing your 
                         if (first[1] == 0)
                         {
                             soundID = 21;
-                            delay = 32;
+                            delay = 42;
                             SoundPlayer(soundID);
                             text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all know that that's a stretch.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
                         }
                         else // Second description - Cat
                         {
@@ -983,9 +987,11 @@ But we all know that that's a stretch.";
                         if (first[2] == 0)
                         {
                             soundID = 31;
-                            delay = 43;// fix delay
+                            delay = 44;
                             SoundPlayer(soundID);
-                            text = "You're in what appears to be a new room. There is a door at the other end, and a corner halfway between you and the door.";
+                            text = "You're in what appears to be a new room. There is a door at the other end, and a corner to the left, halfway between you and the door.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
                         }
                         else // Second Description - Cat
                         {
@@ -1080,11 +1086,12 @@ But we all know that that's a stretch.";
                         if (first[3] == 0)
                         {
                             soundID = 41;
-                            delay = 43;// fix delay
+                            delay = 45;
                             SoundPlayer(soundID);
                             text = @"It is a square (ish), completely blank room. There is rising fog ahead, or is it smoke? 
 There are stairs going down to your left through a person-sized hole in the wall.";
                             Typewriter(text, delay);
+                            Thread.Sleep(900);
                             checkRoomItems(roomID);
                             delay = 37;
                             soundID = 3;
@@ -1152,10 +1159,14 @@ What would you like to do?";
                                             }
                                             else
                                             {
-                                                text = @"You try to get across from a standing jump without knowing where you're going. 
+                                                soundID = 19;
+                                                delay = 46;
+                                                SoundPlayer(soundID);
+                                                text = @"You try to get across from a standing jump without knowing where you're going.
 Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
 As you fall, an even larger snail eats you.";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(700);
                                                 animationID = 1; //death animation
                                                 Animations(ref animationID);
                                                 //ded = 1; //makes you die
@@ -1211,8 +1222,12 @@ You scream as you fall. An even larger snail eats you";
                                             break;
                                         case "climb":
                                         case "down":
+                                            soundID = 24;
+                                            delay = 46;
+                                            SoundPlayer(soundID);
                                             text = "As you climb down, an even larger snail is there, and eats you.";
                                             Typewriter(text, delay);
+                                            Thread.Sleep(900);
                                             animationID = 1; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -1296,10 +1311,14 @@ What would you like to do?";
                                             text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well..";
                                             Typewriter(text, delay);
                                             Thread.Sleep(1000);
-                                            text = @"You try to get across from a standing jump without knowing where you're going. 
-Bad life choice? Yes. You don't jump anywhere near far enough. You scream as you fall.
+                                            soundID = 19;
+                                            delay = 46;
+                                            SoundPlayer(soundID);
+                                            text = @"You try to get across from a standing jump without knowing where you're going.
+Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
 As you fall, an even larger snail eats you.";
                                             Typewriter(text, delay);
+                                            Thread.Sleep(700);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -1341,8 +1360,12 @@ As you fall, an even larger snail eats you.";
                                             break;
                                         case "climb":
                                         case "down":
+                                            soundID = 24;
+                                            delay = 46;
+                                            SoundPlayer(soundID);
                                             text = "As you climb down, an even larger snail is there, and eats you.";
                                             Typewriter(text, delay);
+                                            Thread.Sleep(900);
                                             animationID = 2; //death animation
                                             Animations(ref animationID);
                                             ded = 1; //makes you die
@@ -1396,11 +1419,13 @@ As you fall, an even larger snail eats you.";
                         if (first[4] == 0)
                         {
                             soundID = 51;
-                            delay = 48;
+                            delay = 46;
                             SoundPlayer(soundID);
                             text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
 You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
 I trust you know which is which.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(800);
                         }
                         else // Second description - Cat
                         {
@@ -1482,11 +1507,15 @@ I trust you know which is which.";
                     case 6:
                         //room6
                         Console.Clear();
+                        soundID = 61;
+                        delay = 46;
+                        SoundPlayer(soundID);
                         text = @"There is nothing. There is only pitch black. 
 You have entered a room that is so blank, it appears to be a black void. 
 The void seems to draw you in, it calls to you, it makes you feel welcome, you feel like nothing could stop you -- just kidding! 
 You got lost in a trance. The snail finds you and eats you.";
                         Typewriter(text, delay);
+                        Thread.Sleep(800);
                         checkRoomItems(roomID);
                         animationID = 1; //death animation
                         Animations(ref animationID);
@@ -1498,10 +1527,12 @@ You got lost in a trance. The snail finds you and eats you.";
                         if (first[6] == 0)
                         {
                             soundID = 71;
-                            delay = 48;
+                            delay = 45;
                             SoundPlayer(soundID);
                             text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. 
 There is only an opening to your right.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(1150);
                             
                         }
                         else // Second Description - Cat
@@ -1586,11 +1617,13 @@ There is only an opening to your right.";
                         if (first[7] == 0)
                         {
                             soundID = 81;
-                            delay = 48;
+                            delay = 45;
                             SoundPlayer(soundID);
                             text = @"You are in a hallway. There is a ladder ahead of you. 
 More darkness creeps down over the ladder, preventing you from seeing where it goes. 
 Could the snail be at the top waiting for you? There's only one way to find out.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(1150);
                             
                         }
                         else // Second Description - Cat
@@ -1679,11 +1712,13 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                         if (first[8] == 0)
                         {
                             soundID = 91;
-                            delay = 48;
+                            delay = 45;
                             SoundPlayer(soundID);
                             text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
 To your left, a door, no different than any other that you've encountered. 
 To your right, an opening, leading to a large room. Both could be inviting.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(1100);
                             
                         }
                         else // Second Decription - Cat
@@ -1790,11 +1825,13 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         if (first[9] == 0)
                         {
                             soundID = 101;
+                            delay = 45;
                             text = @"At least you haven't been eaten, yet. 
 You feel a slight breeze caress your legs, and there's fog ahead. 
 Are you near, or are you even further away? 
 The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors.";
                             Typewriter(text, delay);
+                            Thread.Sleep(1100);
                             checkRoomItems(roomID);
                             soundID = 3;
                             delay = 37;
@@ -1857,10 +1894,14 @@ What would you like to do?";
                                             }
                                             else if (jumpSuccess > 2)
                                             {
+                                                soundID = 19;
+                                                delay = 46;
+                                                SoundPlayer(soundID);
                                                 text = @"You try to get across from a standing jump without knowing where you're going.
-Bad life choice? Yes. You don't jump anywhere near far enough. 
-If there was anything there, you haven't reached it. You scream as you fall and the snail eats you.";
+Bad life choice? Yes. You don't jump anywhere near far enough. If there was anything there, you haven't reached it. You scream as you fall.
+As you fall, an even larger snail eats you.";
                                                 Typewriter(text, delay);
+                                                Thread.Sleep(700);
                                                 animationID = 2; //death animation
                                                 Animations(ref animationID);
                                                 ded = 1; //makes you die
