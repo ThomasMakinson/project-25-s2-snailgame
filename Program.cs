@@ -17,7 +17,7 @@ namespace SnailMate
 {
     internal class Program
     {
-        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 37, roomID = 0, count = 0;
+        public static int snailDistance = 15, blood = 5, inventoryCount = 0, soundID = 0, death = 0, ded = 0, delay = 45, roomID = 0, count = 0;
         public static string text = "\0";
         public static items[] inventory = new items[10];
         public static bool exitGame = false, sound = true;
@@ -742,7 +742,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
                         soundID = 0;
                         SoundPlayer(soundID);
-                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar."; //Need to rerecord - cat
+                        text = "Please full screen the console for the room animations.\nTo speed up the typing and narration, press the spacebar.";
                         Typewriter(text, delay);
                         Thread.Sleep(1500);
                         delay = 48;
@@ -777,6 +777,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -884,6 +885,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                     case 2:
                         //room2
                         Console.Clear();
+                        first[1] = 1;
                         if (first[1] == 0)
                         {
                             soundID = 21;
@@ -904,6 +906,7 @@ But we all know that that's a stretch.";
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -991,6 +994,7 @@ But we all know that that's a stretch.";
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -1077,6 +1081,7 @@ There are stairs going down to your left through a person-sized hole in the wall
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
                             delay = 37;
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1239,6 +1244,7 @@ The snail eats your corpse..";
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
                             delay = 37;
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1369,6 +1375,7 @@ I trust you know which is which.";
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -1466,6 +1473,7 @@ There is only an opening to your right.";
                         }
                         Typewriter(text, delay);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -1553,6 +1561,7 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -1642,6 +1651,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -1730,13 +1740,17 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         Console.Clear();
                         if (first[9] == 0)
                         {
+                            soundID = 101;
                             text = @"At least you haven't been eaten, yet. 
 You feel a slight breeze caress your legs, and there's fog ahead. 
 Are you near, or are you even further away? 
-The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors. 
-What would you like to do? ";
+The room has an interesting shape, there are angles leading back to the opening you just came from, but there are no other doors.";
                             Typewriter(text, delay);
                             checkRoomItems(roomID);
+                            soundID = 3;
+                            SoundPlayer(soundID);
+                            text = "\nWhat would you like to do? ";
+                            Typewriter(text, delay);
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
@@ -1971,6 +1985,7 @@ What would you like to do?";
 It appears that the map hasn't loaded yet. You can't see anything.";
                         Typewriter(text, delay);
                         delay = 37;
+                        soundID = 3;
                         SoundPlayer(soundID);
                         text = "\nWhat would you like to do? ";
                         Typewriter(text, delay);
@@ -2122,7 +2137,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\SlimeyKey.wav";
                     break;
                 case 6:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\DentedHarmonica";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\DentedHarmonica.wav";
                     break;
                 case 7:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ExpensiveGin.wav";
@@ -2131,14 +2146,13 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\CrumpledNote.wav";
                     break;
                 case 9:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\FidgetSpiner";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\FidgetSpinner.wav";
                     break;
                 case 10:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\OminousPills";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\OminousPills.wav";
                     break;
                 case 11:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.1.wav";
-                    soundID = 3;
                     break;
                 case 12:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room1.2.wav";
@@ -2162,41 +2176,53 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 case 18:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\MeditateDeath.wav";
                     break;
+                case 19:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\StandJumpDeath.wav";
+                    break;
+                case 20:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\RunJumpDeath.wav";
+                    break;
                 case 21:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";
-                    soundID = 3;
                     break;
                 case 22:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
-                    soundID = 3;
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\SecondDescription.wav";
+                    break;
+                case 23:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\GoopFallDeath.wav";
+                    break;
+                case 24:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ClimbDownDeath.wav";
+                    break;
+                case 25:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\StandingDeath.wav";
                     break;
                 case 31:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room3.1.wav";
-                    soundID = 3;
                     break;
                 case 41:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room4.1.wav";
-                    soundID = 3;
                     break;
                 case 51:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
-                    soundID = 3;
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room5.1.wav";
+                    break;
+                case 61:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room6.wav";
                     break;
                 case 71:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
-                    soundID = 3;
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room7.1.wav";
                     break;
                 case 81:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
-                    soundID = 3;
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room8.1.wav";
                     break;
                 case 91:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
-                    soundID = 3;
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room9.1.wav";
+                    break;
+                case 101:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room10.1.wav";
                     break;
                 case 111:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";//
-                    soundID = 3;
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room11.wav";
                     break;
             }
             player.Play();
@@ -2234,60 +2260,70 @@ The snail finds you, sucks your blood, and eats your corpse.";
 
         public static void checkRoomItems(int roomID)
         {
+            int sleep = '\0';
             string roomText = ""; // local string to avoid touching global text
 
             if (rustyKey.RoomID == roomID)
             {
                 soundID = 4;
-                SoundPlayer(soundID);
+                delay = 40;
+                sleep = 500;
                 roomText += "\nA rusty key lies on the ground.\n";
             }
 
             if (slimeyKey.RoomID == roomID)
             {
                 soundID = 5;
-                SoundPlayer(soundID);
+                delay = 38;
+                sleep = 800;
                 roomText += "\nA slimey key rests on the floor. You really hope it didn’t come from the snail.\n";
             }
 
             if (harmonica.RoomID == roomID)
             {
                 soundID = 6;
-                SoundPlayer(soundID);
+                delay = 38;
+                sleep = 1400;
                 roomText += "\nA slightly dented harmonica lies nearby. It looks like it’s seen things. Emotional things.\n";
             }
 
             if (vaughnsGin.RoomID == roomID)
             {
                 soundID = 7;
-                SoundPlayer(soundID);
+                delay = 39;
+                sleep = 950;
                 roomText += "\nA full bottle of expensive-looking gin rests on a dusty shelf. It’s the only thing in the room without dust.\n";
             }
 
             if (crumpledNote.RoomID == roomID)
             {
                 soundID = 8;
-                SoundPlayer(soundID);
+                delay = 38;
+                sleep = 800;
                 roomText += "\nA crumpled note sticks out from under a cracked tile.\n";
             }
 
             if (fidgetSpinner.RoomID == roomID)
             {
                 soundID = 9;
-                SoundPlayer(soundID);
+                delay = 38;
+                sleep = 600;
                 roomText += "\nA brightly colored fidget spinner gleams unnaturally in the corner.\n";
             }
 
             if (unknownPills.RoomID == roomID)
             {
                 soundID = 10;
-                SoundPlayer(soundID);
+                delay = 38;
+                sleep = 850;
                 roomText += "\nA small bottle of unknown pills sits ominously on a desk.\n";
             }
 
             if (!string.IsNullOrWhiteSpace(roomText))
-            { 
+            {
+                SoundPlayer(soundID);
                 Typewriter(roomText, delay); // only prints once
+                Thread.Sleep(sleep);
             }
         }
 
