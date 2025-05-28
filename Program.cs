@@ -853,7 +853,9 @@ If a command is not accepted, you may have to try other ways of describing your 
                                 Typewriter(text, delay);
                                 break;
                             case "down":
+                                soundID = 18;
                                 text = "You sit on the floor and meditate... the snail catches and kills you";
+                                SoundPlayer(soundID);
                                 Typewriter(text, delay);
                                 animationID = 1;
                                 Animations(ref animationID);
@@ -2143,10 +2145,16 @@ The snail finds you, sucks your blood, and eats your corpse.";
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatNearer.wav";
                     break;
                 case 15:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatDistant.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatClose.wav";
                     break;
                 case 16:
-                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatDistant.wav";
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatBehind.wav";
+                    break;
+                case 17:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\ThreatOhNo.wav";
+                    break;
+                case 18:
+                    player.SoundLocation = Environment.CurrentDirectory + @"\TTS\MeditateDeath.wav";
                     break;
                 case 21:
                     player.SoundLocation = Environment.CurrentDirectory + @"\TTS\Room2.1.wav";

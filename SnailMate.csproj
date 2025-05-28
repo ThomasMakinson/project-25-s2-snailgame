@@ -12,21 +12,73 @@
     <None Remove="Intro.wav" />
     <None Remove="Room1.wav" />
     <None Remove="Slime.wav" />
+    <None Remove="TTS\BigSnailDeath.wav" />
+    <None Remove="TTS\ClimbDownDeath.wav" />
+    <None Remove="TTS\CrumpledNote.wav" />
+    <None Remove="TTS\DentedHarmonica.wav" />
+    <None Remove="TTS\ExpensiveGin.wav" />
+    <None Remove="TTS\FidgetSpinner.wav" />
+    <None Remove="TTS\GoopFallDeath.wav" />
     <None Remove="TTS\HowToPlay.wav" />
     <None Remove="TTS\Intro.wav" />
+    <None Remove="TTS\MeditateDeath.wav" />
+    <None Remove="TTS\OminousPills.wav" />
     <None Remove="TTS\Room1.1.wav" />
     <None Remove="TTS\Room1.2.wav" />
+    <None Remove="TTS\Room10.1.wav" />
+    <None Remove="TTS\Room11.wav" />
     <None Remove="TTS\Room2.1.wav" />
     <None Remove="TTS\Room3.1.wav" />
     <None Remove="TTS\Room4.1.wav" />
+    <None Remove="TTS\Room5.1.wav" />
+    <None Remove="TTS\Room6.wav" />
+    <None Remove="TTS\Room7.1.wav" />
+    <None Remove="TTS\Room8.1.wav" />
+    <None Remove="TTS\Room9.1.wav" />
+    <None Remove="TTS\RunJumpDeath.wav" />
+    <None Remove="TTS\RustyKey.wav" />
+    <None Remove="TTS\SecondDescription.wav" />
+    <None Remove="TTS\SlimeyKey.wav" />
+    <None Remove="TTS\StandingDeath.wav" />
+    <None Remove="TTS\StandJumpDeath.wav" />
+    <None Remove="TTS\ThreatBehind.wav" />
+    <None Remove="TTS\ThreatClose.wav" />
     <None Remove="TTS\ThreatDistant.wav" />
     <None Remove="TTS\ThreatNearer.wav" />
+    <None Remove="TTS\ThreatOhNo.wav" />
     <None Remove="TTS\UserPref.wav" />
     <None Remove="TTS\WWYLTD.wav" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="TTS\ThreatClose.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Slime.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\BigSnailDeath.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\ClimbDownDeath.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\CrumpledNote.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\DentedHarmonica.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\ExpensiveGin.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\FidgetSpinner.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\GoopFallDeath.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\HowToPlay.wav">
@@ -35,10 +87,22 @@
     <Content Include="TTS\Intro.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TTS\MeditateDeath.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\OminousPills.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TTS\Room1.1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\Room1.2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room10.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room11.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\Room2.1.wav">
@@ -50,10 +114,49 @@
     <Content Include="TTS\Room4.1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TTS\Room5.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room6.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room7.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room8.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\Room9.1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\RunJumpDeath.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\RustyKey.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\SecondDescription.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\SlimeyKey.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\StandingDeath.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\StandJumpDeath.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\ThreatBehind.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TTS\ThreatDistant.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\ThreatNearer.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TTS\ThreatOhNo.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TTS\UserPref.wav">
