@@ -897,7 +897,6 @@ But we all know that that's a stretch.";
                             //delay = ?
                             SoundPlayer(soundID);
                             text = "You've been here before. Silly billy, are you going around in circles?";
-                            Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -983,7 +982,6 @@ But we all know that that's a stretch.";
                             //delay = ?;
                             SoundPlayer(soundID);
                             text = "You've been here before. Silly billy, are you going around in circles?";
-                            Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
@@ -1357,7 +1355,6 @@ I trust you know which is which.";
                             //delay = ?;
                             SoundPlayer(soundID);
                             text = "You've been here before. Silly billy, are you going around in circles?";
-                            Typewriter(text, delay);
 
                         }
                         Typewriter(text, delay);
@@ -1456,7 +1453,6 @@ There is only an opening to your right.";
                             //delay = ?;
                             SoundPlayer(soundID);
                             text = "You've been here before. Silly billy, are you going around in circles?";
-                            Typewriter(text, delay);
 
                         }
                         Typewriter(text, delay);
@@ -1543,7 +1539,6 @@ Could the snail be at the top waiting for you? There's only one way to find out.
                             //delay = ?;
                             SoundPlayer(soundID);
                             text = "You've been here before. Silly billy, are you going around in circles?";
-                            Typewriter(text, delay);
                         }
 
                         Typewriter(text, delay);
@@ -1634,7 +1629,6 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                             //delay = ?;
                             SoundPlayer(soundID);
                             text = "You've been here before. Silly billy, are you going around in circles?";
-                            Typewriter(text, delay);
                         }
                         Typewriter(text, delay);
                         checkRoomItems(roomID);
