@@ -661,6 +661,7 @@ If a command is not accepted, you may have to try other ways of describing your 
 
         public static void SnailCheckStealth() //Rhys 22/05/2025
         {
+            snailDistance -= 5;
             if(snailDistance <=0)
             {
                 int animationID = 1;
