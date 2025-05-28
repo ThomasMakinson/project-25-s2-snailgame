@@ -935,11 +935,13 @@ But we all know that that's a stretch.";
                                     { item.Inspect(); break; }
                                 break;
                             case "left":
+                            case "back":
                                 animationID = 21;
                                 Animations(ref animationID);
                                 roomID = 1; //goes back to room 1;
                                 break;
-                            case "back":
+                            case "forward":
+                            case "right":
                                 animationID = 23;
                                 Animations(ref animationID);
                                 roomID = 3; //teleport to room 3 as per map
@@ -977,7 +979,7 @@ But we all know that that's a stretch.";
                             soundID = 31;
                             delay = 43;// fix delay
                             SoundPlayer(soundID);
-                            text = "You're in what appears to be a new room. There is a door at the other end, and a corner to the left, halfway between you and the door.";
+                            text = "You're in what appears to be a new room. There is a door at the other end, and a corner halfway between you and the door.";
                         }
                         else // Second Description - Cat
                         {
