@@ -886,6 +886,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                                     break;
                             }
                         }
+                        first[0] = 0;
                         break;
                         
 
