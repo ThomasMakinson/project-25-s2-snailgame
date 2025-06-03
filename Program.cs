@@ -705,7 +705,7 @@ If a command is not accepted, you may have to try other ways of describing your 
             Typewriter(text, delay);
         }
 
-        public static void DeathCheck(out int runGame)// rhys method to check if ded
+        public static void DeathCheck(out int runGame)// rhys method to check if ded, may be excess to requirement
         {
             if (ded != 0)
             {
@@ -725,6 +725,8 @@ If a command is not accepted, you may have to try other ways of describing your 
             sw.WriteLine(blood);
             sw.WriteLine(snailDistance);
             sw.Close();
+
+            //need to add what items are and are not grabbed, also add to load
         }
 
         public static void NewGame()// Game code
@@ -2238,6 +2240,8 @@ The snail finds you, sucks your blood, and eats your corpse.";
                         blood = 5;
                         snailDistance = 15;
                         ded = 0;
+                        HowToPlay();
+                        //Thread.Sleep(10000);
                         NewGame();
                         break;
 
