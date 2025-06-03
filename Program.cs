@@ -755,7 +755,6 @@ If a command is not accepted, you may have to try other ways of describing your 
                         Thread.Sleep(1000);
                         roomID = 1;
                         break;
-
                     case 1:
                         //room1
                         bool door1lock = true;
@@ -781,110 +780,114 @@ If a command is not accepted, you may have to try other ways of describing your 
                         checkRoomItems(roomID);
                         delay = 37;
                         soundID = 3;
-                        SoundPlayer(soundID);
-                        text = "\nWhat would you like to do? ";
-                        Typewriter(text, delay);
-                        direction = Console.ReadLine().ToLower().Trim();
-                        switch (direction)
+                        while (first[0] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
-                            case "use rusty key":
-                            case "unlock door":
-                            case "use key":
-                            case "forward":
-                                if (door1lock == true)
-                                {
-                                    bool hasKey = inventory.Contains(rustyKey);
-                                    if (hasKey)
+                            SoundPlayer(soundID);
+                            text = "\nWhat would you like to do? ";
+                            Typewriter(text, delay);
+                            direction = Console.ReadLine().ToLower().Trim();
+                            switch (direction)
+                            {
+                                case "use rusty key":
+                                case "unlock door":
+                                case "use key":
+                                case "forward":
+                                    if (door1lock == true)
                                     {
-                                        text = "You use the Rusty Key to unlock the door.";
-                                        Thread.Sleep(1000);
-                                        door1lock = false; // unlocks door
-                                        DropFromInventory(rustyKey); //remove key after use
-                                        Typewriter(text, delay);
-                                        animationID = 13;
-                                        Animations(ref animationID);
-                                        roomID = 3;//changes room to room 3 and starts it
-                                        first[0] = 1;
+                                        bool hasKey = inventory.Contains(rustyKey);
+                                        if (hasKey)
+                                        {
+                                            text = "You use the Rusty Key to unlock the door.";
+                                            Thread.Sleep(1000);
+                                            door1lock = false; // unlocks door
+                                            DropFromInventory(rustyKey); //remove key after use
+                                            Typewriter(text, delay);
+                                            animationID = 13;
+                                            Animations(ref animationID);
+                                            roomID = 3;//changes room to room 3 and starts it
+                                            first[0] = 1;
+                                        }
+                                        else
+                                        {
+                                            text = "The door is locked. You need a key.";
+                                            Console.WriteLine(text);
+                                            Thread.Sleep(1500);
+                                        }
+
                                     }
-                                    else
-                                    {
-                                        text = "The door is locked. You need a key.";
-                                        Console.WriteLine(text);
-                                        Thread.Sleep(1500);
-                                    }
+                                    break;
+                                case "pick up fidget spinner":
+                                case "grab fidget spinner":
+                                    AddToInventory(fidgetSpinner);
+                                    Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
+                                    Thread.Sleep(1500);
+                                    fidgetSpinner.RoomID = -1;
+                                    break;
+                                case "inventory":
+                                case "check inventory":
+                                    items.DisplayInventory(inventory);
+                                    break;
 
-                                }
-                                break;
-                            case "pick up fidget spinner":
-                            case "grab fidget spinner":
-                                AddToInventory(fidgetSpinner);
-                                Console.WriteLine($"You added {fidgetSpinner.Name} to your Inventory.");
-                                Thread.Sleep(1500);
-                                fidgetSpinner.RoomID = -1;
-                                break;
-                            case "inventory":
-                            case "check inventory":
-                                items.DisplayInventory(inventory);
-                                break;
+                                case var command when command.StartsWith("use "):
+                                    foreach (items item in inventory)
+                                        if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                        { item.Use(); break; }
+                                    break;
+                                case var command2 when command2.StartsWith("inspect "):
+                                    foreach (items item in inventory)
+                                        if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
+                                        { item.Inspect(); break; }
+                                    break;
 
-                            case var command when command.StartsWith("use "):
-                                foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
-                                    { item.Use(); break; }
-                                break;
-                            case var command2 when command2.StartsWith("inspect "):
-                                foreach (items item in inventory)
-                                    if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
-                                    { item.Inspect(); break; }
-                                break;
+                                case "right":
+                                    text = "You climb the stairs on the right of the room and head through the door.\n";
+                                    Typewriter(text, delay);
+                                    first[0] = 1;
+                                    animationID = 12;
+                                    Animations(ref animationID);
+                                    roomID = 2;//changes room to room 2 and starts it
+                                    break;
+                                //case "forward":
+                                //text = "This door is locked, it looks like you're gonna need a key";
+                                //Typewriter(text, delay);
+                                //break;
+                                case "left":
+                                    text = "That is a wall.";
+                                    Typewriter(text, delay);
+                                    break;
+                                case "up":
+                                    text = "You can't fly, you twit.";
+                                    Typewriter(text, delay);
+                                    break;
+                                case "down":
+                                    soundID = 18;
+                                    text = "You sit on the floor and meditate... the snail catches and kills you";
+                                    SoundPlayer(soundID);
+                                    Typewriter(text, delay);
+                                    animationID = 1;
+                                    Animations(ref animationID);
+                                    break;
 
-                            case "right":
-                                text = "You climb the stairs on the right of the room and head through the door.\n";
-                                Typewriter(text, delay);
-                                first[0] = 1;
-                                animationID = 12;
-                                Animations(ref animationID);
-                                roomID = 2;//changes room to room 2 and starts it
-                                break;
-                            //case "forward":
-                            //text = "This door is locked, it looks like you're gonna need a key";
-                            //Typewriter(text, delay);
-                            //break;
-                            case "left":
-                                text = "That is a wall.";
-                                Typewriter(text, delay);
-                                break;
-                            case "up":
-                                text = "You can't fly, you twit.";
-                                Typewriter(text, delay);
-                                break;
-                            case "down":
-                                soundID = 18;
-                                text = "You sit on the floor and meditate... the snail catches and kills you";
-                                SoundPlayer(soundID);
-                                Typewriter(text, delay);
-                                animationID = 1;
-                                Animations(ref animationID);
-                                break;
-
-                            case "save":
-                                SaveGame();
-                                break;
-                            case "check danger":
-                            case "danger":
-                            case "snail":
-                            case "snailcheck":
-                            case "snail check":
-                            case "how far?":
-                            case "am I going to die?":
-                                SnailCheck();
-                                break;
-                            default:
-                                text = "You thought you were smart, huh? What other direction did you think you could go in?";
-                                Typewriter(text, delay);
-                                break;
+                                case "save":
+                                    SaveGame();
+                                    break;
+                                case "check danger":
+                                case "danger":
+                                case "snail":
+                                case "snailcheck":
+                                case "snail check":
+                                case "how far?":
+                                case "am I going to die?":
+                                    SnailCheck();
+                                    break;
+                                default:
+                                    text = "You thought you were smart, huh? What other direction did you think you could go in?";
+                                    Typewriter(text, delay);
+                                    break;
+                            }
                         }
                         break;
+                        
 
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
