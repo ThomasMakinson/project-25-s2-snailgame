@@ -98,7 +98,7 @@ namespace SnailMate
                     Thread.Sleep(1000);
                     Console.WriteLine("You're no longer the only one leaving a trail.");
                     Thread.Sleep(800);
-                    Console.WriteLine("The snail senses weakness.");
+                    Console.WriteLine("The killer snail senses your weakness.");
                     Thread.Sleep(600);
                     Console.WriteLine("Stealth: broken. Dignity: missing. Urgency: extreme.");
                     break;
