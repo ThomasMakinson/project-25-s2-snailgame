@@ -56,7 +56,7 @@ namespace SnailMate
 
         public void Use()
         {
-            // Added a use method for items, these are only writelines for humour
+            // Use method allows each item to perform a custom action or message when used by the player.
             Console.ForegroundColor = ConsoleColor.Yellow;
             switch (Name.ToLower())
             {
