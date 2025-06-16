@@ -2250,7 +2250,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
         {
             for (int i = 0; i < inventory.Length; i++)
             {
-                if (inventory[i] != null && inventory[i] == item)
+                if (inventory[i] == item)
                 {
                     inventory[i] = null;
                     inventoryCount--;
