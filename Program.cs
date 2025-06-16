@@ -2231,7 +2231,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             exitGame = true;
 
         }
-
+        // Adds item to first empty slot in inventory.
         public static void AddToInventory(items item)
         {
             for (int i = 0; i < inventory.Length; i++)
@@ -2245,7 +2245,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             }
         }
 
-
+        // Removes specified item from inventory.
         public static void DropFromInventory(items item)
         {
             for (int i = 0; i < inventory.Length; i++)
