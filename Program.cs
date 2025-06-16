@@ -2211,7 +2211,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
             ded = 0;
             NewGame();
         }
-
+        // Displays a countdown timer and exits the program.
         public static void ExitGame()
         {
             string exitText = "EXITING GAME IN: ";
