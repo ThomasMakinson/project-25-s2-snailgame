@@ -2258,7 +2258,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 }
             }
         }
-
+        // entire program runs through this loop, runs once and then continues to run until exit method is accessed
         static void Main(string[] args)
         {
 
