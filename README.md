@@ -24,7 +24,7 @@ watch out for caps when adding files
 
 
 Studio Rules:
-1) progress == usable software
+1) progress = usable software
 2) Only write code that everyone can understand
 3) always discuss with your team before you make any change to the code / don't muck with other people's bits without asking
 4) iterate
