@@ -1,6 +1,6 @@
 #### Need to knows for the group
 
-##### Designated Communication Channels -
+##### Designated Communication Channels
   * teams chat
   * out of class catch up period to be decided/general make sure you are available time
   * if you are stuck don't be afraid to ask for input from the others, not really a rule just a good idea
@@ -11,7 +11,7 @@
   * post an issue on here(github) for the big ones and just create a thread for the smaller ones in the merge conflicts channel in the discord server linked above.
   * aka use the comms channels that be relevant for the thing
 
-##### Code checking standards -
+##### Code checking standards
   * SEMICOLONS AND BRACKETS - Check them
   * Comments
      * your name, quick descriptor of chunk of code, and timestamp of last edit 
