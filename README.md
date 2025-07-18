@@ -1,11 +1,11 @@
-#Need to knows for the group
+# Need to knows for the group
 
 - Designated Communication Channels -
   * teams chat
   * out of class catch up period to be decided / general make sure you are available time
   * if you are stuck dont be afraid to ask for input from the others, not really a rule just a good idea
   * Check the issues tab and the discord at least once daily, no muting the server!!
-  * When you take a task from the Kanbahn board make sure you assign yourself to it so it's clear who is doing what!
+  * When you take a task from the Kanban board make sure you assign yourself to it so it's clear who is doing what!
   
 
 
