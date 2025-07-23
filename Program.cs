@@ -2080,7 +2080,7 @@ What would you like to do?";
                                         switch (direction)
                                         {
                                             case "jump":
-                                                text = "You jump into the fog from where you are. Hope you know the laws physics reaaally well...";
+                                                text = "You jump into the fog from where you are. Hope you know the laws of physics reaaally well...";
                                                 Typewriter(text, delay);
                                                 Thread.Sleep(1000);
                                                 soundID = 26;
@@ -2438,8 +2438,14 @@ The snail finds you, sucks your blood, and eats your corpse.";
 
                     if (key == ConsoleKey.Spacebar)
                     {
+                        Console.Write(c);
                         delay = 0;
                         Volume(0);
+                    }
+                    else 
+                    {
+                        Console.Write(c);
+                        Thread.Sleep(delay);
                     }
                 }
                 else
