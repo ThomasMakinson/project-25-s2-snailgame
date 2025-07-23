@@ -12,7 +12,7 @@
   * aka use the comms channels that be relevant for the thing
 
 ##### Code checking standards
-  * SEMICOLONS AND BRACKETS - Check them
+  * **Semicolons and brackets** - Check them
   * Comments
      * your name, quick descriptor of chunk of code, and timestamp of last edit 
      * Specify if bit of code is working, WIP or broken
