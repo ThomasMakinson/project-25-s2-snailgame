@@ -2258,6 +2258,16 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 }
             }
         }
+        //Resets and clears inventory.
+        public static void ResetInventory()
+        {
+            inventoryCount = 0;
+            for (int i = 0; i < inventory.Length; i++)
+            {       
+                    inventory[i] = null;                    
+            }
+            
+        }
         // entire program runs through this loop, runs once and then continues to run until exit method is accessed
         static void Main(string[] args)
         {
@@ -2279,6 +2289,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                         blood = 5;
                         snailDistance = 15;
                         ded = 0;
+                        ResetInventory();
                         HowToPlay();
                         //Thread.Sleep(10000);
                         NewGame();
