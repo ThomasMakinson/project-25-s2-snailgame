@@ -890,7 +890,7 @@ If a command is not accepted, you may have to try other ways of describing your 
                             }
                         }
                         break;
-                        
+
 
                     //setting up rooms and the correct relations between them for movement - rhys 13/05/23 12:09am
                     case 2:
@@ -1565,7 +1565,7 @@ You got lost in a trance. The snail finds you and eats you.";
 There is only an opening to your right.";
                             Typewriter(text, delay);
                             Thread.Sleep(1150);
-                            
+
                         }
                         else // Second Description - Cat
                         {
@@ -1616,6 +1616,7 @@ There is only an opening to your right.";
                                     roomID = 5; //goes back to room 5
                                     break;
                                 case "forward":
+                                case "right":
                                     first[6] = 1;
                                     animationID = 78;
                                     Animations(ref animationID);
@@ -1660,7 +1661,7 @@ More darkness creeps down over the ladder, preventing you from seeing where it g
 Could the snail be at the top waiting for you? There's only one way to find out.";
                             Typewriter(text, delay);
                             Thread.Sleep(1150);
-                            
+
                         }
                         else // Second Description - Cat
                         {
@@ -1759,7 +1760,7 @@ To your left, a door, no different than any other that you've encountered.
 To your right, an opening, leading to a large room. Both could be inviting.";
                             Typewriter(text, delay);
                             Thread.Sleep(1100);
-                            
+
                         }
                         else // Second Decription - Cat
                         {
