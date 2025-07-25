@@ -1829,8 +1829,25 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                                     roomID = 8; //goes back to room 8
                                     break;
                                 case "forward":
-                                    text = "You try the door... This one is gonna need a key as well. ";
-                                    Typewriter(text, delay);
+                                    if (door9lock == true)
+                                    {
+                                        bool hasKey = inventory.Contains(slimeyKey);
+                                        if (hasKey)
+                                        {
+                                            text = "You use the Slimey Key to unlock the door.";
+                                            door9lock = false; // unlocks door
+                                            DropFromInventory(slimeyKey); //remove key after use
+                                            roomID = 11;
+                                        }
+                                        else
+                                        {
+                                            text = "The door is locked. You need a key.";
+                                        }
+                                        Typewriter(text, delay);
+                                        roomID = 11;//win room
+                                        first[8] = 1;
+
+                                    }
                                     break;
                                 case "right":
                                     first[8] = 1;
