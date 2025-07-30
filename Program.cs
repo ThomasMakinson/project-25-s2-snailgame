@@ -1658,7 +1658,7 @@ There is only an opening to your right.";
                             SoundPlayer(soundID);
                             text = @"You are in a hallway. There is a ladder ahead of you. 
 More darkness creeps down over the ladder, preventing you from seeing where it goes. 
-Could the snail be at the top waiting for you? There's only one way to find out.";
+Could the snail be at the top waiting for you? In any case, it would seem that you have no choice but to climb the ladder if you wish to proceed.";
                             Typewriter(text, delay);
                             Thread.Sleep(1150);
 
