@@ -1320,6 +1320,31 @@ You scream as you fall. An even larger snail eats you";
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
                                 {
+                                    case "pick up unknown pills":
+                                    case "pick up pills":
+                                    case "grab unknown pills":
+                                    case "grab pills":
+                                        AddToInventory(unknownPills);
+                                        Console.WriteLine($"You added {unknownPills.Name} to your Inventory.");
+                                        Thread.Sleep(1500);
+                                        unknownPills.RoomID = -1;
+                                        break;
+                                    case "inventory":
+                                    case "check inventory":
+                                        items.DisplayInventory(inventory);
+                                        break;
+
+                                    case var command when command.StartsWith("use "):
+                                        foreach (items item in inventory)
+                                            if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                            { item.Use(); break; }
+                                        break;
+
+                                    case var command2 when command2.StartsWith("inspect "):
+                                        foreach (items item in inventory)
+                                            if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
+                                            { item.Inspect(); break; }
+                                        break;
                                     case "right":
                                         animationID = 43;
                                         Animations(ref animationID);
@@ -1404,6 +1429,9 @@ As you fall, an even larger snail eats you.";
                                                 text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
                                                 Typewriter(text, delay);
                                                 Thread.Sleep(1200);
+                                                animationID = 2; //death animation
+                                                Animations(ref animationID);
+                                                runGame = 0; //makes you die
                                                 break;
                                         }
                                         break;
