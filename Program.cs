@@ -907,7 +907,7 @@ Good Luck, Adventurer.";
                             soundID = 21;
                             delay = 42;
                             SoundPlayer(soundID);
-                            text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
+                            text = @"You're suddenly in a another room. There's a rusty key on the ground in front of you, and a corner beyond that to the right.
 You can't see what's beyond it. It could be interesting if you were feeling courageous. 
 But we all know that that's a stretch.";
                             Typewriter(text, delay);
