@@ -91,10 +91,10 @@ namespace SnailMate
             // Inserted game instruction menu basic version -Rhys 12/05/25 3:06pm
             Console.Clear();
             soundID = 2;
-            delay = 48;
+            delay = 41;
             text = @"Welcome to SnailMate, adventurer!
-You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
-If you're capable of that.
+You are being hunted by a snail. Do not try to fight him. Even if you fight, you won't win.
+Only escape is possible.
 
 In order to interact with the world, describe what you want to do in simple terms,
 such as:
@@ -105,7 +105,13 @@ such as:
 'inspect x'
 'use x'
 
-If a command is not accepted, you may have to try other ways of describing your action.";
+If a command is not accepted, you may have to try other ways of describing your action.
+
+You can check how far away the snail is by typing 'snail', 'check', or 'snailcheck'.
+If the snail is too close, you may appease him with some of your own blood to buy time.
+To do this, type 'appease' at any time. But be careful--to many sacrifices, and you will die.
+
+Good Luck, Adventurer.";
             SoundPlayer(soundID);
             Typewriter(text, delay);
             Console.ReadLine();
