@@ -91,10 +91,10 @@ namespace SnailMate
             // Inserted game instruction menu basic version -Rhys 12/05/25 3:06pm
             Console.Clear();
             soundID = 2;
-            delay = 48;
+            delay = 41;
             text = @"Welcome to SnailMate, adventurer!
-You will be thrust into a strange and unknown place with threats around any corner, so be canny, and be wise.
-If you're capable of that.
+You are being hunted by a snail. Do not try to fight him. Even if you fight, you won't win.
+Only escape is possible.
 
 In order to interact with the world, describe what you want to do in simple terms,
 such as:
@@ -105,7 +105,13 @@ such as:
 'inspect x'
 'use x'
 
-If a command is not accepted, you may have to try other ways of describing your action.";
+If a command is not accepted, you may have to try other ways of describing your action.
+
+You can check how far away the snail is by typing 'snail', 'check', or 'snailcheck'.
+If the snail is too close, you may appease him with some of your own blood to buy time.
+To do this, type 'appease' at any time. But be careful--to many sacrifices, and you will die.
+
+Good Luck, Adventurer.";
             SoundPlayer(soundID);
             Typewriter(text, delay);
             Console.ReadLine();
@@ -1478,10 +1484,36 @@ You scream as you fall. An even larger snail eats you";
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
                                 {
+
                                     case "check map":
                                     case "map":
                                         animationID = 4;
                                         CheckMap(ref animationID);
+                                    case "pick up unknown pills":
+                                    case "pick up pills":
+                                    case "grab unknown pills":
+                                    case "grab pills":
+                                        AddToInventory(unknownPills);
+                                        Console.WriteLine($"You added {unknownPills.Name} to your Inventory.");
+                                        Thread.Sleep(1500);
+                                        unknownPills.RoomID = -1;
+                                        break;
+                                    case "inventory":
+                                    case "check inventory":
+                                        items.DisplayInventory(inventory);
+                                        break;
+
+                                    case var command when command.StartsWith("use "):
+                                        foreach (items item in inventory)
+                                            if (item != null && item.Name.ToLower() == command.Substring(4).Trim())
+                                            { item.Use(); break; }
+                                        break;
+
+                                    case var command2 when command2.StartsWith("inspect "):
+                                        foreach (items item in inventory)
+                                            if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
+                                            { item.Inspect(); break; }
+                                    
                                         break;
                                     case "right":
                                         animationID = 43;
@@ -1567,6 +1599,9 @@ As you fall, an even larger snail eats you.";
                                                 text = "You stand there, contemplating your life choices. The snail finds you and eats you.";
                                                 Typewriter(text, delay);
                                                 Thread.Sleep(1200);
+                                                animationID = 2; //death animation
+                                                Animations(ref animationID);
+                                                runGame = 0; //makes you die
                                                 break;
                                         }
                                         break;
