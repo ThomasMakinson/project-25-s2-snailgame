@@ -629,32 +629,36 @@ Good Luck, Adventurer.";
 
         public static void SnailCheck()// call this to check distance of snail - Rhys
         {
-            //for now will count down each time is called
-            snailDistance -= 1;
             if (snailDistance >= 10)
             {
                 soundID = 13;
-                text = "\nThe threat is distant.";
+                text = "\nThe threat is distant.\n";
+                delay = 30;
             }
-            else if (snailDistance >= 5 && snailDistance < 10)
+            else if (snailDistance < 10 && snailDistance > 5)
             {
                 soundID = 14;
-                text = "\nThe threat draws nearer.";
+                text = "\nThe threat draws nearer.\n";
+                delay = 35;
             }
             else if (snailDistance < 5 && snailDistance > 1)
             {
+                
                 soundID = 15;
-                text = "\nBreathe softly, it's very close now.";
+                text = "\nBreathe softly, it's very close now.\n";
+                delay = 50;
             }
             else if (snailDistance == 1)
             {
+                
+                text = "\nIt's right behind you.\n";
                 soundID = 16;
-                text = "\nIt's right behind you.";
+                delay = 30;
             }
             else
             {
                 soundID = 17;
-                text = "\nOh no.";
+                text = "\nOh no.\n";
                 Thread.Sleep(500);
                 int animationID = 1;
                 Animations(ref animationID);
@@ -662,7 +666,9 @@ Good Luck, Adventurer.";
 
             }
             SoundPlayer(soundID);
+            Console.ForegroundColor = ConsoleColor.Red;
             Typewriter(text, delay);
+            Console.ForegroundColor = ConsoleColor.White;
             Thread.Sleep(500);
         }
 
@@ -675,6 +681,11 @@ Good Luck, Adventurer.";
                 Animations(ref animationID);
                 ded = 1;
             }
+            else if (snailDistance < 5 && snailDistance > 1)
+            {
+                SnailCheck();
+            }
+
 
         }
 
@@ -711,7 +722,7 @@ Good Luck, Adventurer.";
             Typewriter(text, delay);
         }
 
-        public static void DeathCheck(out int runGame)// rhys method to check if ded, may be excess to requirement
+        public static int DeathCheck(int runGame)// rhys method to check if ded, may be excess to requirement
         {
             if (ded != 0)
             {
@@ -721,6 +732,8 @@ Good Luck, Adventurer.";
             {
                 runGame = 1;
             }
+            return runGame;
+            
         }
 
         public static void SaveGame()//Rhys saves the game
@@ -744,8 +757,8 @@ Good Luck, Adventurer.";
             Console.Clear();
             while (runGame == 1)// while game is running will loop through whatever room is selected
             {
-                //SnailCheckStealth(); //has to be the stealth version to unobtrusively count down -Rhys
-                DeathCheck(out runGame);
+                SnailCheckStealth(); //has to be the stealth version to unobtrusively count down -Rhys
+                DeathCheck(ded);
                 switch (roomID)
                 {
                     case 0: //Just changing this text to roomID 0 so it won't appear if they re-enter room 1 through-out the game. - Cat
@@ -769,6 +782,7 @@ Good Luck, Adventurer.";
                         Console.Clear();
                         if (first[0] == 0) //Makes it so a different dialogue shows if they pick an option and didn't work so they restart the room. - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 11;
                             SoundPlayer(soundID);
                             delay = 37;
@@ -791,6 +805,7 @@ Good Luck, Adventurer.";
                         soundID = 3;
                         while (first[0] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -904,6 +919,7 @@ Good Luck, Adventurer.";
                         Console.Clear();
                         if (first[1] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 21;
                             delay = 42;
                             SoundPlayer(soundID);
@@ -928,6 +944,7 @@ But we all know that that's a stretch.";
                         soundID = 3;
                         while (first[1] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1008,7 +1025,7 @@ But we all know that that's a stretch.";
                         Console.Clear();
                         if (first[2] == 0)
                         {
-                            soundID = 31;
+                            SnailCheckStealth(); soundID = 31;
                             delay = 44;
                             SoundPlayer(soundID);
                             text = "You're in what appears to be a new room. There is a door at the other end, and a corner to the left, halfway between you and the door.";
@@ -1030,6 +1047,7 @@ But we all know that that's a stretch.";
                         soundID = 3;
                         while (first[2] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1111,6 +1129,7 @@ But we all know that that's a stretch.";
                         Console.Clear();
                         if (first[3] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 41;
                             delay = 45;
                             SoundPlayer(soundID);
@@ -1123,6 +1142,7 @@ There are stairs going down to your left through a person-sized hole in the wall
                             soundID = 3;
                             while (first[3] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                             {
+                                soundID = 3;
                                 SoundPlayer(soundID);
                                 text = "\nWhat would you like to do? ";
                                 Typewriter(text, delay);
@@ -1308,6 +1328,7 @@ You scream as you fall. An even larger snail eats you";
                         }
                         else // Second Description - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 22;
                             delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
@@ -1320,6 +1341,7 @@ You scream as you fall. An even larger snail eats you";
                             first[3] = 0;
                             while (first[3] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                             {
+                                soundID = 3;
                                 SoundPlayer(soundID);
                                 text = "\nWhat would you like to do? ";
                                 Typewriter(text, delay);
@@ -1480,6 +1502,7 @@ As you fall, an even larger snail eats you.";
                         Console.Clear();
                         if (first[4] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 51;
                             delay = 46;
                             SoundPlayer(soundID);
@@ -1491,6 +1514,7 @@ I trust you know which is which.";
                         }
                         else // Second description - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 22;
                             delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
@@ -1504,6 +1528,7 @@ I trust you know which is which.";
                         soundID = 3;
                         while (first[4] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1592,6 +1617,7 @@ You got lost in a trance. The snail finds you and eats you.";
                         Console.Clear();
                         if (first[6] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 71;
                             delay = 45;
                             SoundPlayer(soundID);
@@ -1603,6 +1629,7 @@ There is only an opening to your right.";
                         }
                         else // Second Description - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 22;
                             delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
@@ -1615,6 +1642,7 @@ There is only an opening to your right.";
                         soundID = 3;
                         while (first[6] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1687,6 +1715,7 @@ There is only an opening to your right.";
                         Console.Clear();
                         if (first[7] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 81;
                             delay = 45;
                             SoundPlayer(soundID);
@@ -1699,6 +1728,7 @@ Could the snail be at the top waiting for you? In any case, it would seem that y
                         }
                         else // Second Description - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 22;
                             delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
@@ -1712,6 +1742,7 @@ Could the snail be at the top waiting for you? In any case, it would seem that y
                         soundID = 3;
                         while (first[7] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
+                            soundID = 3;
                             SoundPlayer(soundID);
                             text = "\nWhat would you like to do? ";
                             Typewriter(text, delay);
@@ -1786,6 +1817,7 @@ Could the snail be at the top waiting for you? In any case, it would seem that y
                         Console.Clear();
                         if (first[8] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 91;
                             delay = 45;
                             SoundPlayer(soundID);
@@ -1798,6 +1830,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         }
                         else // Second Decription - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 22;
                             delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
@@ -1811,8 +1844,9 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         soundID = 3;
                         while (first[8] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                         {
-                            SoundPlayer(soundID);
+                            soundID = 3;
                             text = "\nWhat would you like to do? ";
+                            SoundPlayer(soundID);
                             Typewriter(text, delay);
                             direction = Console.ReadLine().ToLower().Trim();
                             bool door9lock = true;
@@ -1920,6 +1954,7 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         Console.Clear();
                         if (first[9] == 0)
                         {
+                            SnailCheckStealth();
                             soundID = 101;
                             delay = 45;
                             text = @"At least you haven't been eaten, yet. 
@@ -1933,8 +1968,9 @@ The room has an interesting shape, there are angles leading back to the opening 
                             delay = 37;
                             while (first[9] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                             {
-                                SoundPlayer(soundID);
+                                soundID = 3;
                                 text = "\nWhat would you like to do? ";
+                                SoundPlayer(soundID);
                                 Typewriter(text, delay);
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
@@ -2099,6 +2135,7 @@ You scream as you fall. An even larger snail eats you";
                         }
                         else // Second Description - Cat
                         {
+                            SnailCheckStealth();
                             soundID = 22;
                             delay = 37;
                             text = "You've been here before. Silly billy, are you going around in circles?";
@@ -2111,8 +2148,9 @@ You scream as you fall. An even larger snail eats you";
                             first[9] = 0;
                             while (first[9] == 0) //Makes it so the user can keep choosing actions but not have the room descript rewrite everytime - Cat
                             {
-                                SoundPlayer(soundID);
+                                soundID = 3;
                                 text = "\nWhat would you like to do? ";
+                                SoundPlayer(soundID);
                                 Typewriter(text, delay);
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
