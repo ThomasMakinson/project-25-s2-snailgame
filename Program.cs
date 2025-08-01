@@ -917,8 +917,17 @@ But we all know that that's a stretch.";
                         {
                             soundID = 22;
                             delay = 37;
-                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            text = "You've been here before. Silly billy, are you going around in circles?\n";
                             SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
+
+                            soundID = 21;
+                            delay = 42;
+                            SoundPlayer(soundID);
+                            text = @"You're suddenly in a another room. There's a corner in front of you to the left. 
+You can't see what's beyond it. It could be interesting if you were feeling courageous. 
+But we all know that that's a stretch.";
                             Typewriter(text, delay);
                             Thread.Sleep(800);
                             first[1] = 0;
@@ -1019,8 +1028,15 @@ But we all know that that's a stretch.";
                         {
                             soundID = 22;
                             delay = 37;
-                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            text = "You've been here before. Silly billy, are you going around in circles?\n";
                             SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
+
+                            soundID = 31;
+                            delay = 44;
+                            SoundPlayer(soundID);
+                            text = "You're in what appears to be a new room. There is a door at the other end, and a corner to the left, halfway between you and the door.";
                             Typewriter(text, delay);
                             Thread.Sleep(800);
                             first[2] = 0;
@@ -1493,8 +1509,17 @@ I trust you know which is which.";
                         {
                             soundID = 22;
                             delay = 37;
-                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            text = "You've been here before. Silly billy, are you going around in circles?\n";
                             SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
+
+                            soundID = 51;
+                            delay = 46;
+                            SoundPlayer(soundID);
+                            text = @"You are at a crossroads. (I mean, it's actually a T-Junction, but crossroads sounds cooler, y'know?).
+You can see a dark room with no door to your left, and a well-lit one to your right. One could lead to your salvation, the other could lead to your doom, or both, or neither.
+I trust you know which is which.";
                             Typewriter(text, delay);
                             Thread.Sleep(800);
                             first[4] = 0;
@@ -1605,10 +1630,18 @@ There is only an opening to your right.";
                         {
                             soundID = 22;
                             delay = 37;
-                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            text = "You've been here before. Silly billy, are you going around in circles?\n";
                             SoundPlayer(soundID);
                             Typewriter(text, delay);
-                            Thread.Sleep(800);
+                            Thread.Sleep(500);
+
+                            soundID = 71;
+                            delay = 45;
+                            SoundPlayer(soundID);
+                            text = @"This is a very large room. It is well lit. It feels almost like you've finally escaped, like you've reached the end, and yet, you haven't. 
+There is only an opening to your right.";
+                            Typewriter(text, delay);
+                            Thread.Sleep(1150);
                             first[6] = 0;
                         }
                         delay = 37;
@@ -1701,8 +1734,17 @@ Could the snail be at the top waiting for you? In any case, it would seem that y
                         {
                             soundID = 22;
                             delay = 37;
-                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            text = "You've been here before. Silly billy, are you going around in circles?\n";
                             SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
+
+                            soundID = 81;
+                            delay = 45;
+                            SoundPlayer(soundID);
+                            text = @"You are in a hallway. There is a ladder ahead of you. 
+More darkness creeps down over the ladder, preventing you from seeing where it goes. 
+Could the snail be at the top waiting for you? In any case, it would seem that you have no choice but to climb the ladder if you wish to proceed.";
                             Typewriter(text, delay);
                             Thread.Sleep(800);
                             first[7] = 0;
@@ -1800,8 +1842,17 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                         {
                             soundID = 22;
                             delay = 37;
-                            text = "You've been here before. Silly billy, are you going around in circles?";
+                            text = "You've been here before. Silly billy, are you going around in circles?\n";
                             SoundPlayer(soundID);
+                            Typewriter(text, delay);
+                            Thread.Sleep(500);
+
+                            soundID = 91;
+                            delay = 45;
+                            SoundPlayer(soundID);
+                            text = @"Another hallway. Smaller though, than the one at the bottom of the ladder. 
+To your left, a door, no different than any other that you've encountered. 
+To your right, an opening, leading to a large room. Both could be inviting.";
                             Typewriter(text, delay);
                             Thread.Sleep(800);
                             first[8] = 0;
