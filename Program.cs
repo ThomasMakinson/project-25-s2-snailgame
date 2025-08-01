@@ -1623,6 +1623,8 @@ There is only an opening to your right.";
                             {
                                 case "pick up harmonica":
                                 case "grab harmonica":
+                                case "harmonica":
+                                case "take harmonica":
                                     AddToInventory(harmonica);
                                     Console.WriteLine($"You added {harmonica.Name} to your Inventory.");
                                     Thread.Sleep(1500);
@@ -1655,6 +1657,10 @@ There is only an opening to your right.";
                                     animationID = 78;
                                     Animations(ref animationID);
                                     roomID = 8; //goes to room 8
+                                    break;
+                                case "left":
+                                    Console.WriteLine("That's a wall.");
+                                    Thread.Sleep(1000);
                                     break;
                                 case "blood":
                                 case "give blood":
