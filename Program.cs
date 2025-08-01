@@ -118,6 +118,7 @@ Good Luck, Adventurer.";
 
 
         }
+
         public static void Animations(ref int animationID)// room transition animations - Rhys
         {
             //the case numbers are direction, so 12 is room1  room2, and 21 is room2 to room1
@@ -625,7 +626,144 @@ Good Luck, Adventurer.";
             }
         }
 
+        public static void CheckMap(ref int animationID) // Call this to check player position on Map - Jacques 30/07/25
+        {
+            string aline;
+            switch (animationID)
+            {
+                case 1:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room1.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 2:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room2.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 3:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room3.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 4:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room4.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 5:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room5.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 6:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room6.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 7:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room7.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 8:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room8.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 9:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room9.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 10:
+                    Console.Clear();
+                    sr = new StreamReader($@"Check-Map\Room10.txt");
+                    while (!sr.EndOfStream)
+                    {
+                        aline = sr.ReadLine();
+                        Console.WriteLine(aline);
+                    }
+                    sr.Close();
+                    Console.WriteLine("\n\n Press enter to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+            }
 
+        }
 
         public static void SnailCheck()// call this to check distance of snail - Rhys
         {
@@ -797,6 +935,11 @@ Good Luck, Adventurer.";
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 1;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "use rusty key":
                                 case "unlock door":
                                 case "use key":
@@ -934,6 +1077,11 @@ But we all know that that's a stretch.";
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 2;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "die":
                                     animationID = 1;
                                     Animations(ref animationID);
@@ -1036,6 +1184,11 @@ But we all know that that's a stretch.";
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 3;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "pick up crumpled note":
                                 case "pick up note":
                                 case "grab crumpled note":
@@ -1129,6 +1282,11 @@ There are stairs going down to your left through a person-sized hole in the wall
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
                                 {
+                                    case "check map":
+                                    case "map":
+                                        animationID = 4;
+                                        CheckMap(ref animationID);
+                                        break;
                                     case "pick up unknown pills":
                                     case "pick up pills":
                                     case "grab unknown pills":
@@ -1326,6 +1484,11 @@ You scream as you fall. An even larger snail eats you";
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
                                 {
+
+                                    case "check map":
+                                    case "map":
+                                        animationID = 4;
+                                        CheckMap(ref animationID);
                                     case "pick up unknown pills":
                                     case "pick up pills":
                                     case "grab unknown pills":
@@ -1350,6 +1513,7 @@ You scream as you fall. An even larger snail eats you";
                                         foreach (items item in inventory)
                                             if (item != null && item.Name.ToLower() == command2.Substring(8).Trim())
                                             { item.Inspect(); break; }
+                                    
                                         break;
                                     case "right":
                                         animationID = 43;
@@ -1510,6 +1674,11 @@ I trust you know which is which.";
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 5;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "inventory":
                                 case "check inventory":
                                     items.DisplayInventory(inventory);
@@ -1621,6 +1790,11 @@ There is only an opening to your right.";
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 7;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "pick up harmonica":
                                 case "grab harmonica":
                                     AddToInventory(harmonica);
@@ -1718,6 +1892,11 @@ Could the snail be at the top waiting for you? In any case, it would seem that y
                             direction = Console.ReadLine().ToLower().Trim();
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 8;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "pick up bottle of gin":
                                 case "pick up gin":
                                 case "grab bottle of gin":
@@ -1818,6 +1997,11 @@ To your right, an opening, leading to a large room. Both could be inviting.";
                             bool door9lock = true;
                             switch (direction)
                             {
+                                case "check map":
+                                case "map":
+                                    animationID = 9;
+                                    CheckMap(ref animationID);
+                                    break;
                                 case "use slimey key":
                                 case "unlock door":
                                 case "use key":
@@ -1939,6 +2123,11 @@ The room has an interesting shape, there are angles leading back to the opening 
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
                                 {
+                                    case "check map":
+                                    case "map":
+                                        animationID = 10;
+                                        CheckMap(ref animationID);
+                                        break;
                                     case "pick up slimey key":
                                     case "pick up key":
                                     case "grab slimey key":
@@ -2117,6 +2306,11 @@ You scream as you fall. An even larger snail eats you";
                                 direction = Console.ReadLine().ToLower().Trim();
                                 switch (direction)
                                 {
+                                    case "check map":
+                                    case "map":
+                                        animationID = 10;
+                                        CheckMap(ref animationID);
+                                        break;
                                     case "back":
                                         animationID = 109;
                                         Animations(ref animationID);
@@ -2296,7 +2490,6 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 }
             }
         }
-
         // Removes specified item from inventory.
         public static void DropFromInventory(items item)
         {
@@ -2361,9 +2554,7 @@ The snail finds you, sucks your blood, and eats your corpse.";
                 }
             } while (exitGame == false);
 
-
         }
-
 
         static void SoundPlayer(int SoundID) //Cat - Adding soundplayer, doesn't error now.
         {
